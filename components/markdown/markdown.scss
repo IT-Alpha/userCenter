@@ -1,0 +1,186 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+
+// Variables
+$table-border-color: $border-color;
+$panel-default-heading-bg: $gray-600;
+$panel-default-color: $body-color;
+$input-bg: $gray-700;
+$panel-preview-bg: $gray-800;
+
+@import "../bootstrap/scss/mixins";
+
+.md-editor {
+	display: block;
+	border: 1px solid $table-border-color;
+
+	> textarea {
+		font-family: $font-family-monospace;
+		font-size: $font-size-base;
+		outline: 0;
+		outline: thin dotted  \9; /* IE6-9 */
+		margin: 0;
+		display: block;
+		padding: px-to-rem( 10px );
+		width: 100%;
+		border: 0;
+		border-top: 1px dashed $table-border-color;
+		border-bottom: 1px dashed $table-border-color;
+		border-radius: 0;
+		box-shadow: none;
+		color: $panel-default-color;
+		background: $input-bg;
+	}
+
+	.btn-default,
+	.btn-primary {
+		@include button-variant( $dark, $dark );
+	}
+}
+
+.md-header,
+.md-footer {
+	background: $panel-default-heading-bg;
+}
+
+.md-header {
+	padding: 6px 4px;
+	margin-bottom: -6px;
+
+	> .btn-group {
+		margin-right: 6px;
+		margin-bottom: 6px;
+	}
+}
+
+.md-footer {
+	padding: px-to-rem( 10px );
+}
+
+.md-preview {
+	padding: px-to-rem( 10px );
+	background: $panel-preview-bg;
+	border-top: 1px dashed $table-border-color;
+	border-bottom: 1px dashed $table-border-color;
+	min-height: px-to-rem( 10px );
+	overflow: auto;
+	transition: .2s;
+}
+
+.md-controls {
+	margin-left: auto;
+	padding: 3px;
+}
+
+.md-control {
+	right: 5px;
+	color: $gray-200;
+	padding: px-to-rem( 3px, 3px, 3px, 10px );
+
+	&:hover {
+		color: $gray-400;
+	}
+}
+
+// Fullscreen mode styles
+.md-fullscreen-mode {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $zindex-modal;
+	padding: 15px;
+	background: $input-bg;
+	border: 0;
+
+	.md-footer {
+		display: none !important;
+	}
+
+	.md-input,
+	.md-preview {
+		width: 100% !important;
+		height: 100% !important;
+		resize: none !important;
+		max-height: 100vh;
+		margin: 0 auto;
+		font-size: 20px;
+		padding: 20px;
+		color: $body-color;
+		line-height: 1.6em;
+		box-shadow: none;
+		background: $input-bg;
+		border: 0;
+	}
+
+	.md-preview {
+		color: $body-color;
+		overflow: auto;
+	}
+
+	.md-input {
+		&:hover,
+		&:focus {
+			color: $body-color;
+			background: $input-bg;
+		}
+	}
+
+	.md-header {
+		background: none;
+		text-align: center;
+	}
+
+	.md-control {
+		display: none;
+	}
+
+	.md-fullscreen-controls {
+		position: absolute;
+		top: 5px;
+		right: 8px;
+		text-align: right;
+		z-index: 1002;
+		display: block;
+
+		a {
+			color: $body-color;
+			clear: right;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+
+			&:hover {
+				color: $gray-400;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.md-editor {
+		height: 100%;
+		position: relative;
+	}
+
+	@include media-breakpoint-up( lg ) {
+		padding: 30px 30px 15px;
+
+		.md-fullscreen-controls {
+			top: 20px;
+			right: 20px;
+		}
+	}
+}
+
+.md-fullscreen-controls {
+	display: none;
+}
+
+.md-nooverflow {
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+}

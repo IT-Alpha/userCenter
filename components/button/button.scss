@@ -1,0 +1,122 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+
+// Variables
+$btn-border-radius: px-to-rem( 22px );
+$btn-border-radius-sm: $btn-border-radius;
+$btn-border-radius-lg: $btn-border-radius;
+
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/buttons";
+@import "../bootstrap/scss/button-group";
+@import "../theme-switcher/functions";
+
+// Base styles
+.btn {
+	transition: .2s;
+
+	&.disabled {
+		pointer-events: none;
+	}
+}
+
+.btn-icon:not(:only-child) {
+	padding-right: 0.4em;
+}
+
+// Modifiers
+.btn-circle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: $btn-padding-y * 2 + ( $btn-font-size * $btn-line-height );
+	width: $btn-padding-y * 2 + ( $btn-font-size * $btn-line-height );
+	padding: 0;
+	line-height: 1;
+	border-radius: 50%;
+
+	&.btn-sm {
+		height: $btn-padding-y-sm * 2 + ( $btn-font-size-sm * $btn-line-height-sm );
+		width: $btn-padding-y-sm * 2 + ( $btn-font-size-sm * $btn-line-height-sm );
+	}
+
+	&.btn-lg {
+		height: $btn-padding-y-lg * 2 + ( $btn-font-size-lg * $btn-line-height-lg );
+		width: $btn-padding-y-lg * 2 + ( $btn-font-size-lg * $btn-line-height-lg );
+	}
+}
+
+// Color themes
+@each $color, $value in $theme-colors {
+	.btn-#{$color} {
+		@include button-variant($value, $value);
+	}
+}
+
+$enable-gradients: true;
+@each $color, $value in $theme-colors {
+	.btn-#{$color}.btn-gradient {
+		@include button-variant($value, $value);
+	}
+}
+
+// Offsets
+h5 + .btn-block {
+	margin-top: px-to-rem( 10px );
+}
+
+.btn-block + .btn-block {
+	margin-top: px-to-rem( 15px );
+}
+
+// Navbar context
+.button-navbar {
+	position: relative;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	color: cssv( navbar-button-color );
+	background: cssv-darken( navbar-button-bg, 10% );
+
+	&:hover {
+		color: cssv( navbar-button-color );
+		background: cssv-darken( navbar-button-bg, 15% );
+	}
+
+	> * {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate( -50%, -50% );
+	}
+
+	@include media-breakpoint-up(xl) {
+		color: $white;
+		background: darken( $dark, 10% );
+
+		&:hover {
+			color: $white;
+			background: darken( $dark, 15% );
+		}
+	}
+}
+
+.button-user-menu {
+	padding: px-to-rem( 13px, 25px);
+	color: cssv( 'navbar-user-button-color' );
+	font-weight: 500;
+	text-transform: uppercase;
+	border: 1px solid cssv( 'navbar-user-button-bg' );
+
+	&:hover {
+		color: cssv( 'navbar-user-button-color' );
+		background: cssv-rgba( 'navbar-user-button-bg', .3 );
+	}
+
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
+} 

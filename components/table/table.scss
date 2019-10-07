@@ -1,0 +1,49 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+
+$table-bg-level: 0;
+$table-border-level: 0;
+$table-color-level: 6;
+
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/tables";
+
+// Base
+.table {
+	margin-bottom: 0;
+}
+
+// Modifies
+.table-vertical-align {
+	td, th {
+		vertical-align: middle;
+	}
+}
+
+.table-align-1 {
+	th:nth-child( 1 ),
+	td:nth-child( 1 ){
+		text-align: center;
+	}
+}
+
+tr.row-action {
+	td:not( :nth-child( 1 ) ):not( :nth-child( 2 ) ){
+		color: $white;
+	}
+}
+
+// Data table context
+.data-table {
+	width: 100% !important;
+}
+
+// Color themes
+@each $color, $value in $theme-colors {
+	.table-color-#{$color} {
+		$text-color: if( get-yiq( $value ) >= $yiq-contrasted-threshold, theme-color-level( $color, $table-color-level ), color-yiq( $value ) );
+		color: $text-color;
+	}
+}

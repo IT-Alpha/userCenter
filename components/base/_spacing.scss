@@ -1,0 +1,132 @@
+// Elements spacing
+* + p {
+	margin-top: 10px;
+}
+
+* + h1,
+* + h2 {
+	margin-top: 30px;
+}
+
+* + h3 {
+	margin-top: 25px;
+}
+
+* + h4,
+* + h5,
+* + h6 {
+	margin-top: 20px;
+}
+
+* + img,
+* + figure,
+* + .row {
+	margin-top: 20px;
+}
+
+h1 + p {
+	margin-top: 10px;
+}
+
+h2 + p {
+	margin-top: 16px;
+}
+
+h2 + h3 {
+	margin-top: 20px;
+}
+
+h2 + img {
+	margin-top: 25px;
+}
+
+h4 + ul {
+	margin-top: 20px;
+}
+
+h5 + [class*='group'] {
+	margin-top: 15px;
+}
+
+label + * {
+	margin-top: 7px;
+}
+
+img + p {
+	margin-top: 31px;
+}
+
+dl + dl {
+	margin-top: px-to-rem( 8px );
+}
+
+// Spacers
+.offset-xs,
+.offset-sm {
+	margin-top: 15px;
+}
+
+.offset-md {
+	margin-top: 30px;
+}
+
+@include media-breakpoint-up( lg ) {
+	.offset-xs {
+		margin-top: 24px;
+	}
+
+	.offset-sm {
+		margin-top: 30px;
+	}
+
+	.offset-md {
+		margin-top: 60px;
+	}
+}
+
+// Group spacing
+html.root {
+	.group-4 {
+		@include group( 4px );
+	}
+
+	.group-5 {
+		@include group( 5px );
+	}
+
+	.group-10 {
+		@include group( 10px );
+	}
+
+	.group-15 {
+		@include group( 15px );
+	}
+
+	.group-20 {
+		@include group( 20px );
+	}
+
+	.group-25 {
+		@include group( 25px );
+	}
+
+	.group-30 {
+		@include group( 30px );
+	}
+
+	@include media-breakpoint-up(md) {
+		.group-md-10 {
+			@include group( 10px );
+		}
+
+		.group-md-60 {
+			@include group( 60px );
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		.group-md-5 {
+			@include group( 5px );
+		}
+	}
+}

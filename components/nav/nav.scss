@@ -1,0 +1,345 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+
+// Variables
+$nav-tabs-link-active-color: $gray-200;
+$nav-tabs-link-active-bg: $gray-700;
+$nav-tabs-link-active-border-color: rgba($gray-200, .2);
+$nav-tabs-accent-border-color: $dark;
+
+$nav-tabs-link-color: $nav-tabs-link-active-color;
+$nav-tabs-link-bg: lighten($nav-tabs-link-active-bg, 10%);
+$nav-tabs-link-border-color: rgba( nth( $nav-tabs-link-active-border-color, 1 ), .2 );
+
+$nav-tabs-border-color: $nav-tabs-link-border-color;
+$nav-tabs-border-width: $border-width;
+$nav-tabs-border-radius: 0;
+
+$nav-tabs-link-hover-border-color: $nav-tabs-border-color $nav-tabs-border-color $nav-tabs-border-color;
+$nav-tabs-link-hover-color: $nav-tabs-link-active-color;
+$nav-tabs-link-hover-bg: $nav-tabs-link-active-bg;
+
+$nav-tabs-content-color: $nav-tabs-link-active-color;
+$nav-tabs-content-bg: $nav-tabs-link-active-bg;
+
+$nav-pills-link-color: $primary;
+$nav-pills-link-active-color: $white;
+$nav-pills-link-active-bg: $primary;
+$nav-pills-border-radius: $rounded-pill;
+
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/nav";
+
+// Base styles
+.nav {
+	flex-wrap: nowrap;
+}
+
+.nav-tabs {
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border-bottom: 0;
+
+	.nav-item {
+		margin-bottom: 0;
+	}
+
+	.nav-link {
+		position: relative;
+		z-index: 0;
+		color: $nav-tabs-link-color;
+		background-color: $nav-tabs-link-bg;
+		border: $nav-tabs-border-width solid $nav-tabs-link-border-color;
+		transition: .2s;
+		white-space: nowrap;
+
+		&:not(.active) {
+			@include hover-focus {
+				background-color: $nav-tabs-link-hover-bg;
+			}
+		}
+	}
+
+	.nav-link.active,
+	.nav-item.show .nav-link {
+		z-index: 2;
+	}
+}
+
+.tabs {
+	.tab-content {
+		position: relative;
+		z-index: 1;
+		padding: px-to-rem(10px, 15px);
+		color: $nav-tabs-content-color;
+		background-color: $nav-tabs-content-bg;
+		border: $nav-tabs-border-width solid $nav-tabs-link-active-border-color;
+	}
+}
+
+// Tabs border base style
+.tabs-border {
+	.nav-link {
+		position: relative;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: -$nav-tabs-border-width;
+			right: -$nav-tabs-border-width;
+			height: $nav-tabs-border-width + 2px;
+			background-color: transparent;
+			transition: .2s background-color;
+		}
+	}
+
+	.nav-link.active,
+	.nav-item.show .nav-link {
+		&:before {
+			background-color: $nav-tabs-accent-border-color;
+		}
+	}
+}
+
+// Tabs default
+.tabs-default {
+	.nav-link {
+		background-color: transparent;
+		border: none;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+
+		&:not(.active) {
+			@include hover-focus {
+				background-color: rgba( $info, .3 );
+			}
+		}
+	}
+
+	.nav-link.active,
+	.nav-item.show .nav-link {
+		color: $white;
+		background-color: $info;
+	}
+
+	.nav-item + .nav-item {
+		margin-left: px-to-rem( 3px );
+	}
+
+	.tab-content {
+		border-color: $info;
+	}
+}
+
+
+// Tabs top navigation
+.tabs-vertical-top {
+	.tab-content {
+		margin-top: -$nav-tabs-border-width;
+	}
+
+	.nav-link {
+		border-bottom: 0;
+	}
+
+	&.tabs-border {
+		.nav-tabs {
+			padding-top: 2px;
+		}
+
+		.nav-link {
+			&:before {
+				bottom: 100%;
+			}
+		}
+	}
+}
+
+// Tabs bottom navigation
+.tabs-vertical-bottom {
+	display: flex;
+	flex-direction: column-reverse;
+
+	.tab-content {
+		margin-bottom: -$nav-tabs-border-width;
+	}
+
+	.nav-link {
+		border-top: 0;
+	}
+
+	&.tabs-border {
+		.nav-tabs {
+			padding-bottom: 2px;
+		}
+		.nav-link {
+			&:before {
+				top: 100%;
+			}
+		}
+	}
+}
+
+// Tabs top/bottom group styles
+.tabs-vertical-top,
+.tabs-vertical-bottom {
+	.nav-item +.nav-item {
+		margin-left: -$nav-tabs-border-width;
+	}
+}
+
+// Tabs left navigation
+.tabs-horizontal-left {
+	&.tabs-border {
+		.nav-link {
+			&:before {
+				bottom: 100%;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		.tab-content {
+			margin-left: -$nav-tabs-border-width;
+		}
+
+		.nav-link {
+			border-right: 0;
+		}
+
+		&.tabs-border {
+			.nav-link {
+				&:before {
+					left: auto;
+					right: 100%;
+				}
+			}
+		}
+	}
+
+}
+
+// Tabs right navigation
+.tabs-horizontal-right {
+	&.tabs-border {
+		.nav-link {
+			&:before {
+				bottom: 100%;
+			}
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		flex-direction: row-reverse;
+
+		.tab-content {
+			margin-right: -$nav-tabs-border-width;
+		}
+
+		.nav-link {
+			border-left: 0;
+		}
+
+		&.tabs-border {
+			.nav-link {
+				&:before {
+					right: auto;
+					left: 100%;
+				}
+			}
+		}
+	}
+
+}
+
+// Tabs left/right navigation group styles
+.tabs-horizontal-left,
+.tabs-horizontal-right {
+	.nav-item {
+		margin-bottom: -$nav-tabs-border-width;
+	}
+	&.tabs-border {
+		.nav-tabs {
+			padding-top: 2px;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		display: flex;
+
+		.nav-tabs {
+			align-self: flex-start;
+			flex-wrap: wrap;
+			overflow-x: visible;
+			overflow-y: initial;
+		}
+
+		.nav-item +.nav-item {
+			margin-top: -$nav-tabs-border-width;
+		}
+
+		.nav-item {
+			width: 100%;
+			margin-bottom: 0;
+		}
+
+		&.tabs-border {
+			.nav-tabs {
+				padding-top: 0;
+			}
+			.nav-link {
+				&:before {
+					top: -$nav-tabs-border-width;
+					bottom: -$nav-tabs-border-width;
+					width: $nav-tabs-border-width + 2px;
+					height: auto;
+				}
+			}
+		}
+	}
+}
+
+// Modifiers (nav with background)
+.tabs-bg {
+	.nav-tabs {
+		background-color: $nav-tabs-link-active-bg;
+		padding: 10px 10px 0;
+		border: $nav-tabs-border-width solid $nav-tabs-link-border-color;
+		border-bottom: 0;
+		@include media-breakpoint-down(xs) {
+			padding: 10px 3px 0;
+		}
+	}
+}
+
+
+// Nav pills
+.nav-pills {
+	margin-top: -8px !important; // reset margin-top for group mixin wrapper
+	margin-right: -8px;
+
+	> .nav-item {
+		margin-top: 8px;
+		margin-right: 8px;
+	}
+
+	.nav-link {
+		white-space: nowrap;
+		color: $nav-pills-link-color;
+		transition: .2s;
+	}
+
+	.nav-link:hover,
+	.nav-link:focus,
+	.nav-link:active {
+		color: $nav-pills-link-active-color;
+		background-color: $nav-pills-link-active-bg;
+	}
+}
+
+.nav-pills + .tab-content {
+	margin-top: px-to-rem( 10px );
+}

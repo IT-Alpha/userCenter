@@ -1,0 +1,70 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+
+// Reset default styles
+.highcharts-background {
+	fill: transparent;
+}
+
+// Basic styles
+.highcharts-container {
+	width: 100%;
+	height: 250px;
+
+	&-1 {
+		height: 170px;
+	}
+
+	@include media-breakpoint-up(sm) {
+		&-1 {
+			height: 200px;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		&-lg {
+			height: 400px;
+		}
+
+		&-1 {
+			height: 307px;
+		}
+
+		&-2 {
+			height: 380px;
+		}
+	}
+}
+
+// Double highcharts
+.highcharts-container-double-detail {
+	height: 250px;
+
+	@include media-breakpoint-up(md) {
+		height: 400px;
+	}
+}
+
+// Highcharts range
+.highcharts-range {
+	height: 250px;
+
+	@include media-breakpoint-up(md) {
+		height: 350px;
+	}
+}
+
+// Legend points
+.highcharts-legend-item .highcharts-point {
+	pointer-events: none;
+}
+
+// Sparkline halo
+[data-sparkline] {
+	.highcharts-halo {
+		background-color: red;
+	}
+}

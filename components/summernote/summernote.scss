@@ -1,0 +1,98 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+@import "../summernote/_summernote";
+
+// Disabled popover on first load
+.note-popover.popover {
+	display: none;
+}
+
+// Reset default summernote styles
+* + .note-editor.note-frame {
+	margin-top: 0;
+}
+
+.note-popover .popover-content,
+.card-header.note-toolbar {
+	padding: px-to-rem( 0, 0, 10px, 10px );
+	background-color: $gray-600;
+
+	> .btn-group {
+		margin-top: 10px;
+		margin-left: 0;
+		margin-right: 10px;
+	}
+
+	.dropdown-menu {}
+	min-width: px-to-rem( 75px );
+}
+
+.note-editor.note-frame.fullscreen {
+	z-index: $zindex-modal;
+
+	.note-editable {
+		background-color: $gray-700 !important;
+	}
+}
+
+.note-editor {
+	.modal-dialog {
+		margin: $modal-dialog-margin auto;
+	}
+}
+
+.note-icon-menu-check {
+	display: none;
+}
+
+.note-editor.note-frame {
+	background-color: transparent;
+
+	.note-editing-area {
+		.note-editable {
+			color: $body-color;
+			background-color: transparent;
+		}
+
+		// codeable
+		.note-codable {
+			color: $gray-100;
+			background-color: $gray-900;
+		}
+	}
+}
+
+// Toolbar buttons
+$btn-box-shadow: 0 0 0 transparent;
+.note-btn {
+	@include button-variant($dark, $dark);
+}
+
+.note-current-color-button {
+	color: $black !important;
+}
+
+// Placeholder
+.note-placeholder {
+	color: $body-color;
+}
+
+// Disable border on summernote container
+.summernote-no-border {
+	.note-editor.note-frame {
+		border: 0;
+
+		.note-statusbar {
+			background-color: transparent;
+			border-top: none;
+		}
+	}
+}
+
+// Offsets
+* + .summernote-container {
+	margin-top: px-to-rem( 10px );
+}

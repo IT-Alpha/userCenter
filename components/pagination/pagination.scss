@@ -1,0 +1,23 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/pagination";
+
+// base style
+.page-link {
+	background: $gray-500;
+	color: $white;
+
+	&:hover {
+		color: $white;
+	}
+}
+.page-item.disabled  {
+	.page-link{
+		color: $white;
+		background: $gray-500;
+		opacity: .5;
+	}
+}

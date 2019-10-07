@@ -1,0 +1,2 @@
+.footer-small{padding:1.25rem .9375rem;background-color:#3f4856;-webkit-box-shadow:0 0 10px 0 rgba(0,0,0,0.3);box-shadow:0 0 10px 0 rgba(0,0,0,0.3)}@media (min-width: 576px){.footer-small{padding:.625rem .9375rem}}@media (min-width: 1200px){.rd-navbar-fixed-linked .footer-small{position:fixed;bottom:0;left:0;right:0;z-index:2;-webkit-transition:.2s ease-in-out;transition:.2s ease-in-out}.rd-navbar-sidebar-active .footer-small{left:250px}}
+/*# sourceMappingURL=footer.min.css.map */

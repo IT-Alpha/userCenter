@@ -1,0 +1,179 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+
+// Checkbox variables
+$custom-control-sm-indicator-size: 3.4 * $font-size-base;
+$custom-control-sm-gutter: $lead-font-size;
+
+// List sortable
+.list-sortable {
+	list-style: none;
+	padding-left: 0;
+
+	> li {
+		position: relative;
+		padding: px-to-rem( 15px, 50px, 15px, 15px );
+		font-size: $lead-font-size;
+
+		+ li {
+			border-top: 1px solid rgba( $border-color, .2 );
+		}
+	}
+
+	.sortable-drag {
+		position: absolute;
+		top: 50%;
+		right: px-to-rem( 15px );
+		min-width: 40px;
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: px-to-rem( 25px );
+		line-height: 1;
+		color: rgba( $white, .4 );
+		background: url(../../images/grippy_large.png) no-repeat center center;
+		cursor: all-scroll;
+		transform: translateY( -50% );
+
+		&:before {
+			content: '';
+			font-family: 'FontAwesome';
+		}
+	}
+
+	// checkbox styles
+	.custom-control {
+		.custom-control-label {
+			// Background-color
+			&::before {
+				top: ( $lead-font-size * $line-height-base - $custom-control-indicator-size ) / 2;
+				left: -( $custom-control-gutter + $custom-control-indicator-size );
+				width: $custom-control-indicator-size;
+				height: $custom-control-indicator-size;
+				background-color: transparent !important;
+				border-radius: 50%;
+				box-shadow: none !important;
+			}
+
+			// Foreground (icon)
+			&::after {
+				top: ( $lead-font-size * $line-height-base - $custom-control-indicator-size ) / 2;
+				left: -( $custom-control-gutter + $custom-control-indicator-size );
+				width: $custom-control-indicator-size;
+				height: $custom-control-indicator-size;
+				line-height: $custom-control-indicator-size;
+				text-align: center;
+				border-radius: 50%;
+				content: '';
+				font-family: 'FontAwesome';
+				font-size: 0.7rem;
+			}
+		}
+	}
+
+	.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+		content: '\f00c';
+		background-image: none;
+	}
+
+	@include media-breakpoint-up(md) {
+		.custom-control {
+			padding: ( $custom-control-sm-indicator-size - $lead-font-size * $line-height-base ) / 2 0;
+			padding-left: $custom-control-sm-gutter + $custom-control-sm-indicator-size;
+
+			.custom-control-label {
+				// Background-color
+				&::before {
+					top: ( $lead-font-size * $line-height-base - $custom-control-sm-indicator-size ) / 2;
+					left: -( $custom-control-sm-gutter + $custom-control-sm-indicator-size );
+					width: $custom-control-sm-indicator-size;
+					height: $custom-control-sm-indicator-size;
+				}
+
+				// Foreground (icon)
+				&::after {
+					top: ( $lead-font-size * $line-height-base - $custom-control-sm-indicator-size ) / 2;
+					left: -( $custom-control-sm-gutter + $custom-control-sm-indicator-size );
+					width: $custom-control-sm-indicator-size;
+					height: $custom-control-sm-indicator-size;
+					font-size: inherit;
+					line-height: $custom-control-sm-indicator-size;
+				}
+			}
+		}
+	}
+}
+
+.sortable-completed {
+	.sortable-drag {
+		background: none;
+		font-size: px-to-rem( 18px );
+		cursor: pointer;
+
+		&:before {
+			content: '\f00d';
+		}
+	}
+}
+
+// List sortable title
+.list-sortable-title {
+	padding: px-to-rem( 25px, 15px );
+	font-weight: 300;
+}
+
+.list-sortable-title + .list-sortable,
+.list-sortable + .list-sortable-title,
+.list-sortable + .list-sortable {
+	border-top: 1px solid rgba( $border-color, .4 );
+}
+
+.list-sortable + .list-sortable-title {
+	margin-top: 0;
+}
+
+.ui-sortable-placeholder {
+	visibility: visible !important;
+	background-color: rgba( $gray-600, .4 );
+}
+
+.ui-sortable-helper {
+	background-color: rgba( $gray-600, .9 );
+}
+
+.list-sortable {
+	.custom-checkbox {
+		.custom-control-input {
+			&:checked ~ .custom-control-label::before,
+			&:active ~ .custom-control-label::before,
+			&:focus ~ .custom-control-label::before {
+				border-color: $info;
+			}
+		}
+
+		.custom-control-label::before {
+			border-color: $info;
+		}
+	}
+}
+
+// Colors
+@each $theme, $color in $theme-colors {
+	.list-sortable-#{$theme} {
+		.custom-checkbox {
+			.custom-control-input {
+				&:checked ~ .custom-control-label::after {
+					color: $color;
+				}
+			}
+
+			.custom-control-label {
+				color: $color;
+			}
+		}
+	}
+}

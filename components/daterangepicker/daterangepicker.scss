@@ -1,0 +1,100 @@
+@import "../bootstrap/scss/functions";
+@import "../base/functions";
+@import "../base/variables";
+@import "../bootstrap/scss/variables";
+@import "../base/mixins/group";
+@import "../daterangepicker/_daterangepicker";
+
+//base style
+.daterangepicker {
+	background: $gray-700;
+	border-color: rgba($black, .15);
+	z-index: $zindex-dropdown;
+
+	&:before {
+		border-right: 7px solid transparent;
+		border-left: 7px solid transparent;
+		border-bottom: 7px solid rgba($black, .15);
+	}
+
+	&:after {
+		border-right: 6px solid transparent;
+		border-bottom: 6px solid $gray-700;
+		border-left: 6px solid transparent;
+	}
+
+	.ranges {
+		li.active {
+			background: $primary;
+			color: $gray-900;
+		}
+
+		li:hover {
+			background: $gray-500;
+		}
+	}
+
+	.calendar-table {
+		background: $gray-700;
+		border-color: $gray-700;
+
+		.next,
+		.prev {
+			&:hover {
+				background: $gray-500;
+			}
+
+			span {
+				border: solid $gray-300;
+				border-width: 0 2px 2px 0;
+			}
+		}
+	}
+	
+	.drp-buttons {
+		margin-bottom: -8px;
+		border-top: 1px solid rgba($black, .15);
+
+		.btn {
+			margin-left: 0;
+		}
+
+		> * {
+			margin-right: 8px;
+			margin-bottom: 8px;
+		}
+	}
+
+	&.show-calendar {
+		.drp-buttons {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	td.available:hover {
+		background: $gray-500;
+	}
+	
+	td.active,
+	td.active:hover {
+		background: $primary;
+		color: $gray-900;
+	}
+
+	td.off {
+		color: $gray-100;
+		background: transparent;
+	}
+}
+
+// Color themes
+@each $theme, $color in $theme-colors {
+	.form-control-#{$theme} ~ .daterangepicker {
+		td.active,
+		.ranges li.active{
+			background: $color;
+			color: color-yiq( $color );
+		}
+	}
+}

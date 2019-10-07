@@ -1,0 +1,16 @@
+//- Progress Circle
+mixin progress-circle( data )
+	.progress-circle-wrap
+		.progress-circle-inner
+			.progress-counter-wrap
+				.progress-counter-value
+					| +
+					span.progress-counter= data.count
+			svg.progress-circle( x='0', y='0', width='80', height='80', viewbox='0 0 80 80' )
+				if ( data.gradientId )
+					lineargradient( id= data.gradientId, x1=0.5, y1=0, x2=0.5, y2=1 )
+						stop( offset='0%', stop-color= data.gradientColor1 )
+						stop( offset='100%', stop-color= data.gradientColor2 )
+				circle.bg( cx=40, cy=40, r=32 )
+				circle.fg.clipped( cx=40, cy=40, r=32, style= data.gradientId ? `stroke:url(#${data.gradientId});`:`stroke: ${data.color}` )
+		.progress-title= data.title

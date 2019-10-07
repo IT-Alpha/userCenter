@@ -1,0 +1,2 @@
+.breadcrumbs{display:none;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:0 0 0 1.25rem;list-style:none}.breadcrumbs-item{-ms-flex-negative:0;flex-shrink:0}.breadcrumbs-item:not(:first-child){position:relative;padding-left:20px}.breadcrumbs-item:not(:first-child)::before{content:'>';position:absolute;left:.4375rem}.breadcrumbs-link{color:#16b6d2}.breadcrumbs-icon{margin-right:.3125rem}@media (min-width: 768px){.breadcrumbs{display:-webkit-box;display:-ms-flexbox;display:flex}}
+/*# sourceMappingURL=breadcrumbs.min.css.map */

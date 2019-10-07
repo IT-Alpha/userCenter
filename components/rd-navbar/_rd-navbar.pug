@@ -1,0 +1,81 @@
+include _navigation
+include ../alert/_alert
+
+mixin rd-navbar
+	//RD Navbar
+	.rd-navbar-wrap
+		nav.rd-navbar
+			.rd-navbar-panel
+				.rd-navbar-panel-cell
+					button.btn.button-navbar( data-navigation-switch ): span.fa-bars
+
+				.rd-navbar-panel-cell
+					+breadcrumbs( breadcrumbs )
+
+				.rd-navbar-panel-center
+
+				.rd-navbar-panel-cell
+					button.btn.button-navbar( data-multi-switch!={ targets: '#subpanel-chat', scope: '#subpanel-chat', isolate: '[data-multi-switch]' } )
+						span.fa-comments
+						span.badge.badge-danger.rounded-circle ...
+					#subpanel-chat.rd-navbar-subpanel
+						include _navbar-chat-widget
+
+				.rd-navbar-panel-cell
+					button.btn.button-navbar( data-multi-switch!={ targets: '#subpanel-notifications', scope: '#subpanel-notifications', isolate: '[data-multi-switch]' } )
+						span.fa-bell
+						span.badge.badge-success.rounded-circle 2
+					#subpanel-notifications.rd-navbar-subpanel
+						.panel.panel-sm
+							.panel-header
+								h5
+									span.panel-icon.fa-bell 
+									span Notifications
+							.panel-body.scroller.scroller-vertical 
+								.group-5
+									+alert( { close: true } ).alert-primary.alert-darker.alert-sm
+										span.alert-icon.fa-telegram
+										span Message
+									+alert( { close: true } ).alert-secondary.alert-sm
+										span.alert-icon.fa-warning
+										span Warning
+									+alert( { close: true } ).alert-danger.alert-sm
+										span.alert-icon.fa-remove
+										span Error
+									+alert( { close: true } ).alert-success.alert-sm
+										span.alert-icon.fa-thumbs-up
+										span Success
+							.panel-footer
+								a.btn.btn-dark.btn-sm( href='alerts.html' ) See more
+
+				.rd-navbar-panel-cell
+					button.btn.button-navbar( data-multi-switch!={ targets: '.sidebar', scope: '.sidebar', isolate: '[data-multi-switch]' } ): span.fa-sliders
+
+			.rd-navbar-sidebar.scroller
+				.rd-navbar-sidebar-panel
+					.group-25
+						div
+							a( href='#' ): img.rounded-circle( src='images/users/user-01-100x100.jpg', width='100', height='100' alt='' )
+						h2.font-weight-light Tom Jorgensen
+						div
+							button.btn.button-user-menu.rounded-pill( data-multi-switch!={
+								targets: '#userMenu',
+								scope: '#userMenu',
+								isolate: '[data-multi-switch]'
+							} ) User Menu
+				#userMenu.user-menu
+					.row.row-10
+						.col-4
+							a.fa-home( href='#' )
+						.col-4
+							a.fa-envelope( href='#' )
+						.col-4
+							a.fa-bell( href='#' )
+						.col-4
+							a.fa-desktop( href='#' )
+						.col-4
+							a.fa-cogs( href='#' )
+						.col-4
+							a.fa-flask( href='#' )
+
+				+navigation( menu )

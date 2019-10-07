@@ -1,0 +1,52 @@
+.template-panel
+	.template-panel-heading Template Panel
+		button.template-panel-switch.fa-cog( data-multi-switch!={ targets: '.template-panel', scope: '.template-panel', isolate: '[data-multi-switch]' } )
+	.template-panel-body
+		.template-panel-group
+			button.theme-switch.fa-check(
+				title='Light Navbar',
+				style='border-color: #999 #999 #fff #fff; color: black;',
+				data-theme-switch='admindex-navbar-light'
+				data-theme!={
+					'navbar-color':             '#666',
+					'navbar-bg':                '#fff',
+					'navbar-border':            '#e6e6e6',
+					'navbar-hover-color':       '#333',
+					'navbar-hover-bg':          '#333',
+					'navbar-title-color':       '#333',
+					'navbar-submenu-bg':        '#fff',
+					'navbar-panel-bg':          'url( "../../images/header-bg-light.jpg" )',
+					'navbar-button-color':      '#fff',
+					'navbar-button-bg':         '#999',
+					'navbar-user-button-color': '#482e5d',
+					'navbar-user-button-bg':    '#999'
+				}
+			)
+
+			button.theme-switch.fa-check.active(
+				title='Dark Navbar',
+				style='border-color: #5c3b77 #5c3b77 #c8a9ff #c8a9ff; color: white;',
+				data-theme-switch='admindex-navbar-dark'
+				data-theme!={
+					'navbar-color':             '#c8a9ff',
+					'navbar-bg':                '#482e5d',
+					'navbar-border':            '#5c3b77',
+					'navbar-hover-color':       '#fff',
+					'navbar-hover-bg':          '#c8a9ff',
+					'navbar-title-color':       '#f3a746',
+					'navbar-submenu-bg':        '#482e5d',
+					'navbar-panel-bg':          'url( "../../images/header-bg.jpg" )',
+					'navbar-button-color':      '#fff',
+					'navbar-button-bg':         '#774c9a',
+					'navbar-user-button-color': '#fff',
+					'navbar-user-button-bg':    '#9575cd'
+				}
+			)
+
+		ul.template-panel-list
+			- for ( var i = 0; i < global.bundleTemplates.length; i++ )
+				- var template = global.bundleTemplates[i];
+				ul.template-panel-item
+					a.template-panel-link( href= template.link, class= {active: logo.name === template.name} )= template.name
+						span.template-panel-popup
+							img.template-panel-preview( src= template.preview )

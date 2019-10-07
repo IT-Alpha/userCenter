@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "CAAA,AAAA,AAAA,eAAC,AAAA,CAAgB,oBAAoB,AAAC,CACrC,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,OAAO,CACnB,UAAU,CAAE,KAAK,CACjB",
+    "sources": [
+        "fullscreen.scss"
+    ],
+    "names": [],
+    "file": "fullscreen.min.css"
+}

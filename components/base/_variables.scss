@@ -1,0 +1,119 @@
+// Variables
+
+// Color system
+$white: #ffffff;
+$gray-100: #f9f8f8;
+$gray-200: #ebebeb;
+$gray-300: #d7d7d7; 
+$gray-400: #8491a5; 
+$gray-500: #777;
+$gray-600: #868e96;
+$gray-700: #3f4856;
+$gray-800: #2c343b;
+$gray-900: #262f3c;
+$black: #000;
+$cyan: #84ffff;
+
+$primary: #16b6d2;
+$secondary: #ff6f80;
+$tertiary: #ffea5c;
+$danger-color: #ec4242;
+$success-color: #77d216;
+$info: #2e71cc;
+$warning: #f9f871;
+$light: $gray-100;
+$dark: $gray-500;
+
+$theme-colors: (
+	"tertiary": $tertiary,
+);
+
+// Body
+$body-color: $black;
+$body-bg: $gray-100;
+
+// Text color
+$text-muted: $gray-400;
+
+// Links
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+
+// The yiq lightness value
+$yiq-contrasted-threshold:  160;
+
+
+// Buttons + Forms
+$input-btn-padding-y: px-to-rem( 10px );
+$input-btn-padding-x: px-to-rem( 15px );
+
+$input-btn-padding-y-lg: px-to-rem( 14px );
+$input-btn-padding-x-lg: px-to-rem( 15px );
+
+// checkbox 
+$custom-control-indicator-size: px-to-rem( 29px );
+
+
+// Fonts
+$font-family-base: 'Ubuntu', sans-serif;
+$font-size-base: px-to-rem( 14px );
+$line-height-base: 1.49;
+$line-height-lg: 1.1;
+$line-height-sm: 1.7;
+
+$h1-font-size: px-to-rem( 30px );
+$h2-font-size: px-to-rem( 24px );
+$h3-font-size: px-to-rem( 17px );
+$h4-font-size: px-to-rem( 15px );
+$h5-font-size: px-to-rem( 14px );
+$h6-font-size: px-to-rem( 12px );
+
+$h1-line-height: $line-height-lg;
+$h2-line-height: $line-height-lg;
+$h3-line-height: $line-height-base;
+$h4-line-height: $line-height-base;
+$h5-line-height: $line-height-base;
+$h6-line-height: $line-height-sm;
+
+$headings-font-weight: 700;
+
+// Divider
+$hr-border-color: $dark;
+
+// Grid breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1600px
+);
+
+// Grid containers
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px
+);
+
+// Components
+$border-color: $gray-600;
+
+$box-shadow-sm: 0 0 10px 0 rgba( $black, 0.13 );
+$box-shadow: 0 0 10px 0 rgba( $black, 0.3 );
+
+$component-active-bg: $body-color;
+
+// Forms
+$custom-select-indicator-color: $gray-200;
+
+// Z-index master list
+$zindex-dropdown:       10;
+$zindex-sticky:         11;
+$zindex-fixed:          12;
+$zindex-modal-backdrop: 13;
+$zindex-modal:          14;
+$zindex-popover:        15;
+$zindex-tooltip:        16;

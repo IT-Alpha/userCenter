@@ -1,0 +1,44 @@
+// Text shadow
+
+.text-shadow-white {
+	text-shadow: 0 0 5px rgba( $white, 0.8 );
+}
+.text-shadow-900 {
+	text-shadow: 0 0 5px rgba( $gray-900, 0.8 );
+}
+
+// Text link colors
+.link-300 {
+	color: $gray-300;
+
+	&:hover,
+	&:focus {
+		color: rgba( $gray-300, .5 ) ;
+	}
+}
+.link-500 {
+	color: $gray-500;
+
+	&:hover,
+	&:focus {
+		color: rgba( $gray-300, .5 ) ;
+	}
+}
+
+
+.link-white {
+	color: $white;
+
+	&:hover,
+	&:focus {
+		color: rgba( $white, .5 ) ;
+	}
+}
+.link-black {
+	color: $black;
+
+	&:hover,
+	&:focus {
+		color: rgba( $black, .5 ) ;
+	}
+}
