@@ -3,8 +3,8 @@
 .text-shadow-white {
 	text-shadow: 0 0 5px rgba( $white, 0.8 );
 }
-.text-shadow-900 {
-	text-shadow: 0 0 5px rgba( $gray-900, 0.8 );
+.text-shadow-500 {
+	text-shadow: 0 0 5px rgba( $gray-500, 0.8 );
 }
 
 // Text link colors
@@ -13,7 +13,7 @@
 
 	&:hover,
 	&:focus {
-		color: rgba( $gray-300, .5 ) ;
+		color: $white;
 	}
 }
 .link-500 {
@@ -21,11 +21,9 @@
 
 	&:hover,
 	&:focus {
-		color: rgba( $gray-300, .5 ) ;
+		color: $gray-300;
 	}
 }
-
-
 .link-white {
 	color: $white;
 

@@ -1,7 +1,7 @@
 @import "../bootstrap/scss/functions";
+@import "../bootstrap/scss/variables";
 @import "../base/functions";
 @import "../base/variables";
-@import "../bootstrap/scss/variables";
 
 // Variables
 $btn-border-radius: px-to-rem( 22px );
@@ -83,6 +83,7 @@ h5 + .btn-block {
 	&:hover {
 		color: cssv( navbar-button-color );
 		background: cssv-darken( navbar-button-bg, 15% );
+		// background: $danger;
 	}
 
 	> * {

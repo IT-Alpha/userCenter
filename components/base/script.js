@@ -24,19 +24,29 @@ let components = {
 	},
 	templatePanel: {
 		selector: '.template-panel',
-		styles: './components/template-panel/template-panel.css',
+		styles: './components/template-panel/template-panel.css'
 	},
 	theme: {
 		selector: 'html',
 		script: './components/theme-switcher/theme-switcher.js',
 		init: function () {
 			window.theme = new Theme({
-				name: 'iodashboard-navbar',
+				name: 'admindex-navbar',
 				mod: 'navbar-dark',
 				localStorage: true,
 				values: {
-					'navbar-color': '#fff',
-					'navbar-bg':    '#ef5350'
+					'navbar-color':             '#c8a9ff',
+					'navbar-bg':                '#482e5d',
+					'navbar-border':            '#5c3b77',
+					'navbar-hover-color':       '#fff',
+					'navbar-hover-bg':          '#c8a9ff',
+					'navbar-title-color':       '#f3a746',
+					'navbar-submenu-bg':        '#482e5d',
+					'navbar-panel-bg':          'url( "../../images/header-bg.jpg" )',
+					'navbar-button-color':      '#fff',
+					'navbar-button-bg':         '#774c9a',
+					'navbar-user-button-color': '#fff',
+					'navbar-user-button-bg':    '#9575cd'
 				}
 			});
 		}
@@ -47,7 +57,7 @@ let components = {
 		script: './components/theme-switcher/theme-switcher.js',
 		dependencies: 'theme',
 		init: function ( nodes ) {
-			let switchStorage = window.localStorage.getItem( 'iodashboard-theme-switch' );
+			let switchStorage = window.localStorage.getItem( 'admindex-theme-switch' );
 
 			nodes.forEach( function ( node ) {
 				let
@@ -64,7 +74,7 @@ let components = {
 				} else {
 					if ( node.classList.contains( 'active' ) ) {
 						window.activeSwitch = node;
-						window.localStorage.setItem( 'iodashboard-theme-switch', switchName );
+						window.localStorage.setItem( 'adminifix-theme-switch', switchName );
 					}
 				}
 
@@ -75,7 +85,7 @@ let components = {
 
 					window.activeSwitch = this;
 					window.activeSwitch.classList.add( 'active' );
-					window.localStorage.setItem( 'iodashboard-theme-switch', switchName );
+					window.localStorage.setItem( 'admindex-theme-switch', switchName );
 
 					window.theme.setTheme( switchTheme );
 					window.theme.applyTheme();
@@ -177,7 +187,7 @@ let components = {
 	dualListBox: {
 		selector: '.dual-listbox',
 		styles: [
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/input/input.css',
 			'./components/mdi/mdi.css',
 			'./components/dual-listbox/dual-listbox.css'
@@ -194,10 +204,10 @@ let components = {
 					removeAllButtonText: null
 				});
 
-				instance.add_button.classList.add( 'btn', 'dual-btn-add', 'btn-dark', 'btn-sm' );
-				instance.add_all_button.classList.add( 'btn', 'dual-btn-add-all', 'btn-dark', 'btn-sm' );
-				instance.remove_button.classList.add( 'btn', 'dual-btn-remove', 'btn-dark', 'btn-sm' );
-				instance.remove_all_button.classList.add( 'btn', 'dual-btn-remove-all', 'btn-dark', 'btn-sm' );
+				instance.add_button.classList.add( 'btn', 'dual-btn-add', 'btn-primary', 'btn-sm' );
+				instance.add_all_button.classList.add( 'btn', 'dual-btn-add-all', 'btn-primary', 'btn-sm' );
+				instance.remove_button.classList.add( 'btn', 'dual-btn-remove', 'btn-primary', 'btn-sm' );
+				instance.remove_all_button.classList.add( 'btn', 'dual-btn-remove-all', 'btn-primary', 'btn-sm' );
 				instance.search.classList.add( 'form-control' );
 			});
 		}
@@ -230,7 +240,7 @@ let components = {
 		selector: '.panel',
 		styles: './components/panel/panel.min.css'
 	},
-	adminPanel: {
+	adminPanel: { // Добавить тогл панели в заготовку
 		selector: '.panel.admin-panel',
 		styles: [
 			'./components/font-awesome/font-awesome.css',
@@ -238,7 +248,8 @@ let components = {
 		],
 		script: [
 			'./components/admin-panel/class-switch.js',
-			'./components/admin-panel/admin-panel.js'
+			'./components/admin-panel/admin-panel.js',
+			'./components/multiswitch/multiswitch.js',
 		],
 		init: function ( nodes ) {
 			nodes.forEach( function ( node ) {
@@ -320,7 +331,7 @@ let components = {
 	},
 	button: {
 		selector: '.btn',
-		styles: './components/button/button.css'
+		styles: './components/button/button.min.css'
 	},
 	table: {
 		selector: '.table',
@@ -336,7 +347,7 @@ let components = {
 	},
 	nav: {
 		selector: '.nav',
-		styles: './components/nav/nav.css',
+		styles: './components/nav/nav.min.css',
 		script: [
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/bootstrap/js/popper.js',
@@ -454,9 +465,9 @@ let components = {
 		selector: '[class*="fa-"]',
 		styles: './components/font-awesome/font-awesome.css'
 	},
-	fontFiraSans: {
+	fontUbuntu: {
 		selector: 'html',
-		styles: 'https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700&display=swap'
+		styles: 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap'
 	},
 	mdi: {
 		selector: '[class*="mdi-"]',
@@ -513,7 +524,7 @@ let components = {
 	daterangepiker: {
 		selector: '[name="daterange"]',
 		styles: [
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/daterangepicker/daterangepicker.css'
 		],
 		script: [
@@ -526,9 +537,8 @@ let components = {
 				let $node = $( node );
 				$node.daterangepicker({
 					opens: 'left',
-					applyButtonClasses: 'btn-success',
-					cancelButtonClasses: 'btn-dark',
-					ranges: node.hasAttribute( 'data-predefined' ) ? {
+					cancelButtonClasses: 'btn-light',
+					ranges: $node.attr( 'data-predefined' ) ? {
 						'Today': [moment(), moment()],
 						'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
 						'Last 7 Days': [moment().subtract(6, 'days'), moment()],
@@ -549,7 +559,7 @@ let components = {
 	datetimepicker: {
 		selector: '[data-datetimepicker]',
 		styles: [
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/dropdown/dropdown.css',
 			'./components/datetimepicker/bootstrap-datetimepicker.css'
 		],
@@ -620,7 +630,7 @@ let components = {
 				$( node.querySelector( '.tag-manager-input' ) ).tagsManager({
 					tagsContainer: node.querySelector( '.tag-manager-container' ),
 					prefilled: [ "Smartphone", "Apple", "Notebook", "Gadget" ],
-					tagClass: 'badge badge-info',
+					tagClass: 'badge badge-primary',
 				});
 			});
 		}
@@ -819,7 +829,7 @@ let components = {
 	summernote: {
 		selector: '.summernote',
 		styles: [
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/input/input.css',
 			'./components/table/table.css',
 			'./components/close/close.css',
@@ -852,7 +862,7 @@ let components = {
 		selector: '.markdown',
 		styles: [
 			'./components/markdown/markdown.css',
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/blockquote/blockquote.css',
 			'./components/font-awesome/font-awesome.css'
 		],
@@ -1065,7 +1075,8 @@ let components = {
 	slick: {
 		selector: '.slick-slider',
 		styles: [
-			'./components/slick/slick.css'
+			'./components/slick/slick.css',
+			'./components/slick/slick-theme.css'
 		],
 		script: [
 			'./components/base/jquery-3.4.1.min.js',
@@ -1088,10 +1099,6 @@ let components = {
 				}
 
 				$( node ).slick({ responsive: responsive });
-
-				window.addEventListener( 'resize', function () {
-					$( node ).slick( 'refresh' );
-				});
 			});
 
 			let
@@ -1154,11 +1161,26 @@ let components = {
 	fullscreen: {
 		selector: '[data-fullscreen]',
 		styles: './components/fullscreen/fullscreen.css',
+		dependencies: 'currentDevice',
 		init: function ( nodes ) {
 			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
-					document.querySelector( this.getAttribute( 'data-fullscreen' ) ).requestFullscreen();
-				});
+				if ( device.macos() ) {
+					node.addEventListener( 'click', function () {
+						if ( document.webkitFullscreenElement ) {
+							document.webkitExitFullscreen();
+						} else {
+							document.querySelector( this.getAttribute( 'data-fullscreen' ) ).webkitRequestFullscreen();
+						}
+					});
+				} else {
+					node.addEventListener( 'click', function () {
+						if ( document.fullscreenElement ) {
+							document.exitFullscreen();
+						} else {
+							document.querySelector( this.getAttribute( 'data-fullscreen' ) ).requestFullscreen();
+						}
+					});
+				}
 			});
 		}
 	},
@@ -1375,28 +1397,28 @@ let components = {
 						var
 							groupColumn = 2,
 							table1 = $( node ).DataTable({
-								...opts,
-								"columnDefs": [
-									{ "visible": false, "targets": groupColumn }
-								],
-								"order": [[ groupColumn, 'asc' ]],
-								"displayLength": 25,
-								"drawCallback": function ( settings ) {
-									var api = this.api();
-									var rows = api.rows( {page:'current'} ).nodes();
-									var last=null;
+							...opts,
+							"columnDefs": [
+								{ "visible": false, "targets": groupColumn }
+							],
+							"order": [[ groupColumn, 'asc' ]],
+							"displayLength": 25,
+							"drawCallback": function ( settings ) {
+								var api = this.api();
+								var rows = api.rows( {page:'current'} ).nodes();
+								var last=null;
 
-									api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
-										if ( last !== group ) {
-											$(rows).eq( i ).before(
-												'<tr class="group"><td colspan="5">'+group+'</td></tr>'
-											);
+								api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+									if ( last !== group ) {
+										$(rows).eq( i ).before(
+											'<tr class="group"><td colspan="5">'+group+'</td></tr>'
+										);
 
-											last = group;
-										}
-									} );
-								}
-							} );
+										last = group;
+									}
+								} );
+							}
+						} );
 
 						// Order by the grouping
 						$( node ).find( 'tbody' ).on( 'click', 'tr.group', function () {
@@ -1569,114 +1591,114 @@ let components = {
 			nodes.forEach( function ( node ) {
 				let
 					defaults = {
-						'particles': {
-							'number': {
-								'value': 75,
-								'density': {
-									'enable': true,
-									'value_area': 800
-								}
-							},
-							'color': {
-								'value': '#00b0ff'
-							},
-							'shape': {
-								'type': 'circle',
-								'stroke': {
-									'width': 0,
-									'color': '#00b0ff'
-								},
-								'polygon': {
-									'nb_sides': 5
-								},
-								'image': {
-									'src': 'img/github.svg',
-									'width': 100,
-									'height': 100
-								}
-							},
-							'opacity': {
-								'value': 0.15,
-								'random': false,
-								'anim': {
-									'enable': false,
-									'speed': 1,
-									'opacity_min': 0.1,
-									'sync': false
-								}
-							},
-							'size': {
-								'value': 3,
-								'random': true,
-								'anim': {
-									'enable': false,
-									'speed': 40,
-									'size_min': 0.1,
-									'sync': false
-								}
-							},
-							'line_linked': {
+					'particles': {
+						'number': {
+							'value': 75,
+							'density': {
 								'enable': true,
-								'distance': 220,
-								'color': '#00b0ff',
-								'opacity': 0.2,
-								'width': 1
-							},
-							'move': {
-								'enable': true,
-								'speed': 3,
-								'direction': 'none',
-								'random': false,
-								'straight': false,
-								'out_mode': 'out',
-								'bounce': false,
-								'attract': {
-									'enable': false,
-									'rotateX': 600,
-									'rotateY': 1200
-								}
+								'value_area': 800
 							}
 						},
-						'interactivity': {
-							'detect_on': 'canvas',
-							'events': {
-								'onhover': {
-									'enable': true,
-									'mode': 'grab'
-								},
-								'onclick': {
-									'enable': true,
-									'mode': ''
-								},
-								'resize': true
+						'color': {
+							'value': '#8396d2'
+						},
+						'shape': {
+							'type': 'circle',
+							'stroke': {
+								'width': 0,
+								'color': '#8396d2'
 							},
-							'modes': {
-								'grab': {
-									'distance': 140,
-									'line_linked': {
-										'opacity': 1
-									}
-								},
-								'bubble': {
-									'distance': 400,
-									'size': 40,
-									'duration': 2,
-									'opacity': 8,
-									'speed': 3
-								},
-								'repulse': {
-									'distance': 100,
-									'duration': 0.4
-								},
-								'push': {
-									'particles_nb': 4
-								},
-								'remove': {
-									'particles_nb': 2
-								}
+							'polygon': {
+								'nb_sides': 5
+							},
+							'image': {
+								'src': 'img/github.svg',
+								'width': 100,
+								'height': 100
 							}
 						},
-						'retina_detect': true
+						'opacity': {
+							'value': 0.25,
+							'random': false,
+							'anim': {
+								'enable': false,
+								'speed': 1,
+								'opacity_min': 0.1,
+								'sync': false
+							}
+						},
+						'size': {
+							'value': 3,
+							'random': true,
+							'anim': {
+								'enable': false,
+								'speed': 40,
+								'size_min': 0.1,
+								'sync': false
+							}
+						},
+						'line_linked': {
+							'enable': true,
+							'distance': 220,
+							'color': '#8396d2',
+							'opacity': 0.1,
+							'width': 1
+						},
+						'move': {
+							'enable': true,
+							'speed': 3,
+							'direction': 'none',
+							'random': false,
+							'straight': false,
+							'out_mode': 'out',
+							'bounce': false,
+							'attract': {
+								'enable': false,
+								'rotateX': 600,
+								'rotateY': 1200
+							}
+						}
+					},
+					'interactivity': {
+						'detect_on': 'canvas',
+						'events': {
+							'onhover': {
+								'enable': true,
+								'mode': 'grab'
+							},
+							'onclick': {
+								'enable': true,
+								'mode': ''
+							},
+							'resize': true
+						},
+						'modes': {
+							'grab': {
+								'distance': 140,
+								'line_linked': {
+									'opacity': 1
+								}
+							},
+							'bubble': {
+								'distance': 400,
+								'size': 40,
+								'duration': 2,
+								'opacity': 8,
+								'speed': 3
+							},
+							'repulse': {
+								'distance': 100,
+								'duration': 0.4
+							},
+							'push': {
+								'particles_nb': 4
+							},
+							'remove': {
+								'particles_nb': 2
+							}
+						}
+					},
+					'retina_detect': true
 					},
 					custom = parseJSON( node.getAttribute( 'data-particles' ) );
 
@@ -1779,7 +1801,7 @@ let components = {
 		selector: '.fullcalendar',
 		styles: [
 			'./components/fullcalendar/fullcalendar.css',
-			'./components/button/button.css',
+			'./components/button/button.min.css',
 			'./components/table/table.css',
 			'./components/alert/alert.css',
 			'./components/card/card.css',
@@ -1878,19 +1900,19 @@ let components = {
 		],
 		init: function ( nodes ) {
 			var options = {
-				colors: ['#00b0ff', '#ffa726', '#2ad170', '#ef5350', '#512da8', '#304ffe'],
+				colors: ['#f3a746', '#8396d2', '#c8a9ff', '#c65b6d', '#f9f871', '#9065b3'],
 				grid: {
 					show: true,
 					aboveData: true,
-					color: '#b0bec5',
+					color: '#c8a9ff',
 					clickable: true,
 					hoverable: true
 				},
 				xaxis: {
-					color: '#dddddd', // color for value in flotchart.scss
+					color: '#c8a9ff', // color for value in flotchart.scss
 				},
 				yaxis: {
-					color: '#dddddd' // color for value in flotchart.scss
+					color: '#c8a9ff' // color for value in flotchart.scss
 				},
 				tooltip: {
 					show: true,
@@ -1918,7 +1940,7 @@ let components = {
 		selector: '.rd-navbar',
 		styles: [
 			'./components/font-awesome/font-awesome.css',
-			'./components/rd-navbar/rd-navbar.css'
+			'./components/rd-navbar/rd-navbar.min.css'
 		],
 		script: [
 			'./components/base/jquery-3.4.1.min.js',
@@ -1981,7 +2003,7 @@ let components = {
 				chart: {
 					type: 'area',
 					margin: [ 12, 10, 12, 10 ],
-					height: 50,
+					height: 70,
 					style: {
 						overflow: 'visible',
 						'min-width': '150px',
@@ -2004,7 +2026,8 @@ let components = {
 					title: {
 						text: null
 					},
-					lineColor: '#b2b2b2',
+					lineColor: '#c8a9ff',
+					gridLineColor: '#c8a9ff',
 					startOnTick: false,
 					endOnTick: false,
 					tickPositions: []
@@ -2012,7 +2035,8 @@ let components = {
 				yAxis: {
 					endOnTick: false,
 					startOnTick: false,
-					gridLineColor: '#b2b2b2',
+					lineColor: '#c8a9ff',
+					gridLineColor: '#c8a9ff',
 					labels: {
 						enabled: false
 					},
@@ -2044,6 +2068,7 @@ let components = {
 							}
 						},
 						marker: {
+							enabled: false,
 							radius: 1,
 							states: {
 								hover: {
@@ -2054,7 +2079,7 @@ let components = {
 						fillOpacity: 0.25
 					},
 					column: {
-						negativeColor: '#ef5350',
+						negativeColor: '#c65b6d',
 						borderColor: 'transparent'
 					}
 				}
@@ -2065,12 +2090,27 @@ let components = {
 			});
 		}
 	},
+	highchartsRange: {
+		selector: '.highcharts-range',
+		styles: './components/highcharts/highcharts.css',
+		script: [
+			'./components/base/jquery-3.4.1.min.js',
+			'./components/highcharts/highcharts.js',
+			'./components/highcharts/highcharts-more.js'
+		],
+		init: function ( nodes ) {
+			nodes.forEach( function ( node ) {
+				Highcharts.chart( node, parseJSON( node.getAttribute( 'data-highcharts-options' ) ) );
+			});
+		}
+	},
 	highcharts: {
 		selector: '.highcharts-container',
 		styles: './components/highcharts/highcharts.css',
 		script: [
 			'./components/base/jquery-3.4.1.min.js',
-			'./components/highcharts/highcharts.js'
+			'./components/highcharts/highcharts.js',
+			'./components/highcharts/variable-pie.js'
 		],
 		init: function ( nodes ) {
 			nodes.forEach( function ( node ) {
@@ -2244,22 +2284,16 @@ let components = {
 				let
 					timeoutId,
 					mSwitch,
-					clickHandler = function () {
+					resizeTrigger = function () { // Highcharts resize crutch
 						clearTimeout( timeoutId );
-						this.multiSwitch.targets.forEach( function ( target ) {
-							target.style.pointerEvents = 'none';
-						});
-						timeoutId = setTimeout( ( function () {
+						timeoutId = setTimeout( function () {
 							window.dispatchEvent( new Event( 'resize' ) );
-							this.multiSwitch.targets.forEach( function ( target ) {
-								target.style.pointerEvents = 'auto';
-							});
-						}).bind( this ), 300 );
+						}, 300 );
 					},
 					resizeHandler = function () {
 						if ( window.matchMedia( '(max-width: 1199px)' ).matches ) {
 							mSwitch.removeHandlers();
-							mSwitch.scope = document.querySelectorAll( '.rd-navbar-sidebar, [data-navigation-switch]' );
+							mSwitch.scope = document.querySelectorAll( '.rd-navbar-sidebar' );
 							mSwitch.assignHandlers();
 						} else {
 							mSwitch.removeHandlers();
@@ -2274,7 +2308,7 @@ let components = {
 						event: device.ios() ? 'touchstart' : 'click',
 						targets: 'html',
 						class: 'rd-navbar-sidebar-active',
-						scope: '.rd-navbar-sidebar, [data-navigation-switch]'
+						scope: '.rd-navbar-sidebar'
 					})
 				} else {
 					mSwitch = MultiSwitch({
@@ -2287,7 +2321,7 @@ let components = {
 				}
 
 				window.addEventListener( 'resize', resizeHandler );
-				node.addEventListener( 'click', clickHandler );
+				node.addEventListener( 'switch:rd-navbar-sidebar-active', resizeTrigger );
 			});
 		}
 	},

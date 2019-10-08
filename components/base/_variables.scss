@@ -11,26 +11,29 @@ $gray-600: #868e96;
 $gray-700: #3f4856;
 $gray-800: #2c343b;
 $gray-900: #262f3c;
-$black: #000;
+$black: #000000;
+
 $cyan: #84ffff;
 
 $primary: #16b6d2;
 $secondary: #ff6f80;
 $tertiary: #ffea5c;
-$danger-color: #ec4242;
-$success-color: #77d216;
-$info: #2e71cc;
-$warning: #f9f871;
+$tertiary-dark: #8c9eff;
+$success: #2e9e83;
+$info: #9575cd;
+$warning: #FFBC5D;
+$danger: #c65b6d;
 $light: $gray-100;
 $dark: $gray-500;
 
 $theme-colors: (
 	"tertiary": $tertiary,
+	"tertiary-dark": $tertiary-dark,
 );
 
 // Body
-$body-color: $black;
-$body-bg: $gray-100;
+$body-color: $gray-800;
+$body-bg: $gray-300;
 
 // Text color
 $text-muted: $gray-400;
