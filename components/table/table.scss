@@ -13,6 +13,9 @@ $table-color-level: 6;
 // Base
 .table {
 	margin-bottom: 0;
+	th{
+		border-top:none;
+	}
 }
 
 // Modifies

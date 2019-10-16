@@ -5,9 +5,9 @@
 
 // Variables
 $progress-height: 1.5rem;
-$progress-bg: $gray-600;
+$progress-bg: lighten($primary,10%);
 
-$progress-height-sm: $progress-height * 0.75;
+$progress-height-sm: $progress-height * 0.4;
 $progress-font-size-sm: $progress-font-size * 0.75;
 
 $progress-height-lg: $progress-height * 1.5;

@@ -22,77 +22,7 @@ let components = {
 			});
 		}
 	},
-	templatePanel: {
-		selector: '.template-panel',
-		styles: './components/template-panel/template-panel.css'
-	},
-	theme: {
-		selector: 'html',
-		script: './components/theme-switcher/theme-switcher.js',
-		init: function () {
-			window.theme = new Theme({
-				name: 'admindex-navbar',
-				mod: 'navbar-dark',
-				localStorage: true,
-				values: {
-					'navbar-color':             '#c8a9ff',
-					'navbar-bg':                '#482e5d',
-					'navbar-border':            '#5c3b77',
-					'navbar-hover-color':       '#fff',
-					'navbar-hover-bg':          '#c8a9ff',
-					'navbar-title-color':       '#f3a746',
-					'navbar-submenu-bg':        '#482e5d',
-					'navbar-panel-bg':          'url( "../../images/header-bg.jpg" )',
-					'navbar-button-color':      '#fff',
-					'navbar-button-bg':         '#774c9a',
-					'navbar-user-button-color': '#fff',
-					'navbar-user-button-bg':    '#9575cd'
-				}
-			});
-		}
-	},
-	themeSwitcher: {
-		selector: '[data-theme]',
-		styles: './components/theme-switcher/theme-switcher.css',
-		script: './components/theme-switcher/theme-switcher.js',
-		dependencies: 'theme',
-		init: function ( nodes ) {
-			let switchStorage = window.localStorage.getItem( 'admindex-theme-switch' );
-
-			nodes.forEach( function ( node ) {
-				let
-					switchName = node.getAttribute( 'data-theme-switch' ),
-					switchTheme = JSON.parse( node.getAttribute( 'data-theme' ) );
-
-				if ( switchStorage ) {
-					if ( switchName === switchStorage ) {
-						node.classList.add( 'active' );
-						window.activeSwitch = node;
-					} else {
-						node.classList.remove( 'active' );
-					}
-				} else {
-					if ( node.classList.contains( 'active' ) ) {
-						window.activeSwitch = node;
-						window.localStorage.setItem( 'adminifix-theme-switch', switchName );
-					}
-				}
-
-				node.addEventListener( 'click', function () {
-					if ( window.activeSwitch ) {
-						window.activeSwitch.classList.remove( 'active' );
-					}
-
-					window.activeSwitch = this;
-					window.activeSwitch.classList.add( 'active' );
-					window.localStorage.setItem( 'admindex-theme-switch', switchName );
-
-					window.theme.setTheme( switchTheme );
-					window.theme.applyTheme();
-				});
-			});
-		}
-	},
+	
 	pageReveal: {
 		selector: '.page',
 		init: function( nodes ) {
@@ -240,32 +170,7 @@ let components = {
 		selector: '.panel',
 		styles: './components/panel/panel.min.css'
 	},
-	adminPanel: { // Добавить тогл панели в заготовку
-		selector: '.panel.admin-panel',
-		styles: [
-			'./components/font-awesome/font-awesome.css',
-			'./components/admin-panel/admin-panel.css'
-		],
-		script: [
-			'./components/admin-panel/class-switch.js',
-			'./components/admin-panel/admin-panel.js',
-			'./components/multiswitch/multiswitch.js',
-		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let panelSwitch = node.querySelector( '.admin-panel-switch' );
-
-				new AdminPanel({ node: node });
-
-				if ( panelSwitch ) {
-					MultiSwitch({
-						node: panelSwitch,
-						targets: [ node ]
-					});
-				}
-			});
-		}
-	},
+	
 	divider: {
 		selector: '.divider',
 		styles: './components/divider/divider.css'
@@ -335,7 +240,7 @@ let components = {
 	},
 	table: {
 		selector: '.table',
-		styles: './components/table/table.css'
+		styles: './components/table/table.min.css'
 	},
 	list: {
 		selector: '[class*="list"]',
@@ -343,7 +248,7 @@ let components = {
 	},
 	progress: {
 		selector: '.progress',
-		styles: './components/progress/progress.css'
+		styles: './components/progress/progress.min.css'
 	},
 	nav: {
 		selector: '.nav',
@@ -1556,7 +1461,7 @@ let components = {
 	},
 	progressCircle: {
 		selector: '.progress-circle-wrap',
-		styles: './components/progress-circle/progress-circle.css',
+		styles: './components/progress-circle/progress-circle.min.css',
 		script: [
 			'./components/base/util.min.js',
 			'./components/progress-circle/counter.js',
@@ -1800,10 +1705,10 @@ let components = {
 	fullcalendar: {
 		selector: '.fullcalendar',
 		styles: [
-			'./components/fullcalendar/fullcalendar.css',
+			'./components/fullcalendar/fullcalendar.min.css',
 			'./components/button/button.min.css',
-			'./components/table/table.css',
-			'./components/alert/alert.css',
+			'./components/table/table.min.css',
+			'./components/alert/alert.min.css',
 			'./components/card/card.css',
 			'./components/tooltip/tooltip.css',
 			'./components/font-awesome/font-awesome.css'
@@ -1813,6 +1718,7 @@ let components = {
 			'./components/base/jquery-ui.min.js',
 			'./components/base/moment.min.js',
 			'./components/fullcalendar/fullcalendar.min.js',
+			'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/locale/zh-tw.js',
 		],
 		init: function ( nodes ) {
 			nodes.forEach( function ( node ) {
@@ -1822,7 +1728,6 @@ let components = {
 						stick: true,
 						className: 'fc-event-' + $(this).attr('data-event')
 					});
-
 					$(this).draggable({
 						zIndex: 999,
 						revert: true,
@@ -1838,20 +1743,21 @@ let components = {
 						right: 'month,agendaWeek,agendaDay',
 						...parseJSON( node.getAttribute( 'data-fullcalendar-header' ) )
 					},
-					editable: true,
-					droppable: true,
+					locale: 'zh-tw',
+					editable: false,
+					droppable: false,
 					drop: function() {
 						// is the "remove after drop" checkbox checked?
 						if (!$(this).hasClass('event-recurring')) {
 							$(this).remove();
 						}
 					},
-					eventRender: function(event, element) {
-						$(element).append( "<span class='event-close'>X</span>" );
-						$(element).find('.event-close').click(function() {
-							$( node ).fullCalendar('removeEvents',event._id);
-						});
-					},
+					// eventRender: function(event, element) {
+					// 	$(element).append( "<span class='event-close'>X</span>" );
+					// 	$(element).find('.event-close').click(function() {
+					// 		$( node ).fullCalendar('removeEvents',event._id);
+					// 	});
+					// },
 					weekNumbers: false,
 					weekNumbersWithinDays : true,
 					eventLimit: true,

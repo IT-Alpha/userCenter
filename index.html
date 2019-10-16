@@ -1,830 +1,635 @@
 <!DOCTYPE html>
 <html class="root rd-navbar-sidebar-active page-small-footer" lang="en">
-  <head>
-    <title>Dashboard</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:title" content="Template Monster Admin Template">
-    <meta property="og:description" content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
-    <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
-    <meta property="og:url" content="http://digipunk.netii.net">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="components/base/base.min.css">
-    <script src="components/base/script.js"></script>
-  </head>
-  <body>
-    <div class="page"> 
-      <header class="section page-header">
-        <!--RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav class="rd-navbar">
-            <div class="rd-navbar-panel">
-              <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span class="fa-bars"></span></button>
-              </div>
-              <div class="rd-navbar-panel-cell">
-                <!-- Breadcrumbs-->
-                <ul class="breadcrumbs">
-                  <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="index.html"><span class="breadcrumbs-icon fa-home"></span><span>Dashboard</span></a></li>
-                </ul>
-              </div>
-              <div class="rd-navbar-panel-center"></div>
-              <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar" data-multi-switch='{"targets":"#subpanel-chat","scope":"#subpanel-chat","isolate":"[data-multi-switch]"}'><span class="fa-comments"></span><span class="badge badge-danger rounded-circle">...</span></button>
-                <div class="rd-navbar-subpanel" id="subpanel-chat">
-                  <div class="panel panel-sm">
-                    <div class="panel-header">
-                      <h5><span class="panel-icon fa-pencil"></span> <span>Chat widget</span>
-                      </h5>
-                    </div>
-                    <div class="panel-body scroller scroller-vertical">
-                      <div class="media media-cloud group-10">
-                        <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt=""/></div>
-                        <div class="media-body">
-                          <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
-                          </h4>
-                          <div class="media-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</div>
-                        </div>
-                      </div>
-                      <div class="media media-cloud flex-row-reverse group-10">
-                        <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt=""/></div>
-                        <div class="media-body media-body-right-caret">
-                          <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
-                          </h4>
-                          <div class="media-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
-                        </div>
-                      </div>
-                      <div class="media media-cloud group-10">
-                        <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt=""/></div>
-                        <div class="media-body">
-                          <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
-                          </h4>
-                          <div class="media-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</div>
-                        </div>
-                      </div>
-                      <div class="media media-cloud flex-row-reverse group-10">
-                        <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt=""/></div>
-                        <div class="media-body media-body-right-caret">
-                          <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
-                          </h4>
-                          <div class="media-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel-footer">
-                      <div class="input-group form-group">
-                        <input class="form-control" type="text" placeholder="Enter your message here"/>
-                        <div class="input-group-append">
-                          <button class="btn btn-primary">Send</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar" data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
-                <div class="rd-navbar-subpanel" id="subpanel-notifications">
-                  <div class="panel panel-sm">
-                    <div class="panel-header">
-                      <h5><span class="panel-icon fa-bell"> </span><span>Notifications</span></h5>
-                    </div>
-                    <div class="panel-body scroller scroller-vertical"> 
-                      <div class="group-5">
-                        <div class="alert alert-dismissible alert-primary alert-darker alert-sm" role="alert"><span class="alert-icon fa-telegram"></span><span>Message</span>
-                          <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="fa-close" aria-hidden="true"></span></button>
-                        </div>
-                        <div class="alert alert-dismissible alert-secondary alert-sm" role="alert"><span class="alert-icon fa-warning"></span><span>Warning</span>
-                          <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="fa-close" aria-hidden="true"></span></button>
-                        </div>
-                        <div class="alert alert-dismissible alert-danger alert-sm" role="alert"><span class="alert-icon fa-remove"></span><span>Error</span>
-                          <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="fa-close" aria-hidden="true"></span></button>
-                        </div>
-                        <div class="alert alert-dismissible alert-success alert-sm" role="alert"><span class="alert-icon fa-thumbs-up"></span><span>Success</span>
-                          <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span class="fa-close" aria-hidden="true"></span></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel-footer"><a class="btn btn-dark btn-sm" href="alerts.html">See more</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar" data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span class="fa-sliders"></span></button>
-              </div>
+
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:title" content="Template Monster Admin Template">
+  <meta property="og:description"
+    content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+  <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
+  <meta property="og:url" content="http://digipunk.netii.net">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="components/base/base.min.css">
+  <script src="components/base/script.js"></script>
+  <style>
+    .rd-navbar-progress-title+.progress {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="section page-header">
+      <!--RD Navbar-->
+      <div class="rd-navbar-wrap">
+        <nav class="rd-navbar">
+          <div class="rd-navbar-panel">
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
+                  class="fa-bars"></span></button>
             </div>
-            <div class="rd-navbar-sidebar scroller">
-              <div class="rd-navbar-sidebar-panel">
-                <div class="group-25">
-                  <div><a href="#"><img class="rounded-circle" src="images/users/user-01-100x100.jpg" width="100" height="100" alt=""/></a></div>
-                  <h2 class="font-weight-light">Tom Jorgensen</h2>
-                  <div>
-                    <button class="btn button-user-menu rounded-pill" data-multi-switch='{"targets":"#userMenu","scope":"#userMenu","isolate":"[data-multi-switch]"}'>User Menu</button>
-                  </div>
-                </div>
-              </div>
-              <div class="user-menu" id="userMenu">
-                <div class="row row-10">
-                  <div class="col-4"><a class="fa-home" href="#"></a></div>
-                  <div class="col-4"><a class="fa-envelope" href="#"></a></div>
-                  <div class="col-4"><a class="fa-bell" href="#"></a></div>
-                  <div class="col-4"><a class="fa-desktop" href="#"></a></div>
-                  <div class="col-4"><a class="fa-cogs" href="#"></a></div>
-                  <div class="col-4"><a class="fa-flask" href="#"></a></div>
-                </div>
-              </div>
-              <ul class="rd-navbar-nav">
-                <li class="rd-navbar-nav-item">
-                  <div class="rd-navbar-title">Menu</div>
-                </li>
-                <li class="rd-navbar-nav-item active"><a class="rd-navbar-link" href="index.html"><span class="rd-navbar-icon fa-home"></span>Dashboard</a>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="calendar.html"><span class="rd-navbar-icon fa-calendar"></span>Calendar</a>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="documentation.html"><span class="rd-navbar-icon fa-book"></span>Documentation</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#bootstrap-components">Bootstrap Components</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#button">Button</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#badge">Badge</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#code">Code</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#media">Media Object</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#card">Card</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#table">Table</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#progress">Progress</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#close">Close</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#pagination">Pagination</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#alert">Alert</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#dropdown">Dropdown</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#nav">Nav</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#tooltip">Tooltip</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#modal">Modal</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#jumbotron">Jumbotron</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#input">Input</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#plugins">Plugins</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#Nprogress">Nprogress</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#highlight">Highlight.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#dual-listbox">Dual Listbox</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#maxlength">Bootstrap Maxlength</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#typeahead">Typeahead.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#select2">Select2</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#spinner">jQuery UI Spinner</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#time-spinner">Time Spinner</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#daterangepiker">Date Range Picker</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#datetimepicker">Bootstrap Date/Timepicker</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#tag-manager">Tags Manager</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#colorpicker">Bootstrap Colorpicker</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#maskedinput">jQuery Masked Input</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#ckeditor">CKeditor</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#summernote">Summernote</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#markdown">Markdown.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#nestable">Nestable jQuery Plugin</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#jstree">jsTree</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#cropper">Cropper.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#fileupload">Tower File Input</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#easyzoom">EasyZoom</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#xzoom">xZoom</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#slick">Slick Slider</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#dropzone">DropzoneJS</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#pnotify">PNotify</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#driver">Driver.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#countdown">αCountdown</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#progress-circle">αCounter &amp; αProgressCircle</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#particles">Particles.js</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#lightgallery">Lightgallery</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#jvectormap">jVectorMap</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#flotchart">Flot</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#rd-navbar">RD Navbar</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#highcharts">Highcharts</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="documentation.html#multiswitch">MultiSwitch</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item">
-                  <div class="rd-navbar-title">Theme tools</div>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-fire"></span>Admin plugins</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="admin-panels.html"><span class="rd-navbar-icon fa-book"></span>Admin panels</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="admin-modals.html"><span class="rd-navbar-icon fa-window-maximize"></span>Admin modals</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="admin-dock.html"><span class="rd-navbar-icon fa-wpforms"></span>Admin Dock</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-columns"></span>Admin layouts</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="navbar.html"><span class="rd-navbar-icon mdi-file-presentation-box"></span>Navbar</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon mdi-file-presentation-box"></span>Topbar</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="breadcrumbs.html">Breadcrumbs</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="topbar-menu.html">Topbar Menu</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon mdi-file-presentation-box"></span>Content Body</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="blank-starter.html">Blank Starter</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="jumbotron.html">Jumbotron</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="content-tabs.html">Content Tabs</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item">
-                  <div class="rd-navbar-title">Systems</div>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-diamond"></span>Information Panels</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="tile-widgets.html"><span class="rd-navbar-icon fa-cube"></span>Tile Widgets</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="panel-widgets.html"><span class="rd-navbar-icon fa-desktop"></span>Panel Widgets</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="admin-widgets.html"><span class="rd-navbar-icon fa-dot-circle-o"></span>Admin Widgets</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-shopping-cart"></span>Ecommerce</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="ecommerce-dashboard.html"><span class="rd-navbar-icon fa-shopping-cart"></span>Ecommerce dashboard</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="products.html"><span class="rd-navbar-icon fa-tags"></span>Products</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="orders.html"><span class="rd-navbar-icon fa-money"></span>Orders</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="customers.html"><span class="rd-navbar-icon fa-users"></span>Customers</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="store-settings.html"><span class="rd-navbar-icon fa-cogs"></span>Store Settings</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item">
-                  <div class="rd-navbar-title">Elements</div>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-bell"></span>UI Elements</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="alerts.html"><span class="rd-navbar-icon fa-exclamation-triangle"></span>Alerts</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="animations.html"><span class="rd-navbar-icon fa-spinner"></span>Animations</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="buttons.html"><span class="rd-navbar-icon fa-square-o"></span>Buttons</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="typography.html"><span class="rd-navbar-icon fa-text-width"></span>Typography</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="panel.html"><span class="rd-navbar-icon fa-archive"></span>Panel</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="progress-bars.html"><span class="rd-navbar-icon fa-archive"></span>Progress Bars</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="tabs.html"><span class="rd-navbar-icon fa-toggle-off"></span>Tabs</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="icons.html"><span class="rd-navbar-icon fa-puzzle-piece"></span>Icons</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="grid.html"><span class="rd-navbar-icon fa-th-large"></span>Grid</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-hdd-o"></span>Form Elements</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="basic-inputs.html"><span class="rd-navbar-icon fa-magic"></span>Basic Inputs</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="plugin-inputs.html"><span class="rd-navbar-icon fa-bell-o"></span>Plugin Inputs</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="editors.html"><span class="rd-navbar-icon fa-clipboard"></span>Editors</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="treeview.html"><span class="rd-navbar-icon fa-tree"></span>Treeview</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="nestable.html"><span class="rd-navbar-icon fa-tasks"></span>Nestable</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="image-tools.html"><span class="rd-navbar-icon fa-image"></span>Image tools</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="uploaders.html"><span class="rd-navbar-icon fa-cloud-upload"></span>Uploaders</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="notifications.html"><span class="rd-navbar-icon fa-bell-o"></span>Notifications</a>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="content-sliders.html"><span class="rd-navbar-icon fa-exchange"></span>Content Sliders</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-code"></span>Plugins</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-globe"></span>Maps</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="google-maps.html">Google Maps</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="jvector-map.html">jVector Map</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-area-chart"></span>Charts</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="highcharts.html">Highcharts</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="flotcharts.html">Flotcharts</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-table"></span>Tables</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="basic-tables.html">Basic Tables</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="data-tables.html">Data Tables</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="pricing-tables.html">Pricing Tables</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-flask"></span>Misc</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="site-tour.html">Site Tour</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="session-timeout.html">Session Timeout</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="page-progress-loader.html">Page Progress Loader</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-file-o"></span>Pages</a>
-                  <ul class="rd-navbar-dropdown">
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-cogs"></span>Utility</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="confirmation.html">Confirmation</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="login.html">Login</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="register.html">Register</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="screenlock.html">Screenlock</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="password-reset.html">Password Reset</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="coming-soon.html">Coming Soon</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="404.html">404</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="500.html">500</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="#"><span class="rd-navbar-icon fa-desktop"></span>Basic</a>
-                      <ul class="rd-navbar-dropdown">
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="search-results.html">Search Results</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="profile.html">Profile</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="timeline.html">Timeline</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="faq.html">FAQ</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="calendar.html">Calendar</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="messages.html">Messages</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="messages-compose.html">Messages Compose</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="gallery.html">Gallery</a>
-                        </li>
-                        <li class="rd-navbar-dropdown-item"><a class="rd-navbar-link" href="printable-invoice.html">Printable Invoice</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
+            <div class="rd-navbar-panel-cell">
+              <!-- Breadcrumbs-->
+              <ul class="breadcrumbs">
+                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="index.html"><span
+                      class="breadcrumbs-icon fa-home"></span><span>Dashboard</span></a></li>
               </ul>
             </div>
-          </nav>
-        </div>
-      </header>
-      <section class="section-sm">
-        <div class="container-fluid">
-          <div class="row row-30">
-            <div class="col-md-12">
-              <div class="panel admin-panel">
-                <div class="panel-header p-3">
-                  <div class="d-flex align-items-center">
-                    <ul class="nav nav-pills scroller scroller-horizontal flex-grow-1" role="tablist">
-                      <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboardGraph1" role="tab" aria-controls="dashboardGraph1" aria-selected="true">User activity</a></li>
-                      <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dashboardGraph2" role="tab" aria-controls="dashboardGraph2" aria-selected="false">Popular items</a></li>
-                    </ul>
-                    <div class="admin-panel-buttons">
-                      <button class="admin-panel-button" title="color" data-panel="color"></button>
-                      <button class="admin-panel-button" title="collapse" data-panel="collapse"></button>
-                      <button class="admin-panel-button" title="fullscreen" data-panel="fullscreen"></button>
-                      <button class="admin-panel-button" title="remove" data-panel="remove"></button>
-                    </div>
-                    <div class="admin-panel-switch fa-bars"></div>
+            <div class="rd-navbar-panel-center"></div>
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":"#subpanel-chat","scope":"#subpanel-chat","isolate":"[data-multi-switch]"}'><span
+                  class="fa-comments"></span><span class="badge badge-danger rounded-circle">...</span></button>
+              <div class="rd-navbar-subpanel" id="subpanel-chat">
+                <div class="panel panel-sm">
+                  <div class="panel-header">
+                    <h5><span class="panel-icon fa-pencil"></span> <span>Chat widget</span>
+                    </h5>
                   </div>
-                </div>
-                <div class="panel-body p-0">
-                  <div class="tab-content">
-                    <div class="tab-pane fade show active" id="dashboardGraph1" role="tabpanel">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-12 pt-4 py-md-3 border-bottom">
-                            <div class="highcharts-container highcharts-container-2" data-highcharts-options="{&quot;credits&quot;:false,&quot;colors&quot;:[&quot;rgb( 48, 79, 254 )&quot;,&quot;rgb( 29, 233, 182 )&quot;],&quot;chart&quot;:{&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;className&quot;:&quot;&quot;,&quot;type&quot;:&quot;areaspline&quot;,&quot;zoomType&quot;:&quot;x&quot;,&quot;panning&quot;:true,&quot;panKey&quot;:&quot;shift&quot;,&quot;marginRight&quot;:1,&quot;plotBorderWidth&quot;:1,&quot;plotBorderColor&quot;:&quot;#38244a&quot;},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;floating&quot;:false,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;title&quot;:{&quot;text&quot;:null},&quot;xAxis&quot;:{&quot;min&quot;:0.5,&quot;max&quot;:10.5,&quot;lineColor&quot;:&quot;#38244a&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;]},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;tickInterval&quot;:5,&quot;gridLineColor&quot;:&quot;#38244a&quot;,&quot;title&quot;:{&quot;text&quot;:null},&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}}},&quot;plotOptions&quot;:{&quot;series&quot;:{&quot;marker&quot;:{&quot;enabled&quot;:false,&quot;symbol&quot;:&quot;circle&quot;,&quot;radius&quot;:2,&quot;states&quot;:{&quot;hover&quot;:{&quot;enabled&quot;:true}}},&quot;fillOpacity&quot;:0.3},&quot;areaspline&quot;:{&quot;lineWidth&quot;:1}},&quot;series&quot;:[{&quot;name&quot;:&quot;Phones&quot;,&quot;data&quot;:[15,20,26,29,30,22.5,17,18,26,33,25,11],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 48, 79, 254 )&quot;],[0.4,&quot;rgba( 48, 79, 254, .6 )&quot;],[1,&quot;rgba( 48, 79, 254, .1 )&quot;]]}},{&quot;name&quot;:&quot;Notebooks&quot;,&quot;data&quot;:[6,17,24,24.5,15,10,13,23,27,26.8,20,5],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 29, 233, 182 )&quot;],[0.4,&quot;rgba( 29, 233, 182, .6 )&quot;],[1,&quot;rgba( 29, 233, 182, .1 )&quot;]]}}]}"></div>
-                          </div>
-                          <div class="col-md-6 py-4">
-                            <h3 class="font-weight-normal text-primary">Top Referrals</h3>
-                            <ul class="list-unstyled list-divided mt-3">
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.google.com</a></div>
-                                <div class="lead">2,034</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.yahoo.com</a></div>
-                                <div class="lead">997</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.zemez.io</a></div>
-                                <div class="lead">1,023</div>
-                              </li>
-                              <li class="d-flex justify-content-end"><a class="link-500" href="#">View Report</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-md-6 pb-4 pt-md-4 border-md-left">
-                            <h3 class="font-weight-normal text-primary">Top Search Terms</h3>
-                            <ul class="list-unstyled list-divided mt-3">
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin theme</a></div>
-                                <div class="lead">1,145</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin dashboard</a></div>
-                                <div class="lead">557</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin template</a></div>
-                                <div class="lead">371</div>
-                              </li>
-                              <li class="d-flex justify-content-end"><a class="link-500" href="#">View Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
+                  <div class="panel-body scroller scroller-vertical">
+                    <div class="media media-cloud group-10">
+                      <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt="" />
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
+                        </h4>
+                        <div class="media-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                          ante sollicitudin.</div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
-                      <div class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-12 pt-4 py-md-3 border-bottom">
-                            <div class="highcharts-container highcharts-container-2" data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;column&quot;,&quot;marginTop&quot;:50},&quot;colors&quot;:[&quot;#f3a746&quot;,&quot;#2e9e83&quot;,&quot;#774c9a&quot;,&quot;#c8a9ff&quot;],&quot;title&quot;:{&quot;text&quot;:null},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;margin&quot;:200,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;x&quot;:-10,&quot;y&quot;:-10,&quot;itemDistance&quot;:10,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;xAxis&quot;:{&quot;lineColor&quot;:&quot;#c8a9ff&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;crosshair&quot;:true},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;title&quot;:{&quot;text&quot;:&quot;&quot;},&quot;gridLineColor&quot;:&quot;#5c3b77&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}}},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&lt;span style=\&quot;font-size:10px\&quot;&gt;{point.key}&lt;/span&gt;&lt;table&gt;&quot;,&quot;pointFormat&quot;:&quot;&lt;tr&gt;&lt;td style=\&quot;color:{series.color};padding:0\&quot;&gt;{series.name}: &lt;/td&gt;&lt;td style=\&quot;padding:0\&quot;&gt;&lt;b&gt;{point.y:.1f}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&quot;,&quot;footerFormat&quot;:&quot;&lt;/table&gt;&quot;,&quot;shared&quot;:true,&quot;useHTML&quot;:true},&quot;plotOptions&quot;:{&quot;column&quot;:{&quot;pointPadding&quot;:0.2,&quot;borderWidth&quot;:0}},&quot;series&quot;:[{&quot;name&quot;:&quot;Phones&quot;,&quot;data&quot;:[5.6,7.8,16.5,22.4,20,14.5,10,5.3,9.2,11.5,20.6,25.3]},{&quot;name&quot;:&quot;Desktop&quot;,&quot;data&quot;:[15.4,13.2,25.5,28.7,24.6,21.5,25.4,20.4,22.6,16.1,11.8,10.1]},{&quot;name&quot;:&quot;Notebooks&quot;,&quot;data&quot;:[4.9,5.5,10.4,7.2,9,13,17.6,16.5,12.4,8.1,7.6,6.4]},{&quot;name&quot;:&quot;Music Players&quot;,&quot;data&quot;:[11.9,5.8,4.3,15.4,18,23.3,29,22.6,15.4,16.2,14.3,7.2]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;legend&quot;:{&quot;y&quot;:-10,&quot;itemDistance&quot;:10}}}]}}"></div>
-                          </div>
-                          <div class="col-md-6 py-4">
-                            <h3 class="font-weight-normal text-primary">Top Referrals</h3>
-                            <ul class="list-unstyled list-divided mt-3">
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.google.com</a></div>
-                                <div class="lead">2,034</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.yahoo.com</a></div>
-                                <div class="lead">997</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">www.zemez.io</a></div>
-                                <div class="lead">1,023</div>
-                              </li>
-                              <li class="d-flex justify-content-end"><a class="link-500" href="#">View Report</a></li>
-                            </ul>
-                          </div>
-                          <div class="col-md-6 pb-4 pt-md-4 border-md-left">
-                            <h3 class="font-weight-normal text-primary">Top Search Terms</h3>
-                            <ul class="list-unstyled list-divided mt-3">
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin theme</a></div>
-                                <div class="lead">1,145</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin dashboard</a></div>
-                                <div class="lead">557</div>
-                              </li>
-                              <li class="d-flex justify-content-between">
-                                <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black" href="#">admin template</a></div>
-                                <div class="lead">371</div>
-                              </li>
-                              <li class="d-flex justify-content-end"><a class="link-500" href="#">View Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
+                    <div class="media media-cloud flex-row-reverse group-10">
+                      <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt="" />
+                      </div>
+                      <div class="media-body media-body-right-caret">
+                        <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
+                        </h4>
+                        <div class="media-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt.</div>
+                      </div>
+                    </div>
+                    <div class="media media-cloud group-10">
+                      <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt="" />
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
+                        </h4>
+                        <div class="media-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                          ut aliquip ex ea.</div>
+                      </div>
+                    </div>
+                    <div class="media media-cloud flex-row-reverse group-10">
+                      <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt="" />
+                      </div>
+                      <div class="media-body media-body-right-caret">
+                        <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
+                        </h4>
+                        <div class="media-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                          officia.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <div class="input-group form-group">
+                      <input class="form-control" type="text" placeholder="Enter your message here" />
+                      <div class="input-group-append">
+                        <button class="btn btn-primary">Send</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="panel admin-panel">
-                <div class="panel-header">
-                  <div class="d-flex align-items-center">
-                    <div class="h3 panel-title flex-grow-1">Calendar widget</div>
-                    <div class="admin-panel-buttons">
-                      <button class="admin-panel-button" title="title" data-panel="title"></button>
-                      <button class="admin-panel-button" title="color" data-panel="color"></button>
-                      <button class="admin-panel-button" title="collapse" data-panel="collapse"></button>
-                      <button class="admin-panel-button" title="fullscreen" data-panel="fullscreen"></button>
-                      <button class="admin-panel-button" title="remove" data-panel="remove"></button>
-                    </div>
-                    <div class="admin-panel-switch fa-bars"></div>
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
+                  class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
+              <div class="rd-navbar-subpanel" id="subpanel-notifications">
+                <div class="panel panel-sm">
+                  <div class="panel-header">
+                    <h5><span class="panel-icon fa-bell"> </span><span>Notifications</span></h5>
                   </div>
-                </div>
-                <div class="panel-body pt-2">
-                  <div class="table-responsive">
-                    <div class="fullcalendar calendar-borderless" data-fullcalendar-header='{"left":"prev","center":"today","right":"next"}'></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="panel admin-panel">
-                <div class="panel-header">
-                  <div class="d-flex align-items-center">
-                    <div class="h3 panel-title flex-grow-1">Column graph</div>
-                    <div class="admin-panel-buttons">
-                      <button class="admin-panel-button" title="title" data-panel="title"></button>
-                      <button class="admin-panel-button" title="color" data-panel="color"></button>
-                      <button class="admin-panel-button" title="collapse" data-panel="collapse"></button>
-                      <button class="admin-panel-button" title="fullscreen" data-panel="fullscreen"></button>
-                      <button class="admin-panel-button" title="remove" data-panel="remove"></button>
-                    </div>
-                    <div class="admin-panel-switch fa-bars"></div>
-                  </div>
-                </div>
-                <div class="panel-body pb-5 text-center">
-                  <div class="highcharts-container highcharts-container-1" data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;variablepie&quot;,&quot;marginBottom&quot;:-70},&quot;title&quot;:{&quot;text&quot;:null},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&quot;,&quot;pointFormat&quot;:&quot;&lt;span style=\&quot;color:{point.color}\&quot;&gt;●&lt;/span&gt; &lt;b&gt; {point.name}&lt;/b&gt;&lt;br/&gt;Users: &lt;b&gt;{point.z}%&lt;/b&gt;&lt;br/&gt;&quot;},&quot;plotOptions&quot;:{&quot;variablepie&quot;:{&quot;startAngle&quot;:20,&quot;endAngle&quot;:380,&quot;borderWidth&quot;:0,&quot;shadow&quot;:true,&quot;dataLabels&quot;:{&quot;enabled&quot;:false},&quot;colors&quot;:[{&quot;linearGradient&quot;:{&quot;x1&quot;:0,&quot;y1&quot;:0,&quot;x2&quot;:1,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;#8396d2&quot;],[1,&quot;#415cf8&quot;]]}]}},&quot;series&quot;:[{&quot;minPointSize&quot;:10,&quot;zMin&quot;:0,&quot;name&quot;:&quot;countries&quot;,&quot;data&quot;:[{&quot;name&quot;:&quot;Spain&quot;,&quot;y&quot;:25,&quot;z&quot;:40},{&quot;name&quot;:&quot;France&quot;,&quot;y&quot;:25,&quot;z&quot;:5},{&quot;name&quot;:&quot;Poland&quot;,&quot;y&quot;:25,&quot;z&quot;:15},{&quot;name&quot;:&quot;Czech Republic&quot;,&quot;y&quot;:25,&quot;z&quot;:25}]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:10}}},{&quot;condition&quot;:{&quot;maxWidth&quot;:767},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:-30}}}]}}"></div>
-                  <div class="row row-15 justify-content-center">
-                    <div class="col-6 col-sm-3 col-xxl-2">
-                      <div class="progress-circle-wrap">
-                        <div class="progress-circle-inner">
-                          <div class="progress-counter-wrap">
-                            <div class="progress-counter-value">+<span class="progress-counter">26</span></div>
-                          </div>
-                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                            <lineargradient id="gradient1" x1="0.5" y1="0" x2="0.5" y2="1">
-                              <stop offset="0%" stop-color="#2e9e83"></stop>
-                              <stop offset="100%" stop-color="#314ef7"></stop>
-                            </lineargradient>
-                            <circle class="bg" cx="40" cy="40" r="32"></circle>
-                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:url(#gradient1);"></circle>
-                          </svg>
-                        </div>
-                        <div class="progress-title">Behance</div>
+                  <div class="panel-body scroller scroller-vertical">
+                    <div class="group-5">
+                      <div class="alert alert-dismissible alert-primary alert-darker alert-sm" role="alert"><span
+                          class="alert-icon fa-telegram"></span><span>Message</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                            class="fa-close" aria-hidden="true"></span></button>
                       </div>
-                    </div>
-                    <div class="col-6 col-sm-3 col-xxl-2">
-                      <div class="progress-circle-wrap">
-                        <div class="progress-circle-inner">
-                          <div class="progress-counter-wrap">
-                            <div class="progress-counter-value">+<span class="progress-counter">6</span></div>
-                          </div>
-                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                            <lineargradient id="gradient2" x1="0.5" y1="0" x2="0.5" y2="1">
-                              <stop offset="0%" stop-color="#2e9e83"></stop>
-                              <stop offset="100%" stop-color="#314ef7"></stop>
-                            </lineargradient>
-                            <circle class="bg" cx="40" cy="40" r="32"></circle>
-                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:url(#gradient2);"></circle>
-                          </svg>
-                        </div>
-                        <div class="progress-title">Twitter</div>
+                      <div class="alert alert-dismissible alert-secondary alert-sm" role="alert"><span
+                          class="alert-icon fa-warning"></span><span>Warning</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                            class="fa-close" aria-hidden="true"></span></button>
                       </div>
-                    </div>
-                    <div class="col-6 col-sm-3 col-xxl-2">
-                      <div class="progress-circle-wrap">
-                        <div class="progress-circle-inner">
-                          <div class="progress-counter-wrap">
-                            <div class="progress-counter-value">+<span class="progress-counter">24</span></div>
-                          </div>
-                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                            <lineargradient id="gradient3" x1="0.5" y1="0" x2="0.5" y2="1">
-                              <stop offset="0%" stop-color="#2e9e83"></stop>
-                              <stop offset="100%" stop-color="#314ef7"></stop>
-                            </lineargradient>
-                            <circle class="bg" cx="40" cy="40" r="32"></circle>
-                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:url(#gradient3);"></circle>
-                          </svg>
-                        </div>
-                        <div class="progress-title">Dribble</div>
+                      <div class="alert alert-dismissible alert-danger alert-sm" role="alert"><span
+                          class="alert-icon fa-remove"></span><span>Error</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                            class="fa-close" aria-hidden="true"></span></button>
                       </div>
-                    </div>
-                    <div class="col-6 col-sm-3 col-xxl-2">
-                      <div class="progress-circle-wrap">
-                        <div class="progress-circle-inner">
-                          <div class="progress-counter-wrap">
-                            <div class="progress-counter-value">+<span class="progress-counter">54</span></div>
-                          </div>
-                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                            <lineargradient id="gradient4" x1="0.5" y1="0" x2="0.5" y2="1">
-                              <stop offset="0%" stop-color="#2e9e83"></stop>
-                              <stop offset="100%" stop-color="#314ef7"></stop>
-                            </lineargradient>
-                            <circle class="bg" cx="40" cy="40" r="32"></circle>
-                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:url(#gradient4);"></circle>
-                          </svg>
-                        </div>
-                        <div class="progress-title">Facebook</div>
+                      <div class="alert alert-dismissible alert-success alert-sm" role="alert"><span
+                          class="alert-icon fa-thumbs-up"></span><span>Success</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                            class="fa-close" aria-hidden="true"></span></button>
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn-lg btn-outline-info mt-4">Add social network</button>
+                  <div class="panel-footer"><a class="btn btn-dark btn-sm" href="alerts.html">See more</a></div>
                 </div>
               </div>
             </div>
-            
-          </div>
-        </div>
-      </section>
-      <footer class="footer footer-small">
-        <div class="d-sm-flex justify-content-between align-items-center group-5 text-center text-sm-left text-muted">
-          <div>© Admindex</div>
-          <div><span class="pr-2">60GB of 350GB Free</span>
-            <button class="btn btn-sm btn-info to-top"><span class="fa-chevron-up"></span></button>
-          </div>
-        </div>
-      </footer>
-      <div class="sidebar scroller">
-        <div class="timeline timeline-simple">
-          <div class="item">
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-                </div><span class="ml-2">1:25am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
-                </div><span class="ml-2">3:05am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-                </div><span class="ml-2">4:15am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-                </div><span class="ml-2">7:45am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-                </div><span class="ml-2">4:15am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-                </div><span class="ml-2">7:45am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-                </div><span class="ml-2">8:25am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-                </div><span class="ml-2">9:35am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
-                </div><span class="ml-2">4:15am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-                </div><span class="ml-2">7:45am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-                </div><span class="ml-2">4:15am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-                </div><span class="ml-2">7:45am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-                </div><span class="ml-2">8:25am</span>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
-              <div class="d-flex justify-content-between">
-                <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-                </div><span class="ml-2">9:35am</span>
-              </div>
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
+                  class="fa-sliders"></span></button>
             </div>
           </div>
+          <div class="rd-navbar-sidebar scroller">
+            <div class="rd-navbar-sidebar-panel">
+              <div class="group-25">
+                <div><a href="#"><img class="rounded-circle"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
+                      width="100" height="100" alt="" /></a></div>
+                <h2 class="font-weight-light text-light">測試人員</h2>
+                <div>
+                  <button class="btn button-setting rounded-pill">個人設置</button>
+
+                </div>
+              </div>
+            </div>
+            <ul class="rd-navbar-nav">
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-title">目標達成率</div>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress">
+                  <span>退休金準備</span>
+                  <span>25%</span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar progress-light  progress-bar-striped" role="progressbar" style="width: 25%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress">
+                  <span>子女教育金</span>
+                  <span>25%</span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar progress-light  progress-bar-striped" role="progressbar" style="width: 25%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+            <ul class="rd-navbar-nav">
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-title">目標旅程</div>
+              </li>
+              <li class="rd-navbar-nav-item active"><a class="rd-navbar-link" href="index.html"><span
+                    class="rd-navbar-icon fa-home"></span>總覽</a>
+              </li>
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="calendar.html"><span
+                    class="rd-navbar-icon fa-calendar"></span>退休金準備</a>
+              </li>
+
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="calendar.html"><span
+                    class="rd-navbar-icon fa-calendar"></span>子女教育金</a>
+              </li>
+
+            </ul>
+            <div class="rd-navbar-sidebar-panel">
+              <button class="btn">
+                <i class="mdi mdi-36px mdi-plus-circle-outline text-shadow-500 text-tertiary"></i>
+                <div class="text-tertiary">
+                  新增計畫
+                </div>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="section-sm">
+      <div class="container-fluid">
+        <div class="row row-30">
+          <div class="col-md-12">
+            <div class="panel admin-panel">
+              <div class="panel-header p-3">
+                <div class="d-flex align-items-center">
+                  <ul class="nav nav-pills scroller scroller-horizontal flex-grow-1" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboardGraph1" role="tab"
+                        aria-controls="dashboardGraph1" aria-selected="true">財務規劃</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dashboardGraph2" role="tab"
+                        aria-controls="dashboardGraph2" aria-selected="false">資產財產狀況</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dashboardGraph3" role="tab"
+                        aria-controls="dashboardGraph3" aria-selected="false">持有資產</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel-body p-0">
+                <div class="tab-content">
+                  <div class="tab-pane fade" id="dashboardGraph1" role="tabpanel">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
+                          <div class="highcharts-container highcharts-container-2"
+                            data-highcharts-options="{&quot;credits&quot;:false,&quot;colors&quot;:[&quot;rgb( 48, 79, 254 )&quot;,&quot;rgb( 29, 233, 182 )&quot;],&quot;chart&quot;:{&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;className&quot;:&quot;&quot;,&quot;type&quot;:&quot;areaspline&quot;,&quot;zoomType&quot;:&quot;x&quot;,&quot;panning&quot;:true,&quot;panKey&quot;:&quot;shift&quot;,&quot;marginRight&quot;:1,&quot;plotBorderWidth&quot;:1,&quot;plotBorderColor&quot;:&quot;#38244a&quot;},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;floating&quot;:false,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;title&quot;:{&quot;text&quot;:null},&quot;xAxis&quot;:{&quot;min&quot;:0.5,&quot;max&quot;:10.5,&quot;lineColor&quot;:&quot;#38244a&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;]},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;tickInterval&quot;:5,&quot;gridLineColor&quot;:&quot;#38244a&quot;,&quot;title&quot;:{&quot;text&quot;:null},&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}}},&quot;plotOptions&quot;:{&quot;series&quot;:{&quot;marker&quot;:{&quot;enabled&quot;:false,&quot;symbol&quot;:&quot;circle&quot;,&quot;radius&quot;:2,&quot;states&quot;:{&quot;hover&quot;:{&quot;enabled&quot;:true}}},&quot;fillOpacity&quot;:0.3},&quot;areaspline&quot;:{&quot;lineWidth&quot;:1}},&quot;series&quot;:[{&quot;name&quot;:&quot;退休金準備&quot;,&quot;data&quot;:[15000,20000,26000,29000,30000,22500,17000,18000,26000,33000,25000,11000],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 48, 79, 254 )&quot;],[0.4,&quot;rgba( 48, 79, 254, .6 )&quot;],[1,&quot;rgba( 48, 79, 254, .1 )&quot;]]}},{&quot;name&quot;:&quot;子女教育金&quot;,&quot;data&quot;:[8000,17000,24000,24500,15000,10000,13000,23000,27000,26800,20000,15000],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 29, 233, 182 )&quot;],[0.4,&quot;rgba( 29, 233, 182, .6 )&quot;],[1,&quot;rgba( 29, 233, 182, .1 )&quot;]]}}]}">
+                          </div>
+                        </div>
+                        <div class="col-md-6 py-4">
+                          <div class="d-flex justify-content-between">
+                            <h3 class="font-weight-bold text-secondary">退休金準備</h3>
+                            <a class="lead text-secondary">達成率:25%</a>
+                          </div>
+                          <ul class="list-unstyled list-divided mt-3">
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">總投入金額</a></div>
+                              <div class="lead">USD $ 16,500</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">預計退休年齡</a></div>
+                              <div class="lead">65歲</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">退休後月花費</a></div>
+                              <div class="lead">USD $ 1,500 / 月</div>
+                            </li>
+                            <li class="d-flex justify-content-end"><a class="link-black" href="#">瞭解更多</a></li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6 pb-4 pt-md-4 border-md-left">
+                          <div class="d-flex justify-content-between">
+                            <h3 class="font-weight-bold text-secondary">子女教育金</h3>
+                            <a class="lead text-secondary">達成率:25%</a>
+                          </div>
+                          <ul class="list-unstyled list-divided mt-3">
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">總投入金額</a></div>
+                              <div class="lead">USD $ 16,500</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">距離大學期間</a></div>
+                              <div class="lead">10年</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">小孩目前歲數</a></div>
+                              <div class="lead">8歲</div>
+                            </li>
+                            <li class="d-flex justify-content-end"><a class="link-black" href="#">瞭解更多</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
+                          <div class="highcharts-container highcharts-container-2"
+                            data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;column&quot;,&quot;marginTop&quot;:50},&quot;colors&quot;:[&quot;#f3a746&quot;,&quot;#2e9e83&quot;,&quot;#774c9a&quot;,&quot;#c8a9ff&quot;],&quot;title&quot;:{&quot;text&quot;:null},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;margin&quot;:200,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;x&quot;:-10,&quot;y&quot;:-10,&quot;itemDistance&quot;:10,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;xAxis&quot;:{&quot;lineColor&quot;:&quot;#c8a9ff&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;crosshair&quot;:true},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;title&quot;:{&quot;text&quot;:&quot;&quot;},&quot;gridLineColor&quot;:&quot;#5c3b77&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}}},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&lt;span style=\&quot;font-size:10px\&quot;&gt;{point.key}&lt;/span&gt;&lt;table&gt;&quot;,&quot;pointFormat&quot;:&quot;&lt;tr&gt;&lt;td style=\&quot;color:{series.color};padding:0\&quot;&gt;{series.name}: &lt;/td&gt;&lt;td style=\&quot;padding:0\&quot;&gt;&lt;b&gt;{point.y:.1f}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&quot;,&quot;footerFormat&quot;:&quot;&lt;/table&gt;&quot;,&quot;shared&quot;:true,&quot;useHTML&quot;:true},&quot;plotOptions&quot;:{&quot;column&quot;:{&quot;pointPadding&quot;:0.2,&quot;borderWidth&quot;:0}},&quot;series&quot;:[{&quot;name&quot;:&quot;退休金準備&quot;,&quot;data&quot;:[5.6,-7.8,16.5,22.4,20,14.5,10,5.3,9.2,11.5,20.6,25.3]},{&quot;name&quot;:&quot;子女教育金&quot;,&quot;data&quot;:[15.4,13.2,25.5,28.7,24.6,21.5,25.4,20.4,22.6,16.1,11.8,10.1]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;legend&quot;:{&quot;y&quot;:-10,&quot;itemDistance&quot;:10}}}]}}">
+                          </div>
+                        </div>
+                        <div class="col-md-6 py-4">
+                          <h3 class="font-weight-bold text-secondary">總資產狀況</h3>
+                          <ul class="list-unstyled list-divided mt-3">
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">總投入金額</a></div>
+                              <div class="lead">USD $ 51,650</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">資產淨值</a></div>
+                              <div class="lead">USD $ 1,650</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6 pb-4 pt-md-4 border-md-left">
+                          <h3 class="font-weight-bold text-secondary">累積(Cumulative)|年度(Annualized)</h3>
+                          <ul class="list-unstyled list-divided mt-3">
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">淨值報酬率</a></div>
+                              <div class="lead">6.5%</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">含息報酬率</a></div>
+                              <div class="lead">7.3%</div>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">配息金額</a></div>
+                              <div class="lead">USD $ 1,500</div>
+                            </li>
+                            <li class="d-flex justify-content-end"><a class="link-500" href="#">瞭解更多</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show active" id="dashboardGraph3" role="tabpanel">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">代碼</th>
+                                <th scope="col">資產名稱</th>
+                                <th scope="col">持有比例</th>
+                                <th scope="col">基金費用/年%</th>
+                                <th scope="col">持有價值</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-md-12 pt-4">
+                          <h3 class="font-weight-bold text-secondary">我們幫您做了什麼</h3>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                          <ul class="list-unstyled list-divided">
+                            <li class="d-flex justify-content-between flex-wrap">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">資產全球多元化配置</a></div>
+                              <div class="lead">+ USD $ 1,650</div>
+                              <div class="w-100 pl-4 text-gray-600">
+                                <div style="max-width: 400px;">
+                                  我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
+                                  及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
+                                </div>
+                              </div>
+                            </li>
+                            <li class="d-flex justify-content-between flex-wrap">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">投資組合再平衡</a></div>
+                              <div class="lead">+ USD $ 650</div>
+                              <div class="w-100 pl-4 text-gray-600">
+                                <div style="max-width: 400px;">
+                                  根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
+                                  投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
+                                </div>
+                              </div>
+                            </li>
+                            <li class="d-flex justify-content-between d-md-none">
+
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6 pb-4 pt-md-3 border-md-left">
+                          <ul class="list-unstyled list-divided">
+                            <li class="d-flex justify-content-between flex-wrap">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black" href="#">節省投資費用</a></div>
+                              <div class="lead">+ USD $ 250</div>
+                              <div class="w-100 pl-4 text-gray-600">
+                                <div style="max-width: 400px;">
+                                    阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
+                                    被收取過高的投資費用，影響長期投資獲利。
+                                </div>
+                              </div>
+                            </li>
+                            <li class="d-flex justify-content-between flex-wrap">
+                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                  class="link-black">降低進場時機錯誤的可能</a></div>
+                              <div class="lead">+ USD $ 650</div>
+                              <div class="w-100 pl-4 text-gray-600">
+                                <div style="max-width: 400px;">
+                                    投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
+                                    降低可能犯的投資錯誤而損失市場獲利時機。
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="panel admin-panel">
+              <div class="panel-header">
+                <div class="d-flex align-items-center">
+                  <div class="h3 panel-title flex-grow-1">投資日曆</div>
+                </div>
+              </div>
+              <div class="panel-body pt-2">
+                <div class="table-responsive">
+                  <div class="fullcalendar calendar-borderless"
+                    data-fullcalendar-header='{"left":"prev","center":"title","right":"next"}'
+                    data-fullcalendar-event='[{"title": "阿爾發說明會","start": "2019-10-11","color":"#FF6F80"},{"title": "投組再平衡","start": "2019-10-29","color":"#FF6F80"},{"title":"與顧問視訊","start":"2019-10-22","color":"#AFDD5F"}]'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="panel admin-panel">
+              <div class="panel-header">
+                <div class="d-flex align-items-center">
+                  <div class="h3 panel-title flex-grow-1">投資組合</div>
+                </div>
+              </div>
+              <div class="panel-body pb-5 text-center">
+                <div class="highcharts-container highcharts-container-1"
+                  data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;variablepie&quot;,&quot;marginBottom&quot;:-70},&quot;title&quot;:{&quot;text&quot;:null},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&quot;,&quot;pointFormat&quot;:&quot;&lt;span style=\&quot;color:{point.color}\&quot;&gt;●&lt;/span&gt; &lt;b&gt; {point.name}&lt;/b&gt;&lt;br/&gt;Users: &lt;b&gt;{point.z}%&lt;/b&gt;&lt;br/&gt;&quot;},&quot;plotOptions&quot;:{&quot;variablepie&quot;:{&quot;startAngle&quot;:20,&quot;endAngle&quot;:380,&quot;borderWidth&quot;:0,&quot;shadow&quot;:true,&quot;dataLabels&quot;:{&quot;enabled&quot;:false},&quot;colors&quot;:[{&quot;linearGradient&quot;:{&quot;x1&quot;:0,&quot;y1&quot;:0,&quot;x2&quot;:1,&quot;y2&quot;:1},&quot;stops&quot;:[[0.5,&quot;#5FC1DD&quot;],[1,&quot;#415cf8&quot;]]}]}},&quot;series&quot;:[{&quot;minPointSize&quot;:10,&quot;zMin&quot;:0,&quot;name&quot;:&quot;countries&quot;,&quot;data&quot;:[{&quot;name&quot;:&quot;Spain&quot;,&quot;y&quot;:25,&quot;z&quot;:40},{&quot;name&quot;:&quot;France&quot;,&quot;y&quot;:25,&quot;z&quot;:5},{&quot;name&quot;:&quot;Poland&quot;,&quot;y&quot;:25,&quot;z&quot;:15},{&quot;name&quot;:&quot;Czech Republic&quot;,&quot;y&quot;:25,&quot;z&quot;:25}]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:10}}},{&quot;condition&quot;:{&quot;maxWidth&quot;:767},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:-30}}}]}}">
+                </div>
+                <div class="row row-15 justify-content-center">
+                  <div class="col-4 col-sm-3 col-xxl-2">
+                    <div class="progress-circle-wrap">
+                      <div class="progress-circle-inner">
+                        <div class="progress-counter-wrap">
+                          <div class="progress-counter-value"><span class="progress-counter">26</span></div>
+                        </div>
+                        <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+                          <circle class="bg" cx="40" cy="40" r="32" style="stroke:#F97C6B;opacity:0.3;"></circle>
+                          <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#F97C6B;"></circle>
+                        </svg>
+                      </div>
+                      <div class="progress-title">股票型ETF</div>
+                    </div>
+                  </div>
+                  <div class="col-4 col-sm-3 col-xxl-2">
+                    <div class="progress-circle-wrap">
+                      <div class="progress-circle-inner">
+                        <div class="progress-counter-wrap">
+                          <div class="progress-counter-value"><span class="progress-counter">34</span></div>
+                        </div>
+                        <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+                          <circle class="bg" cx="40" cy="40" r="32" style="stroke:#FFBC49;opacity:0.3;"></circle>
+                          <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#FFBC49;"></circle>
+                        </svg>
+                      </div>
+                      <div class="progress-title">不動產ETF</div>
+                    </div>
+                  </div>
+                  <div class="col-4 col-sm-3 col-xxl-2">
+                    <div class="progress-circle-wrap">
+                      <div class="progress-circle-inner">
+                        <div class="progress-counter-wrap">
+                          <div class="progress-counter-value"><span class="progress-counter">40</span></div>
+                        </div>
+                        <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+
+                          <circle class="bg" cx="40" cy="40" r="32" style="stroke:#88EE74;opacity:0.3;"></circle>
+                          <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#88EE74;"></circle>
+                        </svg>
+                      </div>
+                      <div class="progress-title">債券型ETF</div>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-lg btn-outline-primary mt-4">投資組合再平衡</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="template-panel">
-        <div class="template-panel-heading">Template Panel
-          <button class="template-panel-switch fa-cog" data-multi-switch='{"targets":".template-panel","scope":".template-panel","isolate":"[data-multi-switch]"}'></button>
-        </div>
-        <div class="template-panel-body">
-          <div class="template-panel-group">
-            <button class="theme-switch fa-check" title="Light Navbar" style="border-color: #999 #999 #fff #fff; color: black;" data-theme-switch="admindex-navbar-light" data-theme='{"navbar-color":"#666","navbar-bg":"#fff","navbar-border":"#e6e6e6","navbar-hover-color":"#333","navbar-hover-bg":"#333","navbar-title-color":"#333","navbar-submenu-bg":"#fff","navbar-panel-bg":"url( \"../../images/header-bg-light.jpg\" )","navbar-button-color":"#fff","navbar-button-bg":"#999","navbar-user-button-color":"#482e5d","navbar-user-button-bg":"#999"}'></button>
-            <button class="theme-switch fa-check active" title="Dark Navbar" style="border-color: #5c3b77 #5c3b77 #c8a9ff #c8a9ff; color: white;" data-theme-switch="admindex-navbar-dark" data-theme='{"navbar-color":"#c8a9ff","navbar-bg":"#482e5d","navbar-border":"#5c3b77","navbar-hover-color":"#fff","navbar-hover-bg":"#c8a9ff","navbar-title-color":"#f3a746","navbar-submenu-bg":"#482e5d","navbar-panel-bg":"url( \"../../images/header-bg.jpg\" )","navbar-button-color":"#fff","navbar-button-bg":"#774c9a","navbar-user-button-color":"#fff","navbar-user-button-bg":"#9575cd"}'></button>
+    </section>
+
+    <div class="sidebar scroller">
+      <div class="timeline timeline-simple">
+        <div class="item">
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
+              </div><span class="ml-2">1:25am</span>
+            </div>
           </div>
-          <ul class="template-panel-list">
-            <ul class="template-panel-item"><a class="template-panel-link active" href="../admindex/index.html">Admindex<span class="template-panel-popup"><img class="template-panel-preview" src="images/templates/template-01-400x174.png"></span></a></ul>
-            <ul class="template-panel-item"><a class="template-panel-link" href="../adminifix/index.html">Adminifix<span class="template-panel-popup"><img class="template-panel-preview" src="images/templates/template-02-400x174.png"></span></a></ul>
-            <ul class="template-panel-item"><a class="template-panel-link" href="../emerald/index.html">Emerald<span class="template-panel-popup"><img class="template-panel-preview" src="images/templates/template-03-400x174.png"></span></a></ul>
-            <ul class="template-panel-item"><a class="template-panel-link" href="../iodashboard/index.html">IoDashboard<span class="template-panel-popup"><img class="template-panel-preview" src="images/templates/template-04-400x174.png"></span></a></ul>
-            <ul class="template-panel-item"><a class="template-panel-link" href="../concrete/index.html">Concrete<span class="template-panel-popup"><img class="template-panel-preview" src="images/templates/template-05-400x174.png"></span></a></ul>
-          </ul>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
+              </div><span class="ml-2">3:05am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
+              </div><span class="ml-2">4:15am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
+              </div><span class="ml-2">7:45am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
+              </div><span class="ml-2">4:15am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
+              </div><span class="ml-2">7:45am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
+              </div><span class="ml-2">8:25am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
+              </div><span class="ml-2">9:35am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
+              </div><span class="ml-2">4:15am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
+              </div><span class="ml-2">7:45am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
+              </div><span class="ml-2">4:15am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
+              </div><span class="ml-2">7:45am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
+              </div><span class="ml-2">8:25am</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
+            <div class="d-flex justify-content-between">
+              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
+              </div><span class="ml-2">9:35am</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
