@@ -30,7 +30,13 @@ $theme-colors: (
 	"tertiary": $tertiary,
 	"tertiary-dark": $tertiary-dark,
 );
-
+//etf顏色
+$VEA: #F97C6B;
+$VSS: #FFACA1;
+$VTI: #FDD6CF;
+$VNQ: #FFBC49;
+$VNQI: #FFD678;
+$BNDW: #88EE74;
 // Body
 $body-color: $gray-800;
 $body-bg: $gray-100;
@@ -102,7 +108,7 @@ $container-max-widths: (
 );
 
 // Components
-$border-color: $gray-600;
+$border-color: $gray-300;
 
 $box-shadow-sm: 0 0 10px 0 rgba( $black, 0.13 );
 $box-shadow: 0 0 10px 0 rgba( $black, 0.3 );

@@ -14,11 +14,7 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="components/base/base.min.css">
   <script src="components/base/script.js"></script>
-  <style>
-    .rd-navbar-progress-title+.progress {
-      margin-top: 0;
-    }
-  </style>
+
 </head>
 
 <body>
@@ -36,7 +32,7 @@
               <!-- Breadcrumbs-->
               <ul class="breadcrumbs">
                 <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="index.html"><span
-                      class="breadcrumbs-icon fa-home"></span><span>Dashboard</span></a></li>
+                      class="breadcrumbs-icon fa-home"></span><span>總覽</span></a></li>
               </ul>
             </div>
             <div class="rd-navbar-panel-center"></div>
@@ -182,7 +178,6 @@
                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
-
               </li>
             </ul>
             <ul class="rd-navbar-nav">
@@ -199,16 +194,11 @@
               <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="calendar.html"><span
                     class="rd-navbar-icon fa-calendar"></span>子女教育金</a>
               </li>
-
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="calendar.html">
+                  <i class="rd-navbar-icon mdi mdi-plus-circle-outline"></i>
+                  </span>新增計畫</a>
+              </li>
             </ul>
-            <div class="rd-navbar-sidebar-panel">
-              <button class="btn">
-                <i class="mdi mdi-36px mdi-plus-circle-outline text-shadow-500 text-tertiary"></i>
-                <div class="text-tertiary">
-                  新增計畫
-                </div>
-              </button>
-            </div>
           </div>
         </nav>
       </div>
@@ -218,7 +208,7 @@
         <div class="row row-30">
           <div class="col-md-12">
             <div class="panel admin-panel">
-              <div class="panel-header p-3">
+              <div class="panel-header">
                 <div class="d-flex align-items-center">
                   <ul class="nav nav-pills scroller scroller-horizontal flex-grow-1" role="tablist">
                     <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboardGraph1" role="tab"
@@ -230,14 +220,13 @@
                   </ul>
                 </div>
               </div>
-              <div class="panel-body p-0">
+              <div class="panel-body">
                 <div class="tab-content">
-                  <div class="tab-pane fade" id="dashboardGraph1" role="tabpanel">
+                  <div class="tab-pane fade show active" id="dashboardGraph1" role="tabpanel">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
-                          <div class="highcharts-container highcharts-container-2"
-                            data-highcharts-options="{&quot;credits&quot;:false,&quot;colors&quot;:[&quot;rgb( 48, 79, 254 )&quot;,&quot;rgb( 29, 233, 182 )&quot;],&quot;chart&quot;:{&quot;backgroundColor&quot;:&quot;transparent&quot;,&quot;className&quot;:&quot;&quot;,&quot;type&quot;:&quot;areaspline&quot;,&quot;zoomType&quot;:&quot;x&quot;,&quot;panning&quot;:true,&quot;panKey&quot;:&quot;shift&quot;,&quot;marginRight&quot;:1,&quot;plotBorderWidth&quot;:1,&quot;plotBorderColor&quot;:&quot;#38244a&quot;},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;floating&quot;:false,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;title&quot;:{&quot;text&quot;:null},&quot;xAxis&quot;:{&quot;min&quot;:0.5,&quot;max&quot;:10.5,&quot;lineColor&quot;:&quot;#38244a&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;]},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;tickInterval&quot;:5,&quot;gridLineColor&quot;:&quot;#38244a&quot;,&quot;title&quot;:{&quot;text&quot;:null},&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}}},&quot;plotOptions&quot;:{&quot;series&quot;:{&quot;marker&quot;:{&quot;enabled&quot;:false,&quot;symbol&quot;:&quot;circle&quot;,&quot;radius&quot;:2,&quot;states&quot;:{&quot;hover&quot;:{&quot;enabled&quot;:true}}},&quot;fillOpacity&quot;:0.3},&quot;areaspline&quot;:{&quot;lineWidth&quot;:1}},&quot;series&quot;:[{&quot;name&quot;:&quot;退休金準備&quot;,&quot;data&quot;:[15000,20000,26000,29000,30000,22500,17000,18000,26000,33000,25000,11000],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 48, 79, 254 )&quot;],[0.4,&quot;rgba( 48, 79, 254, .6 )&quot;],[1,&quot;rgba( 48, 79, 254, .1 )&quot;]]}},{&quot;name&quot;:&quot;子女教育金&quot;,&quot;data&quot;:[8000,17000,24000,24500,15000,10000,13000,23000,27000,26800,20000,15000],&quot;fillColor&quot;:{&quot;linearGradient&quot;:{&quot;x1&quot;:0.5,&quot;y1&quot;:0,&quot;x2&quot;:0.5,&quot;y2&quot;:1},&quot;stops&quot;:[[0,&quot;rgb( 29, 233, 182 )&quot;],[0.4,&quot;rgba( 29, 233, 182, .6 )&quot;],[1,&quot;rgba( 29, 233, 182, .1 )&quot;]]}}]}">
+                        <div class="col-md-12 border-bottom">
+                          <div class="highcharts-container highcharts-container-2" data-highcharts-type="areaspline">
                           </div>
                         </div>
                         <div class="col-md-6 py-4">
@@ -261,7 +250,6 @@
                                   class="link-black" href="#">退休後月花費</a></div>
                               <div class="lead">USD $ 1,500 / 月</div>
                             </li>
-                            <li class="d-flex justify-content-end"><a class="link-black" href="#">瞭解更多</a></li>
                           </ul>
                         </div>
                         <div class="col-md-6 pb-4 pt-md-4 border-md-left">
@@ -285,7 +273,6 @@
                                   class="link-black" href="#">小孩目前歲數</a></div>
                               <div class="lead">8歲</div>
                             </li>
-                            <li class="d-flex justify-content-end"><a class="link-black" href="#">瞭解更多</a></li>
                           </ul>
                         </div>
                       </div>
@@ -294,9 +281,8 @@
                   <div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
-                          <div class="highcharts-container highcharts-container-2"
-                            data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;column&quot;,&quot;marginTop&quot;:50},&quot;colors&quot;:[&quot;#f3a746&quot;,&quot;#2e9e83&quot;,&quot;#774c9a&quot;,&quot;#c8a9ff&quot;],&quot;title&quot;:{&quot;text&quot;:null},&quot;legend&quot;:{&quot;enabled&quot;:true,&quot;margin&quot;:200,&quot;align&quot;:&quot;left&quot;,&quot;verticalAlign&quot;:&quot;top&quot;,&quot;x&quot;:-10,&quot;y&quot;:-10,&quot;itemDistance&quot;:10,&quot;itemStyle&quot;:{&quot;color&quot;:&quot;#16b6d2&quot;,&quot;fontWeight&quot;:&quot;normal&quot;},&quot;itemHoverStyle&quot;:{&quot;color&quot;:&quot;#9065b3&quot;}},&quot;xAxis&quot;:{&quot;lineColor&quot;:&quot;#c8a9ff&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}},&quot;categories&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],&quot;crosshair&quot;:true},&quot;yAxis&quot;:{&quot;min&quot;:0,&quot;title&quot;:{&quot;text&quot;:&quot;&quot;},&quot;gridLineColor&quot;:&quot;#5c3b77&quot;,&quot;labels&quot;:{&quot;style&quot;:{&quot;color&quot;:&quot;#c8a9ff&quot;}}},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&lt;span style=\&quot;font-size:10px\&quot;&gt;{point.key}&lt;/span&gt;&lt;table&gt;&quot;,&quot;pointFormat&quot;:&quot;&lt;tr&gt;&lt;td style=\&quot;color:{series.color};padding:0\&quot;&gt;{series.name}: &lt;/td&gt;&lt;td style=\&quot;padding:0\&quot;&gt;&lt;b&gt;{point.y:.1f}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&quot;,&quot;footerFormat&quot;:&quot;&lt;/table&gt;&quot;,&quot;shared&quot;:true,&quot;useHTML&quot;:true},&quot;plotOptions&quot;:{&quot;column&quot;:{&quot;pointPadding&quot;:0.2,&quot;borderWidth&quot;:0}},&quot;series&quot;:[{&quot;name&quot;:&quot;退休金準備&quot;,&quot;data&quot;:[5.6,-7.8,16.5,22.4,20,14.5,10,5.3,9.2,11.5,20.6,25.3]},{&quot;name&quot;:&quot;子女教育金&quot;,&quot;data&quot;:[15.4,13.2,25.5,28.7,24.6,21.5,25.4,20.4,22.6,16.1,11.8,10.1]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;legend&quot;:{&quot;y&quot;:-10,&quot;itemDistance&quot;:10}}}]}}">
+                        <div class="col-md-12 border-bottom">
+                          <div class="highcharts-container highcharts-container-2" data-highcharts-type="column">
                           </div>
                         </div>
                         <div class="col-md-6 py-4">
@@ -313,7 +299,6 @@
                               <div class="lead">USD $ 1,650</div>
                             </li>
                             <li class="d-flex justify-content-between">
-
                             </li>
                           </ul>
                         </div>
@@ -341,100 +326,132 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane fade show active" id="dashboardGraph3" role="tabpanel">
+                  <div class="tab-pane fade" id="dashboardGraph3" role="tabpanel">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-md-12 pt-4 py-md-3 border-bottom">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">代碼</th>
-                                <th scope="col">資產名稱</th>
-                                <th scope="col">持有比例</th>
-                                <th scope="col">基金費用/年%</th>
-                                <th scope="col">持有價值</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>Bird</td>
-                                <td>@twitter</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div class="col-md-12 border-bottom">
+                          <div class="table-colorful">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">代碼</th>
+                                  <th scope="col">資產名稱</th>
+                                  <th scope="col">持有比例</th>
+                                  <th scope="col">基金費用/年%</th>
+                                  <th scope="col">持有價值</th>
+                                </tr>
+                              </thead>
+                              <tfoot>
+                                <tr>
+                                  <th scope="row"></th>
+                                  <td></td>
+                                  <td>100%</td>
+                                  <td>0.7%</td>
+                                  <td>USD $ 13,500</td>
+                                </tr>
+                              </tfoot>
+                              <tbody>
+                                <tr>
+                                  <th scope="row" class="VEA">VEA</th>
+                                  <td>全球已開發國家股票型基金(不含美國)</td>
+                                  <td>23%</td>
+                                  <td>0.07%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" class="VSS">VSS</th>
+                                  <td>全球小型股</td>
+                                  <td>19%</td>
+                                  <td>0.07%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" class="VTI">VTI</th>
+                                  <td>美國股票型基金</td>
+                                  <td>28%</td>
+                                  <td>0.04%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" class="VNQ">VNQ</th>
+                                  <td>美國不動產基金</td>
+                                  <td>13.5%</td>
+                                  <td>0.05%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" class="VNQI">VNQI</th>
+                                  <td>全球不動產基金(不含美國)</td>
+                                  <td>6.5%</td>
+                                  <td>0.05%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row" class="BNDW">BNDW</th>
+                                  <td>全世界債券</td>
+                                  <td>10%</td>
+                                  <td>0.04%</td>
+                                  <td>USD $ 1,500</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <div class="col-md-12 pt-4">
                           <h3 class="font-weight-bold text-secondary">我們幫您做了什麼</h3>
                         </div>
                         <div class="col-md-6 pt-3">
-                          <ul class="list-unstyled list-divided">
-                            <li class="d-flex justify-content-between flex-wrap">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">資產全球多元化配置</a></div>
-                              <div class="lead">+ USD $ 1,650</div>
-                              <div class="w-100 pl-4 text-gray-600">
-                                <div style="max-width: 400px;">
-                                  我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
-                                  及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
-                                </div>
+                          <div class="h-100 d-flex justify-content-between flex-wrap border-bottom pb-3">
+                            <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                class="link-black" href="#">資產全球多元化配置</a></div>
+                            <div class="lead">+ USD $ 1,650</div>
+                            <div class="w-100 pl-4 text-gray-600">
+                              <div style="max-width: 400px;">
+                                我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
+                                及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
                               </div>
-                            </li>
-                            <li class="d-flex justify-content-between flex-wrap">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">投資組合再平衡</a></div>
-                              <div class="lead">+ USD $ 650</div>
-                              <div class="w-100 pl-4 text-gray-600">
-                                <div style="max-width: 400px;">
-                                  根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
-                                  投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
-                                </div>
-                              </div>
-                            </li>
-                            <li class="d-flex justify-content-between d-md-none">
-
-                            </li>
-                          </ul>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-6 pb-4 pt-md-3 border-md-left">
-                          <ul class="list-unstyled list-divided">
-                            <li class="d-flex justify-content-between flex-wrap">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">節省投資費用</a></div>
-                              <div class="lead">+ USD $ 250</div>
-                              <div class="w-100 pl-4 text-gray-600">
-                                <div style="max-width: 400px;">
-                                    阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
-                                    被收取過高的投資費用，影響長期投資獲利。
-                                </div>
+                        <div class="col-md-6 pt-3 border-md-left">
+                          <div class="h-100 d-flex justify-content-between flex-wrap pb-3 border-bottom">
+                            <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                class="link-black" href="#">節省投資費用</a></div>
+                            <div class="lead">+ USD $ 650</div>
+                            <div class="w-100 pl-4 text-gray-600">
+                              <div style="max-width: 400px;">
+                                阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
+                                被收取過高的投資費用，影響長期投資獲利。
                               </div>
-                            </li>
-                            <li class="d-flex justify-content-between flex-wrap">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black">降低進場時機錯誤的可能</a></div>
-                              <div class="lead">+ USD $ 650</div>
-                              <div class="w-100 pl-4 text-gray-600">
-                                <div style="max-width: 400px;">
-                                    投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
-                                    降低可能犯的投資錯誤而損失市場獲利時機。
-                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                          <div class="h-100 d-flex justify-content-between flex-wrap pb-3">
+                            <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                class="link-black" href="#">投資組合再平衡</a></div>
+                            <div class="lead">+ USD $ 650</div>
+                            <div class="w-100 pl-4 text-gray-600">
+                              <div style="max-width: 400px;">
+                                根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
+                                投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
                               </div>
-                            </li>
-                          </ul>
+                            </div>
+                          </div>
+                          <div class="border-bottom d-md-none"></div>
+                        </div>
+                        <div class="col-md-6 pt-3 border-md-left">
+                          <div class="h-100 d-flex justify-content-between flex-wrap pb-3">
+                            <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                class="link-black" href="#">降低進場時機錯誤的可能</a></div>
+                            <div class="lead">+ USD $ 650</div>
+                            <div class="w-100 pl-4 text-gray-600">
+                              <div style="max-width: 400px;">
+                                投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
+                                降低可能犯的投資錯誤而損失市場獲利時機。
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -447,7 +464,7 @@
             <div class="panel admin-panel">
               <div class="panel-header">
                 <div class="d-flex align-items-center">
-                  <div class="h3 panel-title flex-grow-1">投資日曆</div>
+                  <div class="h3 font-weight-bold panel-title flex-grow-1">投資日曆</div>
                 </div>
               </div>
               <div class="panel-body pt-2">
@@ -464,7 +481,7 @@
             <div class="panel admin-panel">
               <div class="panel-header">
                 <div class="d-flex align-items-center">
-                  <div class="h3 panel-title flex-grow-1">投資組合</div>
+                  <div class="h3 font-weight-bold panel-title flex-grow-1">投資組合</div>
                 </div>
               </div>
               <div class="panel-body pb-5 text-center">

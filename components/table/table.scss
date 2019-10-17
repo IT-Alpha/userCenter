@@ -12,41 +12,125 @@ $table-color-level: 6;
 
 // Base
 .table {
-	margin-bottom: 0;
-	th{
-		border-top:none;
+  margin-bottom: 0;
+
+  td,th {
+    border: none;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $gray-200;
+    }
+  }
+
+  thead {
+		border-bottom: 2px solid $gray-200;
+		th{
+			border:none;
+		}
+  }
+
+  tfoot {
+		border-top: 2px solid $gray-200;
+		font-weight: bold;
 	}
 }
 
 // Modifies
 .table-vertical-align {
-	td, th {
-		vertical-align: middle;
-	}
+
+  td,
+  th {
+    vertical-align: middle;
+  }
 }
 
 .table-align-1 {
-	th:nth-child( 1 ),
-	td:nth-child( 1 ){
-		text-align: center;
-	}
+
+  th:nth-child(1),
+  td:nth-child(1) {
+    text-align: center;
+  }
 }
 
 tr.row-action {
-	td:not( :nth-child( 1 ) ):not( :nth-child( 2 ) ){
-		color: $white;
-	}
+  td:not( :nth-child(1)):not( :nth-child(2)) {
+    color: $white;
+  }
 }
+$color-width: 5px;
 
+.table-colorful{
+	padding-left: $color-width;
+	th{
+		position:relative;
+		&.VEA::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $VEA;
+		}
+		&.VSS::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $VSS;
+		}
+		&.VTI::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $VTI;
+		}
+		&.VNQ::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $VNQ;
+		}
+		&.VNQI::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $VNQI;
+		}
+		&.BNDW::before{
+			content:'';
+			position: absolute;
+			height: 100%;
+			width:$color-width;
+			top:0;
+			left: -$color-width;
+			background-color: $BNDW;
+		}
+	} 
+}
 // Data table context
 .data-table {
-	width: 100% !important;
+  width: 100% !important;
 }
 
 // Color themes
-@each $color, $value in $theme-colors {
-	.table-color-#{$color} {
-		$text-color: if( get-yiq( $value ) >= $yiq-contrasted-threshold, theme-color-level( $color, $table-color-level ), color-yiq( $value ) );
-		color: $text-color;
-	}
+@each $color,
+$value in $theme-colors {
+  .table-color-#{$color} {
+    $text-color: if(get-yiq($value) >=$yiq-contrasted-threshold, theme-color-level($color, $table-color-level), color-yiq($value));
+    color: $text-color;
+  }
 }

@@ -14,42 +14,42 @@ let components = {
 
 			NProgress.start();
 
-			window.addEventListener( 'components:ready', NProgress.done );
+			window.addEventListener('components:ready', NProgress.done);
 
-			window.addEventListener( 'error', function () {
-				let bar = document.querySelector( '#nprogress [role="bar"]' );
-				if ( bar ) bar.className = 'bar bar-danger';
+			window.addEventListener('error', function () {
+				let bar = document.querySelector('#nprogress [role="bar"]');
+				if (bar) bar.className = 'bar bar-danger';
 			});
 		}
 	},
-	
+
 	pageReveal: {
 		selector: '.page',
-		init: function( nodes ) {
-			window.addEventListener( 'components:ready', function () {
-				window.dispatchEvent( new Event( 'resize' ) );
-				document.documentElement.classList.add( 'components-ready' );
+		init: function (nodes) {
+			window.addEventListener('components:ready', function () {
+				window.dispatchEvent(new Event('resize'));
+				document.documentElement.classList.add('components-ready');
 			});
 
-			window.addEventListener( 'components:stylesReady', function () {
-				nodes.forEach( function( node ) {
-					setTimeout( function() {
-						node.classList.add( 'page-revealed' );
-					}, 500 );
+			window.addEventListener('components:stylesReady', function () {
+				nodes.forEach(function (node) {
+					setTimeout(function () {
+						node.classList.add('page-revealed');
+					}, 500);
 				});
 			});
 		}
 	},
 	pendedIFrame: {
 		selector: '[data-pended-iframe]',
-		init: function ( nodes ) {
-			nodes.forEach( function( node ) {
-				let loader = ( function () {
-					node.setAttribute( 'src', node.getAttribute( 'data-pended-iframe' ) );
-				}).bind( node );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let loader = (function () {
+					node.setAttribute('src', node.getAttribute('data-pended-iframe'));
+				}).bind(node);
 
-				window.addEventListener( 'classSwitching', loader );
-				window.addEventListener( 'components:stylesReady', loader );
+				window.addEventListener('classSwitching', loader);
+				window.addEventListener('components:stylesReady', loader);
 			});
 		}
 	},
@@ -68,37 +68,37 @@ let components = {
 		init: function () {
 			let
 				loginPage = 'index.html',
-				timer = document.querySelector( '[data-session-timer]' ),
-				btnLogout = document.querySelector( '[data-session-logout]' ),
-				btnStay = document.querySelector( '[data-session-stay]' ),
-				sessionModal = $( '#session-modal' ),
+				timer = document.querySelector('[data-session-timer]'),
+				btnLogout = document.querySelector('[data-session-logout]'),
+				btnStay = document.querySelector('[data-session-stay]'),
+				sessionModal = $('#session-modal'),
 				countdown = new Counter({
 					timeout: 15,
 					checkpoint: 10,
-					onUpdate: function( second ) {
+					onUpdate: function (second) {
 						timer.innerText = second;
 					},
-					onStop: function() {
-						window.location.replace( loginPage );
+					onStop: function () {
+						window.location.replace(loginPage);
 					},
-					onCheckpoint: function() {
-						sessionModal.modal( 'show' );
+					onCheckpoint: function () {
+						sessionModal.modal('show');
 					}
 				});
 
-			window.addEventListener( 'mousemove', function () {
+			window.addEventListener('mousemove', function () {
 				countdown.start();
 			});
 
-			btnStay.addEventListener( 'click', function () {
+			btnStay.addEventListener('click', function () {
 				event.preventDefault();
-				sessionModal.modal( 'hide' );
+				sessionModal.modal('hide');
 				countdown.start();
 			});
 
-			btnLogout.addEventListener( 'click', function () {
+			btnLogout.addEventListener('click', function () {
 				event.preventDefault();
-				window.location.replace( loginPage );
+				window.location.replace(loginPage);
 			});
 
 			countdown.start();
@@ -108,9 +108,9 @@ let components = {
 		selector: '.highlight',
 		styles: './components/highlight/highlight.css',
 		script: './components/highlight/highlight.pack.js',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				hljs.highlightBlock( node );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				hljs.highlightBlock(node);
 			});
 		}
 	},
@@ -123,22 +123,22 @@ let components = {
 			'./components/dual-listbox/dual-listbox.css'
 		],
 		script: './components/dual-listbox/dual-listbox.min.js',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let instance = new DualListbox( node, {
-					availableTitle: node.getAttribute( 'data-available-title' ) || 'Available options',
-					selectedTitle: node.getAttribute( 'data-selected-title' ) || 'I want to use this',
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let instance = new DualListbox(node, {
+					availableTitle: node.getAttribute('data-available-title') || 'Available options',
+					selectedTitle: node.getAttribute('data-selected-title') || 'I want to use this',
 					addButtonText: null,
 					removeButtonText: null,
 					addAllButtonText: null,
 					removeAllButtonText: null
 				});
 
-				instance.add_button.classList.add( 'btn', 'dual-btn-add', 'btn-primary', 'btn-sm' );
-				instance.add_all_button.classList.add( 'btn', 'dual-btn-add-all', 'btn-primary', 'btn-sm' );
-				instance.remove_button.classList.add( 'btn', 'dual-btn-remove', 'btn-primary', 'btn-sm' );
-				instance.remove_all_button.classList.add( 'btn', 'dual-btn-remove-all', 'btn-primary', 'btn-sm' );
-				instance.search.classList.add( 'form-control' );
+				instance.add_button.classList.add('btn', 'dual-btn-add', 'btn-primary', 'btn-sm');
+				instance.add_all_button.classList.add('btn', 'dual-btn-add-all', 'btn-primary', 'btn-sm');
+				instance.remove_button.classList.add('btn', 'dual-btn-remove', 'btn-primary', 'btn-sm');
+				instance.remove_all_button.classList.add('btn', 'dual-btn-remove-all', 'btn-primary', 'btn-sm');
+				instance.search.classList.add('form-control');
 			});
 		}
 	},
@@ -170,7 +170,7 @@ let components = {
 		selector: '.panel',
 		styles: './components/panel/panel.min.css'
 	},
-	
+
 	divider: {
 		selector: '.divider',
 		styles: './components/divider/divider.css'
@@ -191,25 +191,25 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).alert();
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).alert();
 			});
 		}
 	},
 	alertToggle: {
 		selector: '[data-target-alert]',
 		script: './components/base/jquery-3.4.1.min.js',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let target = $( node.getAttribute( 'data-target-alert' ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let target = $(node.getAttribute('data-target-alert'));
 
-				if ( target.length ) {
-					node.addEventListener( 'click', function () {
-						if ( this.hasAttribute( 'data-alert-fade' ) ) {
+				if (target.length) {
+					node.addEventListener('click', function () {
+						if (this.hasAttribute('data-alert-fade')) {
 							target.fadeToggle();
 						} else {
-							target.slideToggle( 'fast' );
+							target.slideToggle('fast');
 						}
 					});
 				}
@@ -224,9 +224,9 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).dropdown();
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).dropdown();
 			});
 		}
 	},
@@ -244,7 +244,7 @@ let components = {
 	},
 	list: {
 		selector: '[class*="list"]',
-		styles: './components/list/list.css'
+		styles: './components/list/list.min.css'
 	},
 	progress: {
 		selector: '.progress',
@@ -258,15 +258,15 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).on( 'click', function ( event ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).on('click', function (event) {
 					event.preventDefault();
-					$( this ).tab( 'show' );
+					$(this).tab('show');
 				});
 
-				$( node ).find( 'a[data-toggle="tab"]' ).on( 'shown.bs.tab', function () {
-					window.dispatchEvent( new Event( 'resize' ) );
+				$(node).find('a[data-toggle="tab"]').on('shown.bs.tab', function () {
+					window.dispatchEvent(new Event('resize'));
 				});
 			});
 		}
@@ -281,9 +281,9 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).collapse()
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).collapse()
 			});
 		}
 	},
@@ -301,9 +301,9 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/maxlength/bootstrap-maxlength.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).maxlength({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).maxlength({
 					alwaysShow: true,
 					threshold: 10,
 					warningClass: "badge badge-success",
@@ -320,11 +320,11 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/typeahead/typeahead.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let strs = parseJSON( node.getAttribute( 'data-typehead' ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let strs = parseJSON(node.getAttribute('data-typehead'));
 
-				$( node ).typeahead(
+				$(node).typeahead(
 					{
 						hint: true,
 						highlight: true,
@@ -332,14 +332,14 @@ let components = {
 					},
 					{
 						limit: 10,
-						name: node.getAttribute( 'placeholder' ),
+						name: node.getAttribute('placeholder'),
 						displayKey: 'value',
-						source: function findMatches( q, cb ) {
+						source: function findMatches(q, cb) {
 							let matches = [];
-							strs.forEach( function( str ) {
-								if ( ( new RegExp( q, 'i' ) ).test( str ) ) matches.push({ value: str });
+							strs.forEach(function (str) {
+								if ((new RegExp(q, 'i')).test(str)) matches.push({ value: str });
 							});
-							cb( matches );
+							cb(matches);
 						}
 					}
 				);
@@ -353,16 +353,16 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/select2/select2.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node = $( node );
-				node.select2( {
-					dropdownParent:          $( '.page' ),
-					placeholder:             node.attr( 'data-placeholder' ) || null,
-					minimumResultsForSearch: node.attr( 'data-minimum-results-search' ) || Infinity,
-					containerCssClass:       node.attr( 'data-container-class' ) || null,
-					dropdownCssClass:        node.attr( 'data-dropdown-class' ) || null
-				} );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node = $(node);
+				node.select2({
+					dropdownParent: $('.page'),
+					placeholder: node.attr('data-placeholder') || null,
+					minimumResultsForSearch: node.attr('data-minimum-results-search') || Infinity,
+					containerCssClass: node.attr('data-container-class') || null,
+					dropdownCssClass: node.attr('data-dropdown-class') || null
+				});
 			});
 		}
 	},
@@ -385,12 +385,12 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/base/jquery-ui.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).spinner({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).spinner({
 					min: 0,
 					step: 1,
-					...parseJSON( node.getAttribute( 'data-spinner' ) )
+					...parseJSON(node.getAttribute('data-spinner'))
 				});
 			});
 		}
@@ -403,27 +403,27 @@ let components = {
 			'./components/base/jquery-ui.min.js',
 			'./components/base/globalize.min.js'
 		],
-		init: function ( nodes ) {
-			$.widget( 'ui.timespinner', $.ui.spinner, {
+		init: function (nodes) {
+			$.widget('ui.timespinner', $.ui.spinner, {
 				options: {
 					step: 60 * 1000, // seconds
 					page: 60 // hours
 				},
-				_parse: function ( value ) {
-					if ( typeof value === 'string' ) {
-						if ( Number( value ) == value ) return Number( value );
-						else return +Globalize.parseDate( value );
+				_parse: function (value) {
+					if (typeof value === 'string') {
+						if (Number(value) == value) return Number(value);
+						else return +Globalize.parseDate(value);
 					} else {
 						return value;
 					}
 				},
 
-				_format: function ( value ) {
-					return Globalize.format( new Date( value ), 't' );
+				_format: function (value) {
+					return Globalize.format(new Date(value), 't');
 				}
 			});
 
-			$( nodes ).timespinner();
+			$(nodes).timespinner();
 		}
 	},
 	daterangepiker: {
@@ -437,13 +437,13 @@ let components = {
 			'./components/daterangepicker/daterangepicker.min.js'
 		],
 		dependencies: 'currentDevice',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let $node = $( node );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let $node = $(node);
 				$node.daterangepicker({
 					opens: 'left',
 					cancelButtonClasses: 'btn-light',
-					ranges: $node.attr( 'data-predefined' ) ? {
+					ranges: $node.attr('data-predefined') ? {
 						'Today': [moment(), moment()],
 						'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
 						'Last 7 Days': [moment().subtract(6, 'days'), moment()],
@@ -453,8 +453,8 @@ let components = {
 					} : false
 				});
 
-				if ( device.ios() || device.android() ) {
-					$node.on( 'mousedown', function ( event ) {
+				if (device.ios() || device.android()) {
+					$node.on('mousedown', function (event) {
 						event.preventDefault();
 					});
 				}
@@ -474,43 +474,43 @@ let components = {
 			'./components/datetimepicker/bootstrap-datetimepicker.min.js'
 		],
 		dependencies: 'currentDevice',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
-					$node = $( node ),
-					params = parseJSON( $node.attr( 'data-datetimepicker' ) ),
+					$node = $(node),
+					params = parseJSON($node.attr('data-datetimepicker')),
 					defaults = {
 						format: 'L LT',
-						widgetParent: $node.parent().hasClass( 'input-group' ) ? $node.parent().parent() : $node.parent()
+						widgetParent: $node.parent().hasClass('input-group') ? $node.parent().parent() : $node.parent()
 					};
 
-				if ( params.inline && params.target ) {
-					let $target = $( params.target );
+				if (params.inline && params.target) {
+					let $target = $(params.target);
 					delete params.target;
 
-					$node.on( 'dp.change', function( event ) {
-						$target.val( event.date.format( params.format || 'L LT' ) );
+					$node.on('dp.change', function (event) {
+						$target.val(event.date.format(params.format || 'L LT'));
 					});
 
 					params.widgetParent = null;
 				}
 
-				if ( ( device.ios() || device.android() ) && !params.inline ) {
+				if ((device.ios() || device.android()) && !params.inline) {
 					let
-						windowClickHandler = ( function ( event ) {
-							if ( !this.data( 'DateTimePicker' ).widgetParent()[0].contains( event.target ) ) {
-								this.data( 'DateTimePicker' ).hide();
-								window.removeEventListener( 'touchstart', windowClickHandler );
+						windowClickHandler = (function (event) {
+							if (!this.data('DateTimePicker').widgetParent()[0].contains(event.target)) {
+								this.data('DateTimePicker').hide();
+								window.removeEventListener('touchstart', windowClickHandler);
 							}
-						}).bind( $node ),
-						inputClickHandler = ( function ( event ) {
+						}).bind($node),
+						inputClickHandler = (function (event) {
 							event.preventDefault();
-							this.data( 'DateTimePicker' ).show();
-							window.addEventListener( 'touchstart', windowClickHandler );
-						}).bind( $node );
+							this.data('DateTimePicker').show();
+							window.addEventListener('touchstart', windowClickHandler);
+						}).bind($node);
 
 					params.focusOnShow = false;
-					$node.on( 'mousedown', inputClickHandler );
+					$node.on('mousedown', inputClickHandler);
 				}
 
 				$node.datetimepicker({
@@ -530,11 +530,11 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/tag-manager/tag-manager.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node.querySelector( '.tag-manager-input' ) ).tagsManager({
-					tagsContainer: node.querySelector( '.tag-manager-container' ),
-					prefilled: [ "Smartphone", "Apple", "Notebook", "Gadget" ],
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node.querySelector('.tag-manager-input')).tagsManager({
+					tagsContainer: node.querySelector('.tag-manager-container'),
+					prefilled: ["Smartphone", "Apple", "Notebook", "Gadget"],
 					tagClass: 'badge badge-primary',
 				});
 			});
@@ -548,9 +548,9 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).tooltip();
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).tooltip();
 			});
 		}
 	},
@@ -562,26 +562,26 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).popover();
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).popover();
 			});
 		}
 	},
 	classSwitcher: {
 		selector: '[data-class-switcher]',
-		init: function ( nodes ) {
+		init: function (nodes) {
 			window.classSwitcher = {};
 
-			nodes.forEach( function ( node ) {
+			nodes.forEach(function (node) {
 				let
 					group,
-					params = parseJSON( node.getAttribute( 'data-class-switcher' ) ),
-					container = document.querySelector( params.group ),
-					target = container.querySelector( params.target );
+					params = parseJSON(node.getAttribute('data-class-switcher')),
+					container = document.querySelector(params.group),
+					target = container.querySelector(params.target);
 
-				if ( !window.classSwitcher[ params.group ] ) {
-					window.classSwitcher[ params.group ] = {
+				if (!window.classSwitcher[params.group]) {
+					window.classSwitcher[params.group] = {
 						targetClass: 'active',
 						triggerClass: 'active',
 						container: container,
@@ -591,30 +591,30 @@ let components = {
 					};
 				}
 
-				group = window.classSwitcher[ params.group ];
-				group.triggers.push( node );
-				group.targets.push( target );
-				if ( params.targetClass ) group.targetClass = params.targetClass;
-				if ( params.triggerClass ) group.triggerClass = params.triggerClass;
-				if ( node.classList.contains( group.triggerClass ) ) group.lastTrigger = node;
+				group = window.classSwitcher[params.group];
+				group.triggers.push(node);
+				group.targets.push(target);
+				if (params.targetClass) group.targetClass = params.targetClass;
+				if (params.triggerClass) group.triggerClass = params.triggerClass;
+				if (node.classList.contains(group.triggerClass)) group.lastTrigger = node;
 
 				node.classSwitcher = {
 					group: group,
 					target: target
 				};
 
-				node.addEventListener( 'click', function () {
+				node.addEventListener('click', function () {
 					let
 						group = this.classSwitcher.group,
-						event = new CustomEvent( 'classSwitching', { bubbles: true } );
+						event = new CustomEvent('classSwitching', { bubbles: true });
 
 					event.triggerTarget = this.classSwitcher.target;
-					group.lastTrigger.classList.remove( group.triggerClass );
-					group.lastTrigger.classSwitcher.target.classList.remove( group.targetClass );
-					this.classList.add( group.triggerClass );
-					this.classSwitcher.target.classList.add( group.targetClass );
+					group.lastTrigger.classList.remove(group.triggerClass);
+					group.lastTrigger.classSwitcher.target.classList.remove(group.targetClass);
+					this.classList.add(group.triggerClass);
+					this.classSwitcher.target.classList.add(group.targetClass);
 					group.lastTrigger = this;
-					this.dispatchEvent( event );
+					this.dispatchEvent(event);
 				});
 			});
 		}
@@ -622,21 +622,21 @@ let components = {
 	modalBtn: {
 		selector: '[data-modal-trigger]',
 		dependencies: 'modal',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let params = parseJSON( node.getAttribute( 'data-modal-trigger' ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let params = parseJSON(node.getAttribute('data-modal-trigger'));
 
-				node.addEventListener( 'click', function () {
-					let modal = document.querySelector( params.target );
+				node.addEventListener('click', function () {
+					let modal = document.querySelector(params.target);
 
-					if ( modal.animClass ) modal.classList.remove( modal.animClass );
+					if (modal.animClass) modal.classList.remove(modal.animClass);
 					modal.animClass = params.animClass;
-					if ( modal.animClass ) modal.classList.add( modal.animClass );
+					if (modal.animClass) modal.classList.add(modal.animClass);
 
-					if ( modal.classList.contains( 'show' ) ) {
-						$( modal ).modal( 'hide' );
+					if (modal.classList.contains('show')) {
+						$(modal).modal('hide');
 					} else {
-						$( modal ).modal( 'show' );
+						$(modal).modal('show');
 					}
 				});
 			});
@@ -653,9 +653,9 @@ let components = {
 			'./components/bootstrap/js/popper.js',
 			'./components/bootstrap/js/bootstrap.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).modal({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).modal({
 					show: false,
 					focus: false
 				});
@@ -674,10 +674,10 @@ let components = {
 			'./components/bootstrap/js/bootstrap.min.js',
 			'./components/colorpicker/colorpicker.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				let options = parseJSON( node.getAttribute( 'data-colorpick' ) );
-				$( node ).colorpicker({ fallbackColor: '#000', ...options });
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				let options = parseJSON(node.getAttribute('data-colorpick'));
+				$(node).colorpicker({ fallbackColor: '#000', ...options });
 			});
 		}
 	},
@@ -687,9 +687,9 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/maskedinput/jquery.maskedinput.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).mask( node.getAttribute( 'data-masked' ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).mask(node.getAttribute('data-masked'));
 			});
 		}
 	},
@@ -697,34 +697,34 @@ let components = {
 		selector: '[data-ckeditor]',
 		styles: './components/ckeditor/ckeditor.css',
 		script: './components/ckeditor/ckeditor.min.js',
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let promises = [];
 
-			nodes.forEach( function ( node ) {
-				switch ( node.getAttribute( 'data-ckeditor' ) ) {
+			nodes.forEach(function (node) {
+				switch (node.getAttribute('data-ckeditor')) {
 					case 'inline':
-						promises.push( CKEDITOR.InlineEditor.create( node ) );
+						promises.push(CKEDITOR.InlineEditor.create(node));
 						break;
 
 					case 'balloon':
-						promises.push( CKEDITOR.BalloonEditor.create( node ) );
+						promises.push(CKEDITOR.BalloonEditor.create(node));
 						break;
 
 					case 'document':
-						promises.push( CKEDITOR.DecoupledEditor.create( node.querySelector( '.document-editor-content' ) )
-							.then( function ( editor ) {
-								node.querySelector( '.document-editor-toolbar' ).appendChild( editor.ui.view.toolbar.element );
+						promises.push(CKEDITOR.DecoupledEditor.create(node.querySelector('.document-editor-content'))
+							.then(function (editor) {
+								node.querySelector('.document-editor-toolbar').appendChild(editor.ui.view.toolbar.element);
 							})
 						);
 						break;
 
 					default:
-						promises.push( CKEDITOR.ClassicEditor.create( node ) );
+						promises.push(CKEDITOR.ClassicEditor.create(node));
 						break;
 				}
 			});
 
-			return Promise.all( promises );
+			return Promise.all(promises);
 		}
 	},
 	close: {
@@ -751,14 +751,14 @@ let components = {
 			'./components/bootstrap/js/bootstrap.min.js',
 			'./components/summernote/summernote.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).summernote({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).summernote({
 					airMode: false,
 					placeholder: 'Write here...',
 					blockquoteBreakingLevel: 1,
 					focus: false,
-					...parseJSON( node.getAttribute( 'data-summernote-opts' ) )
+					...parseJSON(node.getAttribute('data-summernote-opts'))
 				});
 			});
 		}
@@ -777,13 +777,13 @@ let components = {
 			'./components/markdown/to-markdown.js',
 			'./components/markdown/bootstrap-markdown.js',
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).markdown({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).markdown({
 					iconlibrary: 'fa',
 					height: '350',
 					resize: 'vertical',
-					footer: node.getAttribute( 'data-markdown-footer' ) ? node.getAttribute( 'data-markdown-footer' ) : null
+					footer: node.getAttribute('data-markdown-footer') ? node.getAttribute('data-markdown-footer') : null
 				});
 			});
 		}
@@ -798,15 +798,15 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/nestable/nestable.js'
 		],
-		init: function ( nodes ) {
-			$( nodes ).nestable({
+		init: function (nodes) {
+			$(nodes).nestable({
 				expandBtnHTML: '<button data-action="expand" type="button" class="dd-button fa-chevron-right"></button>',
 				collapseBtnHTML: '<button data-action="collapse" type="button" class="dd-button fa-chevron-down"></button>',
 			});
 
-			$( '[data-nestable-action]' ).on( 'click', function() {
-				let obj = parseJSON( this.getAttribute( 'data-nestable-action' ) );
-				for ( let key in obj ) $( obj[ key ] ).nestable( key );
+			$('[data-nestable-action]').on('click', function () {
+				let obj = parseJSON(this.getAttribute('data-nestable-action'));
+				for (let key in obj) $(obj[key]).nestable(key);
 			});
 		}
 	},
@@ -819,44 +819,44 @@ let components = {
 		script: [
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/jstree/jstree.min.js'
-			],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node = $( node );
+		],
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node = $(node);
 
 				node.jstree({
 					types: {
-						"#" : {
-							"valid_children" : ["root"]
+						"#": {
+							"valid_children": ["root"]
 						},
-						"root" : {
-							"icon" : "fa fa-folder-o",
-							"valid_children" : ["default"]
+						"root": {
+							"icon": "fa fa-folder-o",
+							"valid_children": ["default"]
 						},
-						"default" : {
-							"icon" : "fa fa-file-o",
-							"valid_children" : ["default","file"]
+						"default": {
+							"icon": "fa fa-file-o",
+							"valid_children": ["default", "file"]
 						},
-						"file" : {
-							"icon" : "fa fa-file-o",
-							"valid_children" : []
+						"file": {
+							"icon": "fa fa-file-o",
+							"valid_children": []
 						}
 					},
-					"core" : {
-						"check_callback" : true
+					"core": {
+						"check_callback": true
 					},
-					plugins : node.attr( 'data-jstree-plugin' ) ? node.attr( 'data-jstree-plugin' ).split(' ') : null
+					plugins: node.attr('data-jstree-plugin') ? node.attr('data-jstree-plugin').split(' ') : null
 				});
 
-				if ( node.attr( 'data-jstree-plugin' ) === 'search' ) {
+				if (node.attr('data-jstree-plugin') === 'search') {
 					let timeoutId = false;
-					$( '.jstree-search' ).keyup( function () {
-						if ( timeoutId ) clearTimeout( timeoutId );
-						timeoutId = setTimeout( function () {
-							let value = $( '.jstree-search' ).val();
-							node.jstree( true ).search( value );
-						}, 250 );
-					} );
+					$('.jstree-search').keyup(function () {
+						if (timeoutId) clearTimeout(timeoutId);
+						timeoutId = setTimeout(function () {
+							let value = $('.jstree-search').val();
+							node.jstree(true).search(value);
+						}, 250);
+					});
 				}
 			});
 		}
@@ -868,18 +868,18 @@ let components = {
 			'./components/cropper/cropper.css'
 		],
 		script: './components/cropper/cropper.min.js',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
-					image = node.querySelector( '.img-container img' ),
+					image = node.querySelector('.img-container img'),
 					options = {
 						aspectRatio: 16 / 9,
-						preview: node.querySelectorAll( '.img-preview' ),
+						preview: node.querySelectorAll('.img-preview'),
 					},
-					cropper = new Cropper( image, options );
+					cropper = new Cropper(image, options);
 
-				node.querySelectorAll( '[data-cropper]' ).forEach( function ( node ) {
-					node.addEventListener( 'click', function () {
+				node.querySelectorAll('[data-cropper]').forEach(function (node) {
+					node.addEventListener('click', function () {
 						let
 							params = {},
 							target = null,
@@ -887,46 +887,46 @@ let components = {
 							canvasData = cropper.getCanvasData();
 
 						// Get parameters from data-attribute
-						try { params = JSON.parse( this.getAttribute( 'data-cropper' ) ); } catch ( error ) {}
+						try { params = JSON.parse(this.getAttribute('data-cropper')); } catch (error) { }
 
 						// Extract target from parameters
-						if ( params.target ) {
-							target = document.querySelector( params.target );
+						if (params.target) {
+							target = document.querySelector(params.target);
 							delete params.target;
 						}
 
-						for ( let key in params ) {
+						for (let key in params) {
 							// Get canvas handling
-							if ( key === 'getCroppedCanvas' ) {
-								let result = ( cropper[key]( params[key] ) ).toDataURL( 'image/jpeg' );
-								target.querySelector( '[data-cropper-result]' ).setAttribute( 'src', result );
-								target.querySelector( '[data-cropper-download]' ).setAttribute( 'href', result );
-								$( target ).modal( 'show' );
+							if (key === 'getCroppedCanvas') {
+								let result = (cropper[key](params[key])).toDataURL('image/jpeg');
+								target.querySelector('[data-cropper-result]').setAttribute('src', result);
+								target.querySelector('[data-cropper-download]').setAttribute('href', result);
+								$(target).modal('show');
 							}
 
 							// Get data methods handling
-							if ( [ 'getData', 'getContainerData', 'getImageData', 'getCanvasData', 'getCropBoxData' ].indexOf( key ) !== -1 ) {
-								target.value = JSON.stringify( cropper[key]() );
+							if (['getData', 'getContainerData', 'getImageData', 'getCanvasData', 'getCropBoxData'].indexOf(key) !== -1) {
+								target.value = JSON.stringify(cropper[key]());
 							}
 
 							// Set data methods handling
-							if ( [ 'setData', 'setCanvasData', 'setCropBoxData' ].indexOf( key ) !== -1 ) {
-								cropper[key]( parseJSON( target.value ) );
+							if (['setData', 'setCanvasData', 'setCropBoxData'].indexOf(key) !== -1) {
+								cropper[key](parseJSON(target.value));
 							}
 
 							// Other methods handling
-							if ( [ 'crop', 'reset', 'clear', 'replace', 'enable', 'disable', 'destroy', 'move', 'moveTo', 'zoom', 'zoomTo', 'rotate', 'rotateTo', 'scale', 'scaleX', 'scaleY', 'setAspectRatio', 'setDragMode' ].indexOf( key ) !== -1 ) {
-								if ( params[key] instanceof Array ) cropper[key]( params[key][0], params[key][1] );
-								else cropper[key]( params[key] );
+							if (['crop', 'reset', 'clear', 'replace', 'enable', 'disable', 'destroy', 'move', 'moveTo', 'zoom', 'zoomTo', 'rotate', 'rotateTo', 'scale', 'scaleX', 'scaleY', 'setAspectRatio', 'setDragMode'].indexOf(key) !== -1) {
+								if (params[key] instanceof Array) cropper[key](params[key][0], params[key][1]);
+								else cropper[key](params[key]);
 							}
 
 							// Options handling
-							if ( [ 'viewMode', 'responsive', 'restore', 'checkCrossOrigin', 'checkOrientation', 'modal', 'guides', 'center', 'highlight', 'background', 'autoCrop', 'movable', 'rotatable', 'scalable', 'zoomable', 'zoomOnTouch', 'zoomOnWheel', 'cropBoxMovable', 'cropBoxResizable', 'toggleDragModeOnDblclick' ].indexOf( key ) !== -1 ) {
-								if ( params[key] === 'checkbox' ) options[key] = this.checked;
+							if (['viewMode', 'responsive', 'restore', 'checkCrossOrigin', 'checkOrientation', 'modal', 'guides', 'center', 'highlight', 'background', 'autoCrop', 'movable', 'rotatable', 'scalable', 'zoomable', 'zoomOnTouch', 'zoomOnWheel', 'cropBoxMovable', 'cropBoxResizable', 'toggleDragModeOnDblclick'].indexOf(key) !== -1) {
+								if (params[key] === 'checkbox') options[key] = this.checked;
 								else options[key] = params[key];
-								options.ready = function () { cropper.setCropBoxData( cropBoxData ).setCanvasData( canvasData ); };
+								options.ready = function () { cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData); };
 								cropper.destroy();
-								cropper = new Cropper( image, options );
+								cropper = new Cropper(image, options);
 							}
 						}
 					});
@@ -944,11 +944,11 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/tower-file-input/tower-file-input.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).fileInput({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).fileInput({
 					iconClass: 'mdi-upload',
-					...parseJSON( node.getAttribute( 'data-tfi-opts' ) )
+					...parseJSON(node.getAttribute('data-tfi-opts'))
 				});
 			});
 		}
@@ -960,8 +960,8 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/easyzoom/easyzoom.min.js'
 		],
-		init: function ( nodes ) {
-			$( nodes ).easyZoom();
+		init: function (nodes) {
+			$(nodes).easyZoom();
 		}
 	},
 	xzoom: {
@@ -971,9 +971,9 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/xzoom/xzoom.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).xzoom( parseJSON( node.getAttribute( 'data-xzoom-opts' ) ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).xzoom(parseJSON(node.getAttribute('data-xzoom-opts')));
 			});
 		}
 	},
@@ -987,62 +987,62 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/slick/slick.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
 					breakpoint = { sm: 576, md: 768, lg: 992, xl: 1200, xxl: 1600 }, // slick slider uses desktop first principle
 					responsive = [];
 
 				// Making the inheritable parameters
-				for ( let key in breakpoint ) {
-					if ( node.hasAttribute( `data-slick-${key}` ) ) {
+				for (let key in breakpoint) {
+					if (node.hasAttribute(`data-slick-${key}`)) {
 						responsive.push({
-							breakpoint: breakpoint[ key ],
-							settings: parseJSON( node.getAttribute( `data-slick-${key}` ) )
+							breakpoint: breakpoint[key],
+							settings: parseJSON(node.getAttribute(`data-slick-${key}`))
 						});
 					}
 				}
 
-				$( node ).slick({ responsive: responsive });
+				$(node).slick({ responsive: responsive });
 			});
 
 			let
-				addButton = document.querySelector( '.add-slide' ),
-				removeButton = document.querySelector( '.remove-slide' ),
-				filterButton = document.querySelector( '.filter-slide' );
+				addButton = document.querySelector('.add-slide'),
+				removeButton = document.querySelector('.remove-slide'),
+				filterButton = document.querySelector('.filter-slide');
 
 			// Add sample
-			if ( addButton ) addButton.addEventListener( 'click', function () {
-				let target = document.querySelector( this.getAttribute( 'data-target-slick' ) );
-				$( target ).slick( 'slickAdd',`<div><div><div><div class="slide-content"><h1>${target.slick.$slides.length + 1}</h1></div></div></div></div>` );
+			if (addButton) addButton.addEventListener('click', function () {
+				let target = document.querySelector(this.getAttribute('data-target-slick'));
+				$(target).slick('slickAdd', `<div><div><div><div class="slide-content"><h1>${target.slick.$slides.length + 1}</h1></div></div></div></div>`);
 			});
 
 			// Remove sample
-			if ( removeButton ) removeButton.addEventListener( 'click', function () {
-				let target = document.querySelector( this.getAttribute( 'data-target-slick' ) );
-				$( target ).slick( 'slickRemove', target.slick.$slides.length - 1 );
+			if (removeButton) removeButton.addEventListener('click', function () {
+				let target = document.querySelector(this.getAttribute('data-target-slick'));
+				$(target).slick('slickRemove', target.slick.$slides.length - 1);
 			});
 
 			// Filter sample
-			if ( filterButton ) filterButton.addEventListener( 'click', function () {
-				let target = document.querySelector( this.getAttribute( 'data-target-slick' ) );
-				if ( target.getAttribute( 'data-filtered' ) === 'true' ) {
-					$( target ).slick( 'slickUnfilter' );
+			if (filterButton) filterButton.addEventListener('click', function () {
+				let target = document.querySelector(this.getAttribute('data-target-slick'));
+				if (target.getAttribute('data-filtered') === 'true') {
+					$(target).slick('slickUnfilter');
 					this.innerText = 'Filter Slides';
-					target.setAttribute( 'data-filtered', 'false' );
+					target.setAttribute('data-filtered', 'false');
 				} else {
-					$( target ).slick( 'slickFilter', ':even' );
+					$(target).slick('slickFilter', ':even');
 					this.innerText = 'Unfilter Slides';
-					target.setAttribute( 'data-filtered', 'true' );
+					target.setAttribute('data-filtered', 'true');
 				}
 			});
 
 			// Hidden slick bug fix
-			let switches = document.querySelectorAll( '[data-class-switcher]' );
+			let switches = document.querySelectorAll('[data-class-switcher]');
 
-			if ( switches.length ) switches.forEach( function ( trigger ) {
-				trigger.addEventListener( 'classSwitching', function ( event ) {
-					$( '.slick-slider', event.triggerTarget ).slick( 'setPosition' );
+			if (switches.length) switches.forEach(function (trigger) {
+				trigger.addEventListener('classSwitching', function (event) {
+					$('.slick-slider', event.triggerTarget).slick('setPosition');
 				});
 			});
 		}
@@ -1051,14 +1051,14 @@ let components = {
 		selector: '.dropzone-form',
 		styles: './components/dropzone/dropzone.css',
 		script: './components/dropzone/dropzone.min.js',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				new Dropzone( node, {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				new Dropzone(node, {
 					paramName: "file",
 					addRemoveLinks: true,
 					dictRemoveFile: '<span class="fa-close"></span>',
 					autoQueue: true,
-					...parseJSON( node.getAttribute( 'data-dropzone' ) )
+					...parseJSON(node.getAttribute('data-dropzone'))
 				});
 			});
 		}
@@ -1067,22 +1067,22 @@ let components = {
 		selector: '[data-fullscreen]',
 		styles: './components/fullscreen/fullscreen.css',
 		dependencies: 'currentDevice',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				if ( device.macos() ) {
-					node.addEventListener( 'click', function () {
-						if ( document.webkitFullscreenElement ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				if (device.macos()) {
+					node.addEventListener('click', function () {
+						if (document.webkitFullscreenElement) {
 							document.webkitExitFullscreen();
 						} else {
-							document.querySelector( this.getAttribute( 'data-fullscreen' ) ).webkitRequestFullscreen();
+							document.querySelector(this.getAttribute('data-fullscreen')).webkitRequestFullscreen();
 						}
 					});
 				} else {
-					node.addEventListener( 'click', function () {
-						if ( document.fullscreenElement ) {
+					node.addEventListener('click', function () {
+						if (document.fullscreenElement) {
 							document.exitFullscreen();
 						} else {
-							document.querySelector( this.getAttribute( 'data-fullscreen' ) ).requestFullscreen();
+							document.querySelector(this.getAttribute('data-fullscreen')).requestFullscreen();
 						}
 					});
 				}
@@ -1092,25 +1092,25 @@ let components = {
 	animationSample: {
 		selector: '[data-animation-sample]',
 		styles: './components/animate/animate.css',
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let
 				timeoutId = null,
 				endCb = null,
-				target = document.querySelector( '#animation-sample' );
+				target = document.querySelector('#animation-sample');
 
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
-					if ( timeoutId ) clearTimeout( timeoutId );
-					if ( endCb ) endCb();
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
+					if (timeoutId) clearTimeout(timeoutId);
+					if (endCb) endCb();
 
-					let animationClass = this.getAttribute( 'data-animation-sample' );
-					target.classList.add( animationClass );
+					let animationClass = this.getAttribute('data-animation-sample');
+					target.classList.add(animationClass);
 
 					endCb = function () {
-						target.classList.remove( animationClass );
+						target.classList.remove(animationClass);
 					};
 
-					timeoutId = setTimeout( endCb, 1000 );
+					timeoutId = setTimeout(endCb, 1000);
 				});
 			});
 		}
@@ -1126,7 +1126,7 @@ let components = {
 			'./components/pnotify/PNotify.min.js',
 			'./components/pnotify/PNotifyButtons.min.js'
 		],
-		init: function ( nodes ) {
+		init: function (nodes) {
 			PNotify.defaultStack.spacing1 = 10;
 			PNotify.defaultStack.spacing2 = 10;
 			PNotify.defaultStack.firstpos1 = 10;
@@ -1181,19 +1181,19 @@ let components = {
 				light: 'fa fa-exclamation-triangle'
 			};
 
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
 					PNotify.alert({
-						type: this.getAttribute( 'data-pnotify-theme' ) || 'primary',
-						title: this.getAttribute( 'data-pnotify-title' ) || 'Default title',
-						text: this.getAttribute( 'data-pnotify-text' ) || 'Default text',
-						animation: this.getAttribute( 'data-pnotify-animation' ) || 'fade',
+						type: this.getAttribute('data-pnotify-theme') || 'primary',
+						title: this.getAttribute('data-pnotify-title') || 'Default title',
+						text: this.getAttribute('data-pnotify-text') || 'Default text',
+						animation: this.getAttribute('data-pnotify-animation') || 'fade',
 						styling: 'bootstrap4',
 						icons: 'fontawesome4',
 						width: '300px',
-						stack: this.getAttribute( 'data-pnotify-stack' ) ? Stacks[ this.getAttribute( 'data-pnotify-stack' ) ] : PNotify.defaultStack,
-						addClass: this.getAttribute( 'data-pnotify-modifier' ) ? this.getAttribute( 'data-pnotify-modifier' ) : '',
-						shadow: !this.hasAttribute( 'data-pnotify-no-shadow' )
+						stack: this.getAttribute('data-pnotify-stack') ? Stacks[this.getAttribute('data-pnotify-stack')] : PNotify.defaultStack,
+						addClass: this.getAttribute('data-pnotify-modifier') ? this.getAttribute('data-pnotify-modifier') : '',
+						shadow: !this.hasAttribute('data-pnotify-no-shadow')
 					});
 				});
 			});
@@ -1214,13 +1214,13 @@ let components = {
 			'./components/base/jquery-ui.min.js',
 			'./components/datatables/datatables.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let opts = {
-					searching: node.hasAttribute( 'data-table-searching' ),
-					lengthChange: node.getAttribute( 'data-table-lengthChange' ),
-					pageLength: node.getAttribute( 'data-page-length' ) || 10,
-					lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
+					searching: node.hasAttribute('data-table-searching'),
+					lengthChange: node.getAttribute('data-table-lengthChange'),
+					pageLength: node.getAttribute('data-page-length') || 10,
+					lengthMenu: [5, 10, 25, 50, 75, 100],
 					dom: `<'row row-10'<'col-sm-12 col-md-6 pl-3'l><'col-sm-12 col-md-6 pr-3'f>>
 							<'row'<'col-sm-12'Rt>>
 							<'row row-10'<'col-sm-12 col-md-5 pl-3'i><'col-sm-12 col-md-7 pr-3'p>>`,
@@ -1229,7 +1229,7 @@ let components = {
 					}
 				};
 
-				function format ( d ) {
+				function format(d) {
 					// `d` is the original data object for the row
 					return `<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
 						<tr>
@@ -1247,7 +1247,7 @@ let components = {
 					</table>`;
 				}
 
-				switch( node.getAttribute( 'data-table-mode' ) ) {
+				switch (node.getAttribute('data-table-mode')) {
 					case 'print':
 						opts = {
 							...opts,
@@ -1268,13 +1268,13 @@ let components = {
 							]
 						};
 
-						$(node).DataTable( opts );
+						$(node).DataTable(opts);
 						break;
 
 					case 'multi-filter':
-						$(node).find( 'tfoot th' ).each( function () {
-							$(this).html( '<input class="form-control form-control-sm multiple-search" type="text" placeholder="Search '+ $(this).text() +'" />' );
-						} );
+						$(node).find('tfoot th').each(function () {
+							$(this).html('<input class="form-control form-control-sm multiple-search" type="text" placeholder="Search ' + $(this).text() + '" />');
+						});
 
 						opts = {
 							...opts,
@@ -1283,77 +1283,77 @@ let components = {
 						};
 
 						// Apply the search
-						let table = $(node).DataTable( opts );
+						let table = $(node).DataTable(opts);
 
-						table.columns().every( function () {
+						table.columns().every(function () {
 							var that = this;
 
-							$( 'input', this.footer() ).on( 'keyup change', function () {
-								if ( that.search() !== this.value ) {
+							$('input', this.footer()).on('keyup change', function () {
+								if (that.search() !== this.value) {
 									that
-										.search( this.value )
+										.search(this.value)
 										.draw();
 								}
-							} );
-						} );
+							});
+						});
 						break;
 
 					case 'row-grouping':
 						var
 							groupColumn = 2,
-							table1 = $( node ).DataTable({
-							...opts,
-							"columnDefs": [
-								{ "visible": false, "targets": groupColumn }
-							],
-							"order": [[ groupColumn, 'asc' ]],
-							"displayLength": 25,
-							"drawCallback": function ( settings ) {
-								var api = this.api();
-								var rows = api.rows( {page:'current'} ).nodes();
-								var last=null;
+							table1 = $(node).DataTable({
+								...opts,
+								"columnDefs": [
+									{ "visible": false, "targets": groupColumn }
+								],
+								"order": [[groupColumn, 'asc']],
+								"displayLength": 25,
+								"drawCallback": function (settings) {
+									var api = this.api();
+									var rows = api.rows({ page: 'current' }).nodes();
+									var last = null;
 
-								api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
-									if ( last !== group ) {
-										$(rows).eq( i ).before(
-											'<tr class="group"><td colspan="5">'+group+'</td></tr>'
-										);
+									api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+										if (last !== group) {
+											$(rows).eq(i).before(
+												'<tr class="group"><td colspan="5">' + group + '</td></tr>'
+											);
 
-										last = group;
-									}
-								} );
-							}
-						} );
+											last = group;
+										}
+									});
+								}
+							});
 
 						// Order by the grouping
-						$( node ).find( 'tbody' ).on( 'click', 'tr.group', function () {
+						$(node).find('tbody').on('click', 'tr.group', function () {
 							var currentOrder = table1.order()[0];
-							if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
-								table1.order( [ groupColumn, 'desc' ] ).draw();
+							if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+								table1.order([groupColumn, 'desc']).draw();
 							}
 							else {
-								table1.order( [ groupColumn, 'asc' ] ).draw();
+								table1.order([groupColumn, 'asc']).draw();
 							}
-						} );
+						});
 						break;
 
 					case 'col-reorder':
-						$(node).DataTable( {
+						$(node).DataTable({
 							dom: `<'row row-10'<'col-sm-12 col-md-6 pl-3'l><'col-sm-12 col-md-6 pr-3'f>>
 							<'row'<'col-sm-12'Rt>>
 							<'row row-10'<'col-sm-12 col-md-5 pl-3'i><'col-sm-12 col-md-7 pr-3'p>>`,
-						} );
+						});
 						break;
 
 					case 'collapse':
-						var table2 = $( node ).DataTable( {
+						var table2 = $(node).DataTable({
 							...opts,
 							"ajax": "components/datatables/objects.txt",
 							"columns": [
 								{
-									"className":      'details-control text-center h3 text-primary',
-									"orderable":      false,
-									"data":           null,
+									"className": 'details-control text-center h3 text-primary',
+									"orderable": false,
+									"data": null,
 									"defaultContent": '+'
 								},
 								{ "data": "name" },
@@ -1362,38 +1362,38 @@ let components = {
 								{ "data": "salary" }
 							],
 							"order": [[1, 'asc']]
-						} );
+						});
 
 						// Add event listener for opening and closing details
-						$( node ).find( 'tbody' ).on('click', 'td.details-control', function () {
+						$(node).find('tbody').on('click', 'td.details-control', function () {
 							var tr = $(this).closest('tr');
-							var row = table2.row( tr );
+							var row = table2.row(tr);
 
-							if ( row.child.isShown() ) {
+							if (row.child.isShown()) {
 								// This row is already open - close it
 								row.child.hide();
 								tr.removeClass('shown');
 							}
 							else {
 								// Open this row
-								row.child( format(row.data()) ).show();
+								row.child(format(row.data())).show();
 								tr.addClass('shown');
 							}
-						} );
+						});
 						break;
 
 					default:
-						$(node).DataTable( opts );
+						$(node).DataTable(opts);
 						break;
 				}
-			} );
+			});
 		}
 	},
 	driver: {
 		selector: '[data-driver]',
 		styles: './components/driver/driver.css',
 		script: './components/driver/driver.min.js',
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let
 				defaults = {
 					animate: true,
@@ -1401,40 +1401,40 @@ let components = {
 					nextBtnText: 'Next',
 					prevBtnText: 'Previous'
 				},
-				start = document.querySelector( '[data-driver-start]' ),
+				start = document.querySelector('[data-driver-start]'),
 				steps = [],
 				driver;
 
-			nodes.forEach( function ( node ) {
+			nodes.forEach(function (node) {
 				steps.push({
 					element: node,
-					popover: parseJSON( node.getAttribute( 'data-driver' ) )
+					popover: parseJSON(node.getAttribute('data-driver'))
 				});
 			});
 
-			driver = window.driver = new Driver( defaults );
-			driver.defineSteps( steps );
+			driver = window.driver = new Driver(defaults);
+			driver.defineSteps(steps);
 
-			if ( start ) {
-				start.addEventListener( 'click', function ( event ) {
+			if (start) {
+				start.addEventListener('click', function (event) {
 					event.stopPropagation();
 					driver.start();
 				});
 			} else {
-				setTimeout( function () {
+				setTimeout(function () {
 					driver.start();
-				}, 5000 );
+				}, 5000);
 			}
 		}
 	},
 	nprogressSample: {
 		selector: '[data-nprogress]',
 		dependencies: 'nprogress',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
-					let params = parseJSON( this.getAttribute( 'data-nprogress' ) );
-					for ( let key in params ) NProgress[key]( params[key] );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
+					let params = parseJSON(this.getAttribute('data-nprogress'));
+					for (let key in params) NProgress[key](params[key]);
 				});
 			});
 		}
@@ -1447,16 +1447,16 @@ let components = {
 			'./components/progress-circle/progress-circle.js',
 			'./components/countdown/countdown.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				var countdown = aCountdown({
-					node:  node,
-					from:  node.getAttribute( 'data-from' ),
-					to:    node.getAttribute( 'data-to' ),
-					count: node.getAttribute( 'data-count' ),
-					tick:  100,
+					node: node,
+					from: node.getAttribute('data-from'),
+					to: node.getAttribute('data-to'),
+					count: node.getAttribute('data-count'),
+					tick: 100,
 				});
-			} )
+			})
 		}
 	},
 	progressCircle: {
@@ -1467,20 +1467,20 @@ let components = {
 			'./components/progress-circle/counter.js',
 			'./components/progress-circle/progress-circle.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
 					counter = aCounter({
-						node: node.querySelector( '.progress-counter' ),
+						node: node.querySelector('.progress-counter'),
 						duration: 500,
-						formatter: function ( value ) { return value + '%'; }
+						formatter: function (value) { return value + '%'; }
 					}),
-					progress = aProgressCircle({ node: node.querySelector( '.progress-circle' ) }),
-					countHandler = (function( event ) {
-						this.render( event.value * 3.6 );
-					}).bind( progress );
+					progress = aProgressCircle({ node: node.querySelector('.progress-circle') }),
+					countHandler = (function (event) {
+						this.render(event.value * 3.6);
+					}).bind(progress);
 
-				counter.params.node.addEventListener( 'counterUpdate', countHandler );
+				counter.params.node.addEventListener('counterUpdate', countHandler);
 				counter.run();
 			});
 		}
@@ -1492,123 +1492,123 @@ let components = {
 			'./components/base/util.min.js',
 			'./components/particles/particles.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
 					defaults = {
-					'particles': {
-						'number': {
-							'value': 75,
-							'density': {
-								'enable': true,
-								'value_area': 800
-							}
-						},
-						'color': {
-							'value': '#8396d2'
-						},
-						'shape': {
-							'type': 'circle',
-							'stroke': {
-								'width': 0,
-								'color': '#8396d2'
-							},
-							'polygon': {
-								'nb_sides': 5
-							},
-							'image': {
-								'src': 'img/github.svg',
-								'width': 100,
-								'height': 100
-							}
-						},
-						'opacity': {
-							'value': 0.25,
-							'random': false,
-							'anim': {
-								'enable': false,
-								'speed': 1,
-								'opacity_min': 0.1,
-								'sync': false
-							}
-						},
-						'size': {
-							'value': 3,
-							'random': true,
-							'anim': {
-								'enable': false,
-								'speed': 40,
-								'size_min': 0.1,
-								'sync': false
-							}
-						},
-						'line_linked': {
-							'enable': true,
-							'distance': 220,
-							'color': '#8396d2',
-							'opacity': 0.1,
-							'width': 1
-						},
-						'move': {
-							'enable': true,
-							'speed': 3,
-							'direction': 'none',
-							'random': false,
-							'straight': false,
-							'out_mode': 'out',
-							'bounce': false,
-							'attract': {
-								'enable': false,
-								'rotateX': 600,
-								'rotateY': 1200
-							}
-						}
-					},
-					'interactivity': {
-						'detect_on': 'canvas',
-						'events': {
-							'onhover': {
-								'enable': true,
-								'mode': 'grab'
-							},
-							'onclick': {
-								'enable': true,
-								'mode': ''
-							},
-							'resize': true
-						},
-						'modes': {
-							'grab': {
-								'distance': 140,
-								'line_linked': {
-									'opacity': 1
+						'particles': {
+							'number': {
+								'value': 75,
+								'density': {
+									'enable': true,
+									'value_area': 800
 								}
 							},
-							'bubble': {
-								'distance': 400,
-								'size': 40,
-								'duration': 2,
-								'opacity': 8,
-								'speed': 3
+							'color': {
+								'value': '#8396d2'
 							},
-							'repulse': {
-								'distance': 100,
-								'duration': 0.4
+							'shape': {
+								'type': 'circle',
+								'stroke': {
+									'width': 0,
+									'color': '#8396d2'
+								},
+								'polygon': {
+									'nb_sides': 5
+								},
+								'image': {
+									'src': 'img/github.svg',
+									'width': 100,
+									'height': 100
+								}
 							},
-							'push': {
-								'particles_nb': 4
+							'opacity': {
+								'value': 0.25,
+								'random': false,
+								'anim': {
+									'enable': false,
+									'speed': 1,
+									'opacity_min': 0.1,
+									'sync': false
+								}
 							},
-							'remove': {
-								'particles_nb': 2
+							'size': {
+								'value': 3,
+								'random': true,
+								'anim': {
+									'enable': false,
+									'speed': 40,
+									'size_min': 0.1,
+									'sync': false
+								}
+							},
+							'line_linked': {
+								'enable': true,
+								'distance': 220,
+								'color': '#8396d2',
+								'opacity': 0.1,
+								'width': 1
+							},
+							'move': {
+								'enable': true,
+								'speed': 3,
+								'direction': 'none',
+								'random': false,
+								'straight': false,
+								'out_mode': 'out',
+								'bounce': false,
+								'attract': {
+									'enable': false,
+									'rotateX': 600,
+									'rotateY': 1200
+								}
 							}
-						}
+						},
+						'interactivity': {
+							'detect_on': 'canvas',
+							'events': {
+								'onhover': {
+									'enable': true,
+									'mode': 'grab'
+								},
+								'onclick': {
+									'enable': true,
+									'mode': ''
+								},
+								'resize': true
+							},
+							'modes': {
+								'grab': {
+									'distance': 140,
+									'line_linked': {
+										'opacity': 1
+									}
+								},
+								'bubble': {
+									'distance': 400,
+									'size': 40,
+									'duration': 2,
+									'opacity': 8,
+									'speed': 3
+								},
+								'repulse': {
+									'distance': 100,
+									'duration': 0.4
+								},
+								'push': {
+									'particles_nb': 4
+								},
+								'remove': {
+									'particles_nb': 2
+								}
+							}
+						},
+						'retina_detect': true
 					},
-					'retina_detect': true
-					},
-					custom = parseJSON( node.getAttribute( 'data-particles' ) );
+					custom = parseJSON(node.getAttribute('data-particles'));
 
-				particlesJS( 'particles-container', Util.merge( [ defaults, custom ] ) );
-			} )
+				particlesJS('particles-container', Util.merge([defaults, custom]));
+			})
 		}
 	},
 	searchResult: {
@@ -1618,52 +1618,52 @@ let components = {
 	timeline: {
 		selector: '.timeline',
 		styles: './components/timeline/timeline.css',
-		init: function ( nodes ) {
-			function resizeHandler () {
+		init: function (nodes) {
+			function resizeHandler() {
 				let
-					items = this.querySelectorAll( '.timeline-item' ),
-					tmp = [ null, null ];
+					items = this.querySelectorAll('.timeline-item'),
+					tmp = [null, null];
 
-				items.forEach( function ( item, i ) {
+				items.forEach(function (item, i) {
 					let
 						top = item.offsetTop,
-						offset = Math.ceil( item.getBoundingClientRect().height + top );
+						offset = Math.ceil(item.getBoundingClientRect().height + top);
 
-					item.classList.remove( 'timeline-right' );
-					item.classList.remove( 'timeline-left' );
+					item.classList.remove('timeline-right');
+					item.classList.remove('timeline-left');
 
-					if ( i === 0 ) {
-						item.classList.add( 'timeline-left' );
+					if (i === 0) {
+						item.classList.add('timeline-left');
 						top = item.offsetTop;
-						offset = Math.ceil( item.getBoundingClientRect().height + top );
+						offset = Math.ceil(item.getBoundingClientRect().height + top);
 						tmp[0] = tmp[1];
 						tmp[1] = offset;
-					} else if ( i === 1 ) {
-						item.classList.add( 'timeline-right' );
+					} else if (i === 1) {
+						item.classList.add('timeline-right');
 						top = item.offsetTop;
-						offset = Math.ceil( item.getBoundingClientRect().height + top );
+						offset = Math.ceil(item.getBoundingClientRect().height + top);
 						tmp[0] = tmp[1];
 						tmp[1] = offset;
-					} else if ( tmp[0] > tmp[1] ) {
-						item.classList.add( 'timeline-right' );
+					} else if (tmp[0] > tmp[1]) {
+						item.classList.add('timeline-right');
 						top = item.offsetTop;
-						offset = Math.ceil( item.getBoundingClientRect().height + top );
+						offset = Math.ceil(item.getBoundingClientRect().height + top);
 						tmp[1] = offset;
 					} else {
-						item.classList.add( 'timeline-left' );
+						item.classList.add('timeline-left');
 						top = item.offsetTop;
-						offset = Math.ceil( item.getBoundingClientRect().height + top );
+						offset = Math.ceil(item.getBoundingClientRect().height + top);
 						tmp[0] = offset;
 					}
 				});
 			}
 
-			nodes.forEach( function ( node ) {
-				if ( node.hasAttribute( 'data-auto-timeline' ) ) {
-					setTimeout( function () {
-						resizeHandler.call( node );
-						node.classList.add( 'timeline-ready' );
-						window.addEventListener( 'resize', resizeHandler.bind( node ) );
+			nodes.forEach(function (node) {
+				if (node.hasAttribute('data-auto-timeline')) {
+					setTimeout(function () {
+						resizeHandler.call(node);
+						node.classList.add('timeline-ready');
+						window.addEventListener('resize', resizeHandler.bind(node));
 					}, 500);
 				}
 			});
@@ -1677,9 +1677,9 @@ let components = {
 			'./components/lightgallery/lightgallery.min.js',
 			'./components/base/util.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node = $( node );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node = $(node);
 				let
 					defaultSettings = {
 						thumbnail: true,
@@ -1691,14 +1691,14 @@ let components = {
 							controls: 0
 						},
 						vimeoPlayerParams: {
-							byline : 0,
-							portrait : 0,
-							color : 'A90707'
+							byline: 0,
+							portrait: 0,
+							color: 'A90707'
 						}
 					},
-					customSettings = parseJSON( node.attr( 'data-lightgallery' ) );
+					customSettings = parseJSON(node.attr('data-lightgallery'));
 
-				node.lightGallery( Util.merge( [ defaultSettings, customSettings ] ) );
+				node.lightGallery(Util.merge([defaultSettings, customSettings]));
 			})
 		}
 	},
@@ -1720,9 +1720,9 @@ let components = {
 			'./components/fullcalendar/fullcalendar.min.js',
 			'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/locale/zh-tw.js',
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$('.external-events .fc-event').each(function() {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$('.external-events .fc-event').each(function () {
 					$(this).data('event', {
 						title: $.trim($(this).text()),
 						stick: true,
@@ -1735,18 +1735,18 @@ let components = {
 					});
 				});
 
-				$( node ).fullCalendar({
+				$(node).fullCalendar({
 					themeSystem: 'bootstrap4',
 					header: {
 						left: 'prev,next today',
 						center: 'title',
 						right: 'month,agendaWeek,agendaDay',
-						...parseJSON( node.getAttribute( 'data-fullcalendar-header' ) )
+						...parseJSON(node.getAttribute('data-fullcalendar-header'))
 					},
 					locale: 'zh-tw',
 					editable: false,
 					droppable: false,
-					drop: function() {
+					drop: function () {
 						// is the "remove after drop" checkbox checked?
 						if (!$(this).hasClass('event-recurring')) {
 							$(this).remove();
@@ -1759,11 +1759,11 @@ let components = {
 					// 	});
 					// },
 					weekNumbers: false,
-					weekNumbersWithinDays : true,
+					weekNumbersWithinDays: true,
 					eventLimit: true,
-					events: node.hasAttribute( 'data-fullcalendar-event' ) ? parseJSON( node.getAttribute( 'data-fullcalendar-event' ) ) : null
+					events: node.hasAttribute('data-fullcalendar-event') ? parseJSON(node.getAttribute('data-fullcalendar-event')) : null
 				});
-			} )
+			})
 		}
 	},
 	jvectorMap: {
@@ -1775,20 +1775,20 @@ let components = {
 			'./components/jvector-map/assets/world-mill.js',
 			'./components/jvector-map/assets/us-lcc-en.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( container ) {
+		init: function (nodes) {
+			nodes.forEach(function (container) {
 				let map = new jvm.Map({
-					container: $( container ).find( '.jvector-map-body' ),
-					...parseJSON( container.getAttribute( 'data-jvector-map' ) )
+					container: $(container).find('.jvector-map-body'),
+					...parseJSON(container.getAttribute('data-jvector-map'))
 				});
 
 				// flag select toggles
-				$( container ).find( '.jvector-flaq' ).on( 'click', function () {
-					map.setFocus({ region: this.getAttribute( 'data-loc' ), animate: true });
+				$(container).find('.jvector-flaq').on('click', function () {
+					map.setFocus({ region: this.getAttribute('data-loc'), animate: true });
 				});
 
 				// list selection
-				$( container ).find( '.jvector-map-list' ).on( 'change', function () {
+				$(container).find('.jvector-map-list').on('change', function () {
 					map.setFocus({ region: this.value, animate: true });
 				});
 			})
@@ -1804,7 +1804,7 @@ let components = {
 			'./components/flotchart/flotchart-pie.js',
 			'./components/flotchart/flotchart-tooltip.js'
 		],
-		init: function ( nodes ) {
+		init: function (nodes) {
 			var options = {
 				colors: ['#f3a746', '#8396d2', '#c8a9ff', '#c65b6d', '#f9f871', '#9065b3'],
 				grid: {
@@ -1827,11 +1827,11 @@ let components = {
 				}
 			};
 
-			nodes.forEach( function ( node ) {
+			nodes.forEach(function (node) {
 				$.plot(
-					$( node ),
-					JSON.parse( node.getAttribute( 'data-flotchart-data' ) ),
-					JSON.parse( node.getAttribute( 'data-flotchart-options' ) ) || options
+					$(node),
+					JSON.parse(node.getAttribute('data-flotchart-data')),
+					JSON.parse(node.getAttribute('data-flotchart-options')) || options
 				);
 			})
 		}
@@ -1853,9 +1853,9 @@ let components = {
 			'./components/rd-navbar/rd-navbar.min.js'
 		],
 		dependencies: 'currentDevice',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).RDNavbar({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).RDNavbar({
 					stickUpClone: false,
 					anchorNav: false,
 					autoHeight: false,
@@ -1891,9 +1891,9 @@ let components = {
 			'./components/highcharts/highcharts.js',
 			'./components/highcharts/highcharts-double.init.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$.getJSON( node.getAttribute( 'data-file' ), initHighchartsDouble.bind( node ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$.getJSON(node.getAttribute('data-file'), initHighchartsDouble.bind(node));
 			});
 		}
 	},
@@ -1904,11 +1904,11 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/highcharts/highcharts.js'
 		],
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let defaults = {
 				chart: {
 					type: 'area',
-					margin: [ 12, 10, 12, 10 ],
+					margin: [12, 10, 12, 10],
 					height: 70,
 					style: {
 						overflow: 'visible',
@@ -1949,7 +1949,7 @@ let components = {
 					title: {
 						text: null
 					},
-					tickPositions: [ 0 ]
+					tickPositions: [0]
 				},
 				legend: {
 					enabled: false
@@ -1991,8 +1991,8 @@ let components = {
 				}
 			};
 
-			nodes.forEach( function ( node ) {
-				Highcharts.chart( node, Highcharts.merge( defaults, parseJSON( node.getAttribute( 'data-sparkline' ) ) ) );
+			nodes.forEach(function (node) {
+				Highcharts.chart(node, Highcharts.merge(defaults, parseJSON(node.getAttribute('data-sparkline'))));
 			});
 		}
 	},
@@ -2004,9 +2004,9 @@ let components = {
 			'./components/highcharts/highcharts.js',
 			'./components/highcharts/highcharts-more.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				Highcharts.chart( node, parseJSON( node.getAttribute( 'data-highcharts-options' ) ) );
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				Highcharts.chart(node, parseJSON(node.getAttribute('data-highcharts-options')));
 			});
 		}
 	},
@@ -2018,9 +2018,228 @@ let components = {
 			'./components/highcharts/highcharts.js',
 			'./components/highcharts/variable-pie.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				Highcharts.chart( node, parseJSON( node.getAttribute( 'data-highcharts-options' ) ) );
+		init: function (nodes) {
+			//財務規劃
+			let areasplineSetting = {
+				credits: false,
+				chart: {
+					// backgroundColor: 'transparent',
+					type: 'areaspline',
+				},
+				colors: [
+					'#00CAFE',
+					'#79DB8C',
+					'#FCB281',
+					'#0D78D8'
+				],
+				legend: {
+					enabled: true,
+					align: 'left',
+					verticalAlign: 'top',
+					x: -10,
+					y: -10,
+					itemDistance: 10,
+					itemStyle: {
+						color: '#16b6d2',
+						fontWeight: 'normal'
+					},
+					itemHoverStyle: {
+						color: '#9065b3'
+					}
+				},
+				title: {
+					text: null
+				},
+				xAxis: {
+					min: 0.5,
+					max: 10.5,
+					lineColor: '#A4A4A4',
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					},
+					minorTickLength: 50,
+					categories: [
+						'2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031'
+					]
+				},
+				yAxis: {
+					min: 0,
+
+					gridLineColor: '#A4A4A4',
+					title: {
+						text: null
+					},
+					minorTicks: true,
+					minorTickLength: 0,
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					}
+				},
+				plotOptions: {
+					series: {
+						marker: {
+							enabled: false,
+							symbol: 'circle',
+							radius: 2,
+							states: {
+								hover: {
+									enabled: true
+								}
+							}
+						},
+						fillOpacity: 0.3
+					},
+					areaspline: {
+						lineWidth: 1
+					}
+				},
+				series: [
+					{
+						name: '退休金準備',
+						data: [150000, 160000, 180000, 190000, 210000, 225000, 270000, 300000, 340000, 370000, 400000, 450000],
+						fillColor: {
+							linearGradient: { x1: 0.5, y1: 0, x2: 0.5, y2: 1 },
+							stops: [
+								[0, 'rgb( 0, 202, 254 )'],
+								[0.4, 'rgba( 0, 202, 254, .6 )'],
+								[1, 'rgba( 0, 202, 254, .1 )']
+							]
+						}
+					},
+					{
+						name: '子女教育金',
+						data: [80000, 90000, 110000, 120000, 150000, 170000, 200000, 230000, 270000, 300000, 320000, 350000],
+						fillColor: {
+							linearGradient: { x1: 0.5, y1: 0, x2: 0.5, y2: 1 },
+							stops: [
+								[0, 'rgb( 121, 219, 140 )'],
+								[0.4, 'rgba( 121, 219, 140, .6 )'],
+								[1, 'rgba( 121, 219, 140, .1 )']
+							]
+						}
+					}
+				]
+			};
+			//資產狀況
+			let columnSetting = {
+				credits: false,
+				chart: {
+					type: 'column',
+					// marginTop: 50
+				},
+				colors: [
+					'#00CAFE',
+					'#79DB8C',
+					'#FCB281',
+					'#0D78D8'
+				],
+				title: {
+					text: null
+				},
+				legend: {
+					enabled: true,
+					// margin: 200,
+					align: 'left',
+					verticalAlign: 'top',
+					x: -10,
+					y: -10,
+					itemDistance: 10,
+					itemStyle: {
+						color: '#16b6d2',
+						fontWeight: 'normal'
+					},
+					itemHoverStyle: {
+						color: '#9065b3'
+					}
+				},
+				xAxis: {
+					lineColor: '#A4A4A4',
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					},
+					categories: [
+						'2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027'
+					],
+					crosshair: true
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: ''
+					},
+					gridLineColor: '#A4A4A4',
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					}
+				},
+				tooltip: {
+					headerFormat: '&lt;span style=\'font-size:10px\'&gt;{point.key}&lt;/span&gt;&lt;table&gt;',
+					pointFormat: '&lt;tr&gt;&lt;td style=\'color:{series.color};padding:0\'&gt;{series.name}: &lt;/td&gt;&lt;td style=\'padding:0\'&gt;&lt;b&gt;{point.y:.1f}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;',
+					footerFormat: '&lt;/table&gt;',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0
+					}
+				},
+				series: [
+					{
+						name: '退休金準備',
+						data: [
+							56000,78000,16500,22400,20000,0,0,0,0,0,0,0
+						]
+					},
+					{
+						name: '子女教育金',
+						data: [
+							0,132000,255000,287000,0,0,0,0,0,0,0,0
+						]
+					}
+				],
+				responsive: {
+					rules: [
+						{
+							condition: {
+								maxWidth: 575
+							},
+							chartOptions: {
+								legend: {
+									y: -10,
+									itemDistance: 10
+								}
+							}
+						}
+					]
+				}
+			};
+			nodes.forEach(function (node) {
+				if(node.hasAttribute('data-highcharts-options')){
+					Highcharts.chart(node, parseJSON(node.getAttribute('data-highcharts-options')));
+				}else if(node.hasAttribute('data-highcharts-type')){
+					switch (node.getAttribute('data-highcharts-type')) {
+						case 'column':
+							Highcharts.chart(node,columnSetting);
+							
+							break;
+							case 'areaspline':
+									Highcharts.chart(node,areasplineSetting);	
+							break;
+						default:
+							break;
+					}
+				}
+				// Highcharts.chart(node, node.hasAttribute('data-highcharts-options') ? parseJSON(node.getAttribute('data-highcharts-options')) : defaultSetting);
 			});
 		}
 	},
@@ -2031,65 +2250,65 @@ let components = {
 			'//maps.google.com/maps/api/js?key=AIzaSyBHij4b1Vyck1QAuGQmmyryBYVutjcuoRA&libraries=geometry,places&v=quarterly',
 			'./components/google-map/google-map.js'
 		],
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let promises = [];
 
-			nodes.forEach( function ( node ) {
+			nodes.forEach(function (node) {
 				let sMap = new SimpleGoogleMap({
 					node: node,
 					center: { lat: 0, lng: 0 },
 					zoom: 4,
-					...parseJSON( node.getAttribute( 'data-settings' ) )
+					...parseJSON(node.getAttribute('data-settings'))
 				});
 
-				promises.push( new Promise ( function ( resolve ) {
-					sMap.map.addListener( 'tilesloaded', resolve );
-				}) );
+				promises.push(new Promise(function (resolve) {
+					sMap.map.addListener('tilesloaded', resolve);
+				}));
 			});
 
-			return Promise.all( promises );
+			return Promise.all(promises);
 		}
 	},
 	gmapMarkerInfo: {
 		selector: '[data-marker-info]',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
 					let
-						params = parseJSON( this.getAttribute( 'data-marker-info' ) ),
-						map = document.querySelector( params.mapId ).simpleGoogleMap;
+						params = parseJSON(this.getAttribute('data-marker-info')),
+						map = document.querySelector(params.mapId).simpleGoogleMap;
 
-					map.showInfo( params.markerId );
+					map.showInfo(params.markerId);
 				});
 			});
 		}
 	},
 	gmapFilter: {
 		selector: '[data-map-filter]',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function () {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
 					let
-						params = parseJSON( this.getAttribute( 'data-map-filter' ) ),
-						map = document.querySelector( params.mapId ).simpleGoogleMap;
+						params = parseJSON(this.getAttribute('data-map-filter')),
+						map = document.querySelector(params.mapId).simpleGoogleMap;
 
-					map.filter( params.tags );
+					map.filter(params.tags);
 				});
 			});
 		}
 	},
 	gmapSearch: {
 		selector: '[data-map-search]',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'submit', function ( event ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node.addEventListener('submit', function (event) {
 					event.preventDefault();
 
 					let
-						input = this.querySelector( 'input' ),
-						map = document.querySelector( this.getAttribute( 'data-map-search' ) ).simpleGoogleMap;
+						input = this.querySelector('input'),
+						map = document.querySelector(this.getAttribute('data-map-search')).simpleGoogleMap;
 
-					map.search( input.value.trim() );
+					map.search(input.value.trim());
 				});
 			});
 		},
@@ -2097,13 +2316,13 @@ let components = {
 	gmapPanorama: {
 		selector: '[data-map-panorama]',
 		dependencies: 'gmap',
-		init: function ( nodes ) {
+		init: function (nodes) {
 			let promises = [];
 
-			nodes.forEach( function ( node ) {
+			nodes.forEach(function (node) {
 				let
-					sMap = document.querySelector( node.getAttribute( 'data-map-panorama' ) ).simpleGoogleMap,
-					panorama = new google.maps.StreetViewPanorama( node, {
+					sMap = document.querySelector(node.getAttribute('data-map-panorama')).simpleGoogleMap,
+					panorama = new google.maps.StreetViewPanorama(node, {
 						position: sMap.params.center,
 						pov: {
 							heading: 34,
@@ -2111,48 +2330,48 @@ let components = {
 						}
 					});
 
-				sMap.map.setStreetView( panorama );
+				sMap.map.setStreetView(panorama);
 			});
 
-			return Promise.all( promises );
+			return Promise.all(promises);
 		}
 	},
 	gmapNavigation: {
 		selector: '[data-map-navigation]',
 		dependencies: 'gmap',
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
-					map = document.querySelector( node.getAttribute( 'data-map-navigation' ) ).simpleGoogleMap,
-					prev = node.querySelector( '[data-map-prev]' ),
-					next = node.querySelector( '[data-map-next]' ),
-					title = node.querySelector( '[data-map-title]' ),
+					map = document.querySelector(node.getAttribute('data-map-navigation')).simpleGoogleMap,
+					prev = node.querySelector('[data-map-prev]'),
+					next = node.querySelector('[data-map-next]'),
+					title = node.querySelector('[data-map-title]'),
 					currentId = '',
 
-					setNavigation = function ( id ) {
-						map.map.setCenter( map.markers[ id ].position );
-						title.innerHTML = map.markers[ id ].html;
+					setNavigation = function (id) {
+						map.map.setCenter(map.markers[id].position);
+						title.innerHTML = map.markers[id].html;
 						currentId = id;
 					};
 
-				setNavigation( Object.getOwnPropertyNames( map.markers )[0] );
+				setNavigation(Object.getOwnPropertyNames(map.markers)[0]);
 
-				prev.addEventListener( 'click', function () {
+				prev.addEventListener('click', function () {
 					let
-						list = Object.getOwnPropertyNames( map.markers ),
-						current = list.indexOf( currentId ),
+						list = Object.getOwnPropertyNames(map.markers),
+						current = list.indexOf(currentId),
 						next = current <= 0 ? list.length - 1 : current - 1;
 
-					setNavigation( list[ next ] );
+					setNavigation(list[next]);
 				});
 
-				next.addEventListener( 'click', function () {
+				next.addEventListener('click', function () {
 					let
-						list = Object.getOwnPropertyNames( map.markers ),
-						current = list.indexOf( currentId ),
+						list = Object.getOwnPropertyNames(map.markers),
+						current = list.indexOf(currentId),
 						next = current >= list.length - 1 ? 0 : current + 1;
 
-					setNavigation( list[ next ] );
+					setNavigation(list[next]);
 				});
 			});
 		}
@@ -2168,12 +2387,12 @@ let components = {
 			'currentDevice',
 			'rdNavbar'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				MultiSwitch({
 					node: node,
 					event: device.ios() ? 'touchstart' : 'click',
-					...parseJSON( node.getAttribute( 'data-multi-switch' ) )
+					...parseJSON(node.getAttribute('data-multi-switch'))
 				});
 			});
 		}
@@ -2185,21 +2404,21 @@ let components = {
 			'currentDevice',
 			'rdNavbar'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
+		init: function (nodes) {
+			nodes.forEach(function (node) {
 				let
 					timeoutId,
 					mSwitch,
 					resizeTrigger = function () { // Highcharts resize crutch
-						clearTimeout( timeoutId );
-						timeoutId = setTimeout( function () {
-							window.dispatchEvent( new Event( 'resize' ) );
-						}, 300 );
+						clearTimeout(timeoutId);
+						timeoutId = setTimeout(function () {
+							window.dispatchEvent(new Event('resize'));
+						}, 300);
 					},
 					resizeHandler = function () {
-						if ( window.matchMedia( '(max-width: 1199px)' ).matches ) {
+						if (window.matchMedia('(max-width: 1199px)').matches) {
 							mSwitch.removeHandlers();
-							mSwitch.scope = document.querySelectorAll( '.rd-navbar-sidebar' );
+							mSwitch.scope = document.querySelectorAll('.rd-navbar-sidebar');
 							mSwitch.assignHandlers();
 						} else {
 							mSwitch.removeHandlers();
@@ -2208,7 +2427,7 @@ let components = {
 						}
 					};
 
-				if ( window.matchMedia( '(max-width: 1199px)' ).matches ) {
+				if (window.matchMedia('(max-width: 1199px)').matches) {
 					mSwitch = MultiSwitch({
 						node: node,
 						event: device.ios() ? 'touchstart' : 'click',
@@ -2226,8 +2445,8 @@ let components = {
 					})
 				}
 
-				window.addEventListener( 'resize', resizeHandler );
-				node.addEventListener( 'switch:rd-navbar-sidebar-active', resizeTrigger );
+				window.addEventListener('resize', resizeHandler);
+				node.addEventListener('switch:rd-navbar-sidebar-active', resizeTrigger);
 			});
 		}
 	},
@@ -2249,19 +2468,19 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/dockmodal/dockmodal.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				node.addEventListener( 'click', function() {
-					$( node.getAttribute( 'data-dockmodal-button' ) ).dockmodal({
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				node.addEventListener('click', function () {
+					$(node.getAttribute('data-dockmodal-button')).dockmodal({
 						initialState: 'minimized',
 						minimizedWidth: 220,
 						height: 430,
-						title: function() {
-							return document.querySelector( node.getAttribute( 'data-dockmodal-button' ) ).getAttribute( 'data-dockmodal-title' );
+						title: function () {
+							return document.querySelector(node.getAttribute('data-dockmodal-button')).getAttribute('data-dockmodal-title');
 						}
 					});
 				});
-			} )
+			})
 		}
 	},
 	widgetCounter: {
@@ -2286,31 +2505,31 @@ let components = {
 			'./components/base/jquery-3.4.1.min.js',
 			'./components/base/jquery-ui.min.js'
 		],
-		init: function ( nodes ) {
-			nodes.forEach( function ( node ) {
-				$( node ).sortable({
-					connectWith: node.getAttribute( 'data-connect-group' ),
+		init: function (nodes) {
+			nodes.forEach(function (node) {
+				$(node).sortable({
+					connectWith: node.getAttribute('data-connect-group'),
 					axis: 'y',
 					handle: '.sortable-drag',
-					update: function( event, ui ) {
+					update: function (event, ui) {
 						var Item = ui.item;
 						var ParentList = Item.parent();
 						// If item is already checked move it to "current items list"
-						if ( ParentList.hasClass( 'sortable-current' ) ) {
-							Item.find( 'input[type="checkbox"]' ).prop( 'checked', false );
+						if (ParentList.hasClass('sortable-current')) {
+							Item.find('input[type="checkbox"]').prop('checked', false);
 						}
-						if ( ParentList.hasClass( 'sortable-completed' ) ) {
-							Item.find( 'input[type="checkbox"]' ).prop( 'checked', true );
+						if (ParentList.hasClass('sortable-completed')) {
+							Item.find('input[type="checkbox"]').prop('checked', true);
 						}
 					}
 				});
-			} );
+			});
 
 			// Custom Functions to handle/assign list filter behavior
-			$( '.sortable-drag' ).on('click', function( event ) {
+			$('.sortable-drag').on('click', function (event) {
 				event.preventDefault();
-				if ( $( event.target ).parents( '.sortable-completed' ).length ) {
-					$( this ).parent().remove();
+				if ($(event.target).parents('.sortable-completed').length) {
+					$(this).parent().remove();
 				}
 			});
 		}
@@ -2327,12 +2546,12 @@ let components = {
 		selector: '.to-top',
 		script: './components/base/jquery-3.4.1.min.js',
 		dependencies: 'currentDevice',
-		init: function ( nodes ) {
-			$( nodes ).on( ( 'mousedown' ), function () {
-				this.classList.add( 'active' );
-				$( 'html, body' ).stop().animate( { scrollTop:0 }, 500, 'swing', (function () {
-					this.classList.remove( 'active' );
-				}).bind( this ));
+		init: function (nodes) {
+			$(nodes).on(('mousedown'), function () {
+				this.classList.add('active');
+				$('html, body').stop().animate({ scrollTop: 0 }, 500, 'swing', (function () {
+					this.classList.remove('active');
+				}).bind(this));
 			});
 		}
 	}
@@ -2343,13 +2562,13 @@ let components = {
  * @param {string} str - JSON string
  * @returns {object} - parsed or empty object
  */
-function parseJSON ( str ) {
+function parseJSON(str) {
 	try {
-		if ( str )  return JSON.parse( str );
+		if (str) return JSON.parse(str);
 		else return {};
-	} catch ( error ) {
+	} catch (error) {
 		//{DEL DIST}
-		console.warn( error );
+		console.warn(error);
 		//{DEL}
 		return {};
 	}
@@ -2360,16 +2579,16 @@ function parseJSON ( str ) {
  * @param {string} name
  * @return {Promise}
  */
-function checkComponent ( name ) {
-	return new Promise( function ( resolve ) {
-		let component = window.components[ name ];
-		if ( !component || component.state === 'absent' ) {
+function checkComponent(name) {
+	return new Promise(function (resolve) {
+		let component = window.components[name];
+		if (!component || component.state === 'absent') {
 			resolve();
 		} else {
-			if ( component.state === 'ready' ) {
+			if (component.state === 'ready') {
 				resolve();
 			} else {
-				window.addEventListener( `${name}:readyScripts`, resolve );
+				window.addEventListener(`${name}:readyScripts`, resolve);
 			}
 		}
 	});
@@ -2380,14 +2599,14 @@ function checkComponent ( name ) {
  * @param {function} cb - function that returns a promise
  * @returns {Promise}
  */
-function makeAsync ( params, cb ) {
+function makeAsync(params, cb) {
 	let inclusions = [];
 
-	params.forEach( function ( path ) {
-		inclusions.push( cb( path ) );
+	params.forEach(function (path) {
+		inclusions.push(cb(path));
 	});
 
-	return Promise.all( inclusions );
+	return Promise.all(inclusions);
 }
 
 /**
@@ -2395,11 +2614,11 @@ function makeAsync ( params, cb ) {
  * @param {function} cb - function that returns a promise
  * @returns {Promise}
  */
-function makeSync ( params, cb ) {
+function makeSync(params, cb) {
 	let chain = Promise.resolve();
 
-	params.forEach( function( path ) {
-		chain = chain.then( cb.bind( null, path ) );
+	params.forEach(function (path) {
+		chain = chain.then(cb.bind(null, path));
 	});
 
 	return chain;
@@ -2409,16 +2628,16 @@ function makeSync ( params, cb ) {
  * Adds a link tag to the page.
  * @param {string} path - path to styles file
  */
-function includeStyles ( path ) {
-	return new Promise( function ( resolve ) {
-		if ( document.querySelector( `link[href="${path}"]` ) ) {
+function includeStyles(path) {
+	return new Promise(function (resolve) {
+		if (document.querySelector(`link[href="${path}"]`)) {
 			resolve();
 		} else {
-			let link = document.createElement( 'link' );
-			link.setAttribute( 'rel', 'stylesheet' );
-			link.setAttribute( 'href', path );
-			link.addEventListener( 'load', resolve );
-			document.querySelector( 'head' ).appendChild( link );
+			let link = document.createElement('link');
+			link.setAttribute('rel', 'stylesheet');
+			link.setAttribute('href', path);
+			link.addEventListener('load', resolve);
+			document.querySelector('head').appendChild(link);
 		}
 	});
 }
@@ -2428,26 +2647,26 @@ function includeStyles ( path ) {
  * @param {Array|string} path - path to script file
  * @return {Promise}
  */
-function includeScript ( path ) {
-	return new Promise( function ( resolve ) {
-		let node = document.querySelector( `script[src="${path}"]` );
+function includeScript(path) {
+	return new Promise(function (resolve) {
+		let node = document.querySelector(`script[src="${path}"]`);
 
-		if ( node ) {
-			if ( node.getAttribute( 'data-loaded' ) === 'true' ) {
+		if (node) {
+			if (node.getAttribute('data-loaded') === 'true') {
 				resolve();
 			} else {
-				node.addEventListener( 'load', resolve );
+				node.addEventListener('load', resolve);
 			}
 		} else {
-			let script = document.createElement( 'script' );
+			let script = document.createElement('script');
 			script.src = path;
 
-			script.addEventListener( 'load', function () {
-				script.setAttribute( 'data-loaded', 'true' );
+			script.addEventListener('load', function () {
+				script.setAttribute('data-loaded', 'true');
 				resolve();
 			});
 
-			document.querySelector( 'head' ).appendChild( script );
+			document.querySelector('head').appendChild(script);
 		}
 	});
 }
@@ -2455,38 +2674,38 @@ function includeScript ( path ) {
 /**
  * @param {object} component
  */
-function initComponent( component ) {
+function initComponent(component) {
 	let
 		stylesState = Promise.resolve(),
 		scriptsState = Promise.resolve();
 
 	//{DEL DIST}
-	console.log( `%c[${component.name}] init:`, 'color: lightgreen; font-weight: 900;', component.nodes.length );
+	console.log(`%c[${component.name}] init:`, 'color: lightgreen; font-weight: 900;', component.nodes.length);
 	//{DEL}
 	component.state = 'load';
 
-	if ( component.styles ) {
-		stylesState = stylesState.then( makeAsync.bind( null, component.styles, includeStyles ) );
+	if (component.styles) {
+		stylesState = stylesState.then(makeAsync.bind(null, component.styles, includeStyles));
 	}
 
-	if ( component.script ) {
-		scriptsState = scriptsState.then( makeSync.bind( null, component.script, includeScript ) );
+	if (component.script) {
+		scriptsState = scriptsState.then(makeSync.bind(null, component.script, includeScript));
 	}
 
-	if ( component.dependencies ) {
-		scriptsState = scriptsState.then( makeSync.bind( null, component.dependencies, checkComponent ) );
+	if (component.dependencies) {
+		scriptsState = scriptsState.then(makeSync.bind(null, component.dependencies, checkComponent));
 	}
 
-	if ( component.init ) {
-		scriptsState = scriptsState.then( component.init.bind( null, component.nodes ) );
+	if (component.init) {
+		scriptsState = scriptsState.then(component.init.bind(null, component.nodes));
 	}
 
-	stylesState.then( function () {
-		window.dispatchEvent( new Event( `${component.name}:readyStyles` ) );
+	stylesState.then(function () {
+		window.dispatchEvent(new Event(`${component.name}:readyStyles`));
 	});
 
-	scriptsState.then( function () {
-		window.dispatchEvent( new Event( `${component.name}:readyScripts` ) );
+	scriptsState.then(function () {
+		window.dispatchEvent(new Event(`${component.name}:readyScripts`));
 		component.state = 'ready';
 	});
 
@@ -2499,58 +2718,58 @@ function initComponent( component ) {
 /**
  * @param {object} components
  */
-function initComponents( components ) {
+function initComponents(components) {
 	let
 		stylesPromises = [],
 		scriptsPromises = [];
 
-	if ( !window.components ) window.components = components;
+	if (!window.components) window.components = components;
 
 	// Components preparation
-	for ( let key in components ) {
-		let component = components[ key ];
+	for (let key in components) {
+		let component = components[key];
 
 		component.name = key;
-		component.nodes = document.querySelectorAll( component.selector );
+		component.nodes = document.querySelectorAll(component.selector);
 
-		if ( component.styles && !(component.styles instanceof Array) ) {
-			component.styles = [ component.styles ];
+		if (component.styles && !(component.styles instanceof Array)) {
+			component.styles = [component.styles];
 		}
 
-		if ( component.script && !(component.script instanceof Array) ) {
-			component.script = [ component.script ];
+		if (component.script && !(component.script instanceof Array)) {
+			component.script = [component.script];
 		}
 
-		if ( component.dependencies && !(component.dependencies instanceof Array) ) {
-			component.dependencies = [ component.dependencies ];
+		if (component.dependencies && !(component.dependencies instanceof Array)) {
+			component.dependencies = [component.dependencies];
 		}
 
-		if ( component.nodes.length ) {
+		if (component.nodes.length) {
 			component.state = 'pending';
 		} else {
 			component.state = 'absent';
 		}
 	}
 
-	for ( let key in components ) {
-		let component = components[ key ];
-		if ( component.state === 'pending' ) {
-			let componentPromises = initComponent( component );
-			stylesPromises.push( componentPromises.stylesState );
-			scriptsPromises.push( componentPromises.scriptsState );
+	for (let key in components) {
+		let component = components[key];
+		if (component.state === 'pending') {
+			let componentPromises = initComponent(component);
+			stylesPromises.push(componentPromises.stylesState);
+			scriptsPromises.push(componentPromises.scriptsState);
 		}
 	}
 
-	Promise.all( scriptsPromises ).then( function () {
-		window.dispatchEvent( new Event( 'components:ready' ) );
+	Promise.all(scriptsPromises).then(function () {
+		window.dispatchEvent(new Event('components:ready'));
 	});
 
-	Promise.all( stylesPromises ).then( function () {
-		window.dispatchEvent( new Event( 'components:stylesReady' ) );
+	Promise.all(stylesPromises).then(function () {
+		window.dispatchEvent(new Event('components:stylesReady'));
 	});
 }
 
 // Main
-window.addEventListener( 'load', function () {
-	initComponents( components );
+window.addEventListener('load', function () {
+	initComponents(components);
 });

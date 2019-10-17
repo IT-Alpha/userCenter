@@ -7,17 +7,17 @@
 
 
 // Variables
-$navbar-color: $gray-200;
+$navbar-color: $gray-100;
 $navbar-bg: $primary;
 $navbar-border: $white;
 
 $navbar-hover-color: $white;
-$navbar-hover-bg: $danger;
+$navbar-hover-bg: $primary;
 
 $navbar-title-color: $tertiary;
 $navbar-submenu-bg: $gray-700;
 
-
+$sidebar-bg: url( '../../images/sidebar-bg.jpg' );
 
 
 
@@ -25,7 +25,7 @@ $navbar-submenu-bg: $gray-700;
 .rd-navbar-fixed {
   position: relative;
   z-index: $zindex-fixed;
-  color: navbar-color;
+  color: $navbar-color;
 
   li {
     list-style: none;
@@ -91,8 +91,8 @@ $navbar-submenu-bg: $gray-700;
     overflow-y: auto;
     overflow-y: overlay;
     box-shadow: $box-shadow-sm;
-
-    
+    background-image: $sidebar-bg;
+    background-size:cover;
   }
 
 
@@ -113,11 +113,6 @@ $navbar-submenu-bg: $gray-700;
 				}
 			}
 		}
-		&:nth-child(3){
-			.rd-navbar-nav-item{
-				border-bottom:1px solid $navbar-border;
-			}
-    }
     .rd-navbar-progress{
       padding: 16px 15px 0px;
       display: flex;
@@ -163,7 +158,7 @@ $navbar-submenu-bg: $gray-700;
 	}
   .rd-navbar-icon {
     padding-right: 15px;
-    font-size: px-to-rem(16px);
+    font-size: px-to-rem(24px);
     line-height: 1;
   }
 
