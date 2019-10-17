@@ -372,7 +372,7 @@ let components = {
 	},
 	fontUbuntu: {
 		selector: 'html',
-		styles: 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap'
+    styles: 'https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,800&display=swap&subset=chinese-traditional'
 	},
 	mdi: {
 		selector: '[class*="mdi-"]',
@@ -2181,9 +2181,9 @@ let components = {
 					}
 				},
 				tooltip: {
-					headerFormat: '&lt;span style=\'font-size:10px\'&gt;{point.key}&lt;/span&gt;&lt;table&gt;',
-					pointFormat: '&lt;tr&gt;&lt;td style=\'color:{series.color};padding:0\'&gt;{series.name}: &lt;/td&gt;&lt;td style=\'padding:0\'&gt;&lt;b&gt;{point.y:.1f}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;',
-					footerFormat: '&lt;/table&gt;',
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:.1f}</b> USD</td></tr>',
+					footerFormat: '</table>',
 					shared: true,
 					useHTML: true
 				},

@@ -64,7 +64,7 @@ $custom-control-indicator-size: px-to-rem( 29px );
 
 
 // Fonts
-$font-family-base: 'Ubuntu', sans-serif;
+$font-family-base: 'Noto Sans TC','Ubuntu', sans-serif;
 $font-size-base: px-to-rem( 14px );
 $line-height-base: 1.49;
 $line-height-lg: 1.1;
@@ -84,7 +84,7 @@ $h4-line-height: $line-height-base;
 $h5-line-height: $line-height-base;
 $h6-line-height: $line-height-sm;
 
-$headings-font-weight: 700;
+$headings-font-weight: 500;
 
 // Divider
 $hr-border-color: $dark;
