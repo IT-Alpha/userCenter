@@ -12,7 +12,7 @@ $navbar-bg: $primary;
 $navbar-border: $white;
 
 $navbar-hover-color: $white;
-$navbar-hover-bg: $primary;
+$navbar-hover-bg: darken($primary,10%);
 
 $navbar-title-color: $tertiary;
 $navbar-submenu-bg: $gray-700;
