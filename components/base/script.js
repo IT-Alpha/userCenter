@@ -119,7 +119,7 @@ let components = {
 		styles: [
 			'./components/button/button.min.css',
 			'./components/input/input.css',
-			'./components/mdi/mdi.css',
+			'./components/mdi/mdi.min.css',
 			'./components/dual-listbox/dual-listbox.css'
 		],
 		script: './components/dual-listbox/dual-listbox.min.js',
@@ -264,7 +264,6 @@ let components = {
 					event.preventDefault();
 					$(this).tab('show');
 				});
-
 				$(node).find('a[data-toggle="tab"]').on('shown.bs.tab', function () {
 					window.dispatchEvent(new Event('resize'));
 				});
@@ -372,11 +371,11 @@ let components = {
 	},
 	fontUbuntu: {
 		selector: 'html',
-    styles: 'https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,800&display=swap&subset=chinese-traditional'
+		styles: 'https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,800&display=swap&subset=chinese-traditional'
 	},
 	mdi: {
 		selector: '[class*="mdi-"]',
-		styles: './components/mdi/mdi.css'
+		styles: './components/mdi/mdi.min.css'
 	},
 	spinner: {
 		selector: '[data-spinner]',
@@ -937,7 +936,7 @@ let components = {
 	fileupload: {
 		selector: '.tower-file-input',
 		styles: [
-			'./components/mdi/mdi.css',
+			'./components/mdi/mdi.min.css',
 			'./components/tower-file-input/tower-file-input.css'
 		],
 		script: [
@@ -980,7 +979,7 @@ let components = {
 	slick: {
 		selector: '.slick-slider',
 		styles: [
-			'./components/slick/slick.css',
+			'./components/slick/slick.min.css',
 			'./components/slick/slick-theme.css'
 		],
 		script: [
@@ -2164,7 +2163,7 @@ let components = {
 						}
 					},
 					categories: [
-						'2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027'
+						'2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027'
 					],
 					crosshair: true
 				},
@@ -2197,13 +2196,13 @@ let components = {
 					{
 						name: '退休金準備',
 						data: [
-							56000,78000,16500,22400,20000,0,0,0,0,0,0,0
+							56000, 78000, 16500, 22400, 20000, 0, 0, 0, 0, 0, 0, 0
 						]
 					},
 					{
 						name: '子女教育金',
 						data: [
-							0,132000,255000,287000,0,0,0,0,0,0,0,0
+							0, 132000, 255000, 287000, 0, 0, 0, 0, 0, 0, 0, 0
 						]
 					}
 				],
@@ -2223,17 +2222,132 @@ let components = {
 					]
 				}
 			};
+			let lineSetting = {
+				credits: false,
+				chart: {
+					backgroundColor: "transparent",
+					type: "line",
+				},
+				title: {
+					text: null
+				},
+				"colors": [
+					'#00CAFE',
+					'#79DB8C',
+					'#FCB281',
+					'#0D78D8'
+				],
+				xAxis: {
+					gridLineColor: "#A4A4A4",
+					lineColor: "#A4A4A4",
+					tickColor: "#A4A4A4",
+					categories: [
+						'2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031'
+					],
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					}
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: null
+					},
+					gridLineColor: '#A4A4A4',
+					labels: {
+						style: {
+							color: '#A4A4A4'
+						}
+					}
+				},
+				plotOptions: {
+					spline: {
+						lineWidth: 3
+					},
+					area: {
+						fillOpacity: 0.2
+					},
+					series: {
+						marker: {
+							enabled: false,
+							symbol: "circle",
+							radius: 4,
+							lineColor: "#FFFFFF",
+							lineWidth: 3
+						}
+					}
+				},
+				legend: {
+					enabled: true,
+					floating: true,
+					symbol: "circle",
+					align: "left",
+					verticalAlign: "top",
+					padding: 10,
+					x: -10,
+					y: -10,
+					itemDistance: 10,
+					itemStyle: {
+						color: '#16b6d2',
+						fontWeight: 'normal'
+					},
+					itemHoverStyle: {
+						color: '#9065b3'
+					}
+				},
+				series: [
+					{
+						name: '退休金準備',
+						data: [150000, 160000, 180000, 190000, 210000, 225000, 270000, 300000, 340000, 370000, 400000, 450000],
+						shadow: {
+							enabled: true,
+							color: "#00000",
+							width: 5,
+							opacity: 0.1
+						}
+					},
+					{
+						name: '子女教育金',
+						data: [130000, 150000, 140000, 154000, 246000, 265000, 278000, 314666, 333333, 386453, 404533, 445684],
+						shadow: {
+							enabled: true,
+							color: "#00000",
+							width: 5,
+							opacity: 0.1
+						}
+					},
+				],
+				responsive: {
+					rules: [
+						{
+							condition: {
+								maxWidth: 575
+							},
+							chartOptions: {
+								legend: {
+									y: -10
+								}
+							}
+						}
+					]
+				}
+			};
 			nodes.forEach(function (node) {
-				if(node.hasAttribute('data-highcharts-options')){
+				if (node.hasAttribute('data-highcharts-options')) {
 					Highcharts.chart(node, parseJSON(node.getAttribute('data-highcharts-options')));
-				}else if(node.hasAttribute('data-highcharts-type')){
+				} else if (node.hasAttribute('data-highcharts-type')) {
 					switch (node.getAttribute('data-highcharts-type')) {
 						case 'column':
-							Highcharts.chart(node,columnSetting);
-							
+							Highcharts.chart(node, columnSetting);
+
 							break;
-							case 'areaspline':
-									Highcharts.chart(node,areasplineSetting);	
+						case 'areaspline':
+							Highcharts.chart(node, areasplineSetting);
+							break;
+						case 'line':
+							Highcharts.chart(node, lineSetting);
 							break;
 						default:
 							break;

@@ -12,13 +12,16 @@ $navbar-bg: $primary;
 $navbar-border: $white;
 
 $navbar-hover-color: $white;
-$navbar-hover-bg: darken($primary,10%);
+$navbar-hover-bg: darken($primary, 10%);
 
 $navbar-title-color: $tertiary;
 $navbar-submenu-bg: $gray-700;
 
-$sidebar-bg: url( '../../images/sidebar-bg.jpg' );
+$sidebar-bg: url('../../images/sidebar-bg.jpg');
 
+
+$navbar-user-button-color: $white;
+$navbar-user-button-bg: $info;
 
 
 // Base
@@ -30,7 +33,7 @@ $sidebar-bg: url( '../../images/sidebar-bg.jpg' );
   li {
     list-style: none;
   }
-	
+
   .rd-navbar-panel {
     position: fixed;
     top: 0;
@@ -92,10 +95,38 @@ $sidebar-bg: url( '../../images/sidebar-bg.jpg' );
     overflow-y: overlay;
     box-shadow: $box-shadow-sm;
     background-image: $sidebar-bg;
-    background-size:cover;
+    background-size: cover;
+
+    .user-menu {
+      position: relative;
+      margin-top: -139px;
+      padding: 15px;
+      visibility: hidden;
+      transition: ease-in-out .3s;
+      opacity: 0;
+      border-top: 1px solid $navbar-border;
+
+      &.active {
+        margin-top: 0;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      a {
+        display: block;
+        padding: 12px 5px;
+        text-align: center;
+        font-size: 24px;
+        line-height: 24px;
+        color: $navbar-color;
+
+        &:hover {
+          background: $navbar-hover-bg;
+          color: $navbar-hover-color;
+        }
+      }
+    }
   }
-
-
 
   .rd-navbar-sidebar-panel {
     position: relative;
@@ -105,23 +136,32 @@ $sidebar-bg: url( '../../images/sidebar-bg.jpg' );
   }
 
   .rd-navbar-nav {
-		padding: 0;
-		&:nth-child(2){
-			.rd-navbar-nav-item{
-				&:first-child,&:last-child{
-					border-bottom:1px solid $navbar-border;
-				}
-			}
-		}
-    .rd-navbar-progress{
-      padding: 16px 15px 0px;
+    padding: 0;
+
+    &:nth-child(3) {
+      .rd-navbar-nav-item {
+
+        &:first-child,
+        &:last-child {
+          border-bottom: 1px solid $navbar-border;
+        }
+
+        &:last-child {
+          padding-bottom: 15px;
+        }
+      }
+    }
+
+    .rd-navbar-progress {
+      padding: 0px 15px;
+      margin-top: 15px;
       display: flex;
       justify-content: space-between;
-      color:$navbar-color;
-      flex-wrap:wrap;
-      .progress{
-        margin-bottom: 16px;
-        width:100%;
+      color: $navbar-color;
+      flex-wrap: wrap;
+
+      .progress {
+        width: 100%;
       }
     }
   }
@@ -141,21 +181,36 @@ $sidebar-bg: url( '../../images/sidebar-bg.jpg' );
     transition: .15s;
     color: $navbar-color;
     overflow: hidden;
-
     &:hover {
       cursor: pointer;
       background: rgba($navbar-hover-bg, .3);
       color: $navbar-hover-color;
     }
-	}
-	
-	.rd-navbar-nav-item.active,
-	.rd-navbar-nav-item.opened {
-		> .rd-navbar-link {
-			background: $body-bg;
-			color: $primary;
-		}
-	}
+    &.un-order {
+      opacity: 0.5;
+      position: relative;
+      &::after{
+        position: absolute;
+        content: '\F6BC';
+      }
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  
+
+  .rd-navbar-nav-item.active,
+  .rd-navbar-nav-item.opened {
+    >.rd-navbar-link {
+      background: $body-bg;
+      color: $primary;
+      &.un-order {
+        opacity: 1;
+      }
+    }
+  }
+
   .rd-navbar-icon {
     padding-right: 15px;
     font-size: px-to-rem(24px);
