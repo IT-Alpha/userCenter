@@ -160,6 +160,14 @@ $navbar-user-button-bg: $info;
       color: $navbar-color;
       flex-wrap: wrap;
 
+      &.un-order {
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
       .progress {
         width: 100%;
       }
@@ -181,32 +189,65 @@ $navbar-user-button-bg: $info;
     transition: .15s;
     color: $navbar-color;
     overflow: hidden;
+
     &:hover {
       cursor: pointer;
       background: rgba($navbar-hover-bg, .3);
       color: $navbar-hover-color;
     }
+
     &.un-order {
       opacity: 0.5;
-      position: relative;
-      &::after{
-        position: absolute;
-        content: '\F6BC';
-      }
+
       &:hover {
         opacity: 0.7;
       }
     }
+
+    &.un-success {
+      position: relative;
+
+      span {
+        opacity: 0.5;
+      }
+
+      &::after {
+        content: '\F5D6';
+        font: normal normal normal 24px/1 "Material Design Icons";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $warning;
+      }
+
+      &:hover {
+        span {
+          opacity: 0.7;
+        }
+      }
+    }
   }
-  
+
 
   .rd-navbar-nav-item.active,
   .rd-navbar-nav-item.opened {
     >.rd-navbar-link {
       background: $body-bg;
       color: $primary;
+
       &.un-order {
         opacity: 1;
+      }
+
+      &.un-success {
+        >span {
+          opacity: 1;
+        }
+
+        &::after {
+          color: $primary;
+        }
       }
     }
   }

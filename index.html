@@ -14,6 +14,7 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="components/base/base.min.css">
   <script src="components/base/script.js"></script>
+
 </head>
 
 <body>
@@ -188,6 +189,16 @@
                   </div>
                 </div>
               </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress un-order">
+                  <span>子女教育金</span>
+                  <span>0%</span>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar progress-light  progress-bar-striped" role="progressbar" style="width: 0%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </li>
             </ul>
             <ul class="rd-navbar-nav">
               <li class="rd-navbar-nav-item">
@@ -199,7 +210,6 @@
               <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span
                     class="rd-navbar-icon mdi mdi-airballoon"></span>退休金準備</a>
               </li>
-
               <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#">
                   <span class="rd-navbar-icon mdi mdi-school"></span>子女教育金</a>
               </li>
@@ -209,11 +219,32 @@
               <li class="rd-navbar-nav-item active"><a class="rd-navbar-link un-order" href="#">
                   <span class="rd-navbar-icon mdi mdi-shield"></span>財產保值抗通膨</a>
               </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#">
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
                   <span class="rd-navbar-icon mdi mdi-account-multiple-plus"></span>其他目標</a>
               </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#">
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
                   <span class="rd-navbar-icon mdi mdi-cash-usd"></span>穩定累積財富</a>
+              </li>
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
+                  <span class="rd-navbar-icon mdi mdi-home"></span>存錢買房</a>
+              </li>
+              <li class="rd-navbar-nav-item active">
+                <a class="rd-navbar-link un-success" href="#">
+                  <span class="rd-navbar-icon mdi mdi-shield"></span>
+                  <span>財產保值抗通膨</span>
+                </a>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <a class="rd-navbar-link un-success" href="#">
+                  <span class="rd-navbar-icon mdi mdi-account-multiple-plus"></span>
+                  <span>其他目標</span>
+                </a>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <a class="rd-navbar-link un-success " href="#">
+                  <span class="rd-navbar-icon mdi mdi-cash-usd"></span>
+                  <span>穩定累積財富</span>
+                </a>
               </li>
               <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="question.aspx">
                   <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
@@ -249,11 +280,11 @@
                   <div class="tab-pane fade show active" id="dashboardGraph1" role="tabpanel">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-lg-7 col-xl-8 pt-4 py-md-4">
+                        <div class="col-lg-7 col-xl-8">
                           <div class="highcharts-container highcharts-container-2" data-highcharts-type="line">
                           </div>
                         </div>
-                        <div class="col-lg-5 col-xl-4 py-4 border-lg-left">
+                        <div class="col-lg-5 col-xl-4 border-lg-left">
                           <div class="slick-slider"
                             data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
                             data-slick='{"arrows":false,"dots":true,"slidesToShow":2,"slidesToScroll":2,"vertical":true,"verticalSwiping":true,"infinite":false}'>
@@ -409,11 +440,11 @@
                   <div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
                     <div class="container-fluid">
                       <div class="row">
-                        <div class="col-lg-7 col-xl-8 pt-4 py-md-4">
+                        <div class="col-lg-7 col-xl-8">
                           <div class="highcharts-container highcharts-container-2" data-highcharts-type="column">
                           </div>
                         </div>
-                        <div class="col-lg-5 col-xl-4 py-4 border-lg-left">
+                        <div class="col-lg-5 col-xl-4 border-lg-left">
                           <div class="list-block-container list-block-lg">
                             <h5 class="list-block-title align-items-baseline">
                               <span class="font-weight-bold">總資產狀況</span>
@@ -479,7 +510,7 @@
                               </thead>
                               <tfoot>
                                 <tr>
-                                  <th scope="row"></th>
+                                  <th scope="row">總計</th>
                                   <td></td>
                                   <td>100%</td>
                                   <td>0.7%</td>
@@ -533,7 +564,6 @@
                             </table>
                           </div>
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -541,63 +571,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="tab-content">
-
-              <div class="tab-pane fade" id="dashboardGraph5" role="tabpanel2">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="panel admin-panel">
-                        <div class="panel-body">
-                          <h3 class="font-weight-bold text-secondary">總資產狀況</h3>
-                          <ul class="list-unstyled list-divided mt-3">
-                            <li class="d-flex justify-content-between">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">總投入金額</a></div>
-                              <div class="lead">USD $ 51,650</div>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">資產淨值</a></div>
-                              <div class="lead">USD $ 1,650</div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="panel admin-panel">
-                        <div class="panel-body">
-                          <h3 class="font-weight-bold text-secondary">累積(Cumulative)|年度(Annualized)</h3>
-                          <ul class="list-unstyled list-divided mt-3">
-                            <li class="d-flex justify-content-between">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">淨值報酬率</a></div>
-                              <div class="lead">6.5%</div>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">含息報酬率</a></div>
-                              <div class="lead">7.3%</div>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                              <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
-                                  class="link-black" href="#">配息金額</a></div>
-                              <div class="lead">USD $ 1,500</div>
-                            </li>
-                            <li class="d-flex justify-content-end"><a class="link-500" href="#">瞭解更多</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
+          
           <!-- <div class="col-lg-6">
             <div class="panel admin-panel">
               <div class="panel-header">
@@ -624,7 +598,7 @@
               </div>
               <div class="panel-body pb-5 text-center">
                 <div class="highcharts-container highcharts-container-1"
-                  data-highcharts-options="{&quot;credits&quot;:false,&quot;chart&quot;:{&quot;type&quot;:&quot;variablepie&quot;,&quot;marginBottom&quot;:-70},&quot;title&quot;:{&quot;text&quot;:null},&quot;tooltip&quot;:{&quot;headerFormat&quot;:&quot;&quot;,&quot;pointFormat&quot;:&quot;&lt;span style=\&quot;color:{point.color}\&quot;&gt;●&lt;/span&gt; &lt;b&gt; {point.name}&lt;/b&gt;&lt;br/&gt;Users: &lt;b&gt;{point.z}%&lt;/b&gt;&lt;br/&gt;&quot;},&quot;plotOptions&quot;:{&quot;variablepie&quot;:{&quot;startAngle&quot;:20,&quot;endAngle&quot;:380,&quot;borderWidth&quot;:0,&quot;shadow&quot;:true,&quot;dataLabels&quot;:{&quot;enabled&quot;:false},&quot;colors&quot;:[{&quot;linearGradient&quot;:{&quot;x1&quot;:0,&quot;y1&quot;:0,&quot;x2&quot;:1,&quot;y2&quot;:1},&quot;stops&quot;:[[0.5,&quot;#5FC1DD&quot;],[1,&quot;#415cf8&quot;]]}]}},&quot;series&quot;:[{&quot;minPointSize&quot;:10,&quot;zMin&quot;:0,&quot;name&quot;:&quot;countries&quot;,&quot;data&quot;:[{&quot;name&quot;:&quot;Spain&quot;,&quot;y&quot;:25,&quot;z&quot;:40},{&quot;name&quot;:&quot;France&quot;,&quot;y&quot;:25,&quot;z&quot;:5},{&quot;name&quot;:&quot;Poland&quot;,&quot;y&quot;:25,&quot;z&quot;:15},{&quot;name&quot;:&quot;Czech Republic&quot;,&quot;y&quot;:25,&quot;z&quot;:25}]}],&quot;responsive&quot;:{&quot;rules&quot;:[{&quot;condition&quot;:{&quot;maxWidth&quot;:575},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:10}}},{&quot;condition&quot;:{&quot;maxWidth&quot;:767},&quot;chartOptions&quot;:{&quot;chart&quot;:{&quot;marginBottom&quot;:-30}}}]}}">
+                data-highcharts-type="pie">
                 </div>
                 <div class="row row-15 justify-content-center">
                   <div class="col-4 col-sm-3 col-xxl-2">
@@ -678,18 +652,16 @@
           <div class="col-lg-6">
             <div class="panel admin-panel">
               <div class="panel-header">
-                <div class="h3 font-weight-bold panel-title flex-grow-1">我沒幫您做了什麼？</div>
+                <div class="h3 font-weight-bold panel-title flex-grow-1">我們幫您做了什麼？</div>
               </div>
               <div class="panel-body">
-                <div class="d-flex justify-content-between flex-wrap py-3">
+                <div class="d-flex justify-content-between flex-wrap pb-3">
                   <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                       href="#">資產全球多元化配置</a></div>
                   <div class="lead">+ USD $ 1,650</div>
                   <div class="w-100 pl-4 text-gray-600">
-                    <div style="max-width: 400px;">
                       我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
                       及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
-                    </div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between flex-wrap py-3">
@@ -697,10 +669,8 @@
                       href="#">節省投資費用</a></div>
                   <div class="lead">+ USD $ 650</div>
                   <div class="w-100 pl-4 text-gray-600">
-                    <div style="max-width: 400px;">
                       阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
                       被收取過高的投資費用，影響長期投資獲利。
-                    </div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between flex-wrap py-3">
@@ -708,21 +678,17 @@
                       href="#">投資組合再平衡</a></div>
                   <div class="lead">+ USD $ 650</div>
                   <div class="w-100 pl-4 text-gray-600">
-                    <div style="max-width: 400px;">
                       根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
                       投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
-                    </div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between flex-wrap py-3">
+                <div class="d-flex justify-content-between flex-wrap pt-3">
                   <div><small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                       href="#">降低進場時機錯誤的可能</a></div>
                   <div class="lead">+ USD $ 650</div>
                   <div class="w-100 pl-4 text-gray-600">
-                    <div style="max-width: 400px;">
                       投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
                       降低可能犯的投資錯誤而損失市場獲利時機。
-                    </div>
                   </div>
                 </div>
               </div>
