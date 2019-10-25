@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <div class="page">
+  <div class="page" id="order">
     <header class="section page-header">
       <!--RD Navbar-->
       <div class="rd-navbar-wrap">
@@ -31,118 +31,12 @@
             <div class="rd-navbar-panel-cell">
               <!-- Breadcrumbs-->
               <ul class="breadcrumbs">
-                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="overview.html"><span
+                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="index.html"><span
                       class="breadcrumbs-icon mdi mdi-view-grid"></span><span>總覽頁面</span></a></li>
               </ul>
             </div>
             <div class="rd-navbar-panel-center"></div>
-            <!-- <div class="rd-navbar-panel-cell">
-              <button class="btn button-navbar"
-                data-multi-switch='{"targets":"#subpanel-chat","scope":"#subpanel-chat","isolate":"[data-multi-switch]"}'><span
-                  class="fa-comments"></span><span class="badge badge-danger rounded-circle">...</span></button>
-              <div class="rd-navbar-subpanel" id="subpanel-chat">
-                <div class="panel panel-sm">
-                  <div class="panel-header">
-                    <h5><span class="panel-icon fa-pencil"></span> <span>Chat widget</span>
-                    </h5>
-                  </div>
-                  <div class="panel-body scroller scroller-vertical">
-                    <div class="media media-cloud group-10">
-                      <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt="" />
-                      </div>
-                      <div class="media-body">
-                        <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
-                        </h4>
-                        <div class="media-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                          ante sollicitudin.</div>
-                      </div>
-                    </div>
-                    <div class="media media-cloud flex-row-reverse group-10">
-                      <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt="" />
-                      </div>
-                      <div class="media-body media-body-right-caret">
-                        <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
-                        </h4>
-                        <div class="media-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                          tempor incididunt.</div>
-                      </div>
-                    </div>
-                    <div class="media media-cloud group-10">
-                      <div class="media-item"><img src="images/users/user-04-50x50.jpg" width="50" height="50" alt="" />
-                      </div>
-                      <div class="media-body">
-                        <h4 class="media-heading offline">Sara Marshall <small>- 12:30am</small>
-                        </h4>
-                        <div class="media-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                          ut aliquip ex ea.</div>
-                      </div>
-                    </div>
-                    <div class="media media-cloud flex-row-reverse group-10">
-                      <div class="media-item"><img src="images/users/user-01-50x50.jpg" width="50" height="50" alt="" />
-                      </div>
-                      <div class="media-body media-body-right-caret">
-                        <h4 class="media-heading online">Tom Jorgensen <small>- 12:30am</small>
-                        </h4>
-                        <div class="media-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                          officia.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel-footer">
-                    <div class="input-group form-group">
-                      <input class="form-control" type="text" placeholder="Enter your message here" />
-                      <div class="input-group-append">
-                        <button class="btn btn-primary">Send</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="rd-navbar-panel-cell">
-              <button class="btn button-navbar"
-                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
-                  class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
-              <div class="rd-navbar-subpanel" id="subpanel-notifications">
-                <div class="panel panel-sm">
-                  <div class="panel-header">
-                    <h5><span class="panel-icon fa-bell"> </span><span>Notifications</span></h5>
-                  </div>
-                  <div class="panel-body scroller scroller-vertical">
-                    <div class="group-5">
-                      <div class="alert alert-dismissible alert-primary alert-darker alert-sm" role="alert"><span
-                          class="alert-icon fa-telegram"></span><span>Message</span>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
-                            class="fa-close" aria-hidden="true"></span></button>
-                      </div>
-                      <div class="alert alert-dismissible alert-secondary alert-sm" role="alert"><span
-                          class="alert-icon fa-warning"></span><span>Warning</span>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
-                            class="fa-close" aria-hidden="true"></span></button>
-                      </div>
-                      <div class="alert alert-dismissible alert-danger alert-sm" role="alert"><span
-                          class="alert-icon fa-remove"></span><span>Error</span>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
-                            class="fa-close" aria-hidden="true"></span></button>
-                      </div>
-                      <div class="alert alert-dismissible alert-success alert-sm" role="alert"><span
-                          class="alert-icon fa-thumbs-up"></span><span>Success</span>
-                        <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
-                            class="fa-close" aria-hidden="true"></span></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel-footer"><a class="btn btn-dark btn-sm" href="alerts.html">See more</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="rd-navbar-panel-cell">
-              <button class="btn button-navbar"
-                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
-                  class="fa-sliders"></span></button>
-            </div> -->
           </div>
-
           <div class="rd-navbar-sidebar scroller">
             <div class="rd-navbar-sidebar-panel">
               <div class="group-25">
@@ -170,12 +64,21 @@
               <li class="rd-navbar-nav-item">
                 <div class="rd-navbar-title h5">目標達成率</div>
               </li>
-              <li class="rd-navbar-nav-item">
+              <li class="rd-navbar-nav-item" v-for="(item) in sidebar">
+                <div class="rd-navbar-progress" :class="item[2] == '2' ? '' : 'un-order'">
+                  <span>{{item[1] | goalText}}</span>
+                  <span>{{item[3]}}%</span>
+                  <div class="progress progress-sm progress-light">
+                    <div class="progress-bar progress-bar-striped" :style="{'width': item[3] + '%'}"></div>
+                  </div>
+                </div>
+              </li>
+              <!-- <li class="rd-navbar-nav-item">
                 <div class="rd-navbar-progress">
                   <span>退休金準備</span>
                   <span>25%</span>
                   <div class="progress progress-sm progress-light">
-                    <div class="progress-bar  progress-bar-striped" role="progressbar" style="width: 25%"
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%"
                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
@@ -185,66 +88,66 @@
                   <span>子女教育金</span>
                   <span>25%</span>
                   <div class="progress progress-sm progress-light">
-                    <div class="progress-bar  progress-bar-striped" role="progressbar" style="width: 25%"
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%"
                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </li>
               <li class="rd-navbar-nav-item">
                 <div class="rd-navbar-progress un-order">
-                  <span>子女教育金</span>
+                  <span>存錢買房</span>
                   <span>0%</span>
                   <div class="progress progress-sm progress-light">
-                    <div class="progress-bar  progress-bar-striped" role="progressbar" style="width: 0%"
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
                       aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress un-order">
+                  <span>財產保值抗通膨</span>
+                  <span>0%</span>
+                  <div class="progress progress-sm progress-light">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress un-order">
+                  <span>其他目標</span>
+                  <span>0%</span>
+                  <div class="progress progress-sm progress-light">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <div class="rd-navbar-progress un-order">
+                  <span>穩定累積財富</span>
+                  <span>0%</span>
+                  <div class="progress progress-sm progress-light">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
+                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </li> -->
             </ul>
             <ul class="rd-navbar-nav">
               <li class="rd-navbar-nav-item">
                 <div class="rd-navbar-title">目標旅程</div>
               </li>
-              <li class="rd-navbar-nav-item active"><a class="rd-navbar-link" href="index.html"><span
-                    class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#"><span
-                    class="rd-navbar-icon mdi mdi-airballoon"></span>退休金準備</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="#">
-                  <span class="rd-navbar-icon mdi mdi-school"></span>子女教育金</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
-                  <span class="rd-navbar-icon mdi mdi-home"></span>存錢買房</a>
-              </li>
-              <li class="rd-navbar-nav-item active"><a class="rd-navbar-link un-order" href="#">
-                  <span class="rd-navbar-icon mdi mdi-shield"></span>財產保值抗通膨</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
-                  <span class="rd-navbar-icon mdi mdi-account-multiple-plus"></span>其他目標</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
-                  <span class="rd-navbar-icon mdi mdi-cash-usd"></span>穩定累積財富</a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link un-order" href="#">
-                  <span class="rd-navbar-icon mdi mdi-home"></span>存錢買房</a>
-              </li>
-              <li class="rd-navbar-nav-item active">
-                <a class="rd-navbar-link un-success" href="#">
-                  <span class="rd-navbar-icon mdi mdi-shield"></span>
-                  <span>財產保值抗通膨</span>
+              <li class="rd-navbar-nav-item" :class="active == '' ? 'active' : null">
+                <a class="rd-navbar-link" href="order.aspx">
+                  <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
                 </a>
               </li>
-              <li class="rd-navbar-nav-item">
-                <a class="rd-navbar-link un-success" href="#">
-                  <span class="rd-navbar-icon mdi mdi-account-multiple-plus"></span>
-                  <span>其他目標</span>
-                </a>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <a class="rd-navbar-link un-success " href="#">
-                  <span class="rd-navbar-icon mdi mdi-cash-usd"></span>
-                  <span>穩定累積財富</span>
+              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[0] == active ? 'active' : null">
+                <a class="rd-navbar-link" :class="item[2] == '2' ? null : item[2] | statusClass"
+                  :href="'order.html?PID=' + item[0]">
+                  <span class="rd-navbar-icon mdi" :class="item[1] | goalIcon"></span>
+                  <span>{{item[1] | goalText}}</span>
                 </a>
               </li>
               <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="question.aspx">
@@ -507,7 +410,7 @@
                                 <tr>
                                   <th scope="col">代碼</th>
                                   <th scope="col">資產名稱</th>
-                                  <th scope="col" >持有比例</th>
+                                  <th scope="col">持有比例</th>
                                   <th scope="col">基金費用/年%</th>
                                   <th scope="col">持有價值</th>
                                 </tr>
@@ -576,24 +479,7 @@
             </div>
           </div>
 
-          <!-- <div class="col-lg-6">
-            <div class="panel admin-panel">
-              <div class="panel-header">
-                <div class="d-flex align-items-center">
-                  <div class="h3 font-weight-bold panel-title flex-grow-1">投資日曆</div>
-                </div>
-              </div>
-              <div class="panel-body pt-2">
-                <div class="table-responsive">
-                  <div class="fullcalendar calendar-borderless"
-                    data-fullcalendar-header='{"left":"prev","center":"title","right":"next"}'
-                    data-fullcalendar-event='[{"title": "阿爾發說明會","start": "2019-10-11","color":"#FF6F80"},{"title": "投組再平衡","start": "2019-10-29","color":"#FF6F80"},{"title":"與顧問視訊","start":"2019-10-22","color":"#AFDD5F"}]'>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <div class="col-lg-4">
+          <div class="col-lg-4" v-if="active">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
@@ -612,7 +498,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4" v-if="active">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
@@ -631,11 +517,11 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4" v-if="active">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
-                    距離退休時間
+                  距離退休時間
                 </div>
                 <div>32年</div>
                 <div>距離你退休的時間</div>
@@ -705,11 +591,10 @@
                     </div>
                   </div>
                 </div>
-                <!-- <button class="btn btn-lg btn-outline-primary mt-4">投資組合再平衡</button> -->
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6" v-if="!active">
             <div class="panel admin-panel">
               <div class="panel-header">
                 <div class="h3 font-weight-bold panel-title flex-grow-1">我們幫您做了什麼？</div>
@@ -783,112 +668,9 @@
         </div>
       </div>
     </section>
-
-    <div class="sidebar scroller">
-      <div class="timeline timeline-simple">
-        <div class="item">
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-              </div><span class="ml-2">1:25am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
-              </div><span class="ml-2">3:05am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-              </div><span class="ml-2">4:15am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-              </div><span class="ml-2">7:45am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-              </div><span class="ml-2">4:15am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-              </div><span class="ml-2">7:45am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-              </div><span class="ml-2">8:25am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-              </div><span class="ml-2">9:35am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Sarah</span> Added a new item to her store: <a href="#">Notebook</a>
-              </div><span class="ml-2">4:15am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-              </div><span class="ml-2">7:45am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-              </div><span class="ml-2">4:15am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-success fa-usd"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Apple</a>
-              </div><span class="ml-2">7:45am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-secondary fa-tags"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Michael</span> Added a new item to his store: <a href="#">iPod</a>
-              </div><span class="ml-2">8:25am</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-icon timeline-item-icon-info fa-fire"></div>
-            <div class="d-flex justify-content-between">
-              <div><span class="text-info">Admin</span> Added a new item to his store: <a href="#">Software</a>
-              </div><span class="ml-2">9:35am</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="js/order.js"></script>
 </body>
 
 </html>

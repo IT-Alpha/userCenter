@@ -68,3 +68,21 @@
 		background-color: red;
 	}
 }
+
+//no-data-to-display
+.highcharts-label.highcharts-no-data{
+	left: 0 !important;
+	top:0 !important;
+	right: 0 !important;
+	bottom:0 !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba($info,0.8);
+	span{
+		font-size: 2rem !important;
+		color:$white !important;
+		position: static !important;
+		font-family: inherit !important;
+	}
+}

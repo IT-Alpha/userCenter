@@ -39,9 +39,14 @@ $progress-font-size-lg: $progress-font-size * 1.5;
 
 // Color themes
 @each $color, $value in $theme-colors {
-	.progress-#{$color} {
-		background-color: $value;
-		color: color-yiq( $value );
+	.progress{
+		&.progress-#{$color} {
+			background-color: rgba($value,0.2);
+			color: color-yiq( $value );
+			.progress-bar{
+				background-color: $value;
+			}
+		}
 	}
 }
 

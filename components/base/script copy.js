@@ -2035,6 +2035,12 @@ let components = {
         title: {
           text: null
         },
+        lang: {
+          noData: "下單成功後即可查看資產狀況"
+        },
+        noData: {
+          useHTML: true
+        },
         legend: {
           enabled: true,
           // margin: 200,
@@ -2077,7 +2083,7 @@ let components = {
         },
         tooltip: {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:.1f}</b> USD</td></tr>',
           footerFormat: '</table>',
           shared: true,
           useHTML: true
@@ -2088,26 +2094,19 @@ let components = {
             borderWidth: 0
           }
         },
-        lang: {
-          noData: "下單成功後即可查看資產狀況",
-          thousandsSep: '\u002C'
-        },
-        noData: {
-          useHTML: true
-        },
         series: [
           {
             name: '退休金準備',
             data: [
-              10000, 20000, 35000, 0, 0, 0, 0, 0, 0, 0, 0, 0
+              // 10000, 20000, 35000, 0, 0, 0, 0, 0, 0, 0, 0, 0
             ]
           },
-          {
-            name: '子女教育金',
-            data: [
-              0, 40000, 55000, 0, 0, 0, 0, 0, 0, 0, 0, 0
-            ]
-          }
+          // {
+          //   name: '子女教育金',
+          //   data: [
+          //     0, 40000, 55000, 0, 0, 0, 0, 0, 0, 0, 0, 0
+          //   ]
+          // }
         ],
         responsive: {
           rules: [
@@ -2141,13 +2140,6 @@ let components = {
           '#FCB281',
           '#0D78D8'
         ],
-        tooltip: {
-          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
-          footerFormat: '</table>',
-          // shared: true,
-          useHTML: true
-        },
         lang: {
           thousandsSep: ','
         },
@@ -2223,7 +2215,7 @@ let components = {
           },
           {
             name: '子女教育金',
-            data:  [
+            data: [
               20000,30000,45000,60000,120000,160000,215000,270000,350000,430000,
             ],
             shadow: {
@@ -2248,7 +2240,7 @@ let components = {
         },
         tooltip: {
           headerFormat: null,
-          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>佔<b>{point.z}%</b><br/>'
+          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>Users: <b>{point.z}%</b><br/>'
         },
         plotOptions: {
           variablepie: {
