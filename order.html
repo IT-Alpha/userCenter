@@ -13,14 +13,20 @@
   <meta property="og:url" content="http://digipunk.netii.net">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="components/base/base.min.css">
-  <script src="components/base/script.js"></script>
+
 
 </head>
 
 <body>
-  <div class="page" id="order">
+  <div class="page">
     <header class="section page-header">
       <!--RD Navbar-->
+      <div class="d-none">
+        <div id="sidebarData">
+          [["P2019102500001", '1', '2','15'],['P2019102500002', '2','2','50'],['P2019102500003',
+          '3','1','0'],['P2019102500004', '4','1','0'],['P2019102500005', '5','0','0'],['P2019102500006', '6','0','0']]
+        </div>
+      </div>
       <div class="rd-navbar-wrap">
         <nav class="rd-navbar">
           <div class="rd-navbar-panel">
@@ -31,7 +37,7 @@
             <div class="rd-navbar-panel-cell">
               <!-- Breadcrumbs-->
               <ul class="breadcrumbs">
-                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="index.html"><span
+                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="order.html"><span
                       class="breadcrumbs-icon mdi mdi-view-grid"></span><span>總覽頁面</span></a></li>
               </ul>
             </div>
@@ -139,13 +145,12 @@
                 <div class="rd-navbar-title">目標旅程</div>
               </li>
               <li class="rd-navbar-nav-item" :class="active == '' ? 'active' : null">
-                <a class="rd-navbar-link" href="order.aspx">
+                <a class="rd-navbar-link" href="order.html">
                   <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
                 </a>
               </li>
               <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[0] == active ? 'active' : null">
-                <a class="rd-navbar-link" :class="item[2] == '2' ? null : item[2] | statusClass"
-                  :href="'order.html?PID=' + item[0]">
+                <a class="rd-navbar-link" :class="item[2] | statusClass" :href="'order.html?PID=' + item[0]">
                   <span class="rd-navbar-icon mdi" :class="item[1] | goalIcon"></span>
                   <span>{{item[1] | goalText}}</span>
                 </a>
@@ -159,11 +164,39 @@
         </nav>
       </div>
     </header>
-    <section>
+    <section id="order">
+      <div class="d-none">
+        <!-- 總攬 -->
+        <!-- <div id="tab1Data">
+          [[1,25,16500,65,1500],[2,25,16500,20],[3,25,12000,20],[4,25,16500,65,15],[5,25,16500,65,1500],[6,25,16500,65,1500]]
+        </div> -->
+        <!-- 單計畫 -->
+        <div id="tab1Data">
+            [[1,25,16500,65,1500,70,32]]
+          </div>
+        <div id="tab2Data">
+          
+        </div>
+        <div id="lineChartData">
+
+        </div>
+        <div id="columnChartData">
+
+        </div>
+        <div id="tableData">
+            [[ '#F97C6B','VEA','全球已開發國家股票型基金（不含美國）', 18.75,0.07,1500 ],  ['#FFACA1','VSS','全球小型股',19,0.07,1500],['#FDD6CF','VTI','全球小型股',19,0.07,1500],['#FFBC49','VNQ','全球小型股',19,0.07,1500],['#FFD678','VNQI','全球小型股',19,0.07,1500],['#88EE74','BNDW','全球小型股',19,0.07,1500],]
+        </div>
+      </div>
       <div class="container-fluid">
         <div class="row row-30">
           <div class="col-12 text-right pt-4 pt-xl-0">
             <button class="btn btn-outline-secondary">新增計畫</button>
+            <button class="btn btn-secondary ml-3" v-if="status == 'un-order'">下單此計畫</button>
+            <button class="btn btn-secondary ml-3" v-if="status == 'order'">調整計畫</button>
+            <button class="btn btn-secondary ml-3" v-if="status == 'un-success'">
+              下單中
+              <span class="mdi mdi-bell-outline"></span>
+            </button>
           </div>
           <div class="col-md-12">
             <div class="panel admin-panel">
@@ -195,33 +228,21 @@
                           <div class="slick-slider"
                             data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
                             data-slick='{"arrows":false,"dots":true,"slidesToShow":2,"slidesToScroll":2,"vertical":true,"verticalSwiping":true,"infinite":false}'>
-                            <div class="list-block-container list-block-lg">
+                            <div class="list-block-container list-block-lg" v-for="(item) in tab1">
                               <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
-                                <span class="font-weight-bold">退休金準備</span>
-                                <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                <span class="font-weight-bold">{{item[0] | goalText}}</span>
+                                <small class="text-secondary font-weight-bold text-capitalize">達成率:{{item[1] | decimalFormat}}%</small>
                               </h5>
                               <div class="list-block">
-                                <div class="list-block-item d-flex justify-content-between">
-                                  <div>
+                                <div class="list-block-item d-flex justify-content-between" v-for="(element,index) in item" v-if="index !==0 && index !== 1">
+                                  <div :style="{'visibility': element.text ? '' : 'hidden'}">
                                     <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                    <span>總投入金額</span>
-                                  </div><strong class="text-dark">USD $ 16,500</strong>
-                                </div>
-                                <div class="list-block-item d-flex justify-content-between">
-                                  <div>
-                                    <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                    <span>預計退休年齡</span>
-                                  </div><strong class="text-dark">65歲</strong>
-                                </div>
-                                <div class="list-block-item d-flex justify-content-between">
-                                  <div>
-                                    <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                    <span>退休後月花費</span>
-                                  </div><strong class="text-dark">USD $ 1,500 / 月</strong>
+                                    <span>{{element.title}}</span>
+                                  </div><strong class="text-dark">{{element.text}}</strong>
                                 </div>
                               </div>
                             </div>
-                            <div class="list-block-container list-block-lg">
+                            <!-- <div class="list-block-container list-block-lg">
                               <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
                                 <span class="font-weight-bold">子女教育金</span>
                                 <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
@@ -338,7 +359,7 @@
                                   </div><strong class="text-dark">20年</strong>
                                 </div>
                               </div>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
@@ -404,10 +425,10 @@
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-12">
-                          <div class="table-colorful pb-3">
                             <table class="table table-responsive-sm">
                               <thead>
                                 <tr>
+                                  <th scope="col" width="5px" class="p-0"></th>
                                   <th scope="col">代碼</th>
                                   <th scope="col">資產名稱</th>
                                   <th scope="col">持有比例</th>
@@ -417,22 +438,23 @@
                               </thead>
                               <tfoot>
                                 <tr>
-                                  <th scope="row">總計</th>
+                                  <th scope="row" colspan="2">總計</th>
                                   <td></td>
-                                  <td>100%</td>
-                                  <td>0.7%</td>
-                                  <td>USD $ 13,500</td>
+                                  <td>{{tableTotal[0] | decimalFormat}}%</td>
+                                  <td>{{tableTotal[1] | decimalFormat}}%</td>
+                                  <td>USD $ {{tableTotal[2] | commaFormat}}</td>
                                 </tr>
                               </tfoot>
                               <tbody>
-                                <tr>
-                                  <th scope="row" class="VEA">VEA</th>
-                                  <td>全球已開發國家股票型基金(不含美國)</td>
-                                  <td>23%</td>
-                                  <td>0.07%</td>
-                                  <td>USD $ 1,500</td>
+                                <tr v-for="(item) in tableData">
+                                  <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[0]}"></th>
+                                  <th scope="row">{{item[1]}}</th>
+                                  <td>{{item[2]}}</td>
+                                  <td>{{item[3]}}%</td>
+                                  <td>{{item[4]}}%</td>
+                                  <td>USD $ {{item[5] | commaFormat}}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                   <th scope="row" class="VSS">VSS</th>
                                   <td>全球小型股</td>
                                   <td>19%</td>
@@ -466,10 +488,9 @@
                                   <td>10%</td>
                                   <td>0.04%</td>
                                   <td>USD $ 1,500</td>
-                                </tr>
+                                </tr> -->
                               </tbody>
                             </table>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -479,7 +500,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4" v-if="active">
+          <div class="col-lg-4" v-if="status !== 'overView'">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
@@ -498,7 +519,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4" v-if="active">
+          <div class="col-lg-4" v-if="status !== 'overView'">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
@@ -517,7 +538,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4" v-if="active">
+          <div class="col-lg-4" v-if="status !== 'overView'">
             <div class="panel admin-panel">
               <div class="panel-body">
                 <div class="mb-4">
@@ -594,7 +615,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6" v-if="!active">
+          <div class="col-lg-6" v-if="status == 'overView'">
             <div class="panel admin-panel">
               <div class="panel-header">
                 <div class="h3 font-weight-bold panel-title flex-grow-1">我們幫您做了什麼？</div>
@@ -669,7 +690,9 @@
       </div>
     </section>
   </div>
+  <script src="components/base/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="js/header.js"></script>
   <script src="js/order.js"></script>
 </body>
 

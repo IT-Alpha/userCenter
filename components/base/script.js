@@ -2236,6 +2236,10 @@ let components = {
         ],
         
       };
+      let tableData = eval(document.querySelector('#tableData').textContent);
+      let pieArray = tableData.map(function (element) {
+        return {name:element[1], y:element[3], z:element[3]};
+      });
       //投資組合
       let pieSetting = {
         credits: false,
@@ -2275,15 +2279,10 @@ let components = {
           {
             minPointSize: 10,
             zMin: 0,
+            zMax: 25,
+            sizeBy: 'radius',
             name: 'ETF',
-            data: [
-              { name: 'VEA', y: 23, z: 23 },
-              { name: 'VSS', y: 19, z: 19 },
-              { name: 'VTI', y: 28, z: 28 },
-              { name: 'VNQ', y: 13.5, z: 13.5 },
-              { name: 'VNQI', y: 6.5, z: 6.5 },
-              { name: 'BNDW', y: 10, z: 10 }
-            ]
+            data: pieArray
           }
         ],
         responsive: {

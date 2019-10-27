@@ -59,68 +59,7 @@ tr.row-action {
     color: $white;
   }
 }
-$color-width: 5px;
 
-.table-colorful{
-	padding-left: $color-width;
-	th{
-		position:relative;
-		&.VEA::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $VEA;
-		}
-		&.VSS::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $VSS;
-		}
-		&.VTI::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $VTI;
-		}
-		&.VNQ::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $VNQ;
-		}
-		&.VNQI::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $VNQI;
-		}
-		&.BNDW::before{
-			content:'';
-			position: absolute;
-			height: 100%;
-			width:$color-width;
-			top:0;
-			left: -$color-width;
-			background-color: $BNDW;
-		}
-	} 
-}
 // Data table context
 .data-table {
   width: 100% !important;
