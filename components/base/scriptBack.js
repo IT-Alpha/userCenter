@@ -2019,6 +2019,13 @@ let components = {
       'https://code.highcharts.com/modules/no-data-to-display.js'
     ],
     init: function (nodes) {
+
+      let columnChartData;
+      if (document.querySelector('#columnChartData').textContent) {
+        columnChartData = eval(document.querySelector('#columnChartData').textContent);
+      } else {
+        columnChartData = [null,null]
+      }
       //資產狀況
       let columnSetting = {
         credits: false,
@@ -2034,12 +2041,6 @@ let components = {
         ],
         title: {
           text: null
-        },
-        lang: {
-          noData: "下單成功後即可查看資產狀況"
-        },
-        noData: {
-          useHTML: true
         },
         legend: {
           enabled: true,
@@ -2064,9 +2065,7 @@ let components = {
               color: '#A4A4A4'
             }
           },
-          categories: [
-            '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027'
-          ],
+          categories: columnChartData[0],
           crosshair: true
         },
         yAxis: {
@@ -2083,7 +2082,7 @@ let components = {
         },
         tooltip: {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:.1f}</b> USD</td></tr>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
           footerFormat: '</table>',
           shared: true,
           useHTML: true
@@ -2094,20 +2093,14 @@ let components = {
             borderWidth: 0
           }
         },
-        series: [
-          {
-            name: '退休金準備',
-            data: [
-              // 10000, 20000, 35000, 0, 0, 0, 0, 0, 0, 0, 0, 0
-            ]
-          },
-          // {
-          //   name: '子女教育金',
-          //   data: [
-          //     0, 40000, 55000, 0, 0, 0, 0, 0, 0, 0, 0, 0
-          //   ]
-          // }
-        ],
+        lang: {
+          noData: "下單成功後即可查看資產狀況",
+          thousandsSep: '\u002C'
+        },
+        noData: {
+          useHTML: true
+        },
+        series: columnChartData[1],
         responsive: {
           rules: [
             {
@@ -2124,6 +2117,13 @@ let components = {
           ]
         }
       };
+      let lineChartData;
+      if(document.querySelector('#lineChartData').textContent){
+        lineChartData = eval(document.querySelector('#lineChartData').textContent);
+      }else{
+        lineChartData = [null,null]
+      }
+      
       //財務規劃
       let lineSetting = {
         credits: false,
@@ -2140,6 +2140,13 @@ let components = {
           '#FCB281',
           '#0D78D8'
         ],
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
+          footerFormat: '</table>',
+          // shared: true,
+          useHTML: true
+        },
         lang: {
           thousandsSep: ','
         },
@@ -2147,9 +2154,7 @@ let components = {
           gridLineColor: "#A4A4A4",
           lineColor: "#A4A4A4",
           tickColor: "#A4A4A4",
-          categories: [
-            '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039', '2040', '2041'
-          ],
+          categories: lineChartData[0],
           labels: {
             style: {
               color: '#A4A4A4'
@@ -2168,6 +2173,13 @@ let components = {
             }
           }
         },
+        lang: {
+          noData: "下單成功後即可查看資產狀況",
+          thousandsSep: '\u002C'
+        },
+        noData: {
+          useHTML: true
+        },
         plotOptions: {
           spline: {
             lineWidth: 3
@@ -2182,7 +2194,7 @@ let components = {
               radius: 4,
               lineColor: "#FFFFFF",
               lineWidth: 3
-            }
+            },
           }
         },
         legend: {
@@ -2200,34 +2212,13 @@ let components = {
             color: '#9065b3'
           }
         },
-        series: [
-          {
-            name: '退休金準備',
-            data: [
-              30000,40000,55000,70000,100000,140000,185000,230000,300000,380000,
-            ],
-            shadow: {
-              enabled: true,
-              color: "#00000",
-              width: 5,
-              opacity: 0.1
-            }
-          },
-          {
-            name: '子女教育金',
-            data: [
-              20000,30000,45000,60000,120000,160000,215000,270000,350000,430000,
-            ],
-            shadow: {
-              enabled: true,
-              color: "#00000",
-              width: 5,
-              opacity: 0.1
-            }
-          },
-        ],
+        series: lineChartData[1],
         
       };
+      let tableData = eval(document.querySelector('#tableData').textContent);
+      let pieArray = tableData.map(function (element,index) {
+        return {name:element[1], y:element[3], z:index};
+      });
       //投資組合
       let pieSetting = {
         credits: false,
@@ -2240,7 +2231,7 @@ let components = {
         },
         tooltip: {
           headerFormat: null,
-          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>Users: <b>{point.z}%</b><br/>'
+          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>佔<b>{point.y}%</b><br/>'
         },
         plotOptions: {
           variablepie: {
@@ -2265,17 +2256,12 @@ let components = {
         },
         series: [
           {
-            minPointSize: 10,
+            minPointSize: 100,
             zMin: 0,
+            zMax: 5,
+            // sizeBy: 'radius',
             name: 'ETF',
-            data: [
-              { name: 'VEA', y: 23, z: 23 },
-              { name: 'VSS', y: 19, z: 19 },
-              { name: 'VTI', y: 28, z: 28 },
-              { name: 'VNQ', y: 13.5, z: 13.5 },
-              { name: 'VNQI', y: 6.5, z: 6.5 },
-              { name: 'BNDW', y: 10, z: 10 }
-            ]
+            data: pieArray
           }
         ],
         responsive: {
