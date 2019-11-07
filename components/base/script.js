@@ -644,7 +644,7 @@ let components = {
   modal: {
     selector: '.modal',
     styles: [
-      './components/modal/modal.css',
+      './components/modal/modal.min.css',
       './components/animate/animate.css'
     ],
     script: [
@@ -2016,7 +2016,7 @@ let components = {
       './components/base/jquery-3.4.1.min.js',
       './components/highcharts/highcharts.js',
       './components/highcharts/variable-pie.js',
-      'https://code.highcharts.com/modules/no-data-to-display.js'
+      'https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.1.1/modules/no-data-to-display.js'
     ],
     init: function (nodes) {
 
@@ -2094,7 +2094,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後即可查看資產狀況",
+          noData: "下單成功後<br>即可查看資產狀況",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2174,7 +2174,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後即可查看資產狀況",
+          noData: "下單成功後<br>即可查看資產狀況",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2259,7 +2259,7 @@ let components = {
             minPointSize: 100,
             zMin: 0,
             zMax: 5,
-            // sizeBy: 'radius',
+            sizeBy: 'radius',
             name: 'ETF',
             data: pieArray
           }
@@ -2272,14 +2272,14 @@ let components = {
                 chart: { marginBottom: 10 }
               }
             },
-            {
-              condition: { maxWidth: 767 },
-              chartOptions: {
-                chart: {
-                  marginBottom: -30
-                }
-              }
-            }
+            // {
+            //   condition: { maxWidth: 767 },
+            //   chartOptions: {
+            //     chart: {
+            //       marginBottom: -30
+            //     }
+            //   }
+            // }
           ]
         }
       };

@@ -3,7 +3,7 @@
 @import "../base/variables";
 @import "../bootstrap/scss/variables";
 
-$modal-content-bg: $gray-700;
+$modal-content-bg: $white;
 
 @import "../bootstrap/scss/mixins";
 @import "../bootstrap/scss/modal";
@@ -59,14 +59,16 @@ $modal-content-bg: $gray-700;
 	.close {
 		margin: 0;
 		padding: 0;
-		float: none;
+		position: absolute;
+		right: 1rem;
+		top:1rem;
 		font-size: 30px;
-		color: $link-color;
+		color: $white;
 		transition: 0.3s;
 		opacity: 1;
 
 		&:hover {
-			color: $link-hover-color;
+			color: $gray-300;
 		}
 	}
 }
