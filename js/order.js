@@ -1,5 +1,3 @@
-
-
 let order = new Vue({
   el: '#order',
   data: {

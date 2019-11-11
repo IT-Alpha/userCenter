@@ -185,7 +185,7 @@ let components = {
   },
   alert: {
     selector: '.alert',
-    styles: './components/alert/alert.css',
+    styles: './components/alert/alert.min.css',
     script: [
       './components/base/jquery-3.4.1.min.js',
       './components/bootstrap/js/popper.js',
@@ -1616,7 +1616,7 @@ let components = {
   },
   timeline: {
     selector: '.timeline',
-    styles: './components/timeline/timeline.css',
+    styles: './components/timeline/timeline.min.css',
     init: function (nodes) {
       function resizeHandler() {
         let
@@ -1876,7 +1876,7 @@ let components = {
   },
   sidebar: {
     selector: '.sidebar',
-    styles: './components/sidebar/sidebar.css'
+    styles: './components/sidebar/sidebar.min.css'
   },
   mobileSidebar: {
     selector: '.mobile-sidebar',
@@ -2272,14 +2272,14 @@ let components = {
                 chart: { marginBottom: 10 }
               }
             },
-            // {
-            //   condition: { maxWidth: 767 },
-            //   chartOptions: {
-            //     chart: {
-            //       marginBottom: -30
-            //     }
-            //   }
-            // }
+            {
+              condition: { maxWidth: 767 },
+              chartOptions: {
+                chart: {
+                  marginBottom: 0
+                }
+              }
+            }
           ]
         }
       };

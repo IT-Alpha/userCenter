@@ -38,14 +38,117 @@
               <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
                   class="fa-bars"></span></button>
             </div>
-            <div class="rd-navbar-panel-cell">
+            <div class="rd-navbar-panel-cell d-none d-xl-block">
               <!-- Breadcrumbs-->
               <ul class="breadcrumbs">
-                <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="order.html"><span
+                <li class="breadcrumbs-item">
+                  <a class="breadcrumbs-link" href="order.html"><span
                       class="breadcrumbs-icon mdi mdi-view-grid"></span><span>總覽頁面</span></a></li>
               </ul>
             </div>
             <div class="rd-navbar-panel-center"></div>
+
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
+                  class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
+              <div class="rd-navbar-subpanel" id="subpanel-notifications">
+                <div class="panel panel-sm">
+                  <div class="panel-header text-dark">
+                    <h5><span class="panel-icon fa-bell"> </span></h5>
+                  </div>
+                  <div class="panel-body scroller scroller-vertical">
+                    <div class="group-5">
+                      <div class="alert alert-dismissible alert-primary" role="alert">
+                        <span>退休金準備計畫已下單</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-info" role="alert">
+                        <span>12/30將進行再平衡</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-secondary" role="alert">
+                        <span>子女教育金計畫下單失敗</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-success" role="alert">
+                        <span>您的退休金計畫加碼成功</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer"><a class="btn btn-dark btn-sm">說明</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
+                  class="fa-sliders"></span></button>
+              <div class="sidebar scroller">
+                <div class="timeline timeline-simple">
+                  <div class="item">
+                    <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>1:25am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                      <div>
+                        <div>Added a new item to her store</div>
+                        <small>3:05am</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                      <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>4:15am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>7:45am</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                      <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-info"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>4:15am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-info"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>7:45am</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="rd-navbar-sidebar scroller">
             <div class="rd-navbar-sidebar-panel">
@@ -62,12 +165,42 @@
             </div>
             <div class="user-menu" id="userMenu">
               <div class="row row-10">
-                <div class="col-4"><a class="fa-home" href="#"></a></div>
-                <div class="col-4"><a class="fa-envelope" href="#"></a></div>
-                <div class="col-4"><a class="fa-bell" href="#"></a></div>
-                <div class="col-4"><a class="fa-desktop" href="#"></a></div>
-                <div class="col-4"><a class="fa-cogs" href="#"></a></div>
-                <div class="col-4"><a class="fa-flask" href="#"></a></div>
+                <div class="col-4">
+                  <div class="text-center">
+                    首頁
+                  </div>
+                  <a class="mdi mdi-24px mdi-home-outline" href="#"></a>
+                </div>
+                <div class="col-4">
+                  <div class="text-center">
+                    個人資料
+                  </div>
+                  <a class="mdi mdi-24px mdi-account-outline" href="#"></a>
+                </div>
+                <div class="col-4">
+                  <div class="text-center">
+                    登出
+                  </div>
+                  <a class="mdi mdi-24px mdi-logout-variant" href="#"></a>
+                </div>
+                <div class="col-4">
+                  <a class="mdi mdi-24px mdi-share-variant" href="#"></a>
+                  <div class="text-center">
+                    安全設定
+                  </div>
+                </div>
+                <div class="col-4">
+                  <a class="mdi mdi-24px mdi-currency-usd" href="#"></a>
+                  <div class="text-center">
+                    帳戶設定
+                  </div>
+                </div>
+                <div class="col-4">
+                  <a class="mdi mdi-24px mdi-email-outline" href="#"></a>
+                  <div class="text-center">
+                    聯絡我們
+                  </div>
+                </div>
               </div>
             </div>
             <ul class="rd-navbar-nav">
@@ -597,7 +730,7 @@
                   </div>
                 </div>
                 <div class="panel-body pb-5 text-center">
-                  <div class="highcharts-container highcharts-container-1" data-highcharts-type="pie">
+                  <div class="highcharts-container highcharts-container-2" data-highcharts-type="pie">
                   </div>
                   <div class="row row-15 justify-content-center">
                     <div class="col-4 col-sm-3 col-xxl-2">
