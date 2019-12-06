@@ -1,7 +1,7 @@
 let order = new Vue({
   el: '#order',
   data: {
-    tab1Data:  eval(document.querySelector('#tab1Data').textContent),
+    tab1Data: eval(document.querySelector('#tab1Data').textContent),
     tab2Data: document.querySelector('#tab2Data').textContent ? eval(document.querySelector('#tab2Data').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
     tab22: true,
     tableData: eval(document.querySelector('#tableData').textContent),
@@ -103,17 +103,18 @@ let order = new Vue({
     },
     tableTotal: function () {
       if (this.tableData) {
+        let vm = this;
         let totalArray = this.tableData.map(function (element) {
           return [element[3], element[4], element[5]];
         });
-        let total = totalArray.reduce(function (previousValue, currentValue) {
-          return [previousValue[0] + currentValue[0], previousValue[1] + currentValue[1], previousValue[2] + currentValue[2]];
+        let total = totalArray.reduce(function (previousValue, currentValue, index) {
+          return [previousValue[0] + currentValue[0], (index == 1 ? vm.accMul(vm.accDiv(previousValue[0],100), previousValue[1]) : previousValue[1]) + vm.accMul(vm.accDiv(currentValue[0],100), currentValue[1]), previousValue[2] + currentValue[2]];
         });
         return total;
       }
     },
     progressTextArray: function () {
-      if(this.tab1Data){
+      if (this.tab1Data) {
         switch (this.tab1Data[0][0]) {
           case 1:
             return [['風險等級', '成功機率', '距離退休時間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['距離你退休的時間', '此計畫平均退休時間']];
@@ -185,6 +186,43 @@ let order = new Vue({
     },
     decimalFormat: function (value) {//小數點兩位
       return Math.floor(value * 100) / 100;
+    },
+    decimalFormat2: function (value) {//小數點4位
+      return Math.floor(value * 10000) / 10000;
+    }
+  },
+  methods: {
+    accMul: function (arg1, arg2) {
+      var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+      try {
+        m += s1.split(".")[1].length;
+      }
+      catch (e) {
+      }
+      try {
+        m += s2.split(".")[1].length;
+      }
+      catch (e) {
+      }
+      return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+    },
+    accDiv: function (arg1, arg2) {
+      var t1 = 0, t2 = 0, r1, r2;
+      try {
+        t1 = arg1.toString().split(".")[1].length;
+      }
+      catch (e) {
+      }
+      try {
+        t2 = arg2.toString().split(".")[1].length;
+      }
+      catch (e) {
+      }
+      with (Math) {
+        r1 = Number(arg1.toString().replace(".", ""));
+        r2 = Number(arg2.toString().replace(".", ""));
+        return (r1 / r2) * pow(10, t2 - t1);
+      }
     }
   }
 });
