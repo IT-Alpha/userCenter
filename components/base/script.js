@@ -2019,7 +2019,6 @@ let components = {
       'https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.1.1/modules/no-data-to-display.js'
     ],
     init: function (nodes) {
-
       let columnChartData;
       if (document.querySelector('#columnChartData').textContent) {
         columnChartData = eval(document.querySelector('#columnChartData').textContent);
@@ -2293,7 +2292,20 @@ let components = {
               Highcharts.chart(node, columnSetting);
               break;
             case 'line':
-              Highcharts.chart(node, lineSetting);
+              Highcharts.chart(node, lineSetting, function (chart) {
+                chart.series.forEach(function(series,index){
+                  var endPoint = series.data[series.data.length - 1];
+                  var goalData = eval(document.querySelector('#tab1Data').textContent);
+                  var goal = goalData[index][0];
+
+                  chart.renderer
+                  .image('images/goal0' + goal + '.svg',
+                  endPoint.plotX + chart.plotLeft -15,
+                  endPoint.plotY + chart.plotTop - 35,
+                    30, 30)
+                  .add();
+                })
+              });
               break;
             case 'pie':
               Highcharts.chart(node, pieSetting);
