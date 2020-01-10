@@ -2042,20 +2042,21 @@ let components = {
           text: null
         },
         legend: {
-          enabled: true,
+          enabled:false
+          // enabled: true,
           // margin: 200,
-          align: 'left',
-          verticalAlign: 'top',
-          x: -10,
-          y: -10,
-          itemDistance: 10,
-          itemStyle: {
-            color: '#16b6d2',
-            fontWeight: 'normal'
-          },
-          itemHoverStyle: {
-            color: '#9065b3'
-          }
+          // align: 'left',
+          // verticalAlign: 'top',
+          // x: -10,
+          // y: -10,
+          // itemDistance: 10,
+          // itemStyle: {
+          //   color: '#16b6d2',
+          //   fontWeight: 'normal'
+          // },
+          // itemHoverStyle: {
+          //   color: '#9065b3'
+          // }
         },
         xAxis: {
           lineColor: '#A4A4A4',
@@ -2100,21 +2101,21 @@ let components = {
           useHTML: true
         },
         series: columnChartData[1],
-        responsive: {
-          rules: [
-            {
-              condition: {
-                maxWidth: 575
-              },
-              chartOptions: {
-                legend: {
-                  y: -10,
-                  itemDistance: 10
-                }
-              }
-            }
-          ]
-        }
+        // responsive: {
+        //   rules: [
+        //     {
+        //       condition: {
+        //         maxWidth: 575
+        //       },
+        //       chartOptions: {
+        //         legend: {
+        //           y: -10,
+        //           itemDistance: 10
+        //         }
+        //       }
+        //     }
+        //   ]
+        // }
       };
       let lineChartData;
       if(document.querySelector('#lineChartData').textContent){
@@ -2216,7 +2217,7 @@ let components = {
       };
       let tableData = eval(document.querySelector('#tableData').textContent);
       let pieArray = tableData.map(function (element,index) {
-        return {name:element[1], y:element[3], z:index};
+        return {name:element[1], y:element[4], z:index};
       });
       //投資組合
       let pieSetting = {

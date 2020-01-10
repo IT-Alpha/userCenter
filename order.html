@@ -113,7 +113,7 @@
                     </div>
                   </div>
                   <div class="item">
-                      <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-date">2019/11/08</div>
                     <div class="timeline-item">
                       <div class="timeline-item-icon timeline-item-icon-secondary"></div>
                       <div>
@@ -130,7 +130,7 @@
                     </div>
                   </div>
                   <div class="item">
-                      <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-date">2019/11/08</div>
                     <div class="timeline-item">
                       <div class="timeline-item-icon timeline-item-icon-info"></div>
                       <div>
@@ -333,23 +333,93 @@
           '2041'],
           [
           {name:'退休金準備',data:[30000,40000,55000,70000,100000,140000,185000,230000,300000,380000]},{name:
-          '子女教育金',data:[20000,30000,45000,60000,120000,160000,215000,270000,350000,]}]]
+          '子女教育金',data:[null,30000,45000,60000,120000,160000,215000,270000,350000,]}]]
         </div>
         <div id="iconData">
 
         </div>
         <div id="columnChartData">
           <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null -->
-          [[2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033',
-          '2034', '2035', '2036', '2037', '2038', '2039', '2040',
-          '2041'],[{name:'實際情況',data:[30000,40000,55000,70000,100000,140000,185000,230000,300000,380000]},{name:
-          '預測情況',data:[20000,30000,45000,60000,120000,160000,215000,270000,350000,430000,]}]]
+          [[2019,2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033',
+          '2034', '2035', '2036', '2037', '2038', '2039', '2040',],[{name:'資產成長狀況',data:[30000,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]]
         </div>
         <div id="tableData">
-          <!-- 色碼,代碼,中文,持有比例,基金費用,持有價值 -->
-          <!-- 未下單跟未成交狀態持有價為0 -->
-          [[ '#F97C6B','VEA','全球已開發國家股票型基金（不含美國）', 22.53,0.007,1500.54
-          ],['#FFACA1','VSS','全球小型股',19,0.007,1500.321],['#FDD6CF','VTI','全球小型股',28.47,0.007,1500],['#FFBC49','VNQ','全球小型股',14,0.007,1500],['#FFD678','VNQI','全球小型股',6,0.007,1500],['#88EE74','BNDW','全球小型股',10,0.007,1500],]
+          <!-- 色碼,代碼,中文,英文名稱(此欄位要全英文或是同後台資料中英文參雜,詢問後alvin說券商吐什麼就顯示什麼),持有比例,持有股數,持有價值,ETF價格,報酬率,內扣管理費 -->
+          <!-- 未下單跟未成交狀態,持有股數,持有價值,為0 -->
+          [
+          [
+          '#F97C6B',
+          'VEA',
+          '股票－全球已開發國家(不含美國)',
+          'FTSE Developed Markets ETF',
+          22.53,
+          1000,
+          1500.54,
+          58.81,
+          0.2,
+          0.07
+          ],
+          [
+          '#FFACA1',
+          'VSS',
+          '股票－全球小型股',
+          'FTSE All-World ex-US Small-Cap ETF',
+          19,
+          1000,
+          1500.321,
+          58.81,
+          0.2,
+          0.07
+          ],
+          [
+          '#FDD6CF',
+          'VTI',
+          '股票－全美國',
+          'Total Stock Market ETF',
+          28.47,
+          1000,
+          1500,
+          58.81,
+          0.2,
+          0.07
+          ],
+          [
+          '#FFBC49',
+          'VNQ',
+          '不動產－全美國',
+          'Real Estate ETF',
+          14,
+          1000,
+          1500,
+          58.81,
+          0.2,
+          0.07
+          ],
+          [
+          '#FFD678',
+          'VNQI',
+          '不動產－全球(不含美國)',
+          'Global ex-U.S. Real Estate ETF',
+          6,
+          1000,
+          1500,
+          58.81,
+          0.2,
+          0.07
+          ],
+          [
+          '#88EE74',
+          'BNDW',
+          '債券－全世界',
+          'Total World Bond ETF',
+          10,
+          1000,
+          1500,
+          58.81,
+          0.2,
+          0.07
+          ],
+          ]
         </div>
       </div>
       <div class="container-fluid">
@@ -385,7 +455,6 @@
                 </div>
               </div>
             </template>
-
           </div>
           <template v-if="status !== 'noData'">
             <div class="col-md-12">
@@ -413,7 +482,6 @@
                           <div class="col-lg-7 col-xl-8">
                             <div class="highcharts-container highcharts-container-2" data-highcharts-type="line">
                             </div>
-
                           </div>
                           <div class="col-lg-5 col-xl-4 border-lg-left">
                             <div class="slick-slider"
@@ -631,32 +699,34 @@
                                 <tr>
                                   <th scope="col" width="5px" class="p-0"></th>
                                   <th scope="col">代碼</th>
-                                  <th scope="col" class="d-none d-lg-table-cell">資產名稱</th>
+                                  <th scope="col" class="d-none d-xl-table-cell">資產名稱</th>
                                   <th scope="col" colspan="2">持有比例</th>
-                                  <th scope="col" class="d-lg-none px-0"></th>
-                                  <th scope="col" class="d-none d-lg-table-cell">基金費用/年%</th>
-                                  <th scope="col" class="d-none d-lg-table-cell">持有價值</th>
+                                  <th scope="col" class="d-none d-sm-table-cell">持有股數</th>
+                                  <th scope="col" class="d-none d-sm-table-cell">持有價值</th>
+                                  <th scope="col" class="px-0"></th>
                                 </tr>
                               </thead>
                               <tfoot>
                                 <tr>
                                   <th scope="row" colspan="2"></th>
-                                  <td class="d-none d-lg-table-cell"></td>
-                                  <td colspan="2">此計畫總計</td>
-                                  
-                                  <td class="d-lg-none px-0 text-right">
+                                  <td class="d-none d-xl-table-cell"></td>
+                                  <td colspan="2">總計</td>
+                                  <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td>
+                                  <td class="d-none d-sm-table-cell"
+                                    :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                    USD $ {{tableTotal[2] | commaFormat}}</td>
+                                  <td class="px-0 text-right d-sm-none">
                                     <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" href="tr.total"
                                       role="button">
                                     </a>
                                   </td>
-                                  <td class="d-none d-lg-table-cell">{{tableTotal[1]}}%</td>
-                                  <td class="d-none d-lg-table-cell"
-                                    :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                    USD $ {{tableTotal[2] | commaFormat}}</td>
                                 </tr>
                                 <tr class="collapse total">
-                                  <td colspan="3"><small>基金費用/年%</small><br>{{tableTotal[1] | decimalFormat2}}%</td>
-                                  <td colspan="2" :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                  <td colspan="2">
+                                    <small>持有股數</small><br>
+                                    {{tableTotal[1] | commaFormat}}
+                                  </td>
+                                  <td colspan="3" :class="tableTotal[2] == 0 ? 'text-secondary' : null">
                                     <small>持有價值</small><br>
                                     USD $ {{tableTotal[2] | commaFormat}}</td>
                                 </tr>
@@ -667,37 +737,52 @@
                                     <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[0]}">
                                     </th>
                                     <td>{{item[1]}}</td>
-                                    <td class="d-none d-lg-table-cell">{{item[2]}}</td>
-                                    <td style="width:1%;">{{item[3]}}%</td>
+                                    <td class="d-none d-xl-table-cell">{{item[2]}}</td>
+                                    <td style="width:1%;">{{item[4]}}%</td>
                                     <td class="pl-0">
                                       <div class="d-inline-block" style="min-width:90px">
                                         <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
                                           :style="{'background': 'repeating-linear-gradient(to right,' + item[0] + ',' + item[0] + ' 8%, white 8%, white 10%)'}">
                                           <div class="progress-bar" style="background-color:white"
-                                            :style="{'width': 100 - item[3] * 2 + '%'}">
+                                            :style="{'width': 100 - item[4] * 2 + '%'}">
                                           </div>
                                         </div>
                                       </div>
                                     </td>
-                                    <td class="d-lg-none px-0 text-right">
+                                    <td class="d-none d-sm-table-cell">{{item[5]}}</td>
+                                    <td class="d-none d-sm-table-cell"
+                                      :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                      USD $ {{ item[6] | commaFormat}}</td>
+                                    <td class="px-0 text-right">
                                       <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
                                         :href="'tr.' + item[1]" role="button">
                                       </a>
                                     </td>
-                                    <td class="d-none d-lg-table-cell">{{item[4]}}%</td>
-                                    <td class="d-none d-lg-table-cell"
-                                      :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                      USD $ {{ item[5] | commaFormat}}</td>
-                                  </tr>
-                                  <tr class="collapse border-bottom-0" :class="item[1]">
-                                    <td colspan="5"><small>{{item[2]}}</small></td>
                                   </tr>
                                   <tr class="collapse" :class="item[1]">
-                                    <td colspan="3"><small>基金費用/年%</small><br>{{item[4]}}%</td>
-                                    <td colspan="2" :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                      <small>持有價值</small><br>
-                                      USD $ {{ item[5] | commaFormat}}</td>
+                                    <td colspan="8">
+                                      <div class="row">
+                                        <div class="col-12 d-xl-none">{{item[2]}}</div>
+                                        <div class="col-12 col-xl-12 mb-3">{{item[3]}}<small class="ml-3">Vanguard</small></div>
+                                        <div class="col-6 mb-3 d-sm-none">
+                                          <div class="">持有股數<br>{{item[5] | commaFormat}}</div>
+                                        </div>
+                                        <div class="col-6 mb-3 d-sm-none">
+                                          <div class="">持有價值<br>USD $ {{ item[6] | commaFormat}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
+                                          <div class="">ETF價格<br>USD $ {{ item[7] | commaFormat}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-xl">
+                                          <div class="">已實現報酬率<br>{{item[8]}}%</div>
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-xl">
+                                          <div class="">內含管理費/年<br>{{item[9]}}%</div>
+                                        </div>
+                                      </div>
+                                    </td>
                                   </tr>
+                                  
                                 </template>
                               </tbody>
                             </table>

@@ -105,10 +105,10 @@ let order = new Vue({
       if (this.tableData) {
         let vm = this;
         let totalArray = this.tableData.map(function (element) {
-          return [element[3], element[4], element[5]];
+          return [element[4], element[5], element[6]];
         });
         let total = totalArray.reduce(function (previousValue, currentValue, index) {
-          return [vm.accAdd(previousValue[0],currentValue[0]), vm.accAdd(previousValue[1],vm.accMul(currentValue[0] / 100, currentValue[1])), vm.accAdd(previousValue[2] ,currentValue[2])];
+          return [vm.accAdd(previousValue[0],currentValue[0]), vm.accAdd(previousValue[1],currentValue[1]), vm.accAdd(previousValue[2] ,currentValue[2])];
         },[0,0,0]);
         return total;
       }
@@ -193,7 +193,7 @@ let order = new Vue({
   },
   methods: {
     accAdd:function(num1,num2){
-      var r1,r2,ma;
+      var r1,r2,m;
       try {
         r1 = num1.toString().split('.')[1].length;
       } catch (e) {
