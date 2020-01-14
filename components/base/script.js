@@ -1,3 +1,22 @@
+// // 退休金準備
+// let testA = [ 800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415, 1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703, 4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547, 9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527, 7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963, 907841, 42790]
+// // 子女教育金
+// let testB =  [500000, 547340, 590546, 642644, 700045, 766584, 810999, 884206, 960663, 1046259, 1124516, 1207248, 1311976, 1444021, 1562115, 1671671, 1813984]
+// // 買房
+// let testC =  [500000, 540010, 581408, 626675, 673833, 724882, 777595, 836348, 901817, 973782, 1056208]
+
+// var b = 3;
+// testB.forEach(function (item) {
+//   testA[b] = testA[b] + item* 2;
+//   b++;
+// });
+// var c = 14;
+// testC.forEach(function (item) {
+//   testA[c] = testA[c] + item;
+//   c++;
+// })
+
+let testA = [800000,864978,932485,2004773,2199453,2354811,2554639,2772173,3010480,3209413,3491124,3757718,4081606,4404939,5231212,5671626,6194203,6691171,7114585,7705500,4408159,4759051,5144626,5544484,5984786,5309888,5751063,6116847,6574967,7067175,7620341,8127190,8748800,9367547,9954683,10656068,10504879,10213323,10101500,9958580,9748163,9633778,9117159,8909935,8601610,8237527,7832205,7314817,7001544,6516650,5957632,5506759,5048152,4420840,3898041,3116628,2414102,1698963,907841,42790];
 'use strict';
 
 // Global components list
@@ -2129,7 +2148,7 @@ let components = {
         credits: false,
         chart: {
           // backgroundColor: "transparent",
-          type: "line",
+          type: "areaspline",
         },
         title: {
           text: null
@@ -2212,13 +2231,15 @@ let components = {
             color: '#9065b3'
           }
         },
-        series: lineChartData[1],
+        series: [{name:'asd',data:testA}],
+        
         
       };
       let tableData = eval(document.querySelector('#tableData').textContent);
       let pieArray = tableData.map(function (element,index) {
-        return {name:element[1], y:element[4], z:index};
+        return {color:element[0],name:element[1], y:element[6], z: -(index - tableData.length)};
       });
+      console.log(pieArray)
       //投資組合
       let pieSetting = {
         credits: false,
@@ -2242,16 +2263,16 @@ let components = {
             dataLabels: {
               enabled: false
             },
-            colors:
-              [
-                {
-                  linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-                  stops: [
-                    [0.5, '#5FC1DD'],
-                    [1, '#415cf8']
-                  ]
-                }
-              ]
+            // colors:
+            //   [
+            //     {
+            //       linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+            //       stops: [
+            //         [0.5, '#5FC1DD'],
+            //         [1, '#415cf8']
+            //       ]
+            //     }
+            //   ]
           }
         },
         series: [
@@ -2296,6 +2317,7 @@ let components = {
               Highcharts.chart(node, lineSetting, function (chart) {
                 chart.series.forEach(function(series,index){
                   var endPoint = series.data[series.data.length - 1];
+                  console.log(series.data)
                   var goalData = eval(document.querySelector('#tab1Data').textContent);
                   var goal = goalData[index][0];
 

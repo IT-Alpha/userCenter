@@ -105,7 +105,7 @@ let order = new Vue({
       if (this.tableData) {
         let vm = this;
         let totalArray = this.tableData.map(function (element) {
-          return [element[4], element[5], element[6]];
+          return [element[6], element[7], element[8]];
         });
         let total = totalArray.reduce(function (previousValue, currentValue, index) {
           return [vm.accAdd(previousValue[0],currentValue[0]), vm.accAdd(previousValue[1],currentValue[1]), vm.accAdd(previousValue[2] ,currentValue[2])];
@@ -130,6 +130,31 @@ let order = new Vue({
             return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['您投資目標時間', '此計畫平均投資時間']];
         }
       }
+    },
+    ETFtypeTotal:function(){
+      let vm = this;
+      
+      let stocksArray = this.tableData.filter(function (element) {
+        return element[2] == 'stocks'
+      });
+      
+      let REITsArray = this.tableData.filter(function (element) {
+        return element[2] == 'REITs'
+      });
+      let bondsArray = this.tableData.filter(function (element) {
+        return element[2] == 'bonds'
+      });
+      let stocksTotal = 0,REITsTotal = 0,bondsTotal = 0;
+      stocksArray.forEach(function(item){
+        stocksTotal = stocksTotal + item[6];
+      })
+      REITsArray.forEach(function(item){
+        REITsTotal = REITsTotal + item[6];
+      })
+      bondsArray.forEach(function(item){
+        bondsTotal = bondsTotal + item[6];
+      })
+      return [stocksTotal, REITsTotal,bondsTotal];
     }
   },
   filters: {
@@ -141,6 +166,16 @@ let order = new Vue({
           return 'un-success';
         case '2':
           return 'order';
+      }
+    },
+    ETFtype:function (value) {
+      switch (value) {
+        case 'stocks':
+          return '股票'
+        case 'REITs':
+          return '不動產';
+        case 'bonds':
+          return '債券';
       }
     },
     progressClass: function (value) {
