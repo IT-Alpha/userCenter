@@ -25,8 +25,18 @@
   <div class="page">
     <header class="section page-header">
       <!--RD Navbar-->
+        <!-- 訂單編號,訂單種類,訂單狀態,達成率 -->
+        <!-- 訂單種類 -->
+        <!-- 退休金準備(1) -->
+        <!-- 穩定累積財富(2) -->
+        <!-- 財產保值抗通膨(3) -->
+        <!-- 子女教育金(4) -->
+        <!-- 存錢買房(5) -->
+        <!-- 其他目標(6) -->
+        <!-- 訂單狀態 -->
+        <!-- 已下單(2),未成交(1),未下單(0) -->
       <div class="d-none">
-        <div id="sidebarData">
+        <div id="sidebarDataLB">
           [["P2019102500001", '1', '2','15'],['P2019102500002', '2','2','50'],['P2019102500003',
           '3','1','0'],['P2019102500004', '4','1','0'],['P2019102500005', '5','0','0'],['P2019102500006', '6','0','0']]
         </div>
@@ -60,24 +70,28 @@
                   <div class="panel-body scroller scroller-vertical">
                     <div class="group-5">
                       <div class="alert alert-dismissible alert-primary" role="alert">
+                        <span class="alert-icon fa-thumbs-up"></span>
                         <span>退休金準備計畫已下單</span>
                         <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                           <span class="fa-close" aria-hidden="true"></span>
                         </button>
                       </div>
                       <div class="alert alert-dismissible alert-info" role="alert">
+                        <span class="alert-icon fa-telegram"></span>
                         <span>12/30將進行再平衡</span>
                         <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                           <span class="fa-close" aria-hidden="true"></span>
                         </button>
                       </div>
                       <div class="alert alert-dismissible alert-secondary" role="alert">
+                        <span class="alert-icon fa-warning"></span>
                         <span>子女教育金計畫下單失敗</span>
                         <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                           <span class="fa-close" aria-hidden="true"></span>
                         </button>
                       </div>
                       <div class="alert alert-dismissible alert-success" role="alert">
+                        <span class="alert-icon fa-thumbs-up"></span>
                         <span>您的退休金計畫加碼成功</span>
                         <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                           <span class="fa-close" aria-hidden="true"></span>
@@ -204,10 +218,23 @@
               </div>
             </div>
             <ul class="rd-navbar-nav">
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-title h5">目標達成率</div>
+              <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
+                <a class="rd-navbar-link" href="order.html">
+                  <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
+                </a>
               </li>
-              <li class="rd-navbar-nav-item" v-for="(item) in sidebar">
+              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[0] == active ? 'active' : null">
+                <a class="rd-navbar-link" :class="item[2] | statusClass" :href="'order.html?PID=' + item[0]">
+                  <span class="rd-navbar-icon mdi" :class="item[1] | goalIcon"></span>
+                  <span>{{item[1] | goalText}}</span>
+                  <div class="flex-grow-1 text-right"><span>{{item[3]}}%</span></div>
+                  <div class="progress progress-sm w-100 mt-2"
+                    :class="item[0] == active ? 'progress-primary' : 'progress-light'">
+                    <div class="progress-bar progress-bar-striped" :style="{'width': item[3] + '%'}"></div>
+                  </div>
+                </a>
+              </li>
+              <!-- <li class="rd-navbar-nav-item" v-for="(item) in sidebar">
                 <div class="rd-navbar-progress" :class="item[2] == '2' ? '' : 'un-order'">
                   <span>{{item[1] | goalText}}</span>
                   <span>{{item[3]}}%</span>
@@ -215,6 +242,10 @@
                     <div class="progress-bar progress-bar-striped" :style="{'width': item[3] + '%'}"></div>
                   </div>
                 </div>
+              </li> -->
+              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="question.aspx">
+                  <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
+                  </span>新增計畫</a>
               </li>
               <!-- <li class="rd-navbar-nav-item">
                 <div class="rd-navbar-progress">
@@ -277,33 +308,14 @@
                 </div>
               </li> -->
             </ul>
-            <ul class="rd-navbar-nav">
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-title">目標旅程</div>
-              </li>
-              <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
-                <a class="rd-navbar-link" href="order.html">
-                  <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
-                </a>
-              </li>
-              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[0] == active ? 'active' : null">
-                <a class="rd-navbar-link" :class="item[2] | statusClass" :href="'order.html?PID=' + item[0]">
-                  <span class="rd-navbar-icon mdi" :class="item[1] | goalIcon"></span>
-                  <span>{{item[1] | goalText}}</span>
-                </a>
-              </li>
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="question.aspx">
-                  <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
-                  </span>新增計畫</a>
-              </li>
-            </ul>
+
           </div>
         </nav>
       </div>
     </header>
     <section id="order" class="pb-3">
       <div class="d-none">
-        <div id="tab1Data">
+        <div id="tab1DataLB">
           <!-- 總攬 -->
           [[1,25,16500,65,1500],[2,25,16500,20],[3,25,12000,20],[4,25,16500,65,15],[5,25,16500,65,1500],[6,25,16500,65,1500]]
           <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費] -->
@@ -312,44 +324,67 @@
           <!-- [存錢買房(5),達成率,投入金額,距離買房時間,預計目標金額] -->
           <!-- [其他目標(6),達成率,投入金額,預計目標年限,預計目標金額] -->
           <!-- 單計畫 -->
-          <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費,*距離退休時間,*風險等級] -->
-          <!-- [穩定累積財富跟財產保值抗通膨(2.3),達成率,投入金額,預計投資期間,*風險等級] -->
-          <!-- [子女教育金(4),達成率,投入金額,距離大學期間,小孩目前歲數,*預計所需金額,*風險等級] -->
-          <!-- [存錢買房(5),達成率,投入金額,距離買房時間,預計目標金額,*房屋總價值,*風險等級] -->
-          <!-- [其他目標(6),達成率,投入金額,預計目標年限,預計目標金額,*風險等級] -->
-          <!-- [[1,25,16500,65,1500,70,32]] -->
+          <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費,*距離退休時間,*風險等級,預期軌道] -->
+          <!-- [穩定累積財富跟財產保值抗通膨(2.3),達成率,投入金額,預計投資期間,*風險等級,預期軌道] -->
+          <!-- [子女教育金(4),達成率,投入金額,距離大學期間,小孩目前歲數,*預計所需金額,*風險等級,預期軌道] -->
+          <!-- [存錢買房(5),達成率,投入金額,距離買房時間,預計目標金額,*房屋總價值,*風險等級,預期軌道] -->
+          <!-- [其他目標(6),達成率,投入金額,預計目標年限,預計目標金額,*風險等級,預期軌道] -->
+          <!-- [[1,25,16500,65,1500,70,32,"untrack"]] -->
+          <!-- [[1,25,16500,65,1500,70,32,"ontrack"]] -->
         </div>
-        <div id="tab2Data">
-          <!-- 第一個array為[總投入金額,資產淨值] 第二個array為累積 第三個是年度,都是[淨值報酬率,含息報酬率,配息金額] -->
+        <div id="tab2DataLB">
+          <!-- 第一個array為[總投入金額,資產淨值] 第二個array為累積 第三個是年度,都是[報酬率,含息報酬率,配息金額] -->
           [[51650,1650],[6.5,7.3,1500],[10,11.5,3000]]
+          <!-- 未下單跟未成交狀態,此字串為[[0, 0], [0, 0, 0], [0, 0, 0,]] -->
         </div>
-        <div id="progressData">
+        <div id="progressDataLB">
           [[30,32],[50,50],[32,32]]
+          <!-- 退休金準備 -->
+          <!-- [['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你退休的時間', '所有平均退休時間']] -->
+          <!-- 穩定累積財富 -->
+          <!-- [['您的風險等級', '所有平均風險等級'], ['您預計累積財富時間', '所有平均投資時間']] -->
+          <!-- 財產保值抗通膨 -->
+          <!-- [['您的風險等級', '所有平均風險等級'], ['您保值財產時間', '所有平均投資時間']] -->
+          <!-- 子女教育金 -->
+          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您的孩子距離大學時間', '所有平均投資時間']] -->
+          <!-- 存錢買房 -->
+          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你買房時間', '所有平均投資時間']] -->
+          <!-- 其他目標 -->
+          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您投資目標時間', '所有平均投資時間']] -->
         </div>
-        <div id="lineChartData">
+        <div id="lineChartDataLB">
           <!-- {name:'子女教育金',
           data:[null,30000,45000,60000,120000,160000,215000,270000,350000,450000,570000]} -->
-          
+
           <!-- 退休金準備
           [800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415, 1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703, 4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547, 9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527, 7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963, 907841, 42790]
           子女教育金
           [500000, 547340, 590546, 642644, 700045, 766584, 810999, 884206, 960663, 1046259, 1124516, 1207248, 1311976, 1444021, 1562115, 1671671, 1813984]
           買房
           [500000, 540010, 581408, 626675, 673833, 724882, 777595, 836348, 901817, 973782, 1056208] -->
-          {"name":"退休金準備","data":[800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415, 1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703, 4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547, 9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527, 7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963, 907841, 42790]}
+          <!-- name放計畫名稱,data裡面為各計畫預測金額,總攬則為全部計畫加總,年份的部分我寫在前端,我會用js取得今年的年份並替換為今年的字串,第一筆資料為今年,第二筆為2021,第三筆為2022....以此類推,data長度若為10則對應年份為2020+9 -->
+          {"name":"退休金準備","data":[800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415,
+          1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703,
+          4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547,
+          9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527,
+          7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963,
+          907841, 42790]}
         </div>
-        <div id="iconData">
+        <div id="iconDataLB">
           <!-- 計畫類別,計畫完成年份 -->
           [[1,2055],[2,2039],[3,2044]]
         </div>
-        <div id="columnChartData">
-          <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null -->
-          [[2019,2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033',
-          '2034', '2035', '2036', '2037', '2038', '2039', '2040',],[{name:'資產成長狀況',data:[30000,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]]
+        <div id="columnChartDataLB">
+          <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null 預設顯示10年,未滿10年未來傳null,滿10年只顯示近10年 -->
+          <!-- 未下單跟未成交狀態,此字串為空 -->
+          [[2019,2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032',
+          '2033',
+          '2034', '2035', '2036', '2037', '2038', '2039',
+          '2040',],[{name:'資產成長狀況',data:[30000,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]]
         </div>
-        <div id="tableData">
+        <div id="tableDataLB">
           <!-- 色碼,代碼,ETF種類(stocks,REITs,bonds),ETF公司,中文,英文名稱(此欄位要全英文或是同後台資料中英文參雜,詢問後alvin說券商吐什麼就顯示什麼),持有比例,持有股數,持有價值,ETF價格,報酬率,內扣管理費 -->
-          <!-- 未下單跟未成交狀態,持有股數,持有價值,為0 -->
+          <!-- 未下單跟未成交狀態,持有股數,持有價值,報酬率,為0 -->
           [
           [
           '#F97C6B',
@@ -359,7 +394,7 @@
           '全球已開發國家(不含美國)',
           'FTSE Developed Markets ETF',
           22.53,
-          1000,
+          1000.12345,
           1500.54,
           58.81,
           0.2,
@@ -372,8 +407,8 @@
           'Vanguard',
           '全球小型股',
           'FTSE All-World ex-US Small-Cap ETF',
-          19,
-          1000,
+          19.2,
+          1000.12345,
           1500.321,
           58.81,
           0.2,
@@ -387,7 +422,7 @@
           '全美國',
           'Total Stock Market ETF',
           28.47,
-          1000,
+          1000.12345,
           1500,
           58.81,
           0.2,
@@ -400,8 +435,8 @@
           'Vanguard',
           '全美國',
           'Real Estate ETF',
-          14,
-          1000,
+          14.37 ,
+          1000.12345,
           1500,
           58.81,
           0.2,
@@ -414,8 +449,8 @@
           'Vanguard',
           '全球(不含美國)',
           'Global ex-U.S. Real Estate ETF',
-          6,
-          1000,
+          5.98,
+          1000.12345,
           1500,
           58.81,
           0.2,
@@ -428,8 +463,8 @@
           'Vanguard',
           '全世界',
           'Total World Bond ETF',
-          10,
-          1000,
+          9.9,
+          1000.12345,
           1500,
           58.81,
           0.2,
@@ -440,7 +475,6 @@
       </div>
       <div class="container-fluid">
         <div class="row row-30">
-
           <div class="col-12 text-right pt-4 pt-xl-0">
             <button class="btn btn-outline-secondary">新增計畫</button>
             <button class="btn btn-secondary ml-3" v-if="status == 'un-order'">下單此計畫</button>
@@ -658,7 +692,7 @@
                                 <div class="list-block-item d-flex justify-content-between">
                                   <div>
                                     <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                    <a>總投入金額</a>
+                                    <a>已投入投資金額</a>
                                   </div><strong :class="tab2[0][0] == 0 ? 'text-secondary' : 'text-dark'">USD $
                                     {{tab2[0][0] | decimalFormat | commaFormat}}</strong>
                                 </div>
@@ -682,7 +716,7 @@
                                 <div class="list-block-item d-flex justify-content-between">
                                   <div>
                                     <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                    <a>淨值報酬率</a>
+                                    <a>投資報酬率</a>
                                   </div><strong
                                     :class="tab2[1][0] == 0 ? 'text-secondary' : 'text-dark'">{{tab2[1][0] | decimalFormat}}%</strong>
                                 </div>
@@ -715,8 +749,9 @@
                                 <tr>
                                   <th scope="col" width="5px" class="p-0"></th>
                                   <th scope="col">代碼</th>
+                                  <th scope="col" class="d-none d-md-table-cell">類別</th>
                                   <th scope="col" class="d-none d-xl-table-cell">資產名稱</th>
-                                  <th scope="col" colspan="2">持有比例</th>
+                                  <th scope="col" colspan="2">比例</th>
                                   <th scope="col" class="d-none d-sm-table-cell">持有股數</th>
                                   <th scope="col" class="d-none d-sm-table-cell">持有價值</th>
                                   <th scope="col" class="px-0"></th>
@@ -724,36 +759,29 @@
                               </thead>
                               <tfoot class="bg-200">
                                 <tr>
-                                  <th scope="row" colspan="2"></th>
+                                  <th scope="col" width="5px" class="p-0"></th>
+                                  <td class="d-none d-md-table-cell"></td>
                                   <td class="d-none d-xl-table-cell"></td>
-                                  <td colspan="2">總計</td>
-                                  <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td>
-                                  <td class="d-none d-sm-table-cell"
+                                  <td class="d-none d-sm-table-cell" colspan="3"></td>
+                                  <td class="d-none d-sm-table-cell">總計</td>
+                                  <td class="d-sm-none small">價值總計</td>
+                                  <!-- <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td> -->
+                                  <td colspan="3" class="d-sm-none"
                                     :class="tableTotal[2] == 0 ? 'text-secondary' : null">
                                     USD $ {{tableTotal[2] | commaFormat}}</td>
-                                  <td class="px-0 text-right">
-                                    <a class="mdi-18px mdi mdi-chevron-down d-sm-none" data-toggle="collapse" href="tr.total"
-                                      role="button">
-                                    </a>
-                                  </td>
-                                </tr class="bg-200">
-                                <tr class="collapse total">
-                                  <td colspan="2">
-                                    <small>持有股數</small><br>
-                                    {{tableTotal[1] | commaFormat}}
-                                  </td>
-                                  <td colspan="3" :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                    <small>持有價值</small><br>
+                                  <td colspan="2" class="d-none d-sm-table-cell"
+                                    :class="tableTotal[2] == 0 ? 'text-secondary' : null">
                                     USD $ {{tableTotal[2] | commaFormat}}</td>
                                 </tr>
-                              </tfoot class="bg-200">
+                              </tfoot>
                               <tbody>
                                 <template v-for="(item) in tableData">
                                   <tr>
                                     <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[0]}">
                                     </th>
                                     <td>{{item[1]}}</td>
-                                    <td class="d-none d-xl-table-cell">{{item[2] | ETFtype}}－{{item[4]}}</td>
+                                    <td class="d-none d-md-table-cell">{{item[2] | ETFtype}}</td>
+                                    <td class="d-none d-xl-table-cell">{{item[4]}}</td>
                                     <td style="width:1%;">{{item[6]}}%</td>
                                     <td class="pl-0">
                                       <div class="d-inline-block" style="min-width:90px">
@@ -778,10 +806,16 @@
                                   <tr class="collapse" :class="item[1]">
                                     <td colspan="8">
                                       <div class="row">
-                                        <div class="col-12 d-xl-none">{{item[2] | ETFtype}}－{{item[4]}}</div>
-                                        <div class="col-12 col-xl-12 mb-3">{{item[5]}}<small class="ml-3">{{item[3]}}</small></div>
-                                        <div class="col-6 mb-3 d-sm-none">
+                                        <div class="col-12 col-sm-8 col-md-12 mb-3">
+                                          <div class="d-xl-none">{{item[4]}}</div>
+                                          {{item[5]}}
+                                          <small class="ml-3">{{item[3]}}</small>
+                                        </div>
+                                        <div class="col-12 mb-3 d-sm-none">
                                           <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
+                                        </div>
+                                        <div class="col-6 col-sm-4 mb-3 d-md-none">
+                                          <div class="">ETF類別<br>{{item[2] | ETFtype}}</div>
                                         </div>
                                         <div class="col-6 mb-3 d-sm-none">
                                           <div class="">持有價值<br>USD $ {{ item[8] | commaFormat}}</div>
@@ -790,7 +824,7 @@
                                           <div class="">ETF價格<br>USD $ {{ item[9] | commaFormat}}</div>
                                         </div>
                                         <div class="col-6 col-sm-4 col-xl">
-                                          <div class="">已實現報酬率<br>{{item[10]}}%</div>
+                                          <div class="">報酬率<br>{{item[10]}}%</div>
                                         </div>
                                         <div class="col-6 col-sm-4 col-xl">
                                           <div class="">內含管理費/年<br>{{item[11]}}%</div>
@@ -798,7 +832,7 @@
                                       </div>
                                     </td>
                                   </tr>
-                                  
+
                                 </template>
                               </tbody>
                             </table>
@@ -810,7 +844,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-lg-4" v-if="status !== 'overView'" v-for="(item,index) in progressData">
               <div class="panel admin-panel">
                 <div class="panel-body">
@@ -827,7 +860,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-lg-6">
               <div class="panel admin-panel">
                 <div class="panel-header">
@@ -843,7 +875,8 @@
                       <div class="progress-circle-wrap">
                         <div class="progress-circle-inner">
                           <div class="progress-counter-wrap">
-                            <div class="progress-counter-value"><span class="progress-counter">{{ETFtypeTotal[0]}}</span></div>
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[0]}}</span></div>
                           </div>
                           <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
                             <circle class="bg" cx="40" cy="40" r="32" style="stroke:#F97C6B;opacity:0.3;"></circle>
@@ -857,7 +890,8 @@
                       <div class="progress-circle-wrap">
                         <div class="progress-circle-inner">
                           <div class="progress-counter-wrap">
-                            <div class="progress-counter-value"><span class="progress-counter">{{ETFtypeTotal[1]}}</span></div>
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[1]}}</span></div>
                           </div>
                           <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
                             <circle class="bg" cx="40" cy="40" r="32" style="stroke:#FFBC49;opacity:0.3;"></circle>
@@ -871,7 +905,8 @@
                       <div class="progress-circle-wrap">
                         <div class="progress-circle-inner">
                           <div class="progress-counter-wrap">
-                            <div class="progress-counter-value"><span class="progress-counter">{{ETFtypeTotal[2]}}</span></div>
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[2]}}</span></div>
                           </div>
                           <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
 
@@ -909,7 +944,7 @@
                           <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                             href="#">資產全球多元化配置</a>
                         </div>
-                        <div class="text-right pr-0">增加 1.4% 利潤</div>
+                        <div class="text-right pr-0">增加 1.40% 利潤</div>
                       </div>
                       <div class="col-12 col-md-7 px-0">
                         <div class="pl-4 text-gray-600">
@@ -939,7 +974,7 @@
                           <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                             href="#">投資組合再平衡</a>
                         </div>
-                        <div class="text-right pr-0">增加 0.4% 利潤</div>
+                        <div class="text-right pr-0">增加 0.40% 利潤</div>
                       </div>
                       <div class="col-12 col-md-7 px-0">
                         <div class="pl-4 text-gray-600">
@@ -976,16 +1011,16 @@
               <div class="panel-body">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-12 px-0 d-flex justify-content-between">
+                    <div class="col-12 col-md-7 px-0">
                       <div>
                         <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                           href="#">資產全球多元化配置</a>
                       </div>
-                      
+                    </div>
+                    <div class="col-12 col-md-5 px-0">
                       <div class="lead text-right pr-0">
-                        <span>增加 1.25% 利潤</span>
+                        <span>增加 1.25% 利潤/年</span>
                       </div>
-                      
                     </div>
                     <div class="col-12 col-md-7 px-0 mt-2">
                       <div class="pl-4 text-gray-600">
@@ -993,32 +1028,36 @@
                         及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
                       </div>
                     </div>
-                    <div class="col-12 col-md-5 px-0 mt-md-2 d-flex justify-content-end align-items-end">
+                    <!-- <div class="col-12 col-md-5 px-0 mt-md-2 d-flex justify-content-end align-items-end">
                       <small><a href="#">了解更多</a></small>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="row">
-                    <div class="col-12 px-0 d-flex justify-content-between">
+                    <div class="col-12 col-md-7 px-0">
                       <div>
                         <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                           href="#">節省投資費用</a>
                       </div>
-                      <div class="lead text-right pr-0 mt-2">節省 1.25% 費用</div>
+                    </div>
+                    <div class="col-12 col-md-5 px-0">
+                      <div class="lead text-right pr-0 mt-2">節省 1.25% 費用/年</div>
                     </div>
                     <div class="col-12 col-md-7 px-0 mt-2">
                       <div class="pl-4 text-gray-600">
-                        阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
+                        阿爾發協助投資人將投資費用大幅降低，平均 0.70 %的 ETF 管理費用可避免投資人
                         被收取過高的投資費用，影響長期投資獲利。
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-12 px-0 d-flex justify-content-between">
+                    <div class="col-12 col-md-7 px-0">
                       <div>
                         <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                           href="#">投資組合再平衡</a>
                       </div>
-                      <div class="lead text-right pr-0">增加 0.4% 利潤</div>
+                    </div>
+                    <div class="col-12 col-md-5 px-0">
+                      <div class="lead text-right pr-0">增加 0.40% 利潤/年</div>
                     </div>
                     <div class="col-12 col-md-7 px-0 mt-2">
                       <div class="pl-4 text-gray-600">
@@ -1028,12 +1067,14 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-12 px-0 d-flex justify-content-between">
+                    <div class="col-12 col-md-7 px-0">
                       <div>
                         <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
                           href="#">降低進場時機錯誤的可能</a>
                       </div>
-                      <div class="lead text-right pr-0">增加 1.25% 利潤</div>
+                    </div>
+                    <div class="col-12 col-md-5 px-0">
+                      <div class="lead text-right pr-0">增加 1.25% 利潤/年</div>
                     </div>
                     <div class="col-12 col-md-7 px-0 mt-2">
                       <div class="pl-4 text-gray-600">
@@ -1052,29 +1093,33 @@
   </div>
   <script>
     if (location.search == '?PID=P2019102500001') {
-      document.querySelector('#tab1Data').textContent = '[[1,25,16500,65,1500,30,70]]'
+      document.querySelector('#tab1Data').textContent = '[[1,25,16500,65,1500,30,70,"ontrack"]]';
     } else if (location.search == '?PID=P2019102500002') {
-      document.querySelector('#tab1Data').textContent = '[[2,25,16500,20,80]]'
+      document.querySelector('#tab1Data').textContent = '[[2,25,16500,20,80,"ontrack"]]'
       document.querySelector('#progressData').textContent = '[[80,60],[20,20]]'
     } else if (location.search == '?PID=P2019102500003') {
-      document.querySelector('#tab1Data').textContent = '[[3,0,16500,20,80]]'
+      document.querySelector('#tab1Data').textContent = '[[3,0,16500,20,80,"offtrack"]]'
       document.querySelector('#progressData').textContent = '[[80,60],[20,20]]'
       document.querySelector('#tab2Data').textContent = '';
       document.querySelector('#columnChartData').textContent = '';
+      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500004') {
-      document.querySelector('#tab1Data').textContent = '[[4,0,16500,65,15,1500,70]]'
+      document.querySelector('#tab1Data').textContent = '[[4,0,16500,65,15,1500,70,"offtrack"]]'
       document.querySelector('#tab2Data').textContent = '';
       document.querySelector('#columnChartData').textContent = '';
+      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500005') {
-      document.querySelector('#tab1Data').textContent = '[[5,0,16500,65,50000,100000,70]]'
+      document.querySelector('#tab1Data').textContent = '[[5,0,16500,65,50000,100000,70,"offtrack"]]'
       document.querySelector('#tab2Data').textContent = '';
       document.querySelector('#columnChartData').textContent = '';
       document.querySelector('#progressData').textContent = '[[80,60],[80,80],[20,20]]'
+      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500006') {
-      document.querySelector('#tab1Data').textContent = '[[6,0,16500,65,1500,70]]'
+      document.querySelector('#tab1Data').textContent = '[[6,0,16500,65,1500,70,"offtrack"]]'
       document.querySelector('#tab2Data').textContent = '';
       document.querySelector('#columnChartData').textContent = '';
       document.querySelector('#progressData').textContent = '[[80,60],[80,80],[20,20]]'
+      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.hash == '#noData') {
       document.querySelectorAll('div.d-none div').forEach(function (element) {
         element.innerHTML = '';

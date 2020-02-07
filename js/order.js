@@ -1,16 +1,16 @@
 let order = new Vue({
   el: '#order',
   data: {
-    tab1Data: eval(document.querySelector('#tab1Data').textContent),
-    tab2Data: document.querySelector('#tab2Data').textContent ? eval(document.querySelector('#tab2Data').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
+    tab1Data: eval(document.querySelector('#tab1DataLB').textContent),
+    tab2Data: document.querySelector('#tab2DataLB').textContent ? eval(document.querySelector('#tab2DataLB').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
     tab22: true,
-    tableData: eval(document.querySelector('#tableData').textContent),
-    progressData: eval(document.querySelector('#progressData').textContent),
+    tableData: eval(document.querySelector('#tableDataLB').textContent),
+    progressData: eval(document.querySelector('#progressDataLB').textContent),
   },
   computed: {
     status: function () {
       if (!location.search) {
-        if (!document.querySelector('#tab1Data').textContent) {
+        if (!document.querySelector('#tab1DataLB').textContent) {
           return 'noData'
         }
         return 'overView'
@@ -30,7 +30,7 @@ let order = new Vue({
         let newTabData = this.tab1Data;
         if (this.status == 'overView') {
           newTabData.forEach(function (element) {
-            element[2] = { title: '總投入金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[2]) }
+            element[2] = { title: '預計投入金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[2]) }
             switch (element[0]) {
               case 1:
                 element[3] = { title: '預計退休年齡', text: element[3] + '歲' }
@@ -60,35 +60,40 @@ let order = new Vue({
 
         } else {
           newTabData.forEach(function (element) {
-            element[2] = { title: '總投入金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[2]) }
+            element[2] = { title: '預計投資金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[2]) }
             switch (element[0]) {
               case 1:
                 element[3] = { title: '預計退休年齡', text: element[3] + '歲' }
                 element[4] = { title: '退休後月花費', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) + ' / 月' }
                 element[5] = { title: '距離退休時間', text: element[5] + '年' }
                 element[6] = { title: '風險等級', text: element[6] }
+                element[7] = { title: '預期軌道', text: element[7] }
                 break;
               case 2:
               case 3:
                 element[3] = { title: '預計投資期間', text: element[3] + '年' }
                 element[4] = { title: '風險等級', text: element[4] }
+                element[5] = { title: '預期軌道', text: element[5] }
                 break;
               case 4:
                 element[3] = { title: '距離大學期間', text: element[3] + '年' }
                 element[4] = { title: '小孩目前歲數', text: element[4] + '歲' }
                 element[5] = { title: '預計所需金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[5]) }
                 element[6] = { title: '風險等級', text: element[6] }
+                element[7] = { title: '預期軌道', text: element[7] }
                 break;
               case 5:
                 element[3] = { title: '距離買房時間', text: element[3] + '年' }
                 element[4] = { title: '目標達成金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) }
                 element[5] = { title: '房屋總價值', text: 'USD $ ' + vm.$options.filters.commaFormat(element[5]) }
                 element[6] = { title: '風險等級', text: element[6] }
+                element[7] = { title: '預期軌道', text: element[7] }
                 break;
               case 6:
                 element[3] = { title: '預計目標年限', text: element[3] + '年' }
                 element[4] = { title: '預計目標金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) }
                 element[5] = { title: '風險等級', text: element[5] }
+                element[6] = { title: '預期軌道', text: element[6] }
                 break;
               default:
                 return;
@@ -117,17 +122,17 @@ let order = new Vue({
       if (this.tab1Data) {
         switch (this.tab1Data[0][0]) {
           case 1:
-            return [['風險等級', '成功機率', '距離退休時間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['距離你退休的時間', '此計畫平均退休時間']];
+            return [['風險等級', '成功機率', '距離退休時間'], ['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有計畫平均成功機率'], ['距離你退休的時間', '所有計畫平均退休時間']];
           case 2:
-            return [['風險等級', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您預計累積財富時間', '此計畫平均投資時間']];
+            return [['風險等級', '投資期間'], ['您的風險等級', '所有計畫平均風險等級'], ['您預計累積財富時間', '所有計畫平均投資時間']];
           case 3:
-            return [['風險等級', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您保值財產時間', '此計畫平均投資時間']];
+            return [['風險等級', '投資期間'], ['您的風險等級', '所有計畫平均風險等級'], ['您保值財產時間', '所有計畫平均投資時間']];
           case 4:
-            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['您的孩子距離大學時間', '此計畫平均投資時間']];
+            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有計畫平均成功機率'], ['您的孩子距離大學時間', '所有計畫平均投資時間']];
           case 5:
-            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['距離你買房時間', '此計畫平均投資時間']];
+            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有計畫平均成功機率'], ['距離你買房時間', '所有計畫平均投資時間']];
           case 6:
-            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '此計畫平均風險等級'], ['您的成功機率', '此計畫平均成功機率'], ['您投資目標時間', '此計畫平均投資時間']];
+            return [['風險等級', '成功機率', '投資期間'], ['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有計畫平均成功機率'], ['您投資目標時間', '所有計畫平均投資時間']];
         }
       }
     },
@@ -220,10 +225,11 @@ let order = new Vue({
       })
     },
     decimalFormat: function (value) {//小數點兩位
-      return Math.floor(value * 100) / 100;
+      return value.toFixed(2);
     },
-    decimalFormat2: function (value) {//小數點4位
-      return Math.floor(value * 10000) / 10000;
+    
+    test:function(value){
+      return value.toFixed(2);
     }
   },
   methods: {

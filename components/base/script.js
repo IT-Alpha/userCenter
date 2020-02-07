@@ -16,7 +16,7 @@
 //   c++;
 // })
 
-let testA = [800000, 864978, 932485, 2004773, 2199453, 2354811, 2554639, 2772173, 3010480, 3209413, 3491124, 3757718, 4081606, 4404939, 5231212, 5671626, 6194203, 6691171, 7114585, 7705500, 4408159, 4759051, 5144626, 5544484, 5984786, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547, 9954683, 10656068, 10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527, 7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963, 907841, 42790];
+// let testA = [800000, 864978, 932485, 2004773, 2199453, 2354811, 2554639, 2772173, 3010480, 3209413, 3491124, 3757718, 4081606, 4404939, 5231212, 5671626, 6194203, 6691171, 7114585, 7705500, 4408159, 4759051, 5144626, 5544484, 5984786, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547, 9954683, 10656068, 10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527, 7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963, 907841, 42790];
 
 
 'use strict';
@@ -2041,8 +2041,8 @@ let components = {
     ],
     init: function (nodes) {
       let columnChartData;
-      if (document.querySelector('#columnChartData').textContent) {
-        columnChartData = eval(document.querySelector('#columnChartData').textContent);
+      if (document.querySelector('#columnChartDataLB').textContent) {
+        columnChartData = eval(document.querySelector('#columnChartDataLB').textContent);
       } else {
         columnChartData = [null, null]
       }
@@ -2140,9 +2140,30 @@ let components = {
       };
       let lineChartData;
       let highchartDate = [];
-      if (document.querySelector('#lineChartData').textContent) {
-        lineChartData = JSON.parse(document.querySelector('#lineChartData').textContent);
-
+      if (document.querySelector('#lineChartDataLB').textContent) {
+        lineChartData = JSON.parse(document.querySelector('#lineChartDataLB').textContent);
+        lineChartData['fillColor'] =  {
+          "linearGradient": {
+            "x1": 0.5,
+            "y1": 0,
+            "x2": 0.5,
+            "y2": 1
+          },
+          "stops": [
+            [
+              0,
+              "rgb( 22, 182, 210 )"
+            ],
+            [
+              0.4,
+              "rgba( 22, 182, 210, .6 )"
+            ],
+            [
+              1,
+              "rgba( 22, 182, 210, .1 )"
+            ]
+          ]
+        };
         let today = new Date();
         let year = today.getFullYear();
         lineChartData['data'].forEach(function (item, index) {
@@ -2173,7 +2194,7 @@ let components = {
               }
               chart.icons = chart.renderer.g('icons').add().toFront();
               
-              var goalData = eval(document.querySelector('#iconData').textContent);
+              var goalData = eval(document.querySelector('#iconDataLB').textContent);
               goalData.forEach(function (item) {
                 var points = chart.series[0].data.find(function (el) {
                   return el.category == item[1]
@@ -2199,7 +2220,7 @@ let components = {
         ],
         tooltip: {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">預測金額: </td><td style="padding:0">$ <b>{point.y:,.1f}</b> USD</td></tr>',
           footerFormat: '</table>',
           // shared: true,
           useHTML: true
@@ -2223,10 +2244,10 @@ let components = {
           title: {
             text: null
           },
-          gridLineColor: '#A4A4A4',
+          gridLineColor: 'rgba(0,0,0,0.1)',
           labels: {
             style: {
-              color: '#A4A4A4'
+              color: '#A4A4A4',
             }
           }
         },
@@ -2255,50 +2276,26 @@ let components = {
           }
         },
         legend: {
-          enabled: true,
-          align: 'left',
-          verticalAlign: 'top',
-          x: -10,
-          y: -10,
-          itemDistance: 10,
-          itemStyle: {
-            color: '#16b6d2',
-            fontWeight: 'normal'
-          },
-          itemHoverStyle: {
-            color: '#9065b3'
-          }
+          enabled: false,
+          // enabled: true,
+          // align: 'left',
+          // verticalAlign: 'top',
+          // x: -10,
+          // y: -10,
+          // itemDistance: 10,
+          // itemStyle: {
+          //   color: '#16b6d2',
+          //   fontWeight: 'normal'
+          // },
+          // itemHoverStyle: {
+          //   color: '#9065b3'
+          // }
         },
         series: [
-          {
-            name: 'asd',
-            data: testA,
-            "fillColor": {
-              "linearGradient": {
-                "x1": 0.5,
-                "y1": 0,
-                "x2": 0.5,
-                "y2": 1
-              },
-              "stops": [
-                [
-                  0,
-                  "rgb( 22, 182, 210 )"
-                ],
-                [
-                  0.4,
-                  "rgba( 22, 182, 210, .6 )"
-                ],
-                [
-                  1,
-                  "rgba( 22, 182, 210, .1 )"
-                ]
-              ]
-            }
-          }
+            lineChartData
         ],
       };
-      let tableData = eval(document.querySelector('#tableData').textContent);
+      let tableData = eval(document.querySelector('#tableDataLB').textContent);
       let pieArray = tableData.map(function (element, index) {
         return { color: element[0], name: element[1], y: element[6], z: -(index - tableData.length) };
       });
@@ -2319,8 +2316,8 @@ let components = {
         },
         plotOptions: {
           variablepie: {
-            startAngle: 20,
-            endAngle: 380,
+            startAngle: 0,
+            endAngle: 360,
             borderWidth: 0,
             shadow: true,
             dataLabels: {

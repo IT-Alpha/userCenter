@@ -20,8 +20,8 @@
 let header = new Vue({
   el: 'header',
   data: {
-    active: location.pathname == '/order.html' ? location.search.replace('?PID=', '') : false,
-    sidebar: Boolean(document.querySelector('#sidebarData').textContent) ? eval(document.querySelector('#sidebarData').textContent) : '',
+    active: location.pathname.indexOf('order') >= 0 ? location.search.replace('?PID=', '') : false,
+    sidebar: Boolean(document.querySelector('#sidebarDataLB').textContent) ? eval(document.querySelector('#sidebarDataLB').textContent) : '',
   },
   filters: {
     goalIcon: function (value) {
