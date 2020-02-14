@@ -25,21 +25,27 @@
   <div class="page">
     <header class="section page-header">
       <!--RD Navbar-->
-        <!-- 訂單編號,訂單種類,訂單狀態,達成率 -->
-        <!-- 訂單種類 -->
-        <!-- 退休金準備(1) -->
-        <!-- 穩定累積財富(2) -->
-        <!-- 財產保值抗通膨(3) -->
-        <!-- 子女教育金(4) -->
-        <!-- 存錢買房(5) -->
-        <!-- 其他目標(6) -->
-        <!-- 訂單狀態 -->
-        <!-- 已下單(2),未成交(1),未下單(0) -->
+      <!-- 訂單編號,訂單種類,訂單狀態,達成率 -->
+      <!-- 訂單種類 -->
+      <!-- 退休金準備(1) -->
+      <!-- 穩定累積財富(2) -->
+      <!-- 財產保值抗通膨(3) -->
+      <!-- 子女教育金(4) -->
+      <!-- 存錢買房(5) -->
+      <!-- 其他目標(6) -->
+      <!-- 訂單狀態 -->
+      <!-- 已下單(2),未成交(1),未下單(0) -->
       <div class="d-none">
-        <div id="sidebarDataLB">
+        <div id="ResultLB">
+          [['Retirement','15',"P2019102500001", '2','1'],[ 'Long','0','P2019102500002','2','0'],[
+          'Preservation','0','P2019102500003','1','1'],[ 'Edu','0','P2019102500004','1','0'],[
+          'Production','0','P2019102500005','0','0'],[
+          'SpecificGoal','0','P2019102500006','0','0']]
+        </div>
+        <!-- <div id="sidebarDataLB">
           [["P2019102500001", '1', '2','15'],['P2019102500002', '2','2','50'],['P2019102500003',
           '3','1','0'],['P2019102500004', '4','1','0'],['P2019102500005', '5','0','0'],['P2019102500006', '6','0','0']]
-        </div>
+        </div> -->
       </div>
       <div class="rd-navbar-wrap">
         <nav class="rd-navbar">
@@ -219,18 +225,18 @@
             </div>
             <ul class="rd-navbar-nav">
               <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
-                <a class="rd-navbar-link" href="order.html">
+                <a class="rd-navbar-link" href="order.aspx">
                   <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
                 </a>
               </li>
-              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[0] == active ? 'active' : null">
-                <a class="rd-navbar-link" :class="item[2] | statusClass" :href="'order.html?PID=' + item[0]">
-                  <span class="rd-navbar-icon mdi" :class="item[1] | goalIcon"></span>
-                  <span>{{item[1] | goalText}}</span>
-                  <div class="flex-grow-1 text-right"><span>{{item[3]}}%</span></div>
+              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
+                <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass" :href="'order.html?PID=' + item[2]">
+                  <span class="rd-navbar-icon mdi" :class="item[2] | goalIcon"></span>
+                  <span>{{item[0] | goalText}}</span>
+                  <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
                   <div class="progress progress-sm w-100 mt-2"
-                    :class="item[0] == active ? 'progress-primary' : 'progress-light'">
-                    <div class="progress-bar progress-bar-striped" :style="{'width': item[3] + '%'}"></div>
+                    :class="item[2] == active ? 'progress-primary' : 'progress-light'">
+                    <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
                   </div>
                 </a>
               </li>
@@ -317,7 +323,86 @@
       <div class="d-none">
         <div id="tab1DataLB">
           <!-- 總攬 -->
-          [[1,25,16500,65,1500],[2,25,16500,20],[3,25,12000,20],[4,25,16500,65,15],[5,25,16500,65,1500],[6,25,16500,65,1500]]
+          [[
+          'Retirement',
+          25,
+          16500,
+          65,
+          2025,
+          1500,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ],[
+          'Long',
+          25,
+          16500,
+          20,
+          2030,
+          0,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ],[
+          'Preservation',
+          25,
+          12000,
+          20,
+          2035,
+          0,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ],[
+          'Edu',
+          25,
+          16500,
+          65,
+          15,
+          2040,
+          50000,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ],[
+          'Production',
+          25,
+          16500,
+          15,
+          2027,
+          30000,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ],[
+          'SpecificGoal',
+          25,
+          16500,
+          15,
+          2033,
+          1500,
+          '計畫編號',
+          '計畫狀態',
+          '下單狀態',
+          30,75,
+          30,75,
+          30,75
+          ]]
           <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費] -->
           <!-- [穩定累積財富跟財產保值抗通膨(2.3),達成率,投入金額,預計投資期間] -->
           <!-- [子女教育金(4),達成率,投入金額,距離大學期間,小孩目前歲數] -->
@@ -332,26 +417,12 @@
           <!-- [[1,25,16500,65,1500,70,32,"untrack"]] -->
           <!-- [[1,25,16500,65,1500,70,32,"ontrack"]] -->
         </div>
-        <div id="tab2DataLB">
+        <div id="TotalRateLB">
           <!-- 第一個array為[總投入金額,資產淨值] 第二個array為累積 第三個是年度,都是[報酬率,含息報酬率,配息金額] -->
           [[51650,1650],[6.5,7.3,1500],[10,11.5,3000]]
           <!-- 未下單跟未成交狀態,此字串為[[0, 0], [0, 0, 0], [0, 0, 0,]] -->
         </div>
-        <div id="progressDataLB">
-          [[30,32],[50,50],[32,32]]
-          <!-- 退休金準備 -->
-          <!-- [['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你退休的時間', '所有平均退休時間']] -->
-          <!-- 穩定累積財富 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您預計累積財富時間', '所有平均投資時間']] -->
-          <!-- 財產保值抗通膨 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您保值財產時間', '所有平均投資時間']] -->
-          <!-- 子女教育金 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您的孩子距離大學時間', '所有平均投資時間']] -->
-          <!-- 存錢買房 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你買房時間', '所有平均投資時間']] -->
-          <!-- 其他目標 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您投資目標時間', '所有平均投資時間']] -->
-        </div>
+
         <div id="lineChartDataLB">
           <!-- {name:'子女教育金',
           data:[null,30000,45000,60000,120000,160000,215000,270000,350000,450000,570000]} -->
@@ -363,36 +434,27 @@
           買房
           [500000, 540010, 581408, 626675, 673833, 724882, 777595, 836348, 901817, 973782, 1056208] -->
           <!-- name放計畫名稱,data裡面為各計畫預測金額,總攬則為全部計畫加總,年份的部分我寫在前端,我會用js取得今年的年份並替換為今年的字串,第一筆資料為今年,第二筆為2021,第三筆為2022....以此類推,data長度若為10則對應年份為2020+9 -->
-          {"name":"退休金準備","data":[800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415,
-          1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703,
-          4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547,
-          9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527,
-          7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963,
-          907841, 42790]}
+          [[30, 650000],[31, 690981],[32, 739502],[33, 788583],[34, 840895],[35,
+          896477],[36, 953440],[37, 1014759],[38, 1079363],[39, 1148070],[40, 1221259],[41, 1299366],[42,
+          1382846],[43, 1471138],[44, 1565401],[45, 1668359],[46, 1771405],[47, 1881848],[48, 1999461],[49,
+          2123928],[50, 2253279],]
         </div>
-        <div id="iconDataLB">
-          <!-- 計畫類別,計畫完成年份 -->
-          [[1,2055],[2,2039],[3,2044]]
-        </div>
+
         <div id="columnChartDataLB">
           <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null 預設顯示10年,未滿10年未來傳null,滿10年只顯示近10年 -->
           <!-- 未下單跟未成交狀態,此字串為空 -->
-          [[2019,2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032',
-          '2033',
-          '2034', '2035', '2036', '2037', '2038', '2039',
-          '2040',],[{name:'資產成長狀況',data:[30000,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]]
+          [[2010, 12.01],[2011, 1.22],[2012, 13.44],[2013, 10.12],[2014, 5.39],[2015,
+          0.55],[2016, 5.08],[2017, 12.44],[2018, -4.46],[2019, 16.11],]
         </div>
-        <div id="tableDataLB">
-          <!-- 色碼,代碼,ETF種類(stocks,REITs,bonds),ETF公司,中文,英文名稱(此欄位要全英文或是同後台資料中英文參雜,詢問後alvin說券商吐什麼就顯示什麼),持有比例,持有股數,持有價值,ETF價格,報酬率,內扣管理費 -->
-          <!-- 未下單跟未成交狀態,持有股數,持有價值,報酬率,為0 -->
+        <div id="PoDataLB">
           [
           [
-          '#F97C6B',
           'VEA',
-          'stocks',
-          'Vanguard',
           '全球已開發國家(不含美國)',
+          'Vanguard',
           'FTSE Developed Markets ETF',
+          'stocks',
+          '#F97C6B',
           22.53,
           1000.12345,
           1500.54,
@@ -401,12 +463,12 @@
           0.07
           ],
           [
-          '#FFACA1',
           'VSS',
-          'stocks',
-          'Vanguard',
           '全球小型股',
+          'Vanguard',
           'FTSE All-World ex-US Small-Cap ETF',
+          'stocks',
+          '#FFACA1',
           19.2,
           1000.12345,
           1500.321,
@@ -415,12 +477,12 @@
           0.07
           ],
           [
-          '#FDD6CF',
           'VTI',
-          'stocks',
-          'Vanguard',
           '全美國',
+          'Vanguard',
           'Total Stock Market ETF',
+          'stocks',
+          '#FDD6CF',
           28.47,
           1000.12345,
           1500,
@@ -429,12 +491,12 @@
           0.07
           ],
           [
-          '#FFBC49',
           'VNQ',
-          'REITs',
-          'Vanguard',
           '全美國',
+          'Vanguard',
           'Real Estate ETF',
+          'REITs',
+          '#FFBC49',
           14.37 ,
           1000.12345,
           1500,
@@ -443,12 +505,12 @@
           0.07
           ],
           [
-          '#FFD678',
           'VNQI',
-          'REITs',
-          'Vanguard',
           '全球(不含美國)',
+          'Vanguard',
           'Global ex-U.S. Real Estate ETF',
+          'REITs',
+          '#FFD678',
           5.98,
           1000.12345,
           1500,
@@ -457,12 +519,12 @@
           0.07
           ],
           [
-          '#88EE74',
           'BNDW',
-          'bonds',
-          'Vanguard',
           '全世界',
+          'Vanguard',
           'Total World Bond ETF',
+          'bonds',
+          '#88EE74',
           9.9,
           1000.12345,
           1500,
@@ -538,18 +600,18 @@
                               data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
                               :data-slick="slideData">
                               <div class="list-block-container list-block-lg" v-for="(item) in tab1">
-                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
-                                  <span class="font-weight-bold">{{item[0] | goalText}}</span>
+                                <h3 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">{{ item.title }}</span>
                                   <small
-                                    class="text-secondary font-weight-bold text-capitalize">達成率:{{item[1] | decimalFormat}}%</small>
-                                </h5>
-                                <div class="list-block">
+                                    class="text-secondary font-weight-bold text-capitalize">達成率:{{ item.progress }}</small>
+                                </h3>
+                                <div class="list-block pb-2">
                                   <div class="list-block-item d-flex justify-content-between"
-                                    v-for="(element,index) in item" v-if="index !==0 && index !== 1">
-                                    <div :style="{'visibility': element.text ? '' : 'hidden'}">
+                                    v-for="(el,index) in item.element">
+                                    <div :style="{'visibility': el.text ? '' : 'hidden'}">
                                       <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                      <span>{{element.title}}</span>
-                                    </div><strong class="text-dark">{{element.text}}</strong>
+                                      <span>{{el.title}}</span>
+                                    </div><strong class="text-dark">{{el.text}}</strong>
                                   </div>
                                 </div>
                               </div>
@@ -707,10 +769,10 @@
                             </div>
                             <div class="list-block-container list-block-lg">
                               <h5 class="list-block-title">
-                                <span class="font-weight-bold pointer-event" @click="tab22 = true">累積(Cumulative)</span>
+                                <button class="btn btn-link p-0 font-weight-bold" @click="tab22 = true">累積(Cumulative)</button>
                                 <span class="font-weight-bold">|</span>
-                                <span class="font-weight-bold pointer-event"
-                                  @click="tab22 = false">年度(Annualized)</span>
+                                <button class="btn btn-link p-0 font-weight-bold"
+                                  @click="tab22 = false">年度(Annualized)</button>
                               </h5>
                               <div class="list-block">
                                 <div class="list-block-item d-flex justify-content-between">
@@ -777,16 +839,16 @@
                               <tbody>
                                 <template v-for="(item) in tableData">
                                   <tr>
-                                    <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[0]}">
+                                    <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[5]}">
                                     </th>
-                                    <td>{{item[1]}}</td>
-                                    <td class="d-none d-md-table-cell">{{item[2] | ETFtype}}</td>
-                                    <td class="d-none d-xl-table-cell">{{item[4]}}</td>
+                                    <td>{{item[0]}}</td>
+                                    <td class="d-none d-md-table-cell">{{item[4] | ETFtype}}</td>
+                                    <td class="d-none d-xl-table-cell">{{item[2]}}</td>
                                     <td style="width:1%;">{{item[6]}}%</td>
                                     <td class="pl-0">
                                       <div class="d-inline-block" style="min-width:90px">
                                         <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
-                                          :style="{'background': 'repeating-linear-gradient(to right,' + item[0] + ',' + item[0] + ' 8%, white 8%, white 10%)'}">
+                                          :style="{'background': 'repeating-linear-gradient(to right,' + item[5] + ',' + item[5] + ' 8%, white 8%, white 10%)'}">
                                           <div class="progress-bar" style="background-color:white"
                                             :style="{'width': 100 - item[6] * 2 + '%'}">
                                           </div>
@@ -799,23 +861,23 @@
                                       USD $ {{ item[8] | commaFormat}}</td>
                                     <td class="px-0 text-right">
                                       <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
-                                        :href="'tr.' + item[1]" role="button">
+                                        :href="'tr.' + item[0]" role="button">
                                       </a>
                                     </td>
                                   </tr>
-                                  <tr class="collapse" :class="item[1]">
+                                  <tr class="collapse" :class="item[0]">
                                     <td colspan="8">
                                       <div class="row">
                                         <div class="col-12 col-sm-8 col-md-12 mb-3">
-                                          <div class="d-xl-none">{{item[4]}}</div>
-                                          {{item[5]}}
-                                          <small class="ml-3">{{item[3]}}</small>
+                                          <div class="d-xl-none">{{item[1]}}</div>
+                                          {{item[3]}}
+                                          <small class="ml-3">{{item[2]}}</small>
                                         </div>
                                         <div class="col-12 mb-3 d-sm-none">
                                           <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
                                         </div>
                                         <div class="col-6 col-sm-4 mb-3 d-md-none">
-                                          <div class="">ETF類別<br>{{item[2] | ETFtype}}</div>
+                                          <div class="">ETF類別<br>{{item[4] | ETFtype}}</div>
                                         </div>
                                         <div class="col-6 mb-3 d-sm-none">
                                           <div class="">持有價值<br>USD $ {{ item[8] | commaFormat}}</div>
@@ -832,7 +894,6 @@
                                       </div>
                                     </td>
                                   </tr>
-
                                 </template>
                               </tbody>
                             </table>
@@ -848,15 +909,18 @@
               <div class="panel admin-panel">
                 <div class="panel-body">
                   <div class="mb-4">
-                    {{progressTextArray[0][index]}}
+                    {{item.title}}
                   </div>
-                  <template v-for="(element,i) in item">
-                    <div>{{element}} <span></span></div>
-                    <div>{{progressTextArray[index + 1][i]}}</div>
-                    <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
-                      <div class="progress-bar" role="progressbar" :style="{'width':element + '%'}"></div>
-                    </div>
-                  </template>
+                  <div>{{item.self}}</div>
+                  <div>{{item.selfTitle}}</div>
+                  <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                    <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
+                  </div>
+                  <div>{{item.all}}</div>
+                  <div>{{item.allTitle}}</div>
+                  <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                    <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1093,33 +1157,33 @@
   </div>
   <script>
     if (location.search == '?PID=P2019102500001') {
-      document.querySelector('#tab1Data').textContent = '[[1,25,16500,65,1500,30,70,"ontrack"]]';
+      document.querySelector('#tab1DataLB').textContent = '[[1,25,16500,65,1500,30,70,"ontrack"]]';
     } else if (location.search == '?PID=P2019102500002') {
-      document.querySelector('#tab1Data').textContent = '[[2,25,16500,20,80,"ontrack"]]'
-      document.querySelector('#progressData').textContent = '[[80,60],[20,20]]'
+      document.querySelector('#tab1DataLB').textContent = '[[2,25,16500,20,80,"ontrack"]]'
+      document.querySelector('#progressDataLB').textContent = '[[80,60],[20,20]]'
     } else if (location.search == '?PID=P2019102500003') {
-      document.querySelector('#tab1Data').textContent = '[[3,0,16500,20,80,"offtrack"]]'
-      document.querySelector('#progressData').textContent = '[[80,60],[20,20]]'
-      document.querySelector('#tab2Data').textContent = '';
-      document.querySelector('#columnChartData').textContent = '';
-      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
+      document.querySelector('#tab1DataLB').textContent = '[[3,0,16500,20,80,"offtrack"]]'
+      document.querySelector('#progressDataLB').textContent = '[[80,60],[20,20]]'
+      document.querySelector('#tab2DataLB').textContent = '';
+      document.querySelector('#columnChartDataLB').textContent = '';
+      document.querySelector('#tableDataLB').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500004') {
-      document.querySelector('#tab1Data').textContent = '[[4,0,16500,65,15,1500,70,"offtrack"]]'
-      document.querySelector('#tab2Data').textContent = '';
-      document.querySelector('#columnChartData').textContent = '';
-      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
+      document.querySelector('#tab1DataLB').textContent = '[[4,0,16500,65,15,1500,70,"offtrack"]]'
+      document.querySelector('#tab2DataLB').textContent = '';
+      document.querySelector('#columnChartDataLB').textContent = '';
+      document.querySelector('#tableDataLB').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500005') {
-      document.querySelector('#tab1Data').textContent = '[[5,0,16500,65,50000,100000,70,"offtrack"]]'
-      document.querySelector('#tab2Data').textContent = '';
-      document.querySelector('#columnChartData').textContent = '';
-      document.querySelector('#progressData').textContent = '[[80,60],[80,80],[20,20]]'
-      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
+      document.querySelector('#tab1DataLB').textContent = '[[5,0,16500,65,50000,100000,70,"offtrack"]]'
+      document.querySelector('#tab2DataLB').textContent = '';
+      document.querySelector('#columnChartDataLB').textContent = '';
+      document.querySelector('#progressDataLB').textContent = '[[80,60],[80,80],[20,20]]'
+      document.querySelector('#tableDataLB').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.search == '?PID=P2019102500006') {
-      document.querySelector('#tab1Data').textContent = '[[6,0,16500,65,1500,70,"offtrack"]]'
-      document.querySelector('#tab2Data').textContent = '';
-      document.querySelector('#columnChartData').textContent = '';
-      document.querySelector('#progressData').textContent = '[[80,60],[80,80],[20,20]]'
-      document.querySelector('#tableData').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
+      document.querySelector('#tab1DataLB').textContent = '[[6,0,16500,65,1500,70,"offtrack"]]'
+      document.querySelector('#tab2DataLB').textContent = '';
+      document.querySelector('#columnChartDataLB').textContent = '';
+      document.querySelector('#progressDataLB').textContent = '[[80,60],[80,80],[20,20]]'
+      document.querySelector('#tableDataLB').textContent = `[['#F97C6B','VEA','stocks','Vanguard','全球已開發國家(不含美國)','FTSE Developed Markets ETF',24,0,0,58.81,0,0.07],['#FFACA1','VSS','stocks','Vanguard','全球小型股','FTSE All-World ex-US Small-Cap ETF',19,0,0,58.81,0,0.07],['#FDD6CF','VTI','stocks','Vanguard','全美國','Total Stock Market ETF',28,0,0,58.81,0,0.07],['#FFBC49','VNQ','REITs','Vanguard','全美國','Real Estate ETF',14,0,0,58.81,0,0.07],['#FFD678','VNQI','REITs','Vanguard','全球(不含美國)','Global ex-U.S. Real Estate ETF',6,0,0,58.81,0,0.07],['#88EE74','BNDW','bonds','Vanguard','全世界','Total World Bond ETF',10,0,0,58.81,0,0.07],]`;
     } else if (location.hash == '#noData') {
       document.querySelectorAll('div.d-none div').forEach(function (element) {
         element.innerHTML = '';

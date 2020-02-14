@@ -21,48 +21,51 @@ let header = new Vue({
   el: 'header',
   data: {
     active: location.pathname.indexOf('order') >= 0 ? location.search.replace('?PID=', '') : false,
-    sidebar: Boolean(document.querySelector('#sidebarDataLB').textContent) ? eval(document.querySelector('#sidebarDataLB').textContent) : '',
+    sidebar: Boolean(document.querySelector('#ResultLB').textContent) ? eval(document.querySelector('#ResultLB').textContent) : '',
   },
   filters: {
     goalIcon: function (value) {
       switch (value) {
-        case '1':
+        case 'Retirement':
           return 'mdi-airballoon';
-        case '2':
+        case 'Long':
           return 'mdi-cash-usd';
-        case '3':
+        case 'Preservation':
           return 'mdi-shield';
-        case '4':
+        case 'Edu':
           return 'mdi-school';
-        case '5':
+        case 'Production':
           return 'mdi-home';
-        case '6':
+        case 'SpecificGoal':
           return 'mdi-account-multiple-plus';
       }
     },
     statusClass: function (value) {
-      switch (value) {
-        case '0':
-          return 'un-order'
-        case '1':
-          return 'un-success';
-        case '2':
-          return 'order';
+    //  [財務目標編號, 達成率, 計畫編號, 計畫狀態, 下單狀態]
+
+    //    PS.計畫狀態：1已儲存、2已下單、9已結束；
+    //    訂單狀態：0委託成功、1已成交、2部分成交、8委託失敗、9交易失敗
+      if(value[0] == '2' && value[1] !== '1' ){   //  已下單但未已成交
+        return 'un-success';
+      }else if(value[0] == '2'  && value[1] == '1'){    //已下單且已成交
+        return 'order';
+      }else{
+        return 'un-order';
       }
     },
     goalText: function (value) {
       switch (value) {
-        case '1':
+        case 'Retirement':
           return '退休金準備';
-        case '2':
+        case 'Long':
           return '穩定累積財富';
-        case '3':
+        case 'Preservation':
           return '財產保值抗通膨';
-        case '4':
+        case 'Edu':
           return '子女教育金';
-        case '5':
+        case 'Production':
           return '存錢買房';
-        case '6':
+        case 'SpecificGoal':
           return '其他目標';
       }
     }

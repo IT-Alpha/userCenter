@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false"  MasterPageFile="~/MainStatic.Master" CodeBehind="order".aspx.vb" Inherits="Financial_Robots.order" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false"  MasterPageFile="~/MainBack.Master" CodeBehind="order".aspx.vb" Inherits="Financial_Robots.order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainStyle" runat="server">
-    <style>
-        .slick-vertical .slick-slide{
-          width:100% !important;
-        }
-    </style>
+  <style>
+    .slick-vertical .slick-slide {
+      width: 100% !important;
+    }
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
   <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -14,153 +14,11 @@
     <ContentTemplate>
       <section id="order" class="pb-3">
         <div class="d-none">
-          <div id="tab1Data">
-            <!-- 總攬 -->
-            [[1,25,16500,65,1500],[2,25,16500,20],[3,25,12000,20],[4,25,16500,65,15],[5,25,16500,65,1500],[6,25,16500,65,1500]]
-            <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費] -->
-          <!-- [穩定累積財富跟財產保值抗通膨(2.3),達成率,投入金額,預計投資期間] -->
-          <!-- [子女教育金(4),達成率,投入金額,距離大學期間,小孩目前歲數] -->
-          <!-- [存錢買房(5),達成率,投入金額,距離買房時間,預計目標金額] -->
-          <!-- [其他目標(6),達成率,投入金額,預計目標年限,預計目標金額] -->
-          <!-- 單計畫 -->
-          <!-- [退休金準備(1),達成率,投入金額,預計退休年齡,退休後月花費,*距離退休時間,*風險等級,預期軌道] -->
-          <!-- [穩定累積財富跟財產保值抗通膨(2.3),達成率,投入金額,預計投資期間,*風險等級,預期軌道] -->
-          <!-- [子女教育金(4),達成率,投入金額,距離大學期間,小孩目前歲數,*預計所需金額,*風險等級,預期軌道] -->
-          <!-- [存錢買房(5),達成率,投入金額,距離買房時間,預計目標金額,*房屋總價值,*風險等級,預期軌道] -->
-          <!-- [其他目標(6),達成率,投入金額,預計目標年限,預計目標金額,*風險等級,預期軌道] -->
-          <!-- [[1,25,16500,65,1500,70,32,"untrack"]] -->
-          <!-- [[1,25,16500,65,1500,70,32,"ontrack"]] -->
-          </div>
-          <div id="tab2Data">
-            <!-- 第一個array為[總投入金額,資產淨值] 第二個array為累積 第三個是年度,都是[投資報酬率,含息報酬率,配息金額] -->
-            [[51650,1650],[6.5,7.3,1500],[10,11.5,3000]]
-            <!-- 未下單跟未成交狀態,此字串為[[0, 0], [0, 0, 0], [0, 0, 0,]] -->
-          </div>
-          <div id="progressData">
-            [[30,32],[50,50],[32,32]]
-            <!-- 退休金準備 -->
-          <!-- [['您的風險等級', '所有計畫平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你退休的時間', '所有平均退休時間']] -->
-          <!-- 穩定累積財富 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您預計累積財富時間', '所有平均投資時間']] -->
-          <!-- 財產保值抗通膨 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您保值財產時間', '所有平均投資時間']] -->
-          <!-- 子女教育金 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您的孩子距離大學時間', '所有平均投資時間']] -->
-          <!-- 存錢買房 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['距離你買房時間', '所有平均投資時間']] -->
-          <!-- 其他目標 -->
-          <!-- [['您的風險等級', '所有平均風險等級'], ['您的成功機率', '所有平均成功機率'], ['您投資目標時間', '所有平均投資時間']] -->
-          </div>
-          <div id="lineChartData">
-            <!-- name放計畫名稱,data裡面為各計畫預測金額,總攬則為全部計畫加總,年份的部分我寫在前端,我會用js取得今年的年份並替換為今年的字串,第一筆資料為今年,第二筆為2021,第三筆為2022....以此類推,data長度若為10則對應年份為2020+9 -->
-            {"name":"總覽","data":[800000, 864978, 932485, 1004773, 1104773, 1173719, 1269351, 1372083, 1477312, 1587415,
-            1722712, 1836392, 1989088, 2155907, 2316716, 2507664, 2724753, 2940266, 3097410, 3352650, 3630564, 3922703,
-            4242809, 4570702, 4928578, 5309888, 5751063, 6116847, 6574967, 7067175, 7620341, 8127190, 8748800, 9367547,
-            9954683, 10656068,10504879, 10213323, 10101500, 9958580, 9748163, 9633778, 9117159, 8909935, 8601610, 8237527,
-            7832205, 7314817, 7001544, 6516650, 5957632, 5506759, 5048152, 4420840, 3898041, 3116628, 2414102, 1698963,
-            907841, 42790]}
-          </div>
-          <div id="iconData">
-            <!-- 計畫類別,計畫完成年份 -->
-            [[1,2055],[2,2039],[3,2044]]
-          </div>
-          <div id="columnChartData">
-            <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null 預設顯示10年,未滿10年未來傳null,滿10年只顯示近10年 -->
-            [[2019,2020, 2021, '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032',
-            '2033',
-            '2034', '2035', '2036', '2037', '2038', '2039',
-            '2040',],[{name:'資產成長狀況',data:[30000,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]]
-          </div>
-          <div id="tableData">
-            <!-- 色碼,代碼,ETF種類(stocks,REITs,bonds),ETF公司,中文,英文名稱(此欄位要全英文或是同後台資料中英文參雜,詢問後alvin說券商吐什麼就顯示什麼),持有比例,持有股數,持有價值,ETF價格,報酬率,內扣管理費 -->
-            <!-- 未下單跟未成交狀態,持有股數,持有價值,報酬率,為0 -->
-            [
-            [
-            '#F97C6B',
-            'VEA',
-            'stocks',
-            'Vanguard',
-            '全球已開發國家(不含美國)',
-            'FTSE Developed Markets ETF',
-            22.53,
-            1000,
-            1500.54,
-            58.81,
-            0.2,
-            0.07
-            ],
-            [
-            '#FFACA1',
-            'VSS',
-            'stocks',
-            'Vanguard',
-            '全球小型股',
-            'FTSE All-World ex-US Small-Cap ETF',
-            19,
-            1000,
-            1500.321,
-            58.81,
-            0.2,
-            0.07
-            ],
-            [
-            '#FDD6CF',
-            'VTI',
-            'stocks',
-            'Vanguard',
-            '全美國',
-            'Total Stock Market ETF',
-            28.47,
-            1000,
-            1500,
-            58.81,
-            0.2,
-            0.07
-            ],
-            [
-            '#FFBC49',
-            'VNQ',
-            'REITs',
-            'Vanguard',
-            '全美國',
-            'Real Estate ETF',
-            14,
-            1000,
-            1500,
-            58.81,
-            0.2,
-            0.07
-            ],
-            [
-            '#FFD678',
-            'VNQI',
-            'REITs',
-            'Vanguard',
-            '全球(不含美國)',
-            'Global ex-U.S. Real Estate ETF',
-            6,
-            1000,
-            1500,
-            58.81,
-            0.2,
-            0.07
-            ],
-            [
-            '#88EE74',
-            'BNDW',
-            'bonds',
-            'Vanguard',
-            '全世界',
-            'Total World Bond ETF',
-            10,
-            1000,
-            1500,
-            58.81,
-            0.2,
-            0.07
-            ],
-            ]
-          </div>
+          <asp:Label ID="ResultLB" runat="server"></asp:Label>
+          <asp:Label ID="TotalRateLB" runat="server"></asp:Label>
+          <asp:Label ID="PreLB" runat="server"></asp:Label>
+          <asp:Label ID="RealLB" runat="server"></asp:Label>
+          <asp:Label ID="PoDataLB" runat="server"></asp:Label>
         </div>
         <div class="container-fluid">
           <div class="row row-30">
@@ -271,14 +129,16 @@
                                     <div>
                                       <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
                                       <a>資產淨值</a>
-                                    </div><strong :class="tab2[0][1] == 0 ? 'text-secondary' : 'text-dark'">USD $
+                                    </div>
+                                    <strong :class="tab2[0][1] == 0 ? 'text-secondary' : 'text-dark'">USD $
                                       {{tab2[0][1] | decimalFormat | commaFormat}}</strong>
                                   </div>
                                 </div>
                               </div>
                               <div class="list-block-container list-block-lg">
                                 <h5 class="list-block-title">
-                                  <span class="font-weight-bold pointer-event" @click="tab22 = true">累積(Cumulative)</span>
+                                  <span class="font-weight-bold pointer-event"
+                                    @click="tab22 = true">累積(Cumulative)</span>
                                   <span class="font-weight-bold">|</span>
                                   <span class="font-weight-bold pointer-event"
                                     @click="tab22 = false">年度(Annualized)</span>
@@ -362,7 +222,8 @@
                                       <td style="width:1%;">{{item[6]}}%</td>
                                       <td class="pl-0">
                                         <div class="d-inline-block" style="min-width:90px">
-                                          <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
+                                          <div class="progress progress-sm justify-content-end"
+                                            style="border-radius: 0;"
                                             :style="{'background': 'repeating-linear-gradient(to right,' + item[0] + ',' + item[0] + ' 8%, white 8%, white 10%)'}">
                                             <div class="progress-bar" style="background-color:white"
                                               :style="{'width': 100 - item[6] * 2 + '%'}">
@@ -404,7 +265,7 @@
                                         </div>
                                       </td>
                                     </tr>
-  
+
                                   </template>
                                 </tbody>
                               </table>
@@ -481,7 +342,7 @@
                                   class="progress-counter">{{ETFtypeTotal[2]}}</span></div>
                             </div>
                             <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-  
+
                               <circle class="bg" cx="40" cy="40" r="32" style="stroke:#88EE74;opacity:0.3;"></circle>
                               <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#88EE74;"></circle>
                             </svg>
@@ -662,7 +523,7 @@
           </div>
         </div>
       </section>
-      
+
     </ContentTemplate>
     <Triggers>
     </Triggers>

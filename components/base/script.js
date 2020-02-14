@@ -2042,10 +2042,23 @@ let components = {
     init: function (nodes) {
       let columnChartData;
       if (document.querySelector('#columnChartDataLB').textContent) {
-        columnChartData = eval(document.querySelector('#columnChartDataLB').textContent);
+        let fuckingTranslate = eval(document.querySelector('#columnChartDataLB').textContent);
+        let a = fuckingTranslate.map(function (item, index) {
+          return item[0];
+        })
+        let b = {
+          name: '資產成長狀況',
+          data: Array
+        }
+        b['data'] = fuckingTranslate.map(function (item, index) {
+          return item[1];
+        })
+
+        columnChartData = [a, b]
       } else {
         columnChartData = [null, null]
       }
+
       //資產狀況
       let columnSetting = {
         credits: false,
@@ -2121,7 +2134,7 @@ let components = {
         noData: {
           useHTML: true
         },
-        series: columnChartData[1],
+        series: [columnChartData[1]],
         // responsive: {
         //   rules: [
         //     {
@@ -2138,11 +2151,11 @@ let components = {
         //   ]
         // }
       };
-      let lineChartData;
+      let lineChartData = Object;
       let highchartDate = [];
       if (document.querySelector('#lineChartDataLB').textContent) {
-        lineChartData = JSON.parse(document.querySelector('#lineChartDataLB').textContent);
-        lineChartData['fillColor'] =  {
+        let fuckingTranslate = eval(document.querySelector('#lineChartDataLB').textContent);
+        lineChartData['fillColor'] = {
           "linearGradient": {
             "x1": 0.5,
             "y1": 0,
@@ -2164,20 +2177,26 @@ let components = {
             ]
           ]
         };
-        let today = new Date();
-        let year = today.getFullYear();
-        lineChartData['data'].forEach(function (item, index) {
-          if (index == 0) {
-            highchartDate.push('今年')
-          } else {
-            highchartDate.push(year + index);
-          }
-        })
 
+        lineChartData.data = fuckingTranslate.map(function (item, index) {
+          return item[1]
+        })
+        // let today = new Date();
+        // let year = today.getFullYear();
+        // lineChartData['data'].forEach(function (item, index) {
+        //   if (index == 0) {
+        //     highchartDate.push('今年')
+        //   } else {
+        //     highchartDate.push(year + index);
+        //   }
+        // })
+        highchartDate = fuckingTranslate.map(function (item, index) {
+          return item[0] + 1990
+        });
+        highchartDate[0] = '今年';
       } else {
         lineChartData = [null, null]
       }
-
 
       //財務規劃
       let lineSetting = {
@@ -2185,26 +2204,50 @@ let components = {
         chart: {
           // backgroundColor: "transparent",
           type: "areaspline",
-          events:{
-            render:function(){
+          events: {
+            render: function () {
               let chart = this;
               var icons;
-              if(chart.icons){
+              if (chart.icons) {
                 chart.icons.destroy();
               }
               chart.icons = chart.renderer.g('icons').add().toFront();
-              
-              var goalData = eval(document.querySelector('#iconDataLB').textContent);
+
+              var goalData = eval(document.querySelector('#tab1DataLB').textContent);
               goalData.forEach(function (item) {
                 var points = chart.series[0].data.find(function (el) {
-                  return el.category == item[1]
+                  return el.category == item[4]
                 })
-                icons = chart.renderer
-                  .image('images/goal0' + item[0] + '.svg',
-                  points.plotX + chart.plotLeft - 15,
-                  points.plotY + chart.plotTop - 35,
-                  30,30)
-                  .add(chart.icons);
+
+                let valueTranslate;
+                switch (item[0]) {
+                  case 'Retirement':
+                    valueTranslate = 1;
+                    break;
+                  case 'Long':
+                    valueTranslate = 2;
+                    break;
+                  case 'Preservation':
+                    valueTranslate = 3;
+                    break;
+                  case 'Edu':
+                    valueTranslate = 4;
+                    break;
+                  case 'Production':
+                    valueTranslate = 5;
+                    break;
+                  case 'SpecificGoal':
+                    valueTranslate = 6;
+                    break;
+                }
+                if (points) {
+                  icons = chart.renderer
+                    .image('images/goal0' + valueTranslate + '.svg',
+                      points.plotX + chart.plotLeft - 15,
+                      points.plotY + chart.plotTop - 35,
+                      30, 30)
+                    .add(chart.icons);
+                }
               })
             }
           }
@@ -2292,12 +2335,12 @@ let components = {
           // }
         },
         series: [
-            lineChartData
+          lineChartData
         ],
       };
-      let tableData = eval(document.querySelector('#tableDataLB').textContent);
+      let tableData = eval(document.querySelector('#PoDataLB').textContent);
       let pieArray = tableData.map(function (element, index) {
-        return { color: element[0], name: element[1], y: element[6], z: -(index - tableData.length) };
+        return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
       });
 
       //投資組合

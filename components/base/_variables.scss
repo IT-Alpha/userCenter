@@ -45,8 +45,10 @@ $body-bg: $gray-100;
 $text-muted: $gray-400;
 
 // Links
-$link-color: $primary;
-$link-hover-color: darken($link-color, 15%);
+// $link-color: $primary;
+$link-color: $gray-900;
+// $link-hover-color: darken($link-color, 15%);
+$link-hover-color: light($link-color, 15%);
 
 // The yiq lightness value
 $yiq-contrasted-threshold:  160;
