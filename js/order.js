@@ -1,15 +1,15 @@
 let order = new Vue({
   el: '#order',
   data: {
-    tab1Data: eval(document.querySelector('#tab1DataLB').textContent),
-    tab2Data: document.querySelector('#TotalRateLB').textContent ? eval(document.querySelector('#TotalRateLB').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
+    tab1Data: document.querySelector('#order #ctl00_Main_ResultLB').textContent ? eval(document.querySelector('#order #ctl00_Main_ResultLB').textContent): null,
+    tab2Data: document.querySelector('#ctl00_Main_TotalRateLB').textContent ? eval(document.querySelector('#ctl00_Main_TotalRateLB').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
     tab22: true,
-    tableData: eval(document.querySelector('#PoDataLB').textContent),
+    tableData: eval(document.querySelector('#ctl00_Main_PoDataLB').textContent),
   },
   computed: {
     status: function () {
       if (!location.search) {
-        if (!document.querySelector('#tab1DataLB').textContent) {
+        if (document.querySelector('#order #ctl00_Main_PreLB').textContent == "[]") {
           return 'noData'
         }
         return 'overView'
@@ -39,8 +39,45 @@ let order = new Vue({
               },
             ]
           };
+          // switch (element[0]) {
+        //   case 1:
+        //     element[3] = { title: '預計退休年齡', text: element[3] + '歲' }
+        //     element[4] = { title: '退休後月花費', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) + ' / 月' }
+        //     element[5] = { title: '距離退休時間', text: element[5] + '年' }
+        //     element[6] = { title: '風險等級', text: element[6] }
+        //     element[7] = { title: '預期軌道', text: element[7] }
+        //     break;
+        //   case 2:
+        //   case 3:
+        //     element[3] = { title: '預計投資期間', text: element[3] + '年' }
+        //     element[4] = { title: '風險等級', text: element[4] }
+        //     element[5] = { title: '預期軌道', text: element[5] }
+        //     break;
+        //   case 4:
+        //     element[3] = { title: '距離大學期間', text: element[3] + '年' }
+        //     element[4] = { title: '小孩目前歲數', text: element[4] + '歲' }
+        //     element[5] = { title: '預計所需金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[5]) }
+        //     element[6] = { title: '風險等級', text: element[6] }
+        //     element[7] = { title: '預期軌道', text: element[7] }
+        //     break;
+        //   case 5:
+        //     element[3] = { title: '距離買房時間', text: element[3] + '年' }
+        //     element[4] = { title: '目標達成金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) }
+        //     element[5] = { title: '房屋總價值', text: 'USD $ ' + vm.$options.filters.commaFormat(element[5]) }
+        //     element[6] = { title: '風險等級', text: element[6] }
+        //     element[7] = { title: '預期軌道', text: element[7] }
+        //     break;
+        //   case 6:
+        //     element[3] = { title: '預計目標年限', text: element[3] + '年' }
+        //     element[4] = { title: '預計目標金額', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) }
+        //     element[5] = { title: '風險等級', text: element[5] }
+        //     element[6] = { title: '預期軌道', text: element[6] }
+        //     break;
+        //   default:
+        //     return;
           switch (item[0]) {
             case 'Retirement':
+              //沒距離退休時間
               plan.element.push({
                 title: '預計退休年齡',
                 text: item[3] + '歲'
@@ -50,10 +87,6 @@ let order = new Vue({
                 text: 'USD $ ' + vm.$options.filters.commaFormat(item[5]) + ' / 月'
               });
               if (vm.status !== 'overView') {
-                plan.element.push({
-                  title: '距離退休時間',
-                  text: '1年'
-                });
                 plan.element.push({
                   title: '風險等級',
                   text: item[9]
@@ -66,6 +99,7 @@ let order = new Vue({
               break;
             case 'Long':
             case 'Preservation':
+              //沒預期軌道
               plan.element.push({
                 title: '預計投資期間',
                 text: item[3] + '年'
@@ -75,13 +109,14 @@ let order = new Vue({
                 text: ''
               });
               if (vm.status !== 'overView') {
-                plan.element.push({
+                plan.element.splice(2,1,{
                   title: '風險等級',
                   text: item[9]
                 });
               }
               break;
             case 'Edu':
+              //沒小孩目前歲數
               plan.element.push({
                 title: '距離大學期間',
                 text: item[3] + '年'
@@ -96,12 +131,13 @@ let order = new Vue({
                   text: item[9]
                 });
                 plan.element.push({
-                  title: '風險軌道',
+                  title: '預期軌道',
                   text: 'ontrack'
                 });
               }
               break;
             case 'Production':
+              // 沒房屋總價值
               plan.element.push({
                 title: '距離買房時間',
                 text: item[3] + '年'
@@ -116,7 +152,7 @@ let order = new Vue({
                   text: item[9]
                 });
                 plan.element.push({
-                  title: '風險軌道',
+                  title: '預期軌道',
                   text: 'ontrack'
                 });
               }
@@ -136,7 +172,7 @@ let order = new Vue({
                   text: item[9]
                 });
                 plan.element.push({
-                  title: '風險軌道',
+                  title: '預期軌道',
                   text: 'ontrack'
                 });
               }
@@ -168,14 +204,17 @@ let order = new Vue({
       let vm = this;
 
       let stocksArray = this.tableData.filter(function (element) {
-        return element[4] == 'stocks'
+        return element[4] == '股票';
+        // return element[4] == 'stocks'
       });
 
       let REITsArray = this.tableData.filter(function (element) {
-        return element[4] == 'REITs'
+        return element[4] == '不動產信託'
+        // return element[4] == 'REITs'
       });
       let bondsArray = this.tableData.filter(function (element) {
-        return element[4] == 'bonds'
+        return element[4] == '債券'
+        // return element[4] == 'bonds'
       });
       let stocksTotal = 0, REITsTotal = 0, bondsTotal = 0;
       stocksArray.forEach(function (item) {
@@ -243,12 +282,18 @@ let order = new Vue({
     },
     ETFtype: function (value) {
       switch (value) {
-        case 'stocks':
+        case '股票':
           return '股票'
-        case 'REITs':
+        case '不動產信託':
           return '不動產';
-        case 'bonds':
+        case '債券':
           return '債券';
+        // case 'stocks':
+        //   return '股票'
+        // case 'REITs':
+        //   return '不動產';
+        // case 'bonds':
+        //   return '債券';
       }
     },
     progressClass: function (value) {

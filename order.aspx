@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false"  MasterPageFile="~/MainBack.Master" CodeBehind="order".aspx.vb" Inherits="Financial_Robots.order" %>
+﻿<%@ Page Title="阿爾發-損益情況" Language="VB" AutoEventWireup="false" MasterPageFile="~/MainBack.Master" CodeBehind="Order.aspx.vb" Inherits="Financial_Robots.Order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainStyle" runat="server">
   <style>
@@ -85,18 +85,18 @@
                                 data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
                                 :data-slick="slideData">
                                 <div class="list-block-container list-block-lg" v-for="(item) in tab1">
-                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
-                                    <span class="font-weight-bold">{{item[0] | goalText}}</span>
+                                  <h3 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">{{ item.title }}</span>
                                     <small
-                                      class="text-secondary font-weight-bold text-capitalize">達成率:{{item[1] | decimalFormat}}%</small>
-                                  </h5>
-                                  <div class="list-block">
+                                      class="text-secondary font-weight-bold text-capitalize">達成率:{{ item.progress }}</small>
+                                  </h3>
+                                  <div class="list-block pb-2">
                                     <div class="list-block-item d-flex justify-content-between"
-                                      v-for="(element,index) in item" v-if="index !==0 && index !== 1">
-                                      <div :style="{'visibility': element.text ? '' : 'hidden'}">
+                                      v-for="(el,index) in item.element">
+                                      <div :style="{'visibility': el.text ? '' : 'hidden'}">
                                         <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                        <span>{{element.title}}</span>
-                                      </div><strong class="text-dark">{{element.text}}</strong>
+                                        <span>{{el.title}}</span>
+                                      </div><strong class="text-dark">{{el.text}}</strong>
                                     </div>
                                   </div>
                                 </div>
@@ -121,7 +121,7 @@
                                   <div class="list-block-item d-flex justify-content-between">
                                     <div>
                                       <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
-                                      <a>總投入金額</a>
+                                      <a>已投入投資金額</a>
                                     </div><strong :class="tab2[0][0] == 0 ? 'text-secondary' : 'text-dark'">USD $
                                       {{tab2[0][0] | decimalFormat | commaFormat}}</strong>
                                   </div>
@@ -129,19 +129,17 @@
                                     <div>
                                       <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
                                       <a>資產淨值</a>
-                                    </div>
-                                    <strong :class="tab2[0][1] == 0 ? 'text-secondary' : 'text-dark'">USD $
+                                    </div><strong :class="tab2[0][1] == 0 ? 'text-secondary' : 'text-dark'">USD $
                                       {{tab2[0][1] | decimalFormat | commaFormat}}</strong>
                                   </div>
                                 </div>
                               </div>
                               <div class="list-block-container list-block-lg">
                                 <h5 class="list-block-title">
-                                  <span class="font-weight-bold pointer-event"
-                                    @click="tab22 = true">累積(Cumulative)</span>
+                                  <button class="btn btn-link p-0 font-weight-bold" @click="tab22 = true">累積(Cumulative)</button>
                                   <span class="font-weight-bold">|</span>
-                                  <span class="font-weight-bold pointer-event"
-                                    @click="tab22 = false">年度(Annualized)</span>
+                                  <button class="btn btn-link p-0 font-weight-bold"
+                                    @click="tab22 = false">年度(Annualized)</button>
                                 </h5>
                                 <div class="list-block">
                                   <div class="list-block-item d-flex justify-content-between">
@@ -180,6 +178,7 @@
                                   <tr>
                                     <th scope="col" width="5px" class="p-0"></th>
                                     <th scope="col">代碼</th>
+                                    <th scope="col" class="d-none d-md-table-cell">類別</th>
                                     <th scope="col" class="d-none d-xl-table-cell">資產名稱</th>
                                     <th scope="col" colspan="2">比例</th>
                                     <th scope="col" class="d-none d-sm-table-cell">持有股數</th>
@@ -189,42 +188,34 @@
                                 </thead>
                                 <tfoot class="bg-200">
                                   <tr>
-                                    <th scope="row" colspan="2"></th>
+                                    <th scope="col" width="5px" class="p-0"></th>
+                                    <td class="d-none d-md-table-cell"></td>
                                     <td class="d-none d-xl-table-cell"></td>
-                                    <td colspan="2">總計</td>
-                                    <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td>
-                                    <td class="d-none d-sm-table-cell"
+                                    <td class="d-none d-sm-table-cell" colspan="3"></td>
+                                    <td class="d-none d-sm-table-cell">總計</td>
+                                    <td class="d-sm-none small">價值總計</td>
+                                    <!-- <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td> -->
+                                    <td colspan="3" class="d-sm-none"
                                       :class="tableTotal[2] == 0 ? 'text-secondary' : null">
                                       USD $ {{tableTotal[2] | commaFormat}}</td>
-                                    <td class="px-0 text-right">
-                                      <a class="mdi-18px mdi mdi-chevron-down d-sm-none" data-toggle="collapse"
-                                        href="tr.total" role="button">
-                                      </a>
-                                    </td>
-                                  </tr class="bg-200">
-                                  <tr class="collapse total">
-                                    <td colspan="2">
-                                      <small>持有股數</small><br>
-                                      {{tableTotal[1] | commaFormat}}
-                                    </td>
-                                    <td colspan="3" :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                      <small>持有價值</small><br>
+                                    <td colspan="2" class="d-none d-sm-table-cell"
+                                      :class="tableTotal[2] == 0 ? 'text-secondary' : null">
                                       USD $ {{tableTotal[2] | commaFormat}}</td>
                                   </tr>
-                                </tfoot class="bg-200">
+                                </tfoot>
                                 <tbody>
                                   <template v-for="(item) in tableData">
                                     <tr>
-                                      <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[0]}">
+                                      <th scope="row" width="5px" class="p-0" :style="{'background-color' : item[5]}">
                                       </th>
-                                      <td>{{item[1]}}</td>
-                                      <td class="d-none d-xl-table-cell">{{item[2] | ETFtype}}－{{item[4]}}</td>
-                                      <td style="width:1%;">{{item[6]}}%</td>
+                                      <td>{{item[0]}}</td>
+                                      <td class="d-none d-md-table-cell">{{item[4] | ETFtype}}</td>
+                                      <td class="d-none d-xl-table-cell">{{item[1]}}</td>
+                                      <td style="width:1%;">{{item[6] | decimalFormat}}%</td>
                                       <td class="pl-0">
                                         <div class="d-inline-block" style="min-width:90px">
-                                          <div class="progress progress-sm justify-content-end"
-                                            style="border-radius: 0;"
-                                            :style="{'background': 'repeating-linear-gradient(to right,' + item[0] + ',' + item[0] + ' 8%, white 8%, white 10%)'}">
+                                          <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
+                                            :style="{'background': 'repeating-linear-gradient(to right,' + item[5] + ',' + item[5] + ' 8%, white 8%, white 10%)'}">
                                             <div class="progress-bar" style="background-color:white"
                                               :style="{'width': 100 - item[6] * 2 + '%'}">
                                             </div>
@@ -237,18 +228,23 @@
                                         USD $ {{ item[8] | commaFormat}}</td>
                                       <td class="px-0 text-right">
                                         <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
-                                          :href="'tr.' + item[1]" role="button">
+                                          :href="'tr.' + item[0]" role="button">
                                         </a>
                                       </td>
                                     </tr>
-                                    <tr class="collapse" :class="item[1]">
+                                    <tr class="collapse" :class="item[0]">
                                       <td colspan="8">
                                         <div class="row">
-                                          <div class="col-12 d-xl-none">{{item[2] | ETFtype}}－{{item[4]}}</div>
-                                          <div class="col-12 col-xl-12 mb-3">{{item[5]}}<small
-                                              class="ml-3">{{item[3]}}</small></div>
-                                          <div class="col-6 mb-3 d-sm-none">
+                                          <div class="col-12 col-sm-8 col-md-12 mb-3">
+                                            <div class="d-xl-none">{{item[1]}}</div>
+                                            {{item[3]}}
+                                            <small class="ml-3">{{item[2]}}</small>
+                                          </div>
+                                          <div class="col-12 mb-3 d-sm-none">
                                             <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
+                                          </div>
+                                          <div class="col-6 col-sm-4 mb-3 d-md-none">
+                                            <div class="">ETF類別<br>{{item[4] | ETFtype}}</div>
                                           </div>
                                           <div class="col-6 mb-3 d-sm-none">
                                             <div class="">持有價值<br>USD $ {{ item[8] | commaFormat}}</div>
@@ -257,7 +253,7 @@
                                             <div class="">ETF價格<br>USD $ {{ item[9] | commaFormat}}</div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
-                                            <div class="">已實現報酬率<br>{{item[10]}}%</div>
+                                            <div class="">報酬率<br>{{item[10]}}%</div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
                                             <div class="">內含管理費/年<br>{{item[11]}}%</div>
@@ -265,7 +261,6 @@
                                         </div>
                                       </td>
                                     </tr>
-
                                   </template>
                                 </tbody>
                               </table>
@@ -281,15 +276,18 @@
                 <div class="panel admin-panel">
                   <div class="panel-body">
                     <div class="mb-4">
-                      {{progressTextArray[0][index]}}
+                      {{item.title}}
                     </div>
-                    <template v-for="(element,i) in item">
-                      <div>{{element}} <span></span></div>
-                      <div>{{progressTextArray[index + 1][i]}}</div>
-                      <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
-                        <div class="progress-bar" role="progressbar" :style="{'width':element + '%'}"></div>
-                      </div>
-                    </template>
+                    <div>{{item.self}}</div>
+                    <div>{{item.selfTitle}}</div>
+                    <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                      <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
+                    </div>
+                    <div>{{item.all}}</div>
+                    <div>{{item.allTitle}}</div>
+                    <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                      <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -342,7 +340,7 @@
                                   class="progress-counter">{{ETFtypeTotal[2]}}</span></div>
                             </div>
                             <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-
+  
                               <circle class="bg" cx="40" cy="40" r="32" style="stroke:#88EE74;opacity:0.3;"></circle>
                               <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#88EE74;"></circle>
                             </svg>
@@ -360,7 +358,7 @@
                 <div class="panel admin-panel h-100" style="min-height:250px">
                   <div
                     style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
-                    <span style="font-size: 2rem;color:#fff;text-align: center;">請新增計畫<br>來查看詳細資料</span>
+                    <span style="font-size: 2rem;color:#fff;text-align: center;">請前往個別計畫<br>來查看資料</span>
                   </div>
                 </div>
               </div>
@@ -523,14 +521,13 @@
           </div>
         </div>
       </section>
-
     </ContentTemplate>
     <Triggers>
     </Triggers>
   </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainJS" runat="server">
-  <script src="js/components/base/script.js"></script>
+  <script src="components/base/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script src="js/header.js"></script>
   <script src="js/order.js"></script>

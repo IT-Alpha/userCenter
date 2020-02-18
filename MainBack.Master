@@ -24,17 +24,6 @@
   <form id="form1" runat="server">
     <div class="page">
       <header class="section page-header">
-        <!--RD Navbar-->
-          <!-- 訂單編號,訂單種類,訂單狀態,達成率 -->
-          <!-- 訂單種類 -->
-          <!-- 退休金準備(1) -->
-          <!-- 穩定累積財富(2) -->
-          <!-- 財產保值抗通膨(3) -->
-          <!-- 子女教育金(4) -->
-          <!-- 存錢買房(5) -->
-          <!-- 其他目標(6) -->
-          <!-- 訂單狀態 -->
-          <!-- 已下單(2),未成交(1),未下單(0) -->
         <div class="d-none">
           <asp:Label ID="ResultLB" runat="server"></asp:Label>
           <asp:Label ID="LoginLB" runat="server"></asp:Label>
@@ -43,7 +32,7 @@
           <nav class="rd-navbar">
             <div class="rd-navbar-panel">
               <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
+                <button type="button" class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
                     class="fa-bars"></span></button>
               </div>
               <div class="rd-navbar-panel-cell d-none d-xl-block">
@@ -57,7 +46,7 @@
               <div class="rd-navbar-panel-center"></div>
   
               <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar"
+                <button type="button" class="btn button-navbar"
                   data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
                     class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
                 <div class="rd-navbar-subpanel" id="subpanel-notifications">
@@ -102,7 +91,7 @@
                 </div>
               </div>
               <div class="rd-navbar-panel-cell">
-                <button class="btn button-navbar"
+                <button type="button" class="btn button-navbar"
                   data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
                     class="fa-sliders"></span></button>
                 <div class="sidebar scroller">
@@ -168,9 +157,9 @@
                   <div><a href="#"><img class="rounded-circle"
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
                         width="100" height="100" alt="" /></a></div>
-                  <h2 class="font-weight-light text-light">測試人員</h2>
+                  <h2 class="font-weight-light text-light">{{name}}</h2>
                   <div>
-                    <button class="btn button-setting button-user-menu rounded-pill"
+                    <button type="button" class="btn button-setting button-user-menu rounded-pill"
                       data-multi-switch='{"targets":"#userMenu","scope":"#userMenu","isolate":"[data-multi-switch]"}'>個人設置</button>
                   </div>
                 </div>
@@ -217,13 +206,13 @@
               </div>
               <ul class="rd-navbar-nav">
                 <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
-                  <a class="rd-navbar-link" href="order.html">
+                  <a class="rd-navbar-link" href="order.aspx">
                     <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
                   </a>
                 </li>
                 <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
-                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass" :href="'order.html?PID=' + item[2]">
-                    <span class="rd-navbar-icon mdi" :class="item[2] | goalIcon"></span>
+                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass" :href="'order.aspx?PID=' + item[2]">
+                    <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
                     <span>{{item[0] | goalText}}</span>
                     <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
                     <div class="progress progress-sm w-100 mt-2"

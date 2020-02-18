@@ -2041,22 +2041,26 @@ let components = {
     ],
     init: function (nodes) {
       let columnChartData;
-      if (document.querySelector('#columnChartDataLB').textContent) {
-        let fuckingTranslate = eval(document.querySelector('#columnChartDataLB').textContent);
-        let a = fuckingTranslate.map(function (item, index) {
-          return item[0];
-        })
-        let b = {
-          name: '資產成長狀況',
-          data: Array
-        }
-        b['data'] = fuckingTranslate.map(function (item, index) {
-          return item[1];
-        })
+      if (document.querySelector('#ctl00_Main_RealLB').textContent) {
+        let fuckingTranslate = eval(document.querySelector('#ctl00_Main_RealLB').textContent);
+        if (fuckingTranslate.length == 1) {
+          columnChartData = [null, null];
+        } else {
+          let a = fuckingTranslate.map(function (item, index) {
+            return item[0];
+          })
+          let b = {
+            name: '資產成長狀況',
+            data: Array
+          }
+          b['data'] = fuckingTranslate.map(function (item, index) {
+            return item[1];
+          })
 
-        columnChartData = [a, b]
+          columnChartData = [a, [b]]
+        }
       } else {
-        columnChartData = [null, null]
+        columnChartData = [null, null];
       }
 
       //資產狀況
@@ -2134,7 +2138,7 @@ let components = {
         noData: {
           useHTML: true
         },
-        series: [columnChartData[1]],
+        series: columnChartData[1],
         // responsive: {
         //   rules: [
         //     {
@@ -2153,8 +2157,8 @@ let components = {
       };
       let lineChartData = Object;
       let highchartDate = [];
-      if (document.querySelector('#lineChartDataLB').textContent) {
-        let fuckingTranslate = eval(document.querySelector('#lineChartDataLB').textContent);
+      if (document.querySelector('#ctl00_Main_PreLB').textContent) {
+        let fuckingTranslate = eval(document.querySelector('#ctl00_Main_PreLB').textContent);
         lineChartData['fillColor'] = {
           "linearGradient": {
             "x1": 0.5,
@@ -2213,7 +2217,7 @@ let components = {
               }
               chart.icons = chart.renderer.g('icons').add().toFront();
 
-              var goalData = eval(document.querySelector('#tab1DataLB').textContent);
+              var goalData = eval(document.querySelector('#ctl00_Main_ResultLB').textContent);
               goalData.forEach(function (item) {
                 var points = chart.series[0].data.find(function (el) {
                   return el.category == item[4]
@@ -2295,7 +2299,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後<br>即可查看資產狀況",
+          noData: "下單成功後<br>即為您統整您的計畫",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2338,7 +2342,7 @@ let components = {
           lineChartData
         ],
       };
-      let tableData = eval(document.querySelector('#PoDataLB').textContent);
+      let tableData = eval(document.querySelector('#ctl00_Main_PoDataLB').textContent);
       let pieArray = tableData.map(function (element, index) {
         return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
       });

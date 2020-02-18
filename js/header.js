@@ -13,15 +13,15 @@
 //   case 6:
 //     return '其他目標';
 // }
-//資料格式
-//[訂單編號,投資目標,投資狀態,達成率]
+
 //link
 //?PID=訂單編號
 let header = new Vue({
   el: 'header',
   data: {
     active: location.pathname.indexOf('order') >= 0 ? location.search.replace('?PID=', '') : false,
-    sidebar: Boolean(document.querySelector('#ResultLB').textContent) ? eval(document.querySelector('#ResultLB').textContent) : '',
+    sidebar: Boolean(document.querySelector('header #ctl00_ResultLB').textContent) ? eval(document.querySelector('header #ctl00_ResultLB').textContent) : '',
+    name:document.querySelector('#ctl00_LoginLB') ? document.querySelector('#ctl00_LoginLB').textContent : '',
   },
   filters: {
     goalIcon: function (value) {
@@ -41,11 +41,9 @@ let header = new Vue({
       }
     },
     statusClass: function (value) {
-    //  [財務目標編號, 達成率, 計畫編號, 計畫狀態, 下單狀態]
-
     //    PS.計畫狀態：1已儲存、2已下單、9已結束；
     //    訂單狀態：0委託成功、1已成交、2部分成交、8委託失敗、9交易失敗
-      if(value[0] == '2' && value[1] !== '1' ){   //  已下單但未已成交
+      if(value[0] == '2' && value[1] != '1' ){   //  已下單但未已成交
         return 'un-success';
       }else if(value[0] == '2'  && value[1] == '1'){    //已下單且已成交
         return 'order';
