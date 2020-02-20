@@ -23,7 +23,7 @@
         <div class="container-fluid">
           <div class="row row-30">
             <div class="col-12 text-right pt-4 pt-xl-0">
-              <button type="button" class="btn btn-outline-secondary">新增計畫</button>
+              <a type="button" class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
               <button type="button" class="btn btn-secondary ml-3" v-if="status == 'un-order'">下單此計畫</button>
               <button type="button" class="btn btn-secondary ml-3" v-if="status == 'order'">調整計畫</button>
               <template v-if="status == 'un-success'">
@@ -136,9 +136,9 @@
                               </div>
                               <div class="list-block-container list-block-lg">
                                 <h5 class="list-block-title">
-                                  <button class="btn btn-link p-0 font-weight-bold" @click="tab22 = true">累積(Cumulative)</button>
+                                  <button type="button" class="btn btn-link p-0 font-weight-bold" @click="tab22 = true">累積(Cumulative)</button>
                                   <span class="font-weight-bold">|</span>
-                                  <button class="btn btn-link p-0 font-weight-bold"
+                                  <button type="button" class="btn btn-link p-0 font-weight-bold"
                                     @click="tab22 = false">年度(Annualized)</button>
                                 </h5>
                                 <div class="list-block">
@@ -211,7 +211,7 @@
                                       <td>{{item[0]}}</td>
                                       <td class="d-none d-md-table-cell">{{item[4] | ETFtype}}</td>
                                       <td class="d-none d-xl-table-cell">{{item[1]}}</td>
-                                      <td style="width:1%;">{{item[6] | decimalFormat}}%</td>
+                                      <td style="width:1%;text-align: right;">{{item[6] | decimalFormat}}%</td>
                                       <td class="pl-0">
                                         <div class="d-inline-block" style="min-width:90px">
                                           <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
@@ -222,9 +222,9 @@
                                           </div>
                                         </div>
                                       </td>
-                                      <td class="d-none d-sm-table-cell">{{item[7] | commaFormat}}</td>
+                                      <td class="d-none d-sm-table-cell" :class="item[8] == 0 ? 'text-secondary' : null">{{item[7] | commaFormat}}</td>
                                       <td class="d-none d-sm-table-cell"
-                                        :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                        :class="item[8] == 0 ? 'text-secondary' : null">
                                         USD $ {{ item[8] | commaFormat}}</td>
                                       <td class="px-0 text-right">
                                         <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
@@ -358,7 +358,7 @@
                 <div class="panel admin-panel h-100" style="min-height:250px">
                   <div
                     style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
-                    <span style="font-size: 2rem;color:#fff;text-align: center;">請前往個別計畫<br>來查看資料</span>
+                    <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
                   </div>
                 </div>
               </div>

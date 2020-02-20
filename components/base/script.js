@@ -2043,12 +2043,13 @@ let components = {
       let columnChartData;
       if (document.querySelector('#ctl00_Main_RealLB').textContent) {
         let fuckingTranslate = eval(document.querySelector('#ctl00_Main_RealLB').textContent);
-        if (fuckingTranslate.length == 1) {
+        if (fuckingTranslate.length == 1 && fuckingTranslate[0][1] == 0.00) {
           columnChartData = [null, null];
         } else {
           let a = fuckingTranslate.map(function (item, index) {
             return item[0];
-          })
+          });
+
           let b = {
             name: '資產成長狀況',
             data: Array
@@ -2056,6 +2057,12 @@ let components = {
           b['data'] = fuckingTranslate.map(function (item, index) {
             return item[1];
           })
+
+          while (a.length < 10) {
+            a.push(a[a.length - 1] + 1);
+            b['data'].push(0);
+          }
+
 
           columnChartData = [a, [b]]
         }
@@ -2195,7 +2202,7 @@ let components = {
         //   }
         // })
         highchartDate = fuckingTranslate.map(function (item, index) {
-          return item[0] + 1990
+          return item[0]
         });
         highchartDate[0] = '今年';
       } else {
@@ -2218,9 +2225,13 @@ let components = {
               chart.icons = chart.renderer.g('icons').add().toFront();
 
               var goalData = eval(document.querySelector('#ctl00_Main_ResultLB').textContent);
-              goalData.forEach(function (item) {
+              var goalPointData = goalData.filter(function (item) {
+                return item[9] != -1 ;
+              });
+              console.log(goalPointData,'goalPointData')
+              goalPointData.forEach(function (item) {
                 var points = chart.series[0].data.find(function (el) {
-                  return el.category == item[4]
+                  return el.category == item[5]
                 })
 
                 let valueTranslate;
@@ -2299,7 +2310,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後<br>即為您統整您的計畫",
+          noData: "下單成功後<br>即為您規劃您的計畫",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2342,6 +2353,7 @@ let components = {
           lineChartData
         ],
       };
+
       let tableData = eval(document.querySelector('#ctl00_Main_PoDataLB').textContent);
       let pieArray = tableData.map(function (element, index) {
         return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
@@ -2359,7 +2371,7 @@ let components = {
         },
         tooltip: {
           headerFormat: null,
-          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>佔<b>{point.y}%</b><br/>'
+          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>佔<b>{point.y:.2f}%</b><br/>'
         },
         plotOptions: {
           variablepie: {

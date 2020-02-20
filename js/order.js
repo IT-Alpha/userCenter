@@ -35,7 +35,7 @@ let order = new Vue({
             element: [
               {
                 title: '預計投入金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(item[2])
+                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[2]))
               },
             ]
           };
@@ -80,21 +80,21 @@ let order = new Vue({
               //沒距離退休時間
               plan.element.push({
                 title: '預計退休年齡',
-                text: item[3] + '歲'
+                text: item[4] + '歲'
               });
               plan.element.push({
                 title: '退休後月花費',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(item[5]) + ' / 月'
+                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6])) + ' / 月'
               });
               if (vm.status !== 'overView') {
                 plan.element.push({
                   title: '風險等級',
-                  text: item[9]
+                  text: item[10]
                 });
-                plan.element.push({
-                  title: '預期軌道',
-                  text: 'ontrack'
-                });
+                // plan.element.push({
+                //   title: '預期軌道',
+                //   text: 'ontrack'
+                // });
               }
               break;
             case 'Long':
@@ -102,7 +102,7 @@ let order = new Vue({
               //沒預期軌道
               plan.element.push({
                 title: '預計投資期間',
-                text: item[3] + '年'
+                text: item[4] + '年'
               });
               plan.element.push({
                 title: '預計投資期間',
@@ -111,7 +111,7 @@ let order = new Vue({
               if (vm.status !== 'overView') {
                 plan.element.splice(2,1,{
                   title: '風險等級',
-                  text: item[9]
+                  text: item[10]
                 });
               }
               break;
@@ -119,62 +119,66 @@ let order = new Vue({
               //沒小孩目前歲數
               plan.element.push({
                 title: '距離大學期間',
-                text: item[3] + '年'
+                text: item[4] + '年'
               });
               plan.element.push({
                 title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(item[5])
+                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
               });
               if (vm.status !== 'overView') {
                 plan.element.push({
                   title: '風險等級',
-                  text: item[9]
+                  text: item[10]
                 });
                 plan.element.push({
-                  title: '預期軌道',
-                  text: 'ontrack'
+                  title: '小孩目前歲數',
+                  text: 18 - item[4] + '歲'
                 });
+                // plan.element.push({
+                //   title: '預期軌道',
+                //   text: 'ontrack'
+                // });
               }
               break;
             case 'Production':
               // 沒房屋總價值
               plan.element.push({
                 title: '距離買房時間',
-                text: item[3] + '年'
+                text: item[4] + '年'
               });
               plan.element.push({
                 title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(item[5])
+                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
               });
               if (vm.status !== 'overView') {
                 plan.element.push({
                   title: '風險等級',
-                  text: item[9]
+                  text: item[10]
                 });
-                plan.element.push({
-                  title: '預期軌道',
-                  text: 'ontrack'
-                });
+                // plan.element.push({
+                //   title: '預期軌道',
+                //   text: 'ontrack'
+                // });
               }
               break;
             case 'SpecificGoal':
               plan.element.push({
                 title: '預計目標年限',
-                text: item[3] + '年'
+                text: item[4] + '年'
               });
               plan.element.push({
                 title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(item[5])
+                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
               });
               if (vm.status !== 'overView') {
                 plan.element.push({
                   title: '風險等級',
-                  text: item[9]
+                  text: item[10]
                 });
-                plan.element.push({
-                  title: '預期軌道',
-                  text: 'ontrack'
-                });
+                // plan.element.push({
+                //   title: '預期軌道',
+                //   text: 'ontrack'
+                // });
               }
               break;
           };
@@ -183,7 +187,6 @@ let order = new Vue({
         return newTabData;
       }
     },
-
     tab2: function () {
       return this.tab22 ? [this.tab2Data[0], this.tab2Data[1]] : [this.tab2Data[0], this.tab2Data[2]];
     },
@@ -199,7 +202,6 @@ let order = new Vue({
         return total;
       }
     },
-
     ETFtypeTotal: function () {
       let vm = this;
 
@@ -233,37 +235,37 @@ let order = new Vue({
         switch (this.tab1Data[0][0]) {
           case 'Retirement':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '成功機率', self: this.tab1Data[0][11], selfTitle: '您的成功機率', all: this.tab1Data[0][12], allTitle: '所有計畫平均成功機率' },
-              { title: '距離退休時間', self: this.tab1Data[0][13], selfTitle: '距離您退休的時間', all: this.tab1Data[0][14], allTitle: '所有計畫平均退休時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '成功機率', self: this.tab1Data[0][12], selfTitle: '您的成功機率', all: this.tab1Data[0][13], allTitle: '所有計畫平均成功機率' },
+              { title: '距離退休時間', self: this.tab1Data[0][14], selfTitle: '距離您退休的時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均退休時間' },
             ];
           case 'Long':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '投資期間', self: this.tab1Data[0][11], selfTitle: '您預計累積財富時間', all: this.tab1Data[0][12], allTitle: '所有計畫平均投資時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '投資期間', self: this.tab1Data[0][14], selfTitle: '您預計累積財富時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均投資時間' },
             ];
           case 'Preservation':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '投資期間', self: this.tab1Data[0][11], selfTitle: '您保值財產時間', all: this.tab1Data[0][12], allTitle: '所有計畫平均投資時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '投資期間', self: this.tab1Data[0][14], selfTitle: '您保值財產時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均投資時間' },
             ];
           case 'Edu':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '成功機率', self: this.tab1Data[0][11], selfTitle: '您的成功機率', all: this.tab1Data[0][12], allTitle: '所有計畫平均成功機率' },
-              { title: '投資期間', self: this.tab1Data[0][13], selfTitle: '您的孩子距離大學時間', all: this.tab1Data[0][14], allTitle: '所有計畫平均投資時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '成功機率', self: this.tab1Data[0][12], selfTitle: '您的成功機率', all: this.tab1Data[0][13], allTitle: '所有計畫平均成功機率' },
+              { title: '投資期間', self: this.tab1Data[0][14], selfTitle: '您的孩子距離大學時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均投資時間' },
             ];
           case 'Production':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '成功機率', self: this.tab1Data[0][11], selfTitle: '您的成功機率', all: this.tab1Data[0][12], allTitle: '所有計畫平均成功機率' },
-              { title: '投資期間', self: this.tab1Data[0][13], selfTitle: '距離你買房時間', all: this.tab1Data[0][14], allTitle: '所有計畫平均投資時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '成功機率', self: this.tab1Data[0][12], selfTitle: '您的成功機率', all: this.tab1Data[0][13], allTitle: '所有計畫平均成功機率' },
+              { title: '投資期間', self: this.tab1Data[0][14], selfTitle: '距離你買房時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均投資時間' },
             ];
           case 'SpecificGoal':
             return [
-              { title: '風險等級', self: this.tab1Data[0][9], selfTitle: '您的風險等級', all: this.tab1Data[0][10], allTitle: '所有計畫平均風險等級' },
-              { title: '成功機率', self: this.tab1Data[0][11], selfTitle: '您的成功機率', all: this.tab1Data[0][12], allTitle: '所有計畫平均成功機率' },
-              { title: '投資期間', self: this.tab1Data[0][13], selfTitle: '您投資目標時間', all: this.tab1Data[0][14], allTitle: '所有計畫平均投資時間' },
+              { title: '風險等級', self: this.tab1Data[0][10], selfTitle: '您的風險等級', all: this.tab1Data[0][11], allTitle: '所有計畫平均風險等級' },
+              { title: '成功機率', self: this.tab1Data[0][12], selfTitle: '您的成功機率', all: this.tab1Data[0][13], allTitle: '所有計畫平均成功機率' },
+              { title: '投資期間', self: this.tab1Data[0][14], selfTitle: '您投資目標時間', all: this.tab1Data[0][15], allTitle: '所有計畫平均投資時間' },
             ];
         }
       }
@@ -330,6 +332,7 @@ let order = new Vue({
     decimalFormat: function (value) {//小數點兩位
       return value.toFixed(2);
     },
+    
   },
   methods: {
     accAdd: function (num1, num2) {

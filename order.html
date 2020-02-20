@@ -313,13 +313,14 @@
     </header>
     <section id="order" class="pb-3">
       <div class="d-none">
-        <span id="ctl00_Main_ResultLB">[['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021200004', 1, -1, 45, 45, 99, 99, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021200005', 1, -1, 45, 45, 99, 99, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021200008', 1, -1, 45, 45, 99, 99, 0, 0],['Long', 0.00, 0.00, 20, 2040, 0, 'P2020021300001', 1, -1, 70, 75, 99, 99, 0, 0],['Edu', 0.00, 0.00, 18, 2038, 28466, 'P2020021300003', 1, -1, 75, 70, 99, 74, 0, 0],['Production', 0.00, 0.00, 10, 2030, 80000, 'P2020021300004', 1, -1, 55, 60, 28, 75, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021300005', 1, -1, 45, 45, 99, 99, 0, 0],['Edu', 0.00, 0.00, 18, 2038, 100000, 'P2020021300006', 1, -1, 70, 70, 50, 74, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021300007', 1, -1, 45, 45, 99, 99, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021300008', 1, -1, 45, 45, 99, 99, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021300009', 1, -1, 45, 45, 99, 99, 0, 0],['Preservation', 0.00, 0.00, 20, 2040, 0, 'P2020021400001', 1, -1, 45, 45, 99, 99, 0, 0],['Retirement', 0.00, 0.00, 65, 2055, 1600, 'P2020021400002', 1, -1, 80, 80, 0, 70, 65, 62],['Long', 0.00, 0.00, 20, 2040, 0, 'P2020021500005', 1, -1, 70, 75, 99, 99, 0, 0],['Production', 0.00, 0.00, 15, 2035, 31000, 'P2020021700009', 1, -1, 50, 60, 99, 75, 0, 0],['Production', 0.00, 0.00, 20, 2040, 50000, 'P2020021700010', 1, -1, 70, 60, 99, 75, 0, 0],['Retirement', 0.00, 0.00, 65, 2055, 2166, 'P2020021700012', 1, -1, 75, 80, 99, 70, 65, 62],['Retirement', 0.00, 0.00, 65, 2055, 216, 'P2020021800001', 1, -1, 75, 80, 99, 70, 65, 62],]</span>
+        <span id="ctl00_Main_ResultLB">[['Long', 0.00, 10000.00, 0.00, 20, 2038, 0, 'P2020021700007', 2, 1, 90, 90, 99, 99, 18, 20],]</span>
         <div id="ctl00_Main_TotalRateLB">
           <!-- 第一個array為[總投入金額,資產淨值] 第二個array為累積 第三個是年度,都是[報酬率,含息報酬率,配息金額] -->
           [[51650,1650],[6.5,7.3,1500],[10,11.5,3000]]
           <!-- 未下單跟未成交狀態,此字串為[[0, 0], [0, 0, 0], [0, 0, 0,]] -->
         </div>
 
+        <div id="ctl00_Main_PreLB">[]</div>
         <div id="ctl00_Main_PreLB">
           <!-- {name:'子女教育金',
           data:[null,30000,45000,60000,120000,160000,215000,270000,350000,450000,570000]} -->
@@ -331,19 +332,19 @@
           買房
           [500000, 540010, 581408, 626675, 673833, 724882, 777595, 836348, 901817, 973782, 1056208] -->
           <!-- name放計畫名稱,data裡面為各計畫預測金額,總攬則為全部計畫加總,年份的部分我寫在前端,我會用js取得今年的年份並替換為今年的字串,第一筆資料為今年,第二筆為2021,第三筆為2022....以此類推,data長度若為10則對應年份為2020+9 -->
-          [[30, 650000],[31, 690981],[32, 739502],[33, 788583],[34, 840895],[35,
+          <!-- [[30, 650000],[31, 690981],[32, 739502],[33, 788583],[34, 840895],[35,
           896477],[36, 953440],[37, 1014759],[38, 1079363],[39, 1148070],[40, 1221259],[41, 1299366],[42,
           1382846],[43, 1471138],[44, 1565401],[45, 1668359],[46, 1771405],[47, 1881848],[48, 1999461],[49,
-          2123928],[50, 2253279],]
+          2123928],[50, 2253279],] -->
         </div>
-
         <div id="ctl00_Main_RealLB">
           <!-- 第一個array為x軸(年份) 第二個array為圖表資料,該年無資料傳null 預設顯示10年,未滿10年未來傳null,滿10年只顯示近10年 -->
           <!-- 未下單跟未成交狀態,此字串為空 -->
-          [[2010, 12.01],[2011, 1.22],[2012, 13.44],[2013, 10.12],[2014, 5.39],[2015,
-          0.55],[2016, 5.08],[2017, 12.44],[2018, -4.46],[2019, 16.11],]
+          [[2018, 8835.10],]
         </div>
-        <div id="ctl00_Main_PoDataLB">
+        <span id="ctl00_Main_PoDataLB">[['VEA', '全球已開發國家', 'Vanguard', 'FTSE成熟市場ETF', '股票', '#F97C6B', 17.50, 0.00, 0.00, 0.00, 0.00, 0.05],['VSS', '全球小型股', 'Vanguard', '美國以外全世界小型股ETF', '股票', '#FFACA1', 9.00, 0.00, 0.00, 0.00, 0.00, 0.12],['VTI', '美國股票型', 'Vanguard', '整體股市ETF', '股票', '#FDD6CF', 15.50, 0.00, 0.00, 0.00, 0.00, 0.03],['VNQ', '美國不動產', 'Vanguard', '房地產ETF', '不動產信託', '#FFBC49', 3.00, 0.00, 0.00, 0.00, 0.00, 0.12],['BNDW', '全世界債券', 'Vanguard', '全世界債券ETF', '債券', '#88EE74', 55.00, 0.00, 0.00, 0.00, 0.00, 0.09],]</span>
+        
+        <!-- <div id="ctl00_Main_PoDataLB">
           [
           [
           'VEA',
@@ -430,12 +431,12 @@
           0.07
           ],
           ]
-        </div>
+        </div> -->
       </div>
       <div class="container-fluid">
         <div class="row row-30">
           <div class="col-12 text-right pt-4 pt-xl-0">
-            <button class="btn btn-outline-secondary">新增計畫</button>
+            <a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
             <button class="btn btn-secondary ml-3" v-if="status == 'un-order'">下單此計畫</button>
             <button class="btn btn-secondary ml-3" v-if="status == 'order'">調整計畫</button>
             <template v-if="status == 'un-success'">
@@ -752,9 +753,9 @@
                                         </div>
                                       </div>
                                     </td>
-                                    <td class="d-none d-sm-table-cell">{{item[7] | commaFormat}}</td>
+                                    <td class="d-none d-sm-table-cell" :class="item[7] == 0 ? 'text-secondary' : null">{{item[7] | commaFormat}}</td>
                                     <td class="d-none d-sm-table-cell"
-                                      :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                      :class="item[8] == 0 ? 'text-secondary' : null">
                                       USD $ {{ item[8] | commaFormat}}</td>
                                     <td class="px-0 text-right">
                                       <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
@@ -888,7 +889,7 @@
               <div class="panel admin-panel h-100" style="min-height:250px">
                 <div
                   style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
-                  <span style="font-size: 2rem;color:#fff;text-align: center;">請新增計畫<br>來查看詳細資料</span>
+                  <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
                 </div>
               </div>
             </div>
