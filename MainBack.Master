@@ -44,7 +44,6 @@
                 </ul>
               </div>
               <div class="rd-navbar-panel-center"></div>
-  
               <div class="rd-navbar-panel-cell">
                 <button type="button" class="btn button-navbar"
                   data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
@@ -174,32 +173,26 @@
                   </div>
                   <div class="col-4">
                     <div class="text-center small">
-                      個人資料
+                      交易紀錄
                     </div>
                     <a class="mdi mdi-24px mdi-account-outline" href="#"></a>
                   </div>
                   <div class="col-4">
                     <div class="text-center small">
-                      登出
-                    </div>
-                    <a class="mdi mdi-24px mdi-logout-variant" href="#"></a>
-                  </div>
-                  <div class="col-4">
-                    <a class="mdi mdi-24px mdi-share-variant" href="#"></a>
-                    <div class="text-center small">
-                      安全設定
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <a class="mdi mdi-24px mdi-currency-usd" href="#"></a>
-                    <div class="text-center small">
                       帳戶設定
                     </div>
+                    <a class="mdi mdi-24px mdi-currency-usd" href="#"></a>
                   </div>
                   <div class="col-4">
                     <a class="mdi mdi-24px mdi-email-outline" href="#"></a>
                     <div class="text-center small">
                       聯絡我們
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <a class="mdi mdi-24px mdi-logout-variant" href="login.aspx/?LogOut=OK"></a>
+                    <div class="text-center small">
+                      登出
                     </div>
                   </div>
                 </div>
@@ -211,7 +204,8 @@
                   </a>
                 </li>
                 <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
-                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass" :href="'order.aspx?PID=' + item[2]">
+                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
+                    :href="'order.aspx?PID=' + item[2]">
                     <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
                     <span>{{item[0] | goalText}}</span>
                     <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
@@ -221,7 +215,7 @@
                     </div>
                   </a>
                 </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="question.aspx">
+                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
                     <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
                     </span>新增計畫</a>
                 </li>

@@ -2040,34 +2040,29 @@ let components = {
       'https://cdnjs.cloudflare.com/ajax/libs/highcharts/7.1.1/modules/no-data-to-display.js'
     ],
     init: function (nodes) {
+
       let columnChartData;
-      if (document.querySelector('#ctl00_Main_RealLB').textContent) {
-        let fuckingTranslate = eval(document.querySelector('#ctl00_Main_RealLB').textContent);
-        if (fuckingTranslate.length == 1 && fuckingTranslate[0][1] == 0.00) {
-          columnChartData = [null, null];
-        } else {
-          let a = fuckingTranslate.map(function (item, index) {
-            return item[0];
-          });
-
-          let b = {
-            name: '資產成長狀況',
-            data: Array
-          }
-          b['data'] = fuckingTranslate.map(function (item, index) {
-            return item[1];
-          })
-
-          while (a.length < 10) {
-            a.push(a[a.length - 1] + 1);
-            b['data'].push(0);
-          }
-
-
-          columnChartData = [a, [b]]
-        }
-      } else {
+      let fuckingTranslate = eval(document.querySelector('#ctl00_Main_RealLB').textContent);
+      if (fuckingTranslate.length == 1 && fuckingTranslate[0][1] == 0.00) {
         columnChartData = [null, null];
+      } else {
+        let a = fuckingTranslate.map(function (item, index) {
+          return item[0];
+        });
+
+        let b = {
+          name: '資產成長狀況',
+          data: Array
+        }
+        b['data'] = fuckingTranslate.map(function (item, index) {
+          return item[1];
+        })
+
+        while (a.length < 10) {
+          a.push(a[a.length - 1] + 1);
+          b['data'].push(0);
+        }
+        columnChartData = [a, [b]]
       }
 
       //資產狀況
@@ -2139,7 +2134,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後<br>即可查看資產狀況",
+          noData: "錯誤資料<br>應該要有資料",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2188,7 +2183,6 @@ let components = {
             ]
           ]
         };
-
         lineChartData.data = fuckingTranslate.map(function (item, index) {
           return item[1]
         })
@@ -2218,17 +2212,21 @@ let components = {
           events: {
             render: function () {
               let chart = this;
-              var icons;
+              let icons;
               if (chart.icons) {
                 chart.icons.destroy();
               }
               chart.icons = chart.renderer.g('icons').add().toFront();
 
               var goalData = eval(document.querySelector('#ctl00_Main_ResultLB').textContent);
-              var goalPointData = goalData.filter(function (item) {
-                return item[9] != -1 ;
-              });
-              console.log(goalPointData,'goalPointData')
+              var goalPointData;
+              if(location.pathname.toLowerCase().indexOf('/order.') >= 0 && !Boolean(location.search)){
+                goalPointData = goalData.filter(function (item) {
+                  return item[9] == 2;
+                });
+              }else if(location.pathname.toLowerCase().indexOf('/order.') >= 0 && Boolean(location.search)){
+                goalPointData = goalData;
+              }
               goalPointData.forEach(function (item) {
                 var points = chart.series[0].data.find(function (el) {
                   return el.category == item[5]
@@ -2310,7 +2308,7 @@ let components = {
           }
         },
         lang: {
-          noData: "下單成功後<br>即為您規劃您的計畫",
+          noData: "錯誤資料<br>應該要有資料",
           thousandsSep: '\u002C'
         },
         noData: {
@@ -2358,7 +2356,6 @@ let components = {
       let pieArray = tableData.map(function (element, index) {
         return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
       });
-
       //投資組合
       let pieSetting = {
         credits: false,

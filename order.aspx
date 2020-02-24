@@ -22,12 +22,13 @@
         </div>
         <div class="container-fluid">
           <div class="row row-30">
+            <!-- 按鈕 -->
             <div class="col-12 text-right pt-4 pt-xl-0">
-              <a type="button" class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
-              <button type="button" class="btn btn-secondary ml-3" v-if="status == 'un-order'">下單此計畫</button>
-              <button type="button" class="btn btn-secondary ml-3" v-if="status == 'order'">調整計畫</button>
-              <template v-if="status == 'un-success'">
-                <button type="button" class="btn btn-secondary ml-3" data-toggle="modal" data-target="#unSuccessModal">
+              <a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
+              <button v-if="!overView && tab1Data[0][9] == -1" class="btn btn-secondary ml-3">下單此計畫</button>
+              <button v-if="!overView && tab1Data[0][9] == 2" class="btn btn-secondary ml-3">調整此計畫</button>
+              <template v-if="!overView && tab1Data[0][9] == 0">
+                <button class="btn btn-secondary ml-3" data-toggle="modal" data-target="#unSuccessModal">
                   下單中
                   <span class="mdi mdi-bell-outline"></span>
                 </button>
@@ -53,7 +54,12 @@
                 </div>
               </template>
             </div>
-            <template v-if="status !== 'noData'">
+            <!-- 總攬-沒資料 -->
+            <!-- 總攬-有資料 -->
+            <!-- 個別-已下單 -->
+            <!-- 個別-未下單 -->
+            <!-- tabs -->
+            <template v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
               <div class="col-md-12">
                 <div class="panel admin-panel">
                   <div class="panel-header">
@@ -76,19 +82,19 @@
                       <div class="tab-pane fade show active" id="dashboardGraph1" role="tabpanel">
                         <div class="container-fluid">
                           <div class="row">
-                            <div class="col-lg-7 col-xl-8">
+                            <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
                               <div class="highcharts-container highcharts-container-2" data-highcharts-type="line">
                               </div>
                             </div>
                             <div class="col-lg-5 col-xl-4 border-lg-left">
                               <div class="slick-slider"
                                 data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
-                                :data-slick="slideData">
+                                :data-slick="overView | slideData">
                                 <div class="list-block-container list-block-lg" v-for="(item) in tab1">
                                   <h3 class="list-block-title d-flex justify-content-between align-items-baseline">
                                     <span class="font-weight-bold">{{ item.title }}</span>
                                     <small
-                                      class="text-secondary font-weight-bold text-capitalize">達成率:{{ item.progress }}</small>
+                                      class="text-secondary font-weight-bold text-capitalize">達成率:{{ item.progress | decimalFormat}}%</small>
                                   </h3>
                                   <div class="list-block pb-2">
                                     <div class="list-block-item d-flex justify-content-between"
@@ -100,6 +106,124 @@
                                     </div>
                                   </div>
                                 </div>
+                                <!-- <div class="list-block-container list-block-lg">
+                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">子女教育金</span>
+                                    <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                  </h5>
+                                  <div class="list-block">
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>總投入金額</span>
+                                      </div><strong class="text-dark">USD $ 16,500</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>距離大學期間</span>
+                                      </div><strong class="text-dark">65歲</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>小孩目前歲數</span>
+                                      </div><strong class="text-dark">8歲</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="list-block-container list-block-lg">
+                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">其他目標</span>
+                                    <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                  </h5>
+                                  <div class="list-block">
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>總投入金額</span>
+                                      </div><strong class="text-dark">USD $ 16,500</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>預計目標年限</span>
+                                      </div><strong class="text-dark">10年</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>預計目標金額</span>
+                                      </div><strong class="text-dark">NTD $ 1,000萬</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="list-block-container list-block-lg">
+                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">存錢買房</span>
+                                    <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                  </h5>
+                                  <div class="list-block">
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>總投入金額</span>
+                                      </div><strong class="text-dark">USD $ 16,500</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>距離買房時間</span>
+                                      </div><strong class="text-dark">10年</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>房屋總價值</span>
+                                      </div><strong class="text-dark">NTD $ 1,000萬</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="list-block-container list-block-lg">
+                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">財產保值抗通膨</span>
+                                    <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                  </h5>
+                                  <div class="list-block">
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>總投入金額</span>
+                                      </div><strong class="text-dark">USD $ 16,500</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>預計投資期間</span>
+                                      </div><strong class="text-dark">20年</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="list-block-container list-block-lg">
+                                  <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                    <span class="font-weight-bold">穩定累積財富</span>
+                                    <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                  </h5>
+                                  <div class="list-block">
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>總投入金額</span>
+                                      </div><strong class="text-dark">USD $ 16,500</strong>
+                                    </div>
+                                    <div class="list-block-item d-flex justify-content-between">
+                                      <div>
+                                        <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                        <span>預計投資期間</span>
+                                      </div><strong class="text-dark">20年</strong>
+                                    </div>
+                                  </div>
+                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -109,7 +233,12 @@
                         <div class="container-fluid">
                           <div class="row">
                             <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
-                              <div class="highcharts-container highcharts-container-2" data-highcharts-type="column">
+                              <div v-if="tab1Data[0][9] != 2" class="highcharts-container highcharts-container-2"
+                                style="background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center;min-height:250px;">
+                                <span style="font-size: 2rem;color:#fff;text-align: center;">您的計畫尚未下單成功</span>
+                              </div>
+                              <div v-else class="highcharts-container highcharts-container-2"
+                                data-highcharts-type="column">
                               </div>
                             </div>
                             <div class="col-lg-5 col-xl-4 border-lg-left">
@@ -136,9 +265,10 @@
                               </div>
                               <div class="list-block-container list-block-lg">
                                 <h5 class="list-block-title">
-                                  <button type="button" class="btn btn-link p-0 font-weight-bold" @click="tab22 = true">累積(Cumulative)</button>
+                                  <button class="btn btn-link p-0 font-weight-bold"
+                                    @click="tab22 = true">累積(Cumulative)</button>
                                   <span class="font-weight-bold">|</span>
-                                  <button type="button" class="btn btn-link p-0 font-weight-bold"
+                                  <button class="btn btn-link p-0 font-weight-bold"
                                     @click="tab22 = false">年度(Annualized)</button>
                                 </h5>
                                 <div class="list-block">
@@ -197,10 +327,10 @@
                                     <!-- <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td> -->
                                     <td colspan="3" class="d-sm-none"
                                       :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                      USD $ {{tableTotal[2] | commaFormat}}</td>
+                                      USD $ {{tableTotal[2] | decimalFormat  | commaFormat}}</td>
                                     <td colspan="2" class="d-none d-sm-table-cell"
                                       :class="tableTotal[2] == 0 ? 'text-secondary' : null">
-                                      USD $ {{tableTotal[2] | commaFormat}}</td>
+                                      USD $ {{tableTotal[2] | decimalFormat  | commaFormat}}</td>
                                   </tr>
                                 </tfoot>
                                 <tbody>
@@ -211,10 +341,12 @@
                                       <td>{{item[0]}}</td>
                                       <td class="d-none d-md-table-cell">{{item[4] | ETFtype}}</td>
                                       <td class="d-none d-xl-table-cell">{{item[1]}}</td>
-                                      <td style="width:1%;text-align: right;">{{item[6] | decimalFormat}}%</td>
+
+                                      <td style="width:1%;text-align: center;">{{item[6] | decimalFormat}}%</td>
                                       <td class="pl-0">
                                         <div class="d-inline-block" style="min-width:90px">
-                                          <div class="progress progress-sm justify-content-end" style="border-radius: 0;"
+                                          <div class="progress progress-sm justify-content-end"
+                                            style="border-radius: 0;"
                                             :style="{'background': 'repeating-linear-gradient(to right,' + item[5] + ',' + item[5] + ' 8%, white 8%, white 10%)'}">
                                             <div class="progress-bar" style="background-color:white"
                                               :style="{'width': 100 - item[6] * 2 + '%'}">
@@ -222,10 +354,13 @@
                                           </div>
                                         </div>
                                       </td>
-                                      <td class="d-none d-sm-table-cell" :class="item[8] == 0 ? 'text-secondary' : null">{{item[7] | commaFormat}}</td>
+                                      <!-- 要小數點五位數 -->
+                                      <td class="d-none d-sm-table-cell"
+                                        :class="item[7] == 0 ? 'text-secondary' : null">
+                                        {{item[7] | decimalFormat | commaFormat}}</td>
                                       <td class="d-none d-sm-table-cell"
                                         :class="item[8] == 0 ? 'text-secondary' : null">
-                                        USD $ {{ item[8] | commaFormat}}</td>
+                                        USD $ {{ item[8] | decimalFormat | commaFormat}}</td>
                                       <td class="px-0 text-right">
                                         <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse"
                                           :href="'tr.' + item[0]" role="button">
@@ -241,22 +376,24 @@
                                             <small class="ml-3">{{item[2]}}</small>
                                           </div>
                                           <div class="col-12 mb-3 d-sm-none">
+                                            <!-- 要小數點五位數 -->
                                             <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
                                           </div>
                                           <div class="col-6 col-sm-4 mb-3 d-md-none">
                                             <div class="">ETF類別<br>{{item[4] | ETFtype}}</div>
                                           </div>
                                           <div class="col-6 mb-3 d-sm-none">
-                                            <div class="">持有價值<br>USD $ {{ item[8] | commaFormat}}</div>
+                                            <div class="">持有價值<br>USD $ {{ item[8] | decimalFormat | commaFormat}}</div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
-                                            <div class="">ETF價格<br>USD $ {{ item[9] | commaFormat}}</div>
+                                            <div class="">ETF價格<br>USD $ {{ item[9] | decimalFormat | commaFormat}}
+                                            </div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
-                                            <div class="">報酬率<br>{{item[10]}}%</div>
+                                            <div class="">報酬率<br>{{item[10] | decimalFormat}}%</div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
-                                            <div class="">內含管理費/年<br>{{item[11]}}%</div>
+                                            <div class="">內含管理費/年<br>{{item[11] | decimalFormat}}%</div>
                                           </div>
                                         </div>
                                       </td>
@@ -272,169 +409,104 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4" v-if="status !== 'overView'" v-for="(item,index) in progressData">
-                <div class="panel admin-panel">
-                  <div class="panel-body">
-                    <div class="mb-4">
-                      {{item.title}}
-                    </div>
-                    <div>{{item.self}}</div>
-                    <div>{{item.selfTitle}}</div>
-                    <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
-                      <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
-                    </div>
-                    <div>{{item.all}}</div>
-                    <div>{{item.allTitle}}</div>
-                    <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
-                      <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="panel admin-panel">
-                  <div class="panel-header">
-                    <div class="d-flex align-items-center">
-                      <div class="h3 font-weight-bold panel-title flex-grow-1">投資組合</div>
-                    </div>
-                  </div>
-                  <div class="panel-body pb-5 text-center">
-                    <div class="highcharts-container highcharts-container-2" data-highcharts-type="pie">
-                    </div>
-                    <div class="row row-15 justify-content-center">
-                      <div class="col-4 col-sm-3 col-xxl-2">
-                        <div class="progress-circle-wrap">
-                          <div class="progress-circle-inner">
-                            <div class="progress-counter-wrap">
-                              <div class="progress-counter-value"><span
-                                  class="progress-counter">{{ETFtypeTotal[0]}}</span></div>
-                            </div>
-                            <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                              <circle class="bg" cx="40" cy="40" r="32" style="stroke:#F97C6B;opacity:0.3;"></circle>
-                              <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#F97C6B;"></circle>
-                            </svg>
-                          </div>
-                          <div class="progress-title">股票型ETF</div>
-                        </div>
-                      </div>
-                      <div class="col-4 col-sm-3 col-xxl-2">
-                        <div class="progress-circle-wrap">
-                          <div class="progress-circle-inner">
-                            <div class="progress-counter-wrap">
-                              <div class="progress-counter-value"><span
-                                  class="progress-counter">{{ETFtypeTotal[1]}}</span></div>
-                            </div>
-                            <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-                              <circle class="bg" cx="40" cy="40" r="32" style="stroke:#FFBC49;opacity:0.3;"></circle>
-                              <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#FFBC49;"></circle>
-                            </svg>
-                          </div>
-                          <div class="progress-title">不動產ETF</div>
-                        </div>
-                      </div>
-                      <div class="col-4 col-sm-3 col-xxl-2">
-                        <div class="progress-circle-wrap">
-                          <div class="progress-circle-inner">
-                            <div class="progress-counter-wrap">
-                              <div class="progress-counter-value"><span
-                                  class="progress-counter">{{ETFtypeTotal[2]}}</span></div>
-                            </div>
-                            <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
-  
-                              <circle class="bg" cx="40" cy="40" r="32" style="stroke:#88EE74;opacity:0.3;"></circle>
-                              <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#88EE74;"></circle>
-                            </svg>
-                          </div>
-                          <div class="progress-title">債券型ETF</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </template>
-            <template v-if="status == 'noData'">
+            <!-- 總攬沒資料 -->
+            <template v-else>
               <div class="col-lg-6">
                 <div class="panel admin-panel h-100" style="min-height:250px">
-                  <div
-                    style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
+                  <div style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
                     <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="panel admin-panel">
-                  <div class="panel-header">
-                    <div class="h3 font-weight-bold panel-title flex-grow-1">我們將會幫您做什麼？</div>
+            </template>
+            <!-- 比較 -->
+            <div class="col-lg-4" v-if="!overView" v-for="(item,index) in progressData">
+              <div class="panel admin-panel">
+                <div class="panel-body">
+                  <div class="mb-4">
+                    {{item.title}}
                   </div>
-                  <div class="panel-body">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <div class="col-12 px-0 d-flex justify-content-between">
-                          <div>
-                            <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
-                              href="#">資產全球多元化配置</a>
+                  <div>{{item.self}}</div>
+                  <div>{{item.selfTitle}}</div>
+                  <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                    <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
+                  </div>
+                  <div>{{item.all}}</div>
+                  <div>{{item.allTitle}}</div>
+                  <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                    <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 投資組合 -->
+            <div class="col-lg-6" v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
+              <div class="panel admin-panel">
+                <div class="panel-header">
+                  <div class="d-flex align-items-center">
+                    <div class="h3 font-weight-bold panel-title flex-grow-1">投資組合</div>
+                  </div>
+                </div>
+                <div class="panel-body pb-5 text-center">
+                  <div class="highcharts-container highcharts-container-2" data-highcharts-type="pie">
+                  </div>
+                  <div class="row row-15 justify-content-center">
+                    <div class="col-4 col-sm-3 col-xxl-2">
+                      <div class="progress-circle-wrap">
+                        <div class="progress-circle-inner">
+                          <div class="progress-counter-wrap">
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[0]}}</span>
+                            </div>
                           </div>
-                          <div class="text-right pr-0">增加 1.4% 利潤</div>
+                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+                            <circle class="bg" cx="40" cy="40" r="32" style="stroke:#F97C6B;opacity:0.3;"></circle>
+                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#F97C6B;"></circle>
+                          </svg>
                         </div>
-                        <div class="col-12 col-md-7 px-0">
-                          <div class="pl-4 text-gray-600">
-                            我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
-                            及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
-                          </div>
-                        </div>
+                        <div class="progress-title">股票型ETF</div>
                       </div>
-                      <div class="row">
-                        <div class="col-12 px-0 d-flex justify-content-between">
-                          <div>
-                            <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
-                              href="#">節省投資費用</a>
+                    </div>
+                    <div class="col-4 col-sm-3 col-xxl-2">
+                      <div class="progress-circle-wrap">
+                        <div class="progress-circle-inner">
+                          <div class="progress-counter-wrap">
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[1]}}</span>
+                            </div>
                           </div>
-                          <div class="text-right pr-0">節省 1.25% 費用</div>
+                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+                            <circle class="bg" cx="40" cy="40" r="32" style="stroke:#FFBC49;opacity:0.3;"></circle>
+                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#FFBC49;"></circle>
+                          </svg>
                         </div>
-                        <div class="col-12 col-md-7 px-0">
-                          <div class="pl-4 text-gray-600">
-                            阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
-                            被收取過高的投資費用，影響長期投資獲利。
-                          </div>
-                        </div>
+                        <div class="progress-title">不動產ETF</div>
                       </div>
-                      <div class="row">
-                        <div class="col-12 px-0 d-flex justify-content-between">
-                          <div>
-                            <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
-                              href="#">投資組合再平衡</a>
+                    </div>
+                    <div class="col-4 col-sm-3 col-xxl-2">
+                      <div class="progress-circle-wrap">
+                        <div class="progress-circle-inner">
+                          <div class="progress-counter-wrap">
+                            <div class="progress-counter-value"><span
+                                class="progress-counter">{{ETFtypeTotal[2]}}</span>
+                            </div>
                           </div>
-                          <div class="text-right pr-0">增加 0.4% 利潤</div>
+                          <svg class="progress-circle" x="0" y="0" width="80" height="80" viewbox="0 0 80 80">
+
+                            <circle class="bg" cx="40" cy="40" r="32" style="stroke:#88EE74;opacity:0.3;"></circle>
+                            <circle class="fg clipped" cx="40" cy="40" r="32" style="stroke:#88EE74;"></circle>
+                          </svg>
                         </div>
-                        <div class="col-12 col-md-7 px-0">
-                          <div class="pl-4 text-gray-600">
-                            根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
-                            投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-12 px-0 d-flex justify-content-between">
-                          <div>
-                            <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a class="link-black"
-                              href="#">降低進場時機錯誤的可能</a>
-                          </div>
-                          <div class="text-right pr-0">增加 1.25% 利潤</div>
-                        </div>
-                        <div class="col-12 col-md-7 px-0">
-                          <div class="pl-4 text-gray-600">
-                            投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
-                            降低可能犯的投資錯誤而損失市場獲利時機。
-                          </div>
-                        </div>
+                        <div class="progress-title">債券型ETF</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </template>
-            <div class="col-lg-6" v-if="status == 'overView'">
+            </div>
+            <!-- 做了什麼 -->
+            <div class="col-lg-6" v-if="overView">
               <div class="panel admin-panel">
                 <div class="panel-header">
                   <div class="h3 font-weight-bold panel-title flex-grow-1">我們幫您做了什麼？</div>
@@ -450,7 +522,7 @@
                       </div>
                       <div class="col-12 col-md-5 px-0">
                         <div class="lead text-right pr-0">
-                          <span>增加 1.25% 利潤/年</span>
+                          <span>增加 1.40% 利潤/年</span>
                         </div>
                       </div>
                       <div class="col-12 col-md-7 px-0 mt-2">
@@ -475,7 +547,7 @@
                       </div>
                       <div class="col-12 col-md-7 px-0 mt-2">
                         <div class="pl-4 text-gray-600">
-                          阿爾發協助投資人將投資費用大幅降低，平均 0.7 %的 ETF 管理費用可避免投資人
+                          阿爾發協助投資人將投資費用大幅降低，平均 0.70 %的 ETF 管理費用可避免投資人
                           被收取過高的投資費用，影響長期投資獲利。
                         </div>
                       </div>
@@ -488,7 +560,7 @@
                         </div>
                       </div>
                       <div class="col-12 col-md-5 px-0">
-                        <div class="lead text-right pr-0">增加 0.4% 利潤/年</div>
+                        <div class="lead text-right pr-0">增加 0.40% 利潤/年</div>
                       </div>
                       <div class="col-12 col-md-7 px-0 mt-2">
                         <div class="pl-4 text-gray-600">

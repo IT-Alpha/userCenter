@@ -1,45 +1,38 @@
+//-1無、0委託送出成功、1委託成功、2已成交、3部分成交、8委託失敗、9交易失敗；
+// tab1[9]
 let order = new Vue({
   el: '#order',
   data: {
-    tab1Data: document.querySelector('#order #ctl00_Main_ResultLB').textContent ? eval(document.querySelector('#order #ctl00_Main_ResultLB').textContent): null,
+    tab1Data: document.querySelector('#order #ctl00_Main_ResultLB').textContent ? eval(document.querySelector('#order #ctl00_Main_ResultLB').textContent) : null,
     tab2Data: document.querySelector('#ctl00_Main_TotalRateLB').textContent ? eval(document.querySelector('#ctl00_Main_TotalRateLB').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
-    tab22: true,
     tableData: eval(document.querySelector('#ctl00_Main_PoDataLB').textContent),
+    tab22: true,
+    overView: !Boolean(location.search),
   },
   computed: {
-    status: function () {
-      if (!location.search) {
-        if (document.querySelector('#order #ctl00_Main_PreLB').textContent == "[]") {
-          return 'noData'
-        }
-        return 'overView'
-      } else {
-        let el = document.querySelector('.rd-navbar-nav .active').children;
-        return el[0].className.replace('rd-navbar-link ', '');
-      }
-    },
-    slideData: function () {
-      let overViewSlick = '{"arrows":false,"dots":true,"slidesToShow":2,"slidesToScroll":2,"vertical":true,"verticalSwiping":true,"infinite":false}'
-      let orderSlick = '{"arrows":false,"dots":true,"slidesToShow":1,"slidesToScroll":2,"vertical":true,"verticalSwiping":true,"infinite":false}'
-      return this.status == 'overView' ? overViewSlick : orderSlick;
-    },
     tab1: function () {
-      if (this.tab1Data) {
-        let vm = this;
-        let newTabData = [];
-
-        this.tab1Data.forEach(function (item, index) {
-          let plan = {
-            title: vm.$options.filters.goalText(item[0]),
-            progress: item[1] + '%',
-            element: [
-              {
-                title: '預計投入金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[2]))
-              },
-            ]
-          };
-          // switch (element[0]) {
+      let vm = this;
+      let newTabData = [];
+      let tab1Array = [];
+      if (this.overView) {
+        tab1Array = this.tab1Data.filter(function (e) {
+          return e[9] == 2
+        })
+      } else {
+        tab1Array = this.tab1Data
+      }
+      tab1Array.forEach(function (item, index) {
+        let plan = {
+          title: vm.$options.filters.goalText(item[0]),
+          progress: item[1],
+          element: [
+            {
+              title: '預計投入金額',
+              text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[2]))
+            },
+          ]
+        };
+        // switch (element[0]) {
         //   case 1:
         //     element[3] = { title: '預計退休年齡', text: element[3] + '歲' }
         //     element[4] = { title: '退休後月花費', text: 'USD $ ' + vm.$options.filters.commaFormat(element[4]) + ' / 月' }
@@ -75,122 +68,151 @@ let order = new Vue({
         //     break;
         //   default:
         //     return;
-          switch (item[0]) {
-            case 'Retirement':
-              //沒距離退休時間
+        switch (item[0]) {
+          case 'Retirement':
+            //沒距離退休時間
+            plan.element.push({
+              title: '預計退休年齡',
+              text: item[4] + '歲'
+            });
+            plan.element.push({
+              title: '退休後月花費',
+              text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6])) + ' / 月'
+            });
+            if (!vm.overView) {
               plan.element.push({
-                title: '預計退休年齡',
-                text: item[4] + '歲'
+                title: '風險等級',
+                text: item[10]
               });
-              plan.element.push({
-                title: '退休後月花費',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6])) + ' / 月'
-              });
-              if (vm.status !== 'overView') {
+              if(vm.tab1Data[9] == 2){
                 plan.element.push({
-                  title: '風險等級',
-                  text: item[10]
+                  title: '預期軌道',
+                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
-                // plan.element.push({
-                //   title: '預期軌道',
-                //   text: 'ontrack'
-                // });
-              }
-              break;
-            case 'Long':
-            case 'Preservation':
-              //沒預期軌道
-              plan.element.push({
-                title: '預計投資期間',
-                text: item[4] + '年'
-              });
-              plan.element.push({
-                title: '預計投資期間',
-                text: ''
-              });
-              if (vm.status !== 'overView') {
-                plan.element.splice(2,1,{
-                  title: '風險等級',
-                  text: item[10]
+              }else{
+                plan.element.push({
+                  title: '預期軌道',
+                  text: 'N/A'
                 });
               }
-              break;
-            case 'Edu':
-              //沒小孩目前歲數
+              
+            }
+            break;
+          case 'Long':
+          case 'Preservation':
+            //沒預期軌道
+            plan.element.push({
+              title: '預計投資期間',
+              text: item[4] + '年'
+            });
+            plan.element.push({
+              title: '預計投資期間',
+              text: ''
+            });
+            if (!vm.overView) {
+              plan.element.splice(2, 1, {
+                title: '風險等級',
+                text: item[10]
+              });
+            }
+            break;
+          case 'Edu':
+            //沒小孩目前歲數
+            plan.element.push({
+              title: '距離大學期間',
+              text: item[4] + '年'
+            });
+            plan.element.push({
+              title: '預計目標金額',
+              text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
+            });
+            if (!vm.overView) {
               plan.element.push({
-                title: '距離大學期間',
-                text: item[4] + '年'
+                title: '風險等級',
+                text: item[10]
               });
               plan.element.push({
-                title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
+                title: '小孩目前歲數',
+                text: 18 - item[4] + '歲'
               });
-              if (vm.status !== 'overView') {
+              if(vm.tab1Data[9] == 2){
                 plan.element.push({
-                  title: '風險等級',
-                  text: item[10]
+                  title: '預期軌道',
+                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
+              }else{
                 plan.element.push({
-                  title: '小孩目前歲數',
-                  text: 18 - item[4] + '歲'
+                  title: '預期軌道',
+                  text: 'N/A'
                 });
-                // plan.element.push({
-                //   title: '預期軌道',
-                //   text: 'ontrack'
-                // });
               }
-              break;
-            case 'Production':
-              // 沒房屋總價值
+            }
+            break;
+          case 'Production':
+            // 沒房屋總價值
+            plan.element.push({
+              title: '距離買房時間',
+              text: item[4] + '年'
+            });
+            plan.element.push({
+              title: '預計目標金額',
+              text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
+            });
+            if (!vm.overView) {
               plan.element.push({
-                title: '距離買房時間',
-                text: item[4] + '年'
+                title: '風險等級',
+                text: item[10]
               });
-              plan.element.push({
-                title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
-              });
-              if (vm.status !== 'overView') {
+              if(vm.tab1Data[9] == 2){
                 plan.element.push({
-                  title: '風險等級',
-                  text: item[10]
+                  title: '預期軌道',
+                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
-                // plan.element.push({
-                //   title: '預期軌道',
-                //   text: 'ontrack'
-                // });
-              }
-              break;
-            case 'SpecificGoal':
-              plan.element.push({
-                title: '預計目標年限',
-                text: item[4] + '年'
-              });
-              plan.element.push({
-                title: '預計目標金額',
-                text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
-              });
-              if (vm.status !== 'overView') {
+              }else{
                 plan.element.push({
-                  title: '風險等級',
-                  text: item[10]
+                  title: '預期軌道',
+                  text: 'N/A'
                 });
-                // plan.element.push({
-                //   title: '預期軌道',
-                //   text: 'ontrack'
-                // });
               }
-              break;
-          };
-          newTabData.push(plan);
-        })
-        return newTabData;
-      }
+            }
+            break;
+          case 'SpecificGoal':
+            plan.element.push({
+              title: '預計目標年限',
+              text: item[4] + '年'
+            });
+            plan.element.push({
+              title: '預計目標金額',
+              text: 'USD $ ' + vm.$options.filters.commaFormat(vm.$options.filters.decimalFormat(item[6]))
+            });
+            if (!vm.overView) {
+              plan.element.push({
+                title: '風險等級',
+                text: item[10]
+              });
+              if(vm.tab1Data[9] == 2){
+                plan.element.push({
+                  title: '預期軌道',
+                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
+                });
+              }else{
+                plan.element.push({
+                  title: '預期軌道',
+                  text: 'N/A'
+                });
+              }
+            }
+            break;
+        };
+        newTabData.push(plan);
+      })
+      return newTabData;
+
     },
-    tab2: function () {
+    tab2: function () {   // 成長狀況資料切換
       return this.tab22 ? [this.tab2Data[0], this.tab2Data[1]] : [this.tab2Data[0], this.tab2Data[2]];
     },
-    tableTotal: function () {
+    tableTotal: function () {   //table footer 計算
       if (this.tableData) {
         let vm = this;
         let totalArray = this.tableData.map(function (element) {
@@ -202,7 +224,7 @@ let order = new Vue({
         return total;
       }
     },
-    ETFtypeTotal: function () {
+    ETFtypeTotal: function () {   //投資組合種類計算
       let vm = this;
 
       let stocksArray = this.tableData.filter(function (element) {
@@ -230,7 +252,7 @@ let order = new Vue({
       })
       return [stocksTotal, REITsTotal, bondsTotal];
     },
-    progressData: function () {
+    progressData: function () { //比較的進度條資料格式轉換
       if (this.tab1Data) {
         switch (this.tab1Data[0][0]) {
           case 'Retirement':
@@ -272,17 +294,12 @@ let order = new Vue({
     }
   },
   filters: {
-    statusClass: function (value) {
-      switch (value) {
-        case '0':
-          return 'un-order'
-        case '1':
-          return 'un-success';
-        case '2':
-          return 'order';
-      }
+    slideData: function (value) { //切換slide顯示數量
+      let overViewSlick = '{"arrows":false,"dots":true,"slidesToShow":2,"slidesToScroll":2,"vertical":true,"verticalSwiping":true,"infinite":false}'
+      let orderSlick = '{"arrows":false,"dots":false,"slidesToShow":1,"slidesToScroll":1,"vertical":true,"verticalSwiping":true,"infinite":false}'
+      return value ? overViewSlick : orderSlick;
     },
-    ETFtype: function (value) {
+    ETFtype: function (value) { //ETF種類換字
       switch (value) {
         case '股票':
           return '股票'
@@ -298,7 +315,7 @@ let order = new Vue({
         //   return '債券';
       }
     },
-    progressClass: function (value) {
+    progressClass: function (value) {   //比較的進度條換顏色
       switch (value) {
         case 0:
           return 'progress-primary'
@@ -308,7 +325,7 @@ let order = new Vue({
           return 'progress-info';
       }
     },
-    goalText: function (value) {
+    goalText: function (value) {  //目標轉換為中文字
       switch (value) {
         case 'Retirement':
           return '退休金準備';
@@ -329,10 +346,9 @@ let order = new Vue({
         return pre + groupOf3Digital.replace(/\d{3}/g, ',$&');
       })
     },
-    decimalFormat: function (value) {//小數點兩位
-      return value.toFixed(2);
+    decimalFormat: function (value) { //小數點兩位
+      return value == '0' ? 0 : value.toFixed(2);
     },
-    
   },
   methods: {
     accAdd: function (num1, num2) {
