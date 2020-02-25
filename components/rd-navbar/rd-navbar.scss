@@ -94,7 +94,7 @@ $navbar-user-button-bg: $info;
     overflow-y: auto;
     overflow-y: overlay;
     box-shadow: $box-shadow-sm;
-    background-image: $sidebar-bg;
+    // background-image: $sidebar-bg;
     background-size: cover;
 
     .user-menu {
@@ -128,7 +128,7 @@ $navbar-user-button-bg: $info;
       }
     }
   }
-
+  
   .rd-navbar-sidebar-panel {
     position: relative;
     padding: 40px 15px 20px;
