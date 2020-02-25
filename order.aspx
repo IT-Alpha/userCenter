@@ -377,23 +377,31 @@
                                           </div>
                                           <div class="col-12 mb-3 d-sm-none">
                                             <!-- 要小數點五位數 -->
-                                            <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
+                                            <div><small
+                                                class="d-block text-black-50">持有股數</small>{{item[7] | commaFormat}}
+                                            </div>
                                           </div>
                                           <div class="col-6 col-sm-4 mb-3 d-md-none">
-                                            <div class="">ETF類別<br>{{item[4] | ETFtype}}</div>
+                                            <div><small class="d-block text-black-50">ETF類別</small>{{item[4] | ETFtype}}
+                                            </div>
                                           </div>
                                           <div class="col-6 mb-3 d-sm-none">
-                                            <div class="">持有價值<br>USD $ {{ item[8] | decimalFormat | commaFormat}}</div>
+                                            <div><small class="d-block text-black-50">持有價值</small>USD $
+                                              {{ item[8] | decimalFormat | commaFormat}}</div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
-                                            <div class="">ETF價格<br>USD $ {{ item[9] | decimalFormat | commaFormat}}
+                                            <div><small class="d-block text-black-50">ETF價格</small>USD $
+                                              {{ item[9] | decimalFormat | commaFormat}}</div>
+                                          </div>
+                                          <div class="col-6 col-sm-4 col-xl">
+                                            <div><small
+                                                class="d-block text-black-50">報酬率</small>{{item[10] | decimalFormat}}%
                                             </div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
-                                            <div class="">報酬率<br>{{item[10] | decimalFormat}}%</div>
-                                          </div>
-                                          <div class="col-6 col-sm-4 col-xl">
-                                            <div class="">內含管理費/年<br>{{item[11] | decimalFormat}}%</div>
+                                            <div><small
+                                                class="d-block text-black-50">內含管理費/年</small>{{item[11] | decimalFormat}}%
+                                            </div>
                                           </div>
                                         </div>
                                       </td>
@@ -414,7 +422,8 @@
             <template v-else>
               <div class="col-lg-6">
                 <div class="panel admin-panel h-100" style="min-height:250px">
-                  <div style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
+                  <div
+                    style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
                     <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
                   </div>
                 </div>

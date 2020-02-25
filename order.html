@@ -36,7 +36,8 @@
       <!-- 訂單狀態 -->
       <!-- 已下單(2),未成交(1),未下單(0) -->
       <div class="d-none">
-        <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00, 'P2020021800001',
+        <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00,
+          'P2020021800001',
           1, -1],]</span>
         <span id="ctl00_LoginLB">安安您好</span>
       </div>
@@ -689,7 +690,8 @@
                               style="background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center;min-height:250px;">
                               <span style="font-size: 2rem;color:#fff;text-align: center;">您的計畫尚未下單成功</span>
                             </div>
-                            <div v-else class="highcharts-container highcharts-container-2" data-highcharts-type="column">
+                            <div v-else class="highcharts-container highcharts-container-2"
+                              data-highcharts-type="column">
                             </div>
                           </div>
                           <div class="col-lg-5 col-xl-4 border-lg-left">
@@ -825,22 +827,30 @@
                                         </div>
                                         <div class="col-12 mb-3 d-sm-none">
                                           <!-- 要小數點五位數 -->
-                                          <div class="">持有股數<br>{{item[7] | commaFormat}}</div>
+                                          <div><small
+                                              class="d-block text-black-50">持有股數</small>{{item[7] | commaFormat}}</div>
                                         </div>
                                         <div class="col-6 col-sm-4 mb-3 d-md-none">
-                                          <div class="">ETF類別<br>{{item[4] | ETFtype}}</div>
+                                          <div><small class="d-block text-black-50">ETF類別</small>{{item[4] | ETFtype}}
+                                          </div>
                                         </div>
                                         <div class="col-6 mb-3 d-sm-none">
-                                          <div class="">持有價值<br>USD $ {{ item[8] | decimalFormat | commaFormat}}</div>
+                                          <div><small class="d-block text-black-50">持有價值</small>USD $
+                                            {{ item[8] | decimalFormat | commaFormat}}</div>
                                         </div>
                                         <div class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
-                                          <div class="">ETF價格<br>USD $ {{ item[9] | decimalFormat | commaFormat}}</div>
+                                          <div><small class="d-block text-black-50">ETF價格</small>USD $
+                                            {{ item[9] | decimalFormat | commaFormat}}</div>
                                         </div>
                                         <div class="col-6 col-sm-4 col-xl">
-                                          <div class="">報酬率<br>{{item[10] | decimalFormat}}%</div>
+                                          <div><small
+                                              class="d-block text-black-50">報酬率</small>{{item[10] | decimalFormat}}%
+                                          </div>
                                         </div>
                                         <div class="col-6 col-sm-4 col-xl">
-                                          <div class="">內含管理費/年<br>{{item[11] | decimalFormat}}%</div>
+                                          <div><small
+                                              class="d-block text-black-50">內含管理費/年</small>{{item[11] | decimalFormat}}%
+                                          </div>
                                         </div>
                                       </div>
                                     </td>
@@ -861,7 +871,8 @@
           <template v-else>
             <div class="col-lg-6">
               <div class="panel admin-panel h-100" style="min-height:250px">
-                <div style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
+                <div
+                  style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
                   <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
                 </div>
               </div>
@@ -880,7 +891,34 @@
                   <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
                 </div>
                 <div>{{item.all}}</div>
-                <div>{{item.allTitle}}</div>
+                <div>
+                  {{item.allTitle}}
+                  <span class="text-primary mdi mdi-help-circle-outline h3" style="cursor: pointer;" data-toggle="modal"
+                    :data-target="'#descriptionModal' + index"></span>
+                  <div class="modal" :id="'descriptionModal' + index" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header justify-content-center bg-primary">
+                          <span class="modal-title text-light h1">這是什麼？</span>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="py-3 text-center h3 text-black-50">
+                            {{item.whatsThis}}
+                          </div>
+                        </div>
+                        <div class="modal-footer justify-content-center border-top-0">
+                          <button
+                            class="btn btn-secondary rounded-pill py-2 px-4 py-md-3 px-md-5"
+                            type="button" data-dismiss="modal">知道了！</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
                   <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
                 </div>
