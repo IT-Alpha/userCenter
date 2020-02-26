@@ -19,16 +19,22 @@
           <asp:Label ID="PreLB" runat="server"></asp:Label>
           <asp:Label ID="RealLB" runat="server"></asp:Label>
           <asp:Label ID="PoDataLB" runat="server"></asp:Label>
+          <asp:Button ID="AddOrderBTN" runat="server" />
+          <asp:Button ID="DelPlanBTN" runat="server" />
         </div>
         <div class="container-fluid">
           <div class="row row-30">
             <!-- 按鈕 -->
             <div class="col-12 text-right pt-4 pt-xl-0">
               <a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
-              <button v-if="!overView && tab1Data[0][9] == -1" class="btn btn-secondary ml-3">下單此計畫</button>
-              <button v-if="!overView && tab1Data[0][9] == 2" class="btn btn-secondary ml-3">調整此計畫</button>
-              <template v-if="!overView && tab1Data[0][9] == 0">
-                <button class="btn btn-secondary ml-3" data-toggle="modal" data-target="#unSuccessModal">
+              <template v-if="!overView && tab1Data[0][9] == -1">
+                <button type="button" @click="delPlan" class="btn btn-outline-secondary ml-3">刪除計畫</button>
+                <button type="button" @click="addOrder" class="btn btn-secondary ml-3">下單此計畫</button>
+              </template>
+              <button type="button" v-if="!overView && tab1Data[0][9] == 2"
+                class="btn btn-secondary ml-3">調整此計畫</button>
+              <template v-if="!overView && tab1Data[0][9] == 1">
+                <button type="button" class="btn btn-secondary ml-3" data-toggle="modal" data-target="#unSuccessModal">
                   下單中
                   <span class="mdi mdi-bell-outline"></span>
                 </button>
@@ -341,8 +347,7 @@
                                       <td>{{item[0]}}</td>
                                       <td class="d-none d-md-table-cell">{{item[4] | ETFtype}}</td>
                                       <td class="d-none d-xl-table-cell">{{item[1]}}</td>
-
-                                      <td style="width:1%;text-align: center;">{{item[6] | decimalFormat}}%</td>
+                                      <td style="width:1%;text-align: right;">{{item[6] | decimalFormat}}%</td>
                                       <td class="pl-0">
                                         <div class="d-inline-block" style="min-width:90px">
                                           <div class="progress progress-sm justify-content-end"
@@ -377,7 +382,8 @@
                                           </div>
                                           <div class="col-12 mb-3 d-sm-none">
                                             <!-- 要小數點五位數 -->
-                                            <div><small
+                                            <div>
+                                              <small
                                                 class="d-block text-black-50">持有股數</small>{{item[7] | commaFormat}}
                                             </div>
                                           </div>
@@ -424,7 +430,7 @@
                 <div class="panel admin-panel h-100" style="min-height:250px">
                   <div
                     style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
-                    <span style="font-size: 2rem;color:#fff;text-align: center;">下單後才會有資料</span>
+                    <span style="font-size: 2rem;color:#fff;text-align: center;">此統整功能將在下單後為您開放</span>
                   </div>
                 </div>
               </div>
@@ -442,7 +448,33 @@
                     <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
                   </div>
                   <div>{{item.all}}</div>
-                  <div>{{item.allTitle}}</div>
+                  <div>
+                    {{item.allTitle}}
+                    <span class="text-primary mdi mdi-help-circle-outline h3" style="cursor: pointer;"
+                      data-toggle="modal" :data-target="'#descriptionModal' + index"></span>
+                    <div class="modal" :id="'descriptionModal' + index" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header justify-content-center bg-primary">
+                            <span class="modal-title text-light h1">這是什麼？</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="py-3 text-center h3 text-black-50">
+                              {{item.whatsThis}}
+                            </div>
+                          </div>
+                          <div class="modal-footer justify-content-center border-top-0">
+                            <button class="btn btn-secondary rounded-pill py-2 px-4 py-md-3 px-md-5" type="button"
+                              data-dismiss="modal">知道了！</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
                     <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
                   </div>

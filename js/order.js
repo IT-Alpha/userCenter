@@ -84,10 +84,10 @@ let order = new Vue({
                 title: '風險等級',
                 text: item[10]
               });
-              if (vm.tab1Data[9] == 2) {
+              if (vm.tab1Data[0][9] == 2) {
                 plan.element.push({
                   title: '預期軌道',
-                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
+                  text: vm.tab1Data[0][12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
               } else {
                 plan.element.push({
@@ -95,7 +95,6 @@ let order = new Vue({
                   text: 'N/A'
                 });
               }
-
             }
             break;
           case 'Long':
@@ -117,7 +116,6 @@ let order = new Vue({
             }
             break;
           case 'Edu':
-            //沒小孩目前歲數
             plan.element.push({
               title: '距離大學期間',
               text: item[4] + '年'
@@ -135,10 +133,10 @@ let order = new Vue({
                 title: '小孩目前歲數',
                 text: 18 - item[4] + '歲'
               });
-              if (vm.tab1Data[9] == 2) {
+              if (vm.tab1Data[0][9] == 2) {
                 plan.element.push({
                   title: '預期軌道',
-                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
+                  text: vm.tab1Data[0][12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
               } else {
                 plan.element.push({
@@ -163,10 +161,10 @@ let order = new Vue({
                 title: '風險等級',
                 text: item[10]
               });
-              if (vm.tab1Data[9] == 2) {
+              if (vm.tab1Data[0][9] == 2) {
                 plan.element.push({
                   title: '預期軌道',
-                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
+                  text: vm.tab1Data[0][12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
               } else {
                 plan.element.push({
@@ -190,10 +188,10 @@ let order = new Vue({
                 title: '風險等級',
                 text: item[10]
               });
-              if (vm.tab1Data[9] == 2) {
+              if (vm.tab1Data[0][9] == 2) {
                 plan.element.push({
                   title: '預期軌道',
-                  text: vm.tab1Data[12] > 50 ? 'Ontrack' : 'Offtrack'
+                  text: vm.tab1Data[0][12] > 50 ? 'Ontrack' : 'Offtrack'
                 });
               } else {
                 plan.element.push({
@@ -253,7 +251,7 @@ let order = new Vue({
       return [stocksTotal, REITsTotal, bondsTotal];
     },
     progressData: function () { //比較的進度條資料格式轉換
-      if (this.tab1Data) {
+      if (this.tab1Data.length != 0 ) {
         switch (this.tab1Data[0][0]) {
           case 'Retirement':
             return [
@@ -261,19 +259,19 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '距離退休時間', self: this.tab1Data[0][14],
                 selfTitle: '距離您退休的時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均退休時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
           case 'Long':
@@ -282,13 +280,13 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '投資期間', self: this.tab1Data[0][14],
                 selfTitle: '您預計累積財富時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均投資時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
           case 'Preservation':
@@ -297,13 +295,13 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '投資期間', self: this.tab1Data[0][14],
                 selfTitle: '您保值財產時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均投資時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
           case 'Edu':
@@ -312,19 +310,19 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '投資期間', self: this.tab1Data[0][14],
                 selfTitle: '您的孩子距離大學時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均投資時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
           case 'Production':
@@ -333,19 +331,19 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '投資期間', self: this.tab1Data[0][14],
                 selfTitle: '距離你買房時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均投資時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
           case 'SpecificGoal':
@@ -354,19 +352,19 @@ let order = new Vue({
                 title: '風險等級', self: this.tab1Data[0][10],
                 selfTitle: '您的風險等級', all: this.tab1Data[0][11],
                 allTitle: '所有計畫平均風險等級',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
               {
                 title: '投資期間', self: this.tab1Data[0][14],
                 selfTitle: '您投資目標時間', all: this.tab1Data[0][15],
                 allTitle: '所有計畫平均投資時間',
-                whatsThis:'為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
               },
             ];
         }
@@ -460,5 +458,11 @@ let order = new Vue({
       }
       return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
     },
+    addOrder:function(){
+      document.querySelector('#ctl00_Main_AddOrderBTN').click();
+    },
+    delPlan:function(){
+      document.querySelector('#ctl00_Main_DelPlanBTN').click();
+    }
   }
 });
