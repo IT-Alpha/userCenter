@@ -1,11 +1,12 @@
 //-1無、0委託送出成功、1委託成功、2已成交、3部分成交、8委託失敗、9交易失敗；
 // tab1[9]
+
 let order = new Vue({
   el: '#order',
   data: {
-    tab1Data: document.querySelector('#order #ctl00_Main_ResultLB').textContent ? eval(document.querySelector('#order #ctl00_Main_ResultLB').textContent) : null,
-    tab2Data: document.querySelector('#ctl00_Main_TotalRateLB').textContent ? eval(document.querySelector('#ctl00_Main_TotalRateLB').textContent) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
-    tableData: eval(document.querySelector('#ctl00_Main_PoDataLB').textContent),
+    tab1Data: document.querySelector('#order #ctl00_Main_ResultLB').textContent ? eval(document.querySelector('#order #ctl00_Main_ResultLB').textContent.replace(/\n/g, "")) : null,
+    tab2Data: document.querySelector('#ctl00_Main_TotalRateLB').textContent ? eval(document.querySelector('#ctl00_Main_TotalRateLB').textContent.replace(/\n/g, "")) : [[0, 0], [0, 0, 0], [0, 0, 0,]],
+    tableData: eval(document.querySelector('#ctl00_Main_PoDataLB').textContent.replace(/\n/g, "")),
     tab22: true,
     overView: !Boolean(location.search),
   },
@@ -251,122 +252,261 @@ let order = new Vue({
       return [stocksTotal, REITsTotal, bondsTotal];
     },
     progressData: function () { //比較的進度條資料格式轉換
-      if (this.tab1Data.length != 0 ) {
+      if (this.tab1Data.length != 0) {
         switch (this.tab1Data[0][0]) {
           case 'Retirement':
             return [
+              //v4
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'Retirement',
               },
               {
-                title: '成功機率', self: this.tab1Data[0][12],
-                selfTitle: '您的成功機率', all: this.tab1Data[0][13],
-                allTitle: '所有計畫平均成功機率',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                title: '您的成功機率',
+                value: this.tab1Data[0][12],
+                circle: true,
+                gauge: false,
+                svgID: 'RateSVG',
+                type: 'Retirement',
               },
               {
-                title: '距離退休時間', self: this.tab1Data[0][14],
-                selfTitle: '距離您退休的時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均退休時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                title: '其他人的平均退休成功機率',
+                value: this.tab1Data[0][13],
+                circle: true,
+                gauge: false,
+                svgID: 'RateSVG2',
+                type: 'Retirement',
               },
+              // v2,v3
+              // {
+              //   title: '風險等級', self: this.tab1Data[0][10],
+              //   selfTitle: '您的風險等級',
+              //   circle: false,
+              //   gauge: true,
+              //   svgID: 'riskSVG',
+              //   type: 'Retirement',
+              //   compare: false,
+              // },
+              // {
+              //   title: '成功機率', self: this.tab1Data[0][12],
+              //   selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+              //   allTitle: '所有計畫平均成功機率',
+              //   circle: true,
+              //   gauge: false,
+              //   svgID: 'RateSVG',
+              //   svgID2: 'RateSVG2',
+              //   type: 'Retirement',
+              //   compare: true,
+              // },
+              // v1
+              // {
+              //   title: '風險等級', self: this.tab1Data[0][10],
+              //   selfTitle: '您的風險等級', all: this.tab1Data[0][11],
+              //   allTitle: '所有計畫平均風險等級',
+              //   whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+              // },
+              // {
+              //   title: '成功機率', self: this.tab1Data[0][12],
+              //   selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+              //   allTitle: '所有計畫平均成功機率',
+              // },
+              // {
+              //   title: '距離退休時間', self: this.tab1Data[0][14],
+              //   selfTitle: '距離您退休的時間', all: this.tab1Data[0][15],
+              //   allTitle: '所有計畫平均退休時間',
+              //   whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+              // },
             ];
           case 'Long':
+            //v4
             return [
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'Long',
               },
-              {
-                title: '投資期間', self: this.tab1Data[0][14],
-                selfTitle: '您預計累積財富時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均投資時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
-              },
-            ];
+            ]
+            // v2,3
+            // return [
+            //   {
+            //     title: '風險等級', self: this.tab1Data[0][10],
+            //     selfTitle: '您的風險等級',
+            //     circle: false,
+            //     gauge: true,
+            //     svgID: 'riskSVG',
+            //     type: 'Long',
+            //     compare: false,
+            //   },
+            // ];
+          //v1
+          // return [
+          //   {
+          //     title: '風險等級', self: this.tab1Data[0][10],
+          //     selfTitle: '您的風險等級',
+          //   },
+          //   {
+          //     title: '投資期間', self: this.tab1Data[0][14],
+          //     selfTitle: '您預計累積財富時間', all: this.tab1Data[0][15],
+          //     allTitle: '所有計畫平均投資時間',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          // ];
           case 'Preservation':
             return [
               {
                 title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                selfTitle: '您的風險等級',
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'Preservation',
+                compare: false,
               },
-              {
-                title: '投資期間', self: this.tab1Data[0][14],
-                selfTitle: '您保值財產時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均投資時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
-              },
-            ];
+            ]
+          // return [
+          //   {
+          //     title: '風險等級', self: this.tab1Data[0][10],
+          //     selfTitle: '您的風險等級',
+          //   },
+          //   {
+          //     title: '投資期間', self: this.tab1Data[0][14],
+          //     selfTitle: '您保值財產時間', all: this.tab1Data[0][15],
+          //     allTitle: '所有計畫平均投資時間',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          // ];
           case 'Edu':
             return [
               {
                 title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                selfTitle: '您的風險等級',
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'Edu',
+                compare: false,
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                circle: true,
+                gauge: false,
+                svgID: 'RateSVG',
+                svgID2: 'RateSVG2',
+                type: 'Edu',
+                compare: true,
               },
-              {
-                title: '投資期間', self: this.tab1Data[0][14],
-                selfTitle: '您的孩子距離大學時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均投資時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
-              },
-            ];
+            ]
+          // return [
+          //   {
+          //     title: '風險等級', self: this.tab1Data[0][10],
+          //     selfTitle: '您的風險等級',
+          //   },
+          //   {
+          //     title: '成功機率', self: this.tab1Data[0][12],
+          //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+          //     allTitle: '所有計畫平均成功機率',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          //   {
+          //     title: '投資期間', self: this.tab1Data[0][14],
+          //     selfTitle: '您的孩子距離大學時間', all: this.tab1Data[0][15],
+          //     allTitle: '所有計畫平均投資時間',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          // ];
           case 'Production':
             return [
               {
                 title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                selfTitle: '您的風險等級',
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'Production',
+                compare: false,
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                circle: true,
+                gauge: false,
+                svgID: 'RateSVG',
+                svgID2: 'RateSVG2',
+                type: 'Production',
+                compare: true,
               },
-              {
-                title: '投資期間', self: this.tab1Data[0][14],
-                selfTitle: '距離你買房時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均投資時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
-              },
-            ];
+            ]
+          // return [
+          //   {
+          //     title: '風險等級', self: this.tab1Data[0][10],
+          //     selfTitle: '您的風險等級',
+          //   },
+          //   {
+          //     title: '成功機率', self: this.tab1Data[0][12],
+          //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+          //     allTitle: '所有計畫平均成功機率',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          //   {
+          //     title: '投資期間', self: this.tab1Data[0][14],
+          //     selfTitle: '距離你買房時間', all: this.tab1Data[0][15],
+          //     allTitle: '所有計畫平均投資時間',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          // ];
           case 'SpecificGoal':
             return [
               {
                 title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級', all: this.tab1Data[0][11],
-                allTitle: '所有計畫平均風險等級',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                selfTitle: '您的風險等級',
+                circle: false,
+                gauge: true,
+                svgID: 'riskSVG',
+                type: 'SpecificGoal',
+                compare: false,
               },
               {
                 title: '成功機率', self: this.tab1Data[0][12],
                 selfTitle: '您的成功機率', all: this.tab1Data[0][13],
                 allTitle: '所有計畫平均成功機率',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+                circle: true,
+                gauge: false,
+                svgID: 'RateSVG',
+                svgID2: 'RateSVG2',
+                type: 'SpecificGoal',
+                compare: true,
               },
-              {
-                title: '投資期間', self: this.tab1Data[0][14],
-                selfTitle: '您投資目標時間', all: this.tab1Data[0][15],
-                allTitle: '所有計畫平均投資時間',
-                whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
-              },
-            ];
+            ]
+          // return [
+          //   {
+          //     title: '風險等級', self: this.tab1Data[0][10],
+          //     selfTitle: '您的風險等級',
+          //   },
+          //   {
+          //     title: '成功機率', self: this.tab1Data[0][12],
+          //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+          //     allTitle: '所有計畫平均成功機率',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          //   {
+          //     title: '投資期間', self: this.tab1Data[0][14],
+          //     selfTitle: '您投資目標時間', all: this.tab1Data[0][15],
+          //     allTitle: '所有計畫平均投資時間',
+          //     whatsThis: '為您統整在我們平台上已下單的計畫狀況，供您比較後參考'
+          //   },
+          // ];
         }
       }
     }
@@ -427,6 +567,15 @@ let order = new Vue({
     decimalFormat: function (value) { //小數點兩位
       return value == '0' ? 0 : value.toFixed(2);
     },
+    riskChinese: function (value) {
+      if (value <= 45) {
+        return '保守型'
+      } else if (value <= 70) {
+        return '穩健型'
+      } else if (value <= 90) {
+        return '積極型'
+      }
+    },
   },
   methods: {
     accAdd: function (num1, num2) {
@@ -458,11 +607,69 @@ let order = new Vue({
       }
       return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
     },
-    addOrder:function(){
+    addOrder: function () {
       document.querySelector('#ctl00_Main_AddOrderBTN').click();
     },
-    delPlan:function(){
+    delPlan: function () {
       document.querySelector('#ctl00_Main_DelPlanBTN').click();
+    },
+    circle: function (element, type, value) {
+      var svg = d3.select('#' + element);
+      var w = svg._groups[0][0].clientWidth
+      var h = w;
+      let c = new circleChart(svg, w, h, 40);
+      let vm = this;
+      c.transition = sel => sel.transition().duration(2000 + 400 * Math.abs(c.newValue - c.oldValue));
+      c.update(0);
+
+      if (type == 'Long' || type == 'Preservation') {
+        c.format = '年';
+        c.textMax = 40;
+      }
+      setTimeout(function () {
+        if (type == 'Long' || type == 'Preservation') {
+          c.update(value / 40);
+        } else {
+          c.update(value / 100);
+        }
+      }, 500);
+    },
+    gauge: function (element, value) {
+      var svg = d3.select('#' + element);
+      var w = svg._groups[0][0].clientWidth;
+      var h = w;
+      let g = new ArcDonutChart(svg, w, h, 10, [-0.5 * Math.PI, 0.5 * 2 / 3 * Math.PI]);
+      g.transition = sel => sel.transition().duration(1000 + 400 * Math.abs(g.newValue - g.oldValue));
+      g.update(0);
+      setTimeout(function () {
+        g.update(value / 100);
+      }, 500);
+    }
+  },
+  mounted: function () {
+    let vm = this;
+    if (!this.overView) {
+      let circleArray = this.progressData.filter(function (element) {
+        return element.circle;
+      });
+      circleArray.forEach(function (element) {
+        vm.circle(element.svgID, element.type, element.value)
+        //v2,3
+        // vm.circle(element.svgID, element.type, element.self)
+        // if(element.compare){
+        //   vm.circle(element.svgID2,element.type,element.all)
+        // }
+      });
+      let gaugeArray = this.progressData.filter(function (element) {
+        return element.gauge;
+      })
+
+      gaugeArray.forEach(function (element) {
+        vm.gauge(element.svgID, element.value)
+
+        //v2,3
+        // vm.gauge(element.svgID, element.self)
+      })
     }
   }
 });

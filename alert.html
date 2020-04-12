@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="root rd-navbar-sidebar-active page-small-footer" lang="en">
+
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:title" content="Template Monster Admin Template">
+  <meta property="og:description"
+    content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+  <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
+  <meta property="og:url" content="http://digipunk.netii.net">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="components/base/base.min.css">
+  
+</head>
+
+<body>
+  <nav class="rd-navbar">
+    <div class="rd-navbar-panel">
+      <div class="rd-navbar-panel-center"></div>
+      <div class="rd-navbar-panel-cell">
+        <button class="btn button-navbar"
+          data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+          <span class="fa-bell"></span>
+          <span class="badge badge-success rounded-circle">2</span>
+        </button>
+        <div class="rd-navbar-subpanel" id="subpanel-notifications">
+          <div class="panel panel-sm">
+            <div class="panel-header text-dark">
+              <h5><span class="panel-icon fa-bell"></span></h5>
+            </div>
+            <div class="panel-body scroller scroller-vertical">
+              <div class="group-5">
+                <div class="alert alert-dismissible alert-primary" role="alert">
+                  <span class="alert-icon fa-thumbs-up"></span>
+                  <span>退休金準備計畫已下單</span>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span class="fa-close" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="alert alert-dismissible alert-info" role="alert">
+                  <span class="alert-icon fa-telegram"></span>
+                  <span>12/30將進行再平衡</span>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span class="fa-close" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="alert alert-dismissible alert-secondary" role="alert">
+                  <span class="alert-icon fa-warning"></span>
+                  <span>子女教育金計畫下單失敗</span>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span class="fa-close" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="alert alert-dismissible alert-success" role="alert">
+                  <span class="alert-icon fa-thumbs-up"></span>
+                  <span>您的退休金計畫加碼成功</span>
+                  <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span class="fa-close" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <a class="btn btn-dark btn-sm">說明</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rd-navbar-panel-cell">
+        <button class="btn button-navbar"
+          data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+          <span class="fa-sliders"></span>
+        </button>
+        <div class="sidebar scroller">
+          <div class="timeline timeline-simple">
+            <div class="item">
+              <div class="timeline-date">2019/11/08</div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                <div>
+                  <div>Added a new item to his store</div>
+                  <small>1:25am</small>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                <div>
+                  <div>Added a new item to her store</div>
+                  <small>3:05am</small>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="timeline-date">2019/11/08</div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                <div>
+                  <div>Added a new item to his store</div>
+                  <small>4:15am</small>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                <div>
+                  <div>Added a new item to his store</div>
+                  <small>7:45am</small>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="timeline-date">2019/11/08</div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-info"></div>
+                <div>
+                  <div>Added a new item to his store</div>
+                  <small>4:15am</small>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-item-icon timeline-item-icon-info"></div>
+                <div>
+                  <div>Added a new item to his store</div>
+                  <small>7:45am</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script src="components/base/script.js"></script>
+  <script>
+    let btns = document.querySelectorAll('.button-navbar');
+    const iframe = parent.document.querySelector("iframe");
+    iframeClass = iframe.classList;
+
+    btns.forEach(function(item){
+      item.addEventListener('click',function(){
+        item.classList.contains('active') ? iframeClass.remove('active') : iframeClass.add('active');
+      })
+    });
+    document.addEventListener("click",notOnElement)
+    function notOnElement(event){
+      let panelIsShow = Boolean(document.querySelector('div.active')) && !document.querySelector('div.active').contains(event.target) ;
+      let clickOnBtn = btns[0].contains(event.target) || btns[1].contains(event.target);
+      if( panelIsShow && !clickOnBtn){
+        iframe.classList.toggle('active');
+      }
+    }
+    window.onresize = changeBtnStyle;
+    function changeBtnStyle(){
+      let parentPanel = parent.document.querySelector(".rd-navbar-panel");
+      let panel = document.querySelector(".rd-navbar-panel");
+      parentPanel.clientHeight == 64 ? panel.style.height = 64  : panel.style.height = 84 ;
+    //   btns.forEach(function(item){
+    //     item.style.backgroundColor = bgColor;
+    // });
+    }
+  </script>
+  <style>
+    body ,.rd-navbar-fixed .rd-navbar-panel{
+      background-color: transparent;
+    }
+    .rd-navbar-fixed .rd-navbar-panel{
+      box-shadow: none !important;
+      left: unset !important;
+    }
+    .timeline{
+      height:calc(100% - 30px);
+    }
+  </style>
+</body>
+
+</html>

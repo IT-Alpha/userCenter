@@ -271,10 +271,10 @@
                               </div>
                               <div class="list-block-container list-block-lg">
                                 <h5 class="list-block-title">
-                                  <button class="btn btn-link p-0 font-weight-bold"
+                                  <button type="button" class="btn btn-link p-0 font-weight-bold"
                                     @click="tab22 = true">累積(Cumulative)</button>
                                   <span class="font-weight-bold">|</span>
-                                  <button class="btn btn-link p-0 font-weight-bold"
+                                  <button type="button" class="btn btn-link p-0 font-weight-bold"
                                     @click="tab22 = false">年度(Annualized)</button>
                                 </h5>
                                 <div class="list-block">
@@ -383,30 +383,38 @@
                                           <div class="col-12 mb-3 d-sm-none">
                                             <!-- 要小數點五位數 -->
                                             <div>
-                                              <small
-                                                class="d-block text-black-50">持有股數</small>{{item[7] | commaFormat}}
+                                              <small class="d-block text-black-50">持有股數</small>
+                                              {{item[7] | commaFormat}}
                                             </div>
                                           </div>
                                           <div class="col-6 col-sm-4 mb-3 d-md-none">
-                                            <div><small class="d-block text-black-50">ETF類別</small>{{item[4] | ETFtype}}
+                                            <div>
+                                              <small class="d-block text-black-50">ETF類別</small>
+                                              {{item[4] | ETFtype}}
                                             </div>
                                           </div>
                                           <div class="col-6 mb-3 d-sm-none">
-                                            <div><small class="d-block text-black-50">持有價值</small>USD $
-                                              {{ item[8] | decimalFormat | commaFormat}}</div>
+                                            <div>
+                                              <small class="d-block text-black-50">持有價值</small>
+                                              USD $ {{ item[8] | decimalFormat | commaFormat}}
+                                            </div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
-                                            <div><small class="d-block text-black-50">ETF價格</small>USD $
-                                              {{ item[9] | decimalFormat | commaFormat}}</div>
-                                          </div>
-                                          <div class="col-6 col-sm-4 col-xl">
-                                            <div><small
-                                                class="d-block text-black-50">報酬率</small>{{item[10] | decimalFormat}}%
+                                            <div>
+                                              <small class="d-block text-black-50">ETF價格</small>
+                                              USD $ {{ item[9] | decimalFormat | commaFormat}}
                                             </div>
                                           </div>
                                           <div class="col-6 col-sm-4 col-xl">
-                                            <div><small
-                                                class="d-block text-black-50">內含管理費/年</small>{{item[11] | decimalFormat}}%
+                                            <div>
+                                              <small class="d-block text-black-50">報酬率</small>
+                                              {{item[10] | decimalFormat}}%
+                                            </div>
+                                          </div>
+                                          <div class="col-6 col-sm-4 col-xl">
+                                            <div>
+                                              <small class="d-block text-black-50">內含管理費/年</small>
+                                              {{item[11] | decimalFormat}}%
                                             </div>
                                           </div>
                                         </div>

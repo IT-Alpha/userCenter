@@ -96,6 +96,10 @@ fieldset:disabled a.btn {
     pointer-events: none;
   }
 
+  &.notactive{
+    opacity: .3;
+  }
+
   // No need for an active state here
 }
 

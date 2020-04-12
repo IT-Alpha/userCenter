@@ -36,22 +36,26 @@
                     class="fa-bars"></span></button>
               </div>
               <div class="rd-navbar-panel-cell d-none d-xl-block">
-                <!-- Breadcrumbs-->
                 <ul class="breadcrumbs">
                   <li class="breadcrumbs-item">
-                    <a class="breadcrumbs-link" href="order.aspx"><span
-                        class="breadcrumbs-icon mdi mdi-view-grid"></span><span>總覽頁面</span></a></li>
+                    <a class="breadcrumbs-link" href="order.aspx">
+                      <span class="breadcrumbs-icon mdi mdi-view-grid"></span>
+                      <span>總覽頁面</span>
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div class="rd-navbar-panel-center"></div>
               <div class="rd-navbar-panel-cell">
                 <button type="button" class="btn button-navbar"
-                  data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
-                    class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
+                  data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+                  <span class="fa-bell"></span>
+                  <span class="badge badge-success rounded-circle">2</span>
+                </button>
                 <div class="rd-navbar-subpanel" id="subpanel-notifications">
                   <div class="panel panel-sm">
                     <div class="panel-header text-dark">
-                      <h5><span class="panel-icon fa-bell"> </span></h5>
+                      <h5><span class="panel-icon fa-bell"></span></h5>
                     </div>
                     <div class="panel-body scroller scroller-vertical">
                       <div class="group-5">
@@ -85,14 +89,17 @@
                         </div>
                       </div>
                     </div>
-                    <div class="panel-footer"><a class="btn btn-dark btn-sm">說明</a></div>
+                    <div class="panel-footer">
+                      <a class="btn btn-dark btn-sm">說明</a>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="rd-navbar-panel-cell">
                 <button type="button" class="btn button-navbar"
-                  data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
-                    class="fa-sliders"></span></button>
+                  data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+                  <span class="fa-sliders"></span>
+                </button>
                 <div class="sidebar scroller">
                   <div class="timeline timeline-simple">
                     <div class="item">
@@ -150,74 +157,81 @@
                 </div>
               </div>
             </div>
-            <div class="rd-navbar-sidebar scroller">
-              <div class="rd-navbar-sidebar-panel">
-                <div class="group-25">
-                  <div><a href="#"><img class="rounded-circle"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
-                        width="100" height="100" alt="" /></a></div>
-                  <h2 class="font-weight-light text-light">{{name}}</h2>
-                  <div>
-                    <button type="button" class="btn button-setting button-user-menu rounded-pill"
-                      data-multi-switch='{"targets":"#userMenu","scope":"#userMenu","isolate":"[data-multi-switch]"}'>個人設置</button>
-                  </div>
-                </div>
+            <div class="rd-navbar-sidebar border-bottom pb-0"
+              style="bottom:auto;background:#11ACC5;z-index:3;box-shadow: none;">
+              <div class="p-3 text-center">
+                <img class="rounded-circle"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
+                  width="100" height="100" alt="" />
+                <h4 class="text-light font-weight-bold mt-2">
+                  <span style="letter-spacing:10px">{{name.slice(0,-1)}}</span>
+                  <span>{{name.slice(-1)}}</span>
+                </h4>
               </div>
-              <div class="user-menu" id="userMenu">
-                <div class="row row-10">
-                  <div class="col-4">
-                    <div class="text-center small">
-                      首頁
+            </div>
+            <div class="rd-navbar-sidebar" style="background-image: url('/images/sidebar-bg.jpg');">
+              <div class="rd-navbar-sidebar scroller"
+                style="top:calc(3.7rem + 99px);bottom:calc(10rem + 9px);background: none;">
+                <ul class="rd-navbar-nav">
+                  <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
+                    <a class="rd-navbar-link" href="order.aspx">
+                      <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
+                    </a>
+                  </li>
+                  <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
+                    <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
+                      :href="'order.aspx?PID=' + item[2]">
+                      <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
+                      <span>{{item[0] | goalText}}</span>
+                      <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
+                      <div class="progress progress-sm w-100 mt-2"
+                        :class="item[2] == active ? 'progress-primary' : 'progress-light'">
+                        <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
+                      <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
+                      </span>新增計畫</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="rd-navbar-sidebar pb-0"
+              style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);">
+              <!-- 10rem (2.5rem * 4) -->
+              <ul class="rd-navbar-nav">
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="memberAccount.aspx">
+                    <span class="rd-navbar-icon mdi mdi-account-outline" href="#"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                      個人資料
                     </div>
-                    <a class="mdi mdi-24px mdi-home-outline" href="#"></a>
-                  </div>
-                  <div class="col-4">
-                    <div class="text-center small">
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="#">
+                    <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
                       交易紀錄
                     </div>
-                    <a class="mdi mdi-24px mdi-account-outline" href="#"></a>
-                  </div>
-                  <div class="col-4">
-                    <div class="text-center small">
-                      帳戶設定
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="#">
+                    <span class="rd-navbar-icon mdi mdi-note-text"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                      委託狀態
                     </div>
-                    <a class="mdi mdi-24px mdi-currency-usd" href="#"></a>
-                  </div>
-                  <div class="col-4">
-                    <a class="mdi mdi-24px mdi-email-outline" href="#"></a>
-                    <div class="text-center small">
-                      聯絡我們
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <a class="mdi mdi-24px mdi-logout-variant" href="login.aspx/?LogOut=OK"></a>
-                    <div class="text-center small">
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="login.aspx/?LogOut=OK">
+                    <span class="rd-navbar-icon mdi mdi-24px mdi-logout-variant"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
                       登出
                     </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="rd-navbar-nav">
-                <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
-                  <a class="rd-navbar-link" href="order.aspx">
-                    <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
                   </a>
-                </li>
-                <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
-                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
-                    :href="'order.aspx?PID=' + item[2]">
-                    <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
-                    <span>{{item[0] | goalText}}</span>
-                    <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
-                    <div class="progress progress-sm w-100 mt-2"
-                      :class="item[2] == active ? 'progress-primary' : 'progress-light'">
-                      <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
-                    </div>
-                  </a>
-                </li>
-                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
-                    <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
-                    </span>新增計畫</a>
                 </li>
               </ul>
             </div>

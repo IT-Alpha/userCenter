@@ -309,7 +309,7 @@ let components = {
   },
   input: {
     selector: '.form-group, .input-group, .form-check, .custom-control, .form-control',
-    styles: './components/input/input.css'
+    styles: './components/input/input.min.css'
   },
   maxlength: {
     selector: '[maxlength]',
@@ -666,7 +666,7 @@ let components = {
     selector: '.modal',
     styles: [
       './components/modal/modal.min.css',
-      './components/animate/animate.css'
+      './components/animate/animate.min.css'
     ],
     script: [
       './components/base/jquery-3.4.1.min.js',
@@ -2160,7 +2160,7 @@ let components = {
       let lineChartData = Object;
       let highchartDate = [];
       if (document.querySelector('#ctl00_Main_PreLB').textContent) {
-        let fuckingTranslate = eval(document.querySelector('#ctl00_Main_PreLB').textContent);
+        let fuckingTranslate = eval(document.querySelector('#ctl00_Main_PreLB').textContent.replace(/\n/g, ""));
         lineChartData['fillColor'] = {
           "linearGradient": {
             "x1": 0.5,
@@ -2352,7 +2352,7 @@ let components = {
         ],
       };
 
-      let tableData = eval(document.querySelector('#ctl00_Main_PoDataLB').textContent);
+      let tableData = eval(document.querySelector('#ctl00_Main_PoDataLB').textContent.replace(/\n/g, ""));
       let pieArray = tableData.map(function (element, index) {
         return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
       });

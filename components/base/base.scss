@@ -26,3 +26,10 @@
 @import "spacing";
 @import "page";
 @import "../grid/grid.scss";
+
+//多加的 animate.css
+
+@import "./animate/_properties";
+// Import the animations
+@import "./animate/_sliding-entrances/sliding-entrances.scss",
+	"./animate/_sliding-exits/sliding-exits.scss";

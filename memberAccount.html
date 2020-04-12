@@ -35,9 +35,10 @@
       <!-- 訂單狀態 -->
       <!-- 已下單(2),未成交(1),未下單(0) -->
       <div class="d-none">
-        <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00, 'P2020021800001',
+        <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00,
+          'P2020021800001',
           1, -1],]</span>
-        <span id="ctl00_LoginLB">安安您好</span>
+        <span id="ctl00_LoginLB">測試仔123</span>
       </div>
       <div class="rd-navbar-wrap">
         <nav class="rd-navbar">
@@ -50,20 +51,24 @@
               <!-- Breadcrumbs-->
               <ul class="breadcrumbs">
                 <li class="breadcrumbs-item">
-                  <a class="breadcrumbs-link" href="order.html"><span
-                      class="breadcrumbs-icon mdi mdi-view-grid"></span><span>總覽頁面</span></a></li>
+                  <a class="breadcrumbs-link" href="order.html">
+                    <span class="breadcrumbs-icon mdi mdi-view-grid"></span>
+                    <span>總覽頁面</span>
+                  </a>
+                </li>
               </ul>
             </div>
             <div class="rd-navbar-panel-center"></div>
-
             <div class="rd-navbar-panel-cell">
               <button class="btn button-navbar"
-                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'><span
-                  class="fa-bell"></span><span class="badge badge-success rounded-circle">2</span></button>
+                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+                <span class="fa-bell"></span>
+                <span class="badge badge-success rounded-circle">2</span>
+              </button>
               <div class="rd-navbar-subpanel" id="subpanel-notifications">
                 <div class="panel panel-sm">
                   <div class="panel-header text-dark">
-                    <h5><span class="panel-icon fa-bell"> </span></h5>
+                    <h5><span class="panel-icon fa-bell"></span></h5>
                   </div>
                   <div class="panel-body scroller scroller-vertical">
                     <div class="group-5">
@@ -97,14 +102,17 @@
                       </div>
                     </div>
                   </div>
-                  <div class="panel-footer"><a class="btn btn-dark btn-sm">說明</a></div>
+                  <div class="panel-footer">
+                    <a class="btn btn-dark btn-sm">說明</a>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="rd-navbar-panel-cell">
               <button class="btn button-navbar"
-                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'><span
-                  class="fa-sliders"></span></button>
+                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+                <span class="fa-sliders"></span>
+              </button>
               <div class="sidebar scroller">
                 <div class="timeline timeline-simple">
                   <div class="item">
@@ -162,153 +170,52 @@
               </div>
             </div>
           </div>
-          <div class="rd-navbar-sidebar pb-0" style="bottom:auto;background-image:none;z-index:3">
-            <!-- <div class="text-center p-2 border-bottom" style="height: 60px;">
-              <img class="mt-0 h-100" src="images/logo-default.png" alt="logo">
-            </div> -->
-            <div class="p-3 d-flex align-items-center">
-              <img class="rounded-circle mr-3"
+          <div class="rd-navbar-sidebar border-bottom pb-0"
+            style="bottom:auto;background:#11ACC5;z-index:3;box-shadow: none;">
+            <div class="p-3 text-center">
+              <img class="rounded-circle"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
-                width="28" height="28" alt="" />
-              <h3 class="font-weight-light text-light mt-0" style="letter-spacing:10px">測試仔，您好</h3>
+                width="100" height="100" alt="" />
+              <h5 class="text-light font-weight-bold mt-2">
+                <span style="letter-spacing:10px">{{name.slice(0,-1)}}</span>
+                <span>{{name.slice(-1)}}</span>
+              </h5>
             </div>
-
           </div>
-          <div class="rd-navbar-sidebar scroller" style="top:calc(2rem + 28px);bottom:8rem;">
-            <ul class="rd-navbar-nav">
-              <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
-                <a class="rd-navbar-link" href="order.html">
-                  <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
-                </a>
-              </li>
-              <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
-                <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass" :href="'order.html?PID=' + item[2]">
-                  <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
-                  <span>{{item[0] | goalText}}</span>
-                  <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
-                  <div class="progress progress-sm w-100 mt-2"
-                    :class="item[2] == active ? 'progress-primary' : 'progress-light'">
-                    <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
-                  </div>
-                </a>
-              </li>
-              <!-- <li class="rd-navbar-nav-item" v-for="(item) in sidebar">
-                <div class="rd-navbar-progress" :class="item[2] == '2' ? '' : 'un-order'">
-                  <span>{{item[1] | goalText}}</span>
-                  <span>{{item[3]}}%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" :style="{'width': item[3] + '%'}"></div>
-                  </div>
-                </div>
-              </li> -->
-              <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
-                  <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
-                  </span>新增計畫</a>
-              </li>
-              <!-- <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress">
-                  <span>退休金準備</span>
-                  <span>25%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress">
-                  <span>子女教育金</span>
-                  <span>25%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 25%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress un-order">
-                  <span>存錢買房</span>
-                  <span>0%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress un-order">
-                  <span>財產保值抗通膨</span>
-                  <span>0%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress un-order">
-                  <span>其他目標</span>
-                  <span>0%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <div class="rd-navbar-progress un-order">
-                  <span>穩定累積財富</span>
-                  <span>0%</span>
-                  <div class="progress progress-sm progress-light">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"
-                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </li> -->
-            </ul>
-            <!-- <div class="row">
-              <div class="col-4">
-                <div class="text-center small">
-                  首頁
-                </div>
-                <a class="mdi mdi-24px mdi-home-outline" href="#"></a>
-              </div>
-              <div class="col-4">
-                <div class="text-center small">
-                  個人資料
-                </div>
-                <a class="mdi mdi-24px mdi-account-outline" href="#"></a>
-              </div>
-              <div class="col-4">
-                <div class="text-center small">
-                  登出
-                </div>
-                <a class="mdi mdi-24px mdi-logout-variant" href="#"></a>
-              </div>
-              <div class="col-4">
-                <a class="mdi mdi-24px mdi-share-variant" href="#"></a>
-                <div class="text-center small">
-                  安全設定
-                </div>
-              </div>
-              <div class="col-4">
-                <a class="mdi mdi-24px mdi-currency-usd" href="#"></a>
-                <div class="text-center small">
-                  帳戶設定
-                </div>
-              </div>
-              <div class="col-4">
-                <a class="mdi mdi-24px mdi-email-outline" href="#"></a>
-                <div class="text-center small">
-                  聯絡我們
-                </div>
-              </div>
-            </div> -->
+          <div class="rd-navbar-sidebar" style="background-image: url('/images/sidebar-bg.jpg');">
+            <div class="rd-navbar-sidebar scroller"
+              style="top:calc(3.875rem + 99px);bottom:calc(7.5rem + 9px);background: none;padding-bottom:1rem">
+              <ul class="rd-navbar-nav">
+                <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
+                  <a class="rd-navbar-link" href="order.html">
+                    <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
+                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
+                    :href="'order.html?PID=' + item[2]">
+                    <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
+                    <span>{{item[0] | goalText}}</span>
+                    <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
+                    <div class="progress progress-sm w-100 mt-2"
+                      :class="item[2] == active ? 'progress-primary' : 'progress-light'">
+                      <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
+                    </div>
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
+                    <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
+                    </span>新增計畫</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="rd-navbar-sidebar pb-0" style="top:auto;background-image:none">
+          <div class="rd-navbar-sidebar pb-0"
+            style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);">
+            <!-- 10rem (2.5rem * 4) -->
             <ul class="rd-navbar-nav">
               <li class="rd-navbar-nav-item">
-                <a class="rd-navbar-link py-2" href="#">
+                <a class="rd-navbar-link py-2" href="memberAccount.html">
                   <span class="rd-navbar-icon mdi mdi-account-outline" href="#"></span>
                   <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
                     個人資料
@@ -316,18 +223,10 @@
                 </a>
               </li>
               <li class="rd-navbar-nav-item">
-                <a class="rd-navbar-link py-2" href="#">
+                <a class="rd-navbar-link py-2" href="trade.html">
                   <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
                   <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
-                    交易紀錄
-                  </div>
-                </a>
-              </li>
-              <li class="rd-navbar-nav-item">
-                <a class="rd-navbar-link py-2" href="#">
-                  <span class="rd-navbar-icon mdi mdi-note-text"></span>
-                  <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
-                    委託狀態
+                    交易情況
                   </div>
                 </a>
               </li>
@@ -361,57 +260,127 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">會員編號</div>
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">會員編號</div>
                         <div class="py-3 pl-4">423423</div>
                       </div>
                     </div>
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">姓名</div>
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">姓名</div>
                         <div class="py-3 pl-4">路人甲</div>
                       </div>
                     </div>
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">帳號</div>
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">帳號</div>
                         <div class="py-3 pl-4">supprot@roboadvisor.com.tw</div>
                       </div>
                     </div>
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">密碼</div>
-                        <div class="py-3 pl-4">******</div>
+                      <div class="d-flex flex-column flex-sm-row align-items-sm-center border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">密碼</div>
+                        <div class="py-3 pl-4 flex-grow-1">******</div>
+                        <div class="text-center mb-3 mb-sm-0">
+                          <button class="btn btn-outline-primary py-1"  data-toggle="modal" data-target="#passwordModal">修改</button>
+                          <div class="modal fade px-0" id="passwordModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                  <h4 class="modal-title flex-grow-1  text-center text-light">修改密碼</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="mx-auto" style="max-width:180px">
+                                    <input class="form-control p-3 mb-2" type="password" placeholder="請輸入舊密碼" style="border-radius: 2rem;">
+                                    <input class="form-control p-3 mb-2" type="password" placeholder="請輸入新密碼" style="border-radius: 2rem;">
+                                    <input class="form-control p-3" type="password" placeholder="請再次輸入新密碼" style="border-radius: 2rem;">
+                                  </div>
+                                </div>
+                                <div class="modal-footer border-top-0 justify-content-center">
+                                  <button type="button" class="btn btn-primary">確定</button>
+                                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">取消</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">手機號碼</div>
-                        <div class="py-3 pl-4">0957432456</div>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">出生日期</div>
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">出生日期</div>
                         <div class="py-3 pl-4">1995/5/12</div>
                       </div>
                     </div>
                     <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">戶籍地址</div>
+                      <div class="d-flex flex-column flex-sm-row align-items-sm-center border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">手機號碼</div>
+                        <div class="py-3 pl-4 flex-grow-1">0957432456</div>
+                        <div class="text-center mb-3 mb-sm-0">
+                          <button class="btn btn-outline-primary py-1">修改</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-6 px-0">
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">something</div>
+                        <div class="py-3 pl-4">something</div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-6 px-0">
+                      <div class="d-flex flex-column flex-sm-row align-items-sm-center border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">Email</div>
+                        <div class="py-3 pl-4 flex-grow-1">supprot@roboadvisor.com.tw</div>
+                        <div class="text-center mb-3 mb-sm-0">
+                          <button class="btn btn-outline-primary py-1">修改</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-6 px-0">
+                      <div class="d-flex flex-column flex-sm-row border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">戶籍地址</div>
                         <div class="py-3 pl-4">台北市大同區南京西路288號2樓</div>
                       </div>
                     </div>
-                    <div class="col-12 col-md-6 px-0">
-                      <div class="d-flex border-bottom">
-                        <div class="py-3 text-center bg-200" style="min-width: 8rem;">通訊地址</div>
-                        <div class="py-3 pl-4">台北市大同區南京西路288號2樓</div>
+                    <div class="col-12 col-lg-6 px-0">
+                      <div class="d-flex flex-column flex-sm-row align-items-sm-center border-bottom">
+                        <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">通訊地址</div>
+                        <div class="py-3 pl-4 flex-grow-1">台北市大同區南京西路288號2樓</div>
+                        <div class="text-center mb-3 mb-sm-0">
+                          <button class="btn btn-outline-primary py-1">修改</button>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-12 col-md-6 px-0">
+                    <!-- <div class="col-12 col-md-6 px-0">
                       <div class="d-flex border-bottom">
                         <div class="py-3 text-center bg-200" style="min-width: 8rem;">理財顧問</div>
                         <div class="py-3 pl-4">423423</div>
+                      </div>
+                    </div> -->
+                    <div class="col-12 px-0">
+                      <div class="d-flex flex-column flex-sm-row">
+                        <div class="pt-4 py-sm-3 text-center" style="min-width: 8rem;">會員條款</div>
+                        <div class="py-3 pl-4">
+                          <div class="d-inline-block mr-sm-3 mr-md-4 mr-lg-5 pb-3">
+                            <a class="text-primary" href="#">個人資料保護法</a>
+                            <small>ver20200114</small>
+                          </div>
+                          <div class="d-inline-block mr-sm-3 mr-md-4 mr-lg-5 pb-3">
+                            <a class="text-primary" href="#">個人資料保護法</a>
+                            <small>ver20200114</small>
+                          </div>
+                          <div class="d-inline-block mr-sm-3 mr-md-4 mr-lg-5 pb-3">
+                            <a class="text-primary" href="#">個人資料保護法</a>
+                            <small>ver20200114</small>
+                          </div>
+                          <div class="d-inline-block mr-sm-3 mr-md-4 mr-lg-5 pb-3">
+                            <a class="text-primary" href="#">個人資料保護法</a>
+                            <small>ver20200114</small>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

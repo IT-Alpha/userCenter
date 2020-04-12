@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html class="root rd-navbar-sidebar-active page-small-footer" lang="en">
+
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:title" content="Template Monster Admin Template">
+  <meta property="og:description"
+    content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+  <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
+  <meta property="og:url" content="http://digipunk.netii.net">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="components/base/base.min.css">
+  <link rel="stylesheet" href="css/order.min.css">
+  <style>
+    .slick-vertical .slick-slide {
+      width: 100% !important;
+    }
+
+    .modal .carousel-child .slick-current {
+      border-bottom: 2px solid #16b6d2;
+      color: #16b6d2;
+    }
+
+    .modal-fixed {
+      position: absolute;
+      right: .5rem;
+      bottom: .5rem;
+      color: rgba(0, 0, 0, .25);
+    }
+
+    #progressbar li::before {
+      color: rgba(255, 255, 255, 0)
+    }
+
+    #progressbar li.active::before {
+      color: rgba(255, 255, 255, 0)
+    }
+
+    #progressbar li.progress-success::before {
+      content: "\F12C";
+    }
+
+    #progressbar li.progress-alert::before {
+      content: "\F205";
+    }
+
+    #progressbar li.progress-fail::before {
+      content: "\F156";
+    }
+    
+    iframe{
+      height: 60px;
+     
+    }
+    iframe.active{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: 1200px) {
+      iframe{
+      height: 80px;
+    }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="section page-header">
+      <div class="d-none">
+        <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00,
+          'P2020021800001',
+          1, -1],]</span>
+        <span id="ctl00_LoginLB">測試仔123</span>
+      </div>
+      <div class="rd-navbar-wrap">
+        <nav class="rd-navbar">
+          <div class="rd-navbar-panel">
+            <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
+                  class="fa-bars"></span></button>
+            </div>
+            <div class="rd-navbar-panel-cell d-none d-xl-block">
+              <!-- Breadcrumbs-->
+              <ul class="breadcrumbs">
+                <li class="breadcrumbs-item">
+                  <a class="breadcrumbs-link" href="order.html">
+                    <span class="breadcrumbs-icon mdi mdi-view-grid"></span>
+                    <span>總覽頁面</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="rd-navbar-panel-center">
+            </div>
+            <div class="rd-navbar-panel-cell">
+              <iframe src="alert.html" frameborder="0"></iframe>
+            </div>
+            <!-- <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+                <span class="fa-bell"></span>
+                <span class="badge badge-success rounded-circle">2</span>
+              </button>
+              <div class="rd-navbar-subpanel" id="subpanel-notifications">
+                <div class="panel panel-sm">
+                  <div class="panel-header text-dark">
+                    <h5><span class="panel-icon fa-bell"></span></h5>
+                  </div>
+                  <div class="panel-body scroller scroller-vertical">
+                    <div class="group-5">
+                      <div class="alert alert-dismissible alert-primary" role="alert">
+                        <span class="alert-icon fa-thumbs-up"></span>
+                        <span>退休金準備計畫已下單</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-info" role="alert">
+                        <span class="alert-icon fa-telegram"></span>
+                        <span>12/30將進行再平衡</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-secondary" role="alert">
+                        <span class="alert-icon fa-warning"></span>
+                        <span>子女教育金計畫下單失敗</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="alert alert-dismissible alert-success" role="alert">
+                        <span class="alert-icon fa-thumbs-up"></span>
+                        <span>您的退休金計畫加碼成功</span>
+                        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                          <span class="fa-close" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <a class="btn btn-dark btn-sm">說明</a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="rd-navbar-panel-cell">
+              <button class="btn button-navbar"
+                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+                <span class="fa-sliders"></span>
+              </button>
+              <div class="sidebar scroller">
+                <div class="timeline timeline-simple">
+                  <div class="item">
+                    <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>1:25am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                      <div>
+                        <div>Added a new item to her store</div>
+                        <small>3:05am</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>4:15am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>7:45am</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="timeline-date">2019/11/08</div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-info"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>4:15am</small>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-item-icon timeline-item-icon-info"></div>
+                      <div>
+                        <div>Added a new item to his store</div>
+                        <small>7:45am</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="rd-navbar-sidebar border-bottom pb-0"
+            style="bottom:auto;background:#11ACC5;z-index:3;box-shadow: none;">
+            <div class="p-3 text-center">
+              <img class="rounded-circle"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
+                width="100" height="100" alt="" />
+              <h5 class="text-light font-weight-bold mt-2">
+                <span style="letter-spacing:10px">{{name.slice(0,-1)}}</span>
+                <span>{{name.slice(-1)}}</span>
+              </h5>
+            </div>
+          </div>
+          <div class="rd-navbar-sidebar" style="background-image: url('/images/sidebar-bg.jpg');">
+            <div class="rd-navbar-sidebar scroller"
+              style="top:calc(3.875rem + 99px);bottom:calc(7.5rem + 9px);background: none;padding-bottom:1rem">
+              <ul class="rd-navbar-nav">
+                <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
+                  <a class="rd-navbar-link" href="order.html">
+                    <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item" v-for="(item) in sidebar" :class="item[2] == active ? 'active' : null">
+                  <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
+                    :href="'order.html?PID=' + item[2]">
+                    <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
+                    <span>{{item[0] | goalText}}</span>
+                    <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
+                    <div class="progress progress-sm w-100 mt-2"
+                      :class="item[2] == active ? 'progress-primary' : 'progress-light'">
+                      <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
+                    </div>
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
+                    <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
+                    </span>新增計畫</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="rd-navbar-sidebar pb-0"
+            style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);">
+            <!-- 10rem (2.5rem * 4) -->
+            <ul class="rd-navbar-nav">
+              <li class="rd-navbar-nav-item">
+                <a class="rd-navbar-link py-2" href="memberAccount.html">
+                  <span class="rd-navbar-icon mdi mdi-account-outline" href="#"></span>
+                  <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                    個人資料
+                  </div>
+                </a>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <a class="rd-navbar-link py-2" href="trade.html">
+                  <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
+                  <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                    交易情況
+                  </div>
+                </a>
+              </li>
+              <li class="rd-navbar-nav-item">
+                <a class="rd-navbar-link py-2" href="#">
+                  <span class="rd-navbar-icon mdi mdi-24px mdi-logout-variant"></span>
+                  <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                    登出
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="pt-4 pt-xl-0 pb-3" id="trade">
+      <div class="d-none">
+        <!-- 帳戶,時間,訂單編號,計畫名稱,金額,證券,委託類型,買賣別,狀態,失敗原因 -->
+        <span id="ctl00_Main_ResultLB">[['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          11111.33, '永豐金證券', 1,'B',0.5],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          22222.33, '永豐金證券', 1,'S',0],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          33333.33, '永豐金證券', 1,'B',1],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          44444.33, '永豐金證券', 1,'B',2],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          55555.33, '永豐金證券', 1,'B',3],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          66666.33, '永豐金證券', 1,'B',8],['gileslin1213@gmail.com', '2020/3/17 11:14:20', 'P2020022700008', 'Retirement',
+          77777.33, '永豐金證券', 1,'B',9]]</span>
+        <!-- 股號,類別,金額,狀態,股數,成交價格,成交時間 -->
+        <!-- 1，未成交,2，部分成交,3，已成交 -->
+        <!-- 2,3需要股數,成交價格,成交時間, -->
+        <span id="ctl00_Main_PoDataLB">[[['VEA', '股票', 1111.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 2222.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 3333.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 4444.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 5555.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 6666.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 7777.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],[['VEA', '股票', 8888.33, 1],['VSS', '股票', 5000.00, 1],['VTI','股票', 7000.00,
+          2,33.12312,44.23,'2020/03/01 01:14:20'],['VNQ','不動產信託', 4000.00, 3,33.12312,44.23,'2020/03/01 02:14:20'],['VNQI','不動產信託',
+          2666.67, 2,33.12312,44.23,'2020/03/01 03:14:20'],['BNDW', '債券', 8333.33, 3,33.12312,44.23,'2020/03/01 04:14:20'],],]</span>
+      </div>
+      <div class="container-fluid">
+        <div class="panel admin-panel">
+          <div class="panel-body p-0">
+            <table class="custom-table text-center">
+              <thead>
+                <tr>
+                  <th class="px-4 d-none d-md-table-cell" scope="col">委託時間</th>
+                  <th scope="col">計畫種類</th>
+                  <th scope="col">買/賣別</th>
+                  <th scope="col" class="d-none d-md-table-cell">進度表</th>
+                  <th scope="col">委託明細</th>
+                  <th class="d-none d-md-table-cell"></th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr class="text-left bg-200">
+                  <td class="px-4" colspan="4">提醒您,只有交易前的訂單才能進行網路取消下單的動作。</td>
+                  <td class="d-none d-md-table-cell" colspan="2"></td>
+                </tr>
+              </tfoot>
+              <tbody>
+                <template v-for="(item,index) in list">
+                  <tr>
+                    <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">
+                      {{item[1]}}
+                    </td>
+                    <td>
+                      <span class="h1 mdi" :class="item[3] | goalIcon"></span>
+                    </td>
+                    <td>{{item[7] == 'B' ? '買入' : '賣出'}}</td>
+                    <td class="d-none d-md-table-cell">
+                      <ul id="progressbar" class="m-0 mx-auto pl-0">
+                        <template v-if="item[8] == 2">
+                          <li class="progress-success">交易成功</li>
+                        </template>
+                        <template v-else-if="item[8] == 3">
+                          <li class="progress-alert">部分成交</li>
+                        </template>
+                        <template v-else-if="item[8] == 8">
+                          <li class="progress-fail">委託失敗</li>
+                        </template>
+                        <template v-else-if="item[8] == 9">
+                          <li class="progress-fail">交易失敗</li>
+                        </template>
+                        <template v-else>
+                          <li :class="[item[8] == 0 ? 'active' : '',item[8] > 0 ? 'progress-success' : '']">委託送出</li>
+                          <li :class="[item[8] == 0.5 ? 'active' : '',item[8] > 0.5 ? 'progress-success' : '']">券商收單
+                          </li>
+                          <li :class="item[8] == 1 ? 'active' : ''">交易中</li>
+                        </template>
+                      </ul>
+                    </td>
+                    <td>
+                      <span class="h1 mdi mdi-note-text" @click="detailModal(index)"></span>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                      <template v-if="item[8] == 0">
+                        <button class="btn btn-outline-primary py-2" data-toggle="modal" data-target="#cancelModal">取消委託</button>
+                      </template>
+                      <template v-else-if="item[8] == 0.5">
+                        <button class="btn btn-outline-primary py-2" data-toggle="modal" data-target="#cancelPhoneModal">電話取消</button>
+                      </template>
+                      <template v-else-if="item[8] == 2">
+                        <button class="btn btn-outline-primary py-2">前往計畫</button>
+                      </template>
+                      <template v-else-if="item[8] == 3">
+                        <button class="btn btn-outline-danger py-2">接續委託</button>
+                      </template>
+                      <template v-else-if="item[8] == 8 || item[8] == 9">
+                        <button class="btn btn-outline-danger py-2">重新委託</button>
+                      </template>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-center" colspan="4">
+                      <ul id="progressbar" class="my-3 mx-auto pl-0">
+                        <template v-if="item[8] == 2">
+                          <li class="progress-success">交易成功</li>
+                        </template>
+                        <template v-else-if="item[8] == 3">
+                          <li class="progress-alert">部分成交</li>
+                        </template>
+                        <template v-else-if="item[8] == 8">
+                          <li class="progress-fail">委託失敗</li>
+                        </template>
+                        <template v-else-if="item[8] == 9">
+                          <li class="progress-fail">交易失敗</li>
+                        </template>
+                        <template v-else>
+                          <li :class="[item[8] == 0 ? 'active' : '',item[8] > 0 ? 'progress-success' : '']">委託送出</li>
+                          <li :class="[item[8] == 0.5 ? 'active' : '',item[8] > 0.5 ? 'progress-success' : '']">券商收單
+                          </li>
+                          <li :class="item[8] == 1 ? 'active' : ''">交易中</li>
+                        </template>
+                      </ul>
+                      <div class="mb-3">
+                        <small>委託時間</small>
+                        <div>{{item[1]}}</div>
+                      </div>
+                      <div>
+                        <template v-if="item[8] == 0">
+                          <button class="btn btn-outline-primary py-2" data-target="#cancelModal">取消委託</button>
+                        </template>
+                        <template v-else-if="item[8] == 0.5">
+                          <button class="btn btn-outline-primary py-2" data-target="#cancelPhoneModal">電話取消</button>
+                        </template>
+                        <template v-else-if="item[8] == 2">
+                          <button class="btn btn-outline-primary py-2">前往計畫</button>
+                        </template>
+                        <template v-else-if="item[8] == 3">
+                          <button class="btn btn-outline-danger py-2">接續委託</button>
+                        </template>
+                        <template v-else-if="item[8] == 8 || item[8] == 9">
+                          <button class="btn btn-outline-danger py-2">重新委託</button>
+                        </template>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+                <!-- <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="active">委託送出</li>
+                      <li>券商收單</li>
+                      <li>交易中</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal"></span>
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <button class="btn btn-outline-primary py-2">取消委託</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center" colspan="4">
+                    <ul id="progressbar" class="my-3 mx-auto pl-0">
+                      <li class="active">委託送出</li>
+                      <li>券商收單</li>
+                      <li>交易中</li>
+                    </ul>
+                    <div class="mb-3">
+                      <small>委託時間</small>
+                      <div>01/16/2020 11:15:20</div>
+                    </div>
+                    <div>
+                      <button class="btn btn-outline-primary py-2">取消委託</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="progress-success">委託送出</li>
+                      <li class="active">券商收單</li>
+                      <li>交易中</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal">
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <button class="btn btn-outline-primary py-2" data-toggle="modal"
+                      data-target="#cancelModal">電話取消</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center" colspan="4">
+                    <div>
+                      <small>委託時間</small>
+                      <div>01/16/2020 11:15:20</div>
+                    </div>
+                    <ul id="progressbar" class="mx-0 my-3 mx-auto pl-0">
+                      <li class="progress-success">委託送出</li>
+                      <li class="active">券商收單</li>
+                      <li>交易中</li>
+                    </ul>
+                    <div>
+                      <button class="btn btn-outline-primary py-2" data-toggle="modal"
+                        data-target="#cancelModal">電話取消</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="progress-success">委託送出</li>
+                      <li class="progress-success">券商收單</li>
+                      <li class="active">交易中</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal">
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center" colspan="4">
+                    <div>
+                      <small>委託時間</small>
+                      <div>01/16/2020 11:15:20</div>
+                    </div>
+                    <ul id="progressbar" class="mx-0 my-3 mx-auto pl-0">
+                      <li class="progress-success">委託送出</li>
+                      <li class="progress-success">券商收單</li>
+                      <li class="active">交易中</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="progress-success">交易成功</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal">
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <button class="btn btn-outline-primary py-2">前往計畫</button>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td>
+                    <ul id="progressbar" class="mx-0 my-3 mx-auto pl-0">
+                      <li class="w-100 progress-success">交易成功</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <small>委託時間</small>
+                    <div>01/16/2020</div>
+                    <div>11:15:20</div>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-primary py-2">前往計畫</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="progress-fail">交易失敗</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal">
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <button class="btn btn-outline-danger py-2">重新委託</button>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td>
+                    <ul id="progressbar" class="mx-0 my-3 mx-auto pl-0">
+                      <li class="w-100 progress-fail">交易失敗</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <small>委託時間</small>
+                    <div>01/16/2020</div>
+                    <div>11:15:20</div>
+                  </td>
+
+                  <td>
+                    <button class="btn btn-outline-danger py-2">重新委託</button>
+                  </td>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 d-none d-md-table-cell" style="width: 1%; white-space:nowrap">01/16/2020 11:15:28</td>
+                  <td>
+                    <span class="h1 mdi mdi-view-grid-outline"></span>
+                  </td>
+                  <td>買入</td>
+                  <td class="d-none d-md-table-cell">
+                    <ul id="progressbar" class="m-0 mx-auto pl-0">
+                      <li class="progress-alert">部分成交</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <span class="h1 mdi mdi-note-text" onclick="slideModal(this)" data-target="#contentModal">
+                  </td>
+                  <td class="d-none d-md-table-cell">
+                    <button class="btn btn-outline-danger py-2">接續委託</button>
+                  </td>
+                </tr>
+                <tr class="text-center">
+                  <td>
+                    <ul id="progressbar" class="mx-0 my-3 mx-auto pl-0">
+                      <li class="w-100 progress-alert">部分成交</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <small>委託時間</small>
+                    <div>01/16/2020</div>
+                    <div>11:15:20</div>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-danger py-2">接續委託</button>
+                  </td>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade px-0" id="contentModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-primary">
+              <h4 class="modal-title flex-grow-1  text-center text-light">詳細資料</h4>
+            </div>
+            <div class="modal-body p-0">
+              <div class="slick-slider-1">
+                <div class="slick-slider carousel-child" id="child-carousel-1"
+                  data-slick='{"arrows":false,"dots":false,"slidesToShow":2,"slidesToScroll":2,"infinite":false,"focusOnSelect": true,"asNavFor": "#parent-carousel-1"}'>
+                  <div class="item text-center border-right">
+                    <p>基本資料</p>
+                  </div>
+                  <div class="item text-center">
+                    <p>投資組合</p>
+                  </div>
+                </div>
+                <div class="slick-slider carousel-parent" id="parent-carousel-1"
+                  data-slick='{"arrows":false,"dots":false,"slidesToShow":1,"infinite":false,"asNavFor": "#child-carousel-1"}'>
+                  <div class="item">
+                    <div class="container-fullwidth order-title" v-if="content">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>買/賣別</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][7] == 'B' ? '買入' : '賣出'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>委託帳號</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][0]}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>計畫名稱</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][3] | goalText}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>交易賬戶</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][5]}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>委託時間</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][1]}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>委託金額</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>USD ${{list[whichDetail][4] | commaFormat}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="order-title__item p-md-3">
+                            <span>委託類型</span>
+                            <div class="flex-grow-1 text-right">
+                              <span>{{list[whichDetail][6] | orderTypeCh}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12" v-if="list[whichDetail][8] == 8 || list[whichDetail][8] == 9">
+                          <div class="order-title__item p-md-3">
+                            <span class="text-danger">失敗原因</span>
+                            <div class="flex-grow-1 text-right">
+                              <span class="text-danger">？？？？？？</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <table class="table table-text-dark">
+                      <thead style="background-color: #ebebeb;">
+                        <tr>
+                          <th scope="col"><small>股號</small></th>
+                          <th scope="col"><small>類型</small></th>
+                          <th scope="col"><small>金額(USD)</small></th>
+                          <th scope="col"></th>
+                          <th style="width:1%;space-white:nowrap"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <template v-if="content" v-for="(item, index) in ETFlist[whichDetail]">
+                          <tr>
+                            <td>{{item[0]}}</td>
+                            <td>
+                              <span class="ETF-type" :class="item[1] | ETFtypeClass">{{item[1] | ETFtypeIcon}}</span>
+                            </td>
+                            <td>${{item[2] | commaFormat}}</td>
+                            <td :class="item[3] == 3 ? 'text-primary' : 'text-danger'">{{item[3] | ETFtypeCh}}</td>
+                            <td>
+                              <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                                :href="'.collapse' + index">
+                              </a>
+                            </td>
+                          </tr>
+                          <tr class="collapse" :class="'collapse' + index">
+                            <td colspan="5">
+                              <div v-if="item[3] == 1" class="d-inline-block mr-3"
+                                style="border-bottom:1px solid skyblue">
+                                成交後才有資料
+                              </div>
+                              <template v-else>
+                                <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                                  <small>股數:</small>
+                                  {{item[4]}}
+                                </div>
+                                <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                                  <small>成交價格:</small>
+                                  $ {{item[5]}}
+                                </div>
+                                <div class="d-inline-block" style="border-bottom:1px solid skyblue">
+                                  <small>成交時間:</small>
+                                  {{item[6]}}
+                                </div>
+                              </template>
+                            </td>
+                          </tr>
+                        </template>
+                        <!-- <tr>
+                          <td>VEA</td>
+                          <td>
+                            <span class="ETF-type stocks">股</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-primary">已成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse1">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse1 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>股數:</small>
+                              33.98723
+                            </div>
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>成交價格:</small>
+                              $ 44.12
+                            </div>
+                            <div class="d-inline-block" style="border-bottom:1px solid skyblue">
+                              <small>成交時間:</small>
+                              2018/11/12 11:00:12
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>VSS</td>
+                          <td>
+                            <span class="ETF-type stocks">股</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-danger">未成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse2">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse2 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              成交後才有資料
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>VTI</td>
+                          <td>
+                            <span class="ETF-type stocks">股</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-primary">已成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse3">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse3 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>股數:</small>
+                              33.98723
+                            </div>
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>成交價格:</small>
+                              $ 44.12
+                            </div>
+                            <div class="d-inline-block" style="border-bottom:1px solid skyblue">
+                              <small>成交時間:</small>
+                              2018/11/12 11:00:12
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>VNQ</td>
+                          <td>
+                            <span class="ETF-type REITs">房</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-danger">部分成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse4">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse4 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>股數:</small>
+                              33.98723
+                            </div>
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>成交價格:</small>
+                              $ 44.12
+                            </div>
+                            <div class="d-inline-block" style="border-bottom:1px solid skyblue">
+                              <small>成交時間:</small>
+                              2018/11/12 11:00:12
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>VNQI</td>
+                          <td>
+                            <span class="ETF-type REITs">房</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-primary">已成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse5">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse5 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>股數:</small>
+                              33.98723
+                            </div>
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              <small>成交價格:</small>
+                              $ 44.12
+                            </div>
+                            <div class="d-inline-block" style="border-bottom:1px solid skyblue">
+                              <small>成交時間:</small>
+                              2018/11/12 11:00:12
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>BNDW</td>
+                          <td>
+                            <span class="ETF-type bonds">債</span>
+                          </td>
+                          <td>$13,000</td>
+                          <td class="text-danger">未成交</td>
+                          <td>
+                            <a class="mdi-18px mdi mdi-chevron-down" data-toggle="collapse" role="button"
+                              href=".collapse6">
+                            </a>
+                          </td>
+                        </tr>
+                        <tr class="collapse6 collapse">
+                          <td colspan="5">
+                            <div class="d-inline-block mr-3" style="border-bottom:1px solid skyblue">
+                              成交後才有資料
+                            </div>
+                          </td>
+                        </tr> -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-top-0 justify-content-center">
+              <button type="button" data-dismiss="modal" class="btn btn-outline-primary">關閉</button>
+            </div>
+            <div class="modal-fixed">
+              <span>
+                P2020021200004
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal fade px-0" id="cancelModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h4 class="modal-title flex-grow-1  text-center text-light">取消確認</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="mx-auto" style="max-width:180px">
+              您確定要取消此筆委託嗎
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 justify-content-center">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade px-0" id="cancelPhoneModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h4 class="modal-title flex-grow-1  text-center text-light">取消確認</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="mx-auto" style="max-width:180px">
+              您需要撥打電話來進行取消
+              <div class="text-center">
+                <strong>0800-123-456</strong>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 justify-content-center">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="components/base/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/trade.js"></script>
+</body>
+
+</html>
