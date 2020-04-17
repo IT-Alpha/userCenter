@@ -373,15 +373,15 @@
                       </ul>
                     </td>
                     <td>
-                      <span class="h1 mdi mdi-note-text" @click="detailModal(index)"></span>
+                      <span style="cursor: pointer;" class="h1 mdi mdi-note-text" @click="detailModal(index)"></span>
                     </td>
                     <td class="d-none d-md-table-cell">
-                      <template v-if="item[8] == 0">
+                      <template v-if="item[8] == 0 || item[8] == 0.5">
                         <button class="btn btn-outline-primary py-2" data-toggle="modal" data-target="#cancelModal">取消委託</button>
                       </template>
-                      <template v-else-if="item[8] == 0.5">
+                      <!-- <template v-else-if="item[8] == 0.5">
                         <button class="btn btn-outline-primary py-2" data-toggle="modal" data-target="#cancelPhoneModal">電話取消</button>
-                      </template>
+                      </template> -->
                       <template v-else-if="item[8] == 2">
                         <button class="btn btn-outline-primary py-2">前往計畫</button>
                       </template>

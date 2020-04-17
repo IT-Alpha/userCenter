@@ -13,6 +13,7 @@
   vertical-align: middle;
   user-select: none;
   background-color: transparent;
+  box-shadow: 0px 2px 4px rgba(0,0,0,.3);
   border: $btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);

@@ -1040,7 +1040,7 @@
                     <div class="col-lg-8" v-if="!overView">
                         <div class="container-fluid p-0">
                             <div class="row">
-                                <div class="col-4 col-sm mb-sm-0"
+                                <div class="col-12 col-sm-4"
                                     :class="index == progressData.length -1 ? '' : 'mb-4' "
                                     v-for="(item,index) in progressData">
                                     <div class="panel admin-panel">
@@ -1058,6 +1058,7 @@
                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
                                                     style="max-width:200px"></svg>
                                                 <div v-if="item.subtitle"> {{ item.value | riskChinese }}</div>
+                                                <div v-else style="visibility: hidden;">積極型</div>
                                             </div>
                                         </div>
                                     </div>
