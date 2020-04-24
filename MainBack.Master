@@ -210,6 +210,22 @@
                   </a>
                 </li>
                 <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="#">
+                    <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                      交易紀錄
+                    </div>
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="#">
+                    <span class="rd-navbar-icon mdi mdi-note-text"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                      委託狀態
+                    </div>
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
                   <a class="rd-navbar-link py-2" href="login.aspx/?LogOut=OK">
                     <span class="rd-navbar-icon mdi mdi-24px mdi-logout-variant"></span>
                     <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
