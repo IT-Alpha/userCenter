@@ -274,14 +274,14 @@ let order = new Vue({
                 svgID: 'RateSVG',
                 type: 'Retirement',
               },
-              {
-                title: '其他人的平均退休成功機率',
-                value: this.tab1Data[0][13],
-                circle: true,
-                gauge: false,
-                svgID: 'RateSVG2',
-                type: 'Retirement',
-              },
+              // {
+              //   title: '其他人的平均退休成功機率',
+              //   value: this.tab1Data[0][13],
+              //   circle: true,
+              //   gauge: false,
+              //   svgID: 'RateSVG2',
+              //   type: 'Retirement',
+              // },
               // v2,v3
               // {
               //   title: '風險等級', self: this.tab1Data[0][10],
@@ -361,17 +361,31 @@ let order = new Vue({
           //   },
           // ];
           case 'Preservation':
+            // v4
             return [
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級',
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
                 circle: false,
                 gauge: true,
                 svgID: 'riskSVG',
                 type: 'Preservation',
-                compare: false,
               },
             ]
+            // v2,v3
+            // return [
+            //   {
+            //     title: '風險等級', self: this.tab1Data[0][10],
+            //     selfTitle: '您的風險等級',
+            //     circle: false,
+            //     gauge: true,
+            //     svgID: 'riskSVG',
+            //     type: 'Preservation',
+            //     compare: false,
+            //   },
+            // ]
+            //v1
           // return [
           //   {
           //     title: '風險等級', self: this.tab1Data[0][10],
@@ -385,28 +399,58 @@ let order = new Vue({
           //   },
           // ];
           case 'Edu':
+            //v4  
             return [
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級',
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
                 circle: false,
                 gauge: true,
                 svgID: 'riskSVG',
                 type: 'Edu',
-                compare: false,
               },
               {
-                title: '成功機率', self: this.tab1Data[0][12],
-                selfTitle: '您的成功機率', all: this.tab1Data[0][13],
-                allTitle: '所有計畫平均成功機率',
+                title: '您的成功機率',
+                value: this.tab1Data[0][12],
                 circle: true,
                 gauge: false,
                 svgID: 'RateSVG',
-                svgID2: 'RateSVG2',
                 type: 'Edu',
-                compare: true,
               },
+              // {
+              //   title: '其他人的平均目標達成機率',
+              //   value: this.tab1Data[0][13],
+              //   circle: true,
+              //   gauge: false,
+              //   svgID: 'RateSVG2',
+              //   type: 'Edu',
+              // },
             ]
+             // v2,v3
+            // return [
+            //   {
+            //     title: '風險等級', self: this.tab1Data[0][10],
+            //     selfTitle: '您的風險等級',
+            //     circle: false,
+            //     gauge: true,
+            //     svgID: 'riskSVG',
+            //     type: 'Edu',
+            //     compare: false,
+            //   },
+            //   {
+            //     title: '成功機率', self: this.tab1Data[0][12],
+            //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+            //     allTitle: '所有計畫平均成功機率',
+            //     circle: true,
+            //     gauge: false,
+            //     svgID: 'RateSVG',
+            //     svgID2: 'RateSVG2',
+            //     type: 'Edu',
+            //     compare: true,
+            //   },
+            // ]
+            // v1
           // return [
           //   {
           //     title: '風險等級', self: this.tab1Data[0][10],
@@ -426,28 +470,58 @@ let order = new Vue({
           //   },
           // ];
           case 'Production':
+            //v4
             return [
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級',
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
                 circle: false,
                 gauge: true,
                 svgID: 'riskSVG',
                 type: 'Production',
-                compare: false,
               },
               {
-                title: '成功機率', self: this.tab1Data[0][12],
-                selfTitle: '您的成功機率', all: this.tab1Data[0][13],
-                allTitle: '所有計畫平均成功機率',
+                title: '您的成功機率',
+                value: this.tab1Data[0][12],
                 circle: true,
                 gauge: false,
                 svgID: 'RateSVG',
-                svgID2: 'RateSVG2',
                 type: 'Production',
-                compare: true,
               },
+              // {
+              //   title: '其他人的平均目標達成機率',
+              //   value: this.tab1Data[0][13],
+              //   circle: true,
+              //   gauge: false,
+              //   svgID: 'RateSVG2',
+              //   type: 'Production',
+              // },
             ]
+             // v2,v3
+            // return [
+            //   {
+            //     title: '風險等級', self: this.tab1Data[0][10],
+            //     selfTitle: '您的風險等級',
+            //     circle: false,
+            //     gauge: true,
+            //     svgID: 'riskSVG',
+            //     type: 'Production',
+            //     compare: false,
+            //   },
+            //   {
+            //     title: '成功機率', self: this.tab1Data[0][12],
+            //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+            //     allTitle: '所有計畫平均成功機率',
+            //     circle: true,
+            //     gauge: false,
+            //     svgID: 'RateSVG',
+            //     svgID2: 'RateSVG2',
+            //     type: 'Production',
+            //     compare: true,
+            //   },
+            // ]
+            // v1
           // return [
           //   {
           //     title: '風險等級', self: this.tab1Data[0][10],
@@ -467,28 +541,58 @@ let order = new Vue({
           //   },
           // ];
           case 'SpecificGoal':
+            // v4
             return [
               {
-                title: '風險等級', self: this.tab1Data[0][10],
-                selfTitle: '您的風險等級',
+                title: '您的風險等級',
+                subtitle:true,
+                value: this.tab1Data[0][10],
                 circle: false,
                 gauge: true,
                 svgID: 'riskSVG',
                 type: 'SpecificGoal',
-                compare: false,
               },
               {
-                title: '成功機率', self: this.tab1Data[0][12],
-                selfTitle: '您的成功機率', all: this.tab1Data[0][13],
-                allTitle: '所有計畫平均成功機率',
+                title: '您的成功機率',
+                value: this.tab1Data[0][12],
                 circle: true,
                 gauge: false,
                 svgID: 'RateSVG',
-                svgID2: 'RateSVG2',
                 type: 'SpecificGoal',
-                compare: true,
               },
+              // {
+              //   title: '其他人的平均目標達成機率',
+              //   value: this.tab1Data[0][13],
+              //   circle: true,
+              //   gauge: false,
+              //   svgID: 'RateSVG2',
+              //   type: 'SpecificGoal',
+              // },
             ]
+            // v2,v3
+            // return [
+            //   {
+            //     title: '風險等級', self: this.tab1Data[0][10],
+            //     selfTitle: '您的風險等級',
+            //     circle: false,
+            //     gauge: true,
+            //     svgID: 'riskSVG',
+            //     type: 'SpecificGoal',
+            //     compare: false,
+            //   },
+            //   {
+            //     title: '成功機率', self: this.tab1Data[0][12],
+            //     selfTitle: '您的成功機率', all: this.tab1Data[0][13],
+            //     allTitle: '所有計畫平均成功機率',
+            //     circle: true,
+            //     gauge: false,
+            //     svgID: 'RateSVG',
+            //     svgID2: 'RateSVG2',
+            //     type: 'SpecificGoal',
+            //     compare: true,
+            //   },
+            // ]
+            // v1
           // return [
           //   {
           //     title: '風險等級', self: this.tab1Data[0][10],

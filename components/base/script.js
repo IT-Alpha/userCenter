@@ -2281,9 +2281,6 @@ let components = {
           // shared: true,
           useHTML: true
         },
-        lang: {
-          thousandsSep: ','
-        },
         xAxis: {
           gridLineColor: "#A4A4A4",
           lineColor: "#A4A4A4",
@@ -2309,7 +2306,8 @@ let components = {
         },
         lang: {
           noData: "錯誤資料<br>應該要有資料",
-          thousandsSep: '\u002C'
+          // thousandsSep: "\u002c",
+          
         },
         noData: {
           useHTML: true
@@ -2354,7 +2352,7 @@ let components = {
 
       let tableData = eval(document.querySelector('#ctl00_Main_PoDataLB').textContent.replace(/\n/g, ""));
       let pieArray = tableData.map(function (element, index) {
-        return { color: element[5], name: element[0], y: element[6], z: -(index - tableData.length) };
+        return { color: element[5], name: element[0], y: element[6], z: 5 };
       });
       //投資組合
       let pieSetting = {
@@ -2368,7 +2366,7 @@ let components = {
         },
         tooltip: {
           headerFormat: null,
-          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>佔<b>{point.y:.2f}%</b><br/>'
+          pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>約佔<b>{point.y:.2f}%</b><br/>'
         },
         plotOptions: {
           variablepie: {
@@ -2420,7 +2418,11 @@ let components = {
           ]
         }
       };
-
+      Highcharts.setOptions({
+        lang: {
+          thousandsSep: ','
+        }
+      });
       nodes.forEach(function (node) {
         if (node.hasAttribute('data-highcharts-options')) {
           Highcharts.chart(node, parseJSON(node.getAttribute('data-highcharts-options')));

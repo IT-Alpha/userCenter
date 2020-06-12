@@ -52,29 +52,36 @@
     }
     
     iframe{
-      height: 60px;
-     
-    }
-    iframe.active{
       position: fixed;
       top: 0;
+      right: 0;
+      height: 60px;
+      width: 110px;
+      z-index: 13;
+    }
+    iframe.active{
       bottom: 0;
       left: 0;
-      right: 0;
-      width: 100%;
       height: 100%;
+      width: 100%;
     }
     @media (min-width: 1200px) {
       iframe{
-      height: 80px;
-    }
+        position: absolute;
+        height: 80px;
+        width: 1px;
+        min-width: 100%;
+        left: 0;
+        z-index: 10;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-    <header class="section page-header">
+    <iframe src="alert.html" frameborder="0" scrolling="no"></iframe>
+    <header class="section page-header" style="width:300px">
       <div class="d-none">
         <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00,
           'P2020021800001',
@@ -100,9 +107,6 @@
               </ul>
             </div>
             <div class="rd-navbar-panel-center">
-            </div>
-            <div class="rd-navbar-panel-cell">
-              <iframe src="alert.html" frameborder="0"></iframe>
             </div>
             <!-- <div class="rd-navbar-panel-cell">
               <button class="btn button-navbar"

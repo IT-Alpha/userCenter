@@ -4,11 +4,12 @@
 <head>
   <title>Dashboard</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta property="og:title" content="Template Monster Admin Template">
-  <meta property="og:description"
-    content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+  <meta property="og:description" content="brevis, barbatus clabulares aliquando convertam de dexter,
+      peritus capio. devatio clemens habitio est.">
   <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
   <meta property="og:url" content="http://digipunk.netii.net">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -20,19 +21,25 @@
     <div class="rd-navbar-panel">
       <div class="rd-navbar-panel-center"></div>
       <div class="rd-navbar-panel-cell">
-        <button class="btn button-navbar"
-          data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+        <button class="btn button-navbar" data-multi-switch='{"targets" : "#subpanel-notifications" ,"scope"
+            : "#subpanel-notifications" ,"isolate" : "[data-multi-switch]" }'>
           <span class="fa-bell"></span>
-          <span class="badge badge-success rounded-circle">2</span>
+          <span id="badge" class="badge badge-success rounded-circle">2</span>
         </button>
         <div class="rd-navbar-subpanel" id="subpanel-notifications">
           <div class="panel panel-sm">
             <div class="panel-header text-dark">
-              <h5><span class="panel-icon fa-bell"></span></h5>
+              <h5>
+                <span class="panel-icon fa-bell"></span>
+              </h5>
             </div>
             <div class="panel-body scroller scroller-vertical">
               <div class="group-5">
-                <div class="alert alert-dismissible alert-primary" role="alert">
+                <div class="text-center text-dark">
+                  此通知功能尚在開發中<br>
+                  敬請期待
+                </div>
+                <!-- <div class="alert alert-dismissible alert-primary" role="alert">
                   <span class="alert-icon fa-thumbs-up"></span>
                   <span>退休金準備計畫已下單</span>
                   <button class="close" type="button" data-dismiss="alert" aria-label="Close">
@@ -59,7 +66,7 @@
                   <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                     <span class="fa-close" aria-hidden="true"></span>
                   </button>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="panel-footer">
@@ -69,12 +76,16 @@
         </div>
       </div>
       <div class="rd-navbar-panel-cell">
-        <button class="btn button-navbar"
-          data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+        <button class="btn button-navbar" data-multi-switch='{"targets" :".sidebar" ,"scope" :".sidebar"
+            ,"isolate" :"[data-multi-switch]" }'>
           <span class="fa-sliders"></span>
         </button>
         <div class="sidebar scroller">
-          <div class="timeline timeline-simple">
+          <div class="text-center text-dark pt-5">
+            此紀錄功能尚在開發中<br>
+            敬請期待
+          </div>
+          <!-- <div class="timeline timeline-simple">
             <div class="item">
               <div class="timeline-date">2019/11/08</div>
               <div class="timeline-item">
@@ -126,50 +137,76 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
   </nav>
   <script src="components/base/script.js"></script>
   <script>
-    let btns = document.querySelectorAll('.button-navbar');
-    const iframe = parent.document.querySelector("iframe");
-    iframeClass = iframe.classList;
 
-    btns.forEach(function(item){
-      item.addEventListener('click',function(){
-        item.classList.contains('active') ? iframeClass.remove('active') : iframeClass.add('active');
-      })
-    });
-    document.addEventListener("click",notOnElement)
-    function notOnElement(event){
-      let panelIsShow = Boolean(document.querySelector('div.active')) && !document.querySelector('div.active').contains(event.target) ;
-      let clickOnBtn = btns[0].contains(event.target) || btns[1].contains(event.target);
-      if( panelIsShow && !clickOnBtn){
-        iframe.classList.toggle('active');
+    window.onload = function () {
+      let btns = document.querySelectorAll('.button-navbar');
+      const iframe = parent.document.querySelector("iframe");
+      iframeClass = iframe.classList;
+
+      btns.forEach(function (item) {
+        if (isMobile()) {
+          item.addEventListener('touchstart', function () {
+            item.classList.contains('active') ? iframeClass.remove('active') : iframeClass.add('active');
+          })
+        } else {
+          item.addEventListener('click', function () {
+            item.classList.contains('active') ? iframeClass.remove('active') : iframeClass.add('active');
+          })
+        }
+      });
+      if (isMobile()) {
+        document.addEventListener("touchstart", notOnElement)
+      } else {
+        document.addEventListener("click", notOnElement)
       }
-    }
-    window.onresize = changeBtnStyle;
-    function changeBtnStyle(){
-      let parentPanel = parent.document.querySelector(".rd-navbar-panel");
-      let panel = document.querySelector(".rd-navbar-panel");
-      parentPanel.clientHeight == 64 ? panel.style.height = 64  : panel.style.height = 84 ;
-    //   btns.forEach(function(item){
-    //     item.style.backgroundColor = bgColor;
-    // });
-    }
+
+      function notOnElement(event) {
+        let panelIsShow = Boolean(document.querySelector('div.active')) && !document.querySelector('div.active').contains(event.target);
+        let clickOnBtn = btns[0].contains(event.target) || btns[1].contains(event.target);
+        if (panelIsShow && !clickOnBtn) {
+          iframe.classList.toggle('active');
+        }
+      }
+      
+      window.onresize = changeBtnStyle;
+      function changeBtnStyle() {
+        let parentPanel = parent.document.querySelector(".rd-navbar-panel");
+        let panel = document.querySelector(".rd-navbar-panel");
+        parentPanel.clientHeight == 64 ? panel.style.height = 64 : panel.style.height = 84;
+        
+        //   btns.forEach(function(item){
+        //     item.style.backgroundColor = bgColor;
+        // });
+      }
+
+      function isMobile() {
+        try { document.createEvent("TouchEvent"); return true; }
+        catch (e) { return false; }
+      }
+
+      document.querySelector("#badge").textContent = document.querySelector(".group-5").children.length;
+    };
   </script>
   <style>
-    body ,.rd-navbar-fixed .rd-navbar-panel{
+    body,
+    .rd-navbar-fixed .rd-navbar-panel {
       background-color: transparent;
     }
-    .rd-navbar-fixed .rd-navbar-panel{
+
+    .rd-navbar-fixed .rd-navbar-panel {
       box-shadow: none !important;
       left: unset !important;
     }
-    .timeline{
-      height:calc(100% - 30px);
+
+    .timeline {
+      height: calc(100% - 30px);
     }
   </style>
 </body>

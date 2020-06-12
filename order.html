@@ -669,13 +669,13 @@
                                                         </div>
                                                         <div class="list-block-container list-block-lg">
                                                             <h5 class="list-block-title">
-                                                                <button :class="!tab22 ? 'notactive' : ''"
-                                                                    class="btn btn-link p-0 font-weight-bold"
-                                                                    @click="tab22 = true">累積(Cumulative)</button>
-                                                                <span class="font-weight-bold">|</span>
-                                                                <button :class="tab22 ? 'notactive' : ''"
-                                                                    class="btn btn-link p-0 font-weight-bold"
-                                                                    @click="tab22 = false">年度(Annualized)</button>
+                                                                <a class="font-weight-bold" style="cursor: pointer;"
+																		:class="tab22 == true ?
+																					'text-primary' : null" @click="tab22= true">累積(Cumulative)</a>
+																	<!-- <span class="font-weight-bold">|</span>
+																	<a class="font-weight-bold" style="cursor: pointer;"
+																		:class="tab22 == false ?
+																					'text-primary' : null" @click="tab22= false">年度(Annualized)</a> -->
                                                             </h5>
                                                             <div class="list-block">
                                                                 <div

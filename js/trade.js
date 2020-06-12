@@ -87,6 +87,7 @@ let trade = new Vue({
         default:
           break;
       }
+      
     }
   },
   methods: {

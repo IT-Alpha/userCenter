@@ -312,7 +312,37 @@
                         <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">手機號碼</div>
                         <div class="py-3 pl-4 flex-grow-1">0957432456</div>
                         <div class="text-center mb-3 mb-sm-0">
-                          <button class="btn btn-outline-primary py-1">修改</button>
+                          <button class="btn btn-outline-primary py-1" data-toggle="modal" data-target="#phoneModal">修改</button>
+                          <div class="modal fade px-0" id="phoneModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                  <h4 class="modal-title flex-grow-1  text-center text-light">修改性別</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="mx-auto" style="max-width:180px">
+                                    <div class="custom-control custom-radio d-inline-block mr-3">
+                                      <input class="custom-control-input" type="radio" id="infoRadio" name="customRadio">
+                                      <label class="custom-control-label" for="infoRadio">男
+                                      </label>
+                                    </div>
+                                    <div class="custom-control custom-radio d-inline-block">
+                                      <input class="custom-control-input" type="radio" id="infoRadio2" name="customRadio">
+                                      <label class="custom-control-label" for="infoRadio2">女
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer border-top-0 justify-content-center">
+                                  <button type="button" class="btn btn-primary">確定</button>
+                                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">取消</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

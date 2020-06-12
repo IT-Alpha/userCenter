@@ -32,8 +32,8 @@
           <nav class="rd-navbar">
             <div class="rd-navbar-panel">
               <div class="rd-navbar-panel-cell">
-                <button type="button" class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
-                    class="fa-bars"></span></button>
+                <button type="button" class="btn button-navbar" data-navigation-switch="data-navigation-switch">
+                  <span class="fa-bars"></span></button>
               </div>
               <div class="rd-navbar-panel-cell d-none d-xl-block">
                 <ul class="breadcrumbs">
@@ -183,8 +183,8 @@
                       :href="'order.aspx?PID=' + item[2]">
                       <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
                       <span>{{item[0] | goalText}}</span>
-                      <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
-                      <div class="progress progress-sm w-100 mt-2"
+                      <div class="flex-grow-1 text-right"><span data-toggle="tooltip" title="達成率">{{item[1]}}%</span></div>
+                      <div class="progress progress-sm w-100 mt-2" data-toggle="tooltip" title="達成進度條"
                         :class="item[2] == active ? 'progress-primary' : 'progress-light'">
                         <div class="progress-bar progress-bar-striped" :style="{'width': item[1] + '%'}"></div>
                       </div>
