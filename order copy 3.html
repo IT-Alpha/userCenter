@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html class="root rd-navbar-sidebar-active page-small-footer" lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:title" content="Template Monster Admin Template">
+    <meta property="og:description"
+        content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
+    <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
+    <meta property="og:url" content="http://digipunk.netii.net">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/theme-chalk/index.css">
+    <link rel="stylesheet" href="components/base/base.min.css">
+    <style>
+        .slick-vertical .slick-slide {
+            width: 100% !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="page">
+        <header class="section page-header">
+            <!--RD Navbar-->
+            <!-- 訂單編號,訂單種類,訂單狀態,達成率 -->
+            <!-- 訂單種類 -->
+            <!-- 退休金準備(1) -->
+            <!-- 穩定累積財富(2) -->
+            <!-- 財產保值抗通膨(3) -->
+            <!-- 子女教育金(4) -->
+            <!-- 存錢買房(5) -->
+            <!-- 其他目標(6) -->
+            <!-- 訂單狀態 -->
+            <!-- 已下單(2),未成交(1),未下單(0) -->
+            <div class="d-none">
+                <span id="ctl00_ResultLB">[['Retirement', 2.27, 'P2020052600006', 2, 2],['Retirement', 2.25,
+                    'P2020052700020', 2, 2],['Long', 9.10, 'P2020062000001', 2, 2],['Retirement', 0.00,
+                    'P2020052700021', 1, -1],['Long', 0.00, 'P2020052700027', 1, -1],['Retirement', 0.00,
+                    'P2020052700036', 1, -1],['Long', 0.00, 'P2020052800001', 1, -1],['Retirement', 0.00,
+                    'P2020052800003', 1, -1],]</span>
+                <span id="ctl00_LoginLB">測試仔123</span>
+            </div>
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar">
+                    <div class="rd-navbar-panel">
+                        <div class="rd-navbar-panel-cell">
+                            <button class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
+                                    class="fa-bars"></span></button>
+                        </div>
+                        <div class="rd-navbar-panel-cell d-none d-xl-block">
+                            <!-- Breadcrumbs-->
+                            <ul class="breadcrumbs">
+                                <li class="breadcrumbs-item">
+                                    <a class="breadcrumbs-link" href="order.html">
+                                        <span class="breadcrumbs-icon mdi mdi-view-grid"></span>
+                                        <span>總覽頁面</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="rd-navbar-panel-center"></div>
+                        <div class="rd-navbar-panel-cell">
+                            <button class="btn button-navbar"
+                                data-multi-switch='{"targets":"#subpanel-notifications","scope":"#subpanel-notifications","isolate":"[data-multi-switch]"}'>
+                                <span class="fa-bell"></span>
+                                <span class="badge badge-success rounded-circle">2</span>
+                            </button>
+                            <div class="rd-navbar-subpanel" id="subpanel-notifications">
+                                <div class="panel panel-sm">
+                                    <div class="panel-header text-dark">
+                                        <h5><span class="panel-icon fa-bell"></span></h5>
+                                    </div>
+                                    <div class="panel-body scroller scroller-vertical">
+                                        <div class="group-5">
+                                            <div class="alert alert-dismissible alert-primary" role="alert">
+                                                <span class="alert-icon fa-thumbs-up"></span>
+                                                <span>退休金準備計畫已下單</span>
+                                                <button class="close" type="button" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span class="fa-close" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div class="alert alert-dismissible alert-info" role="alert">
+                                                <span class="alert-icon fa-telegram"></span>
+                                                <span>12/30將進行再平衡</span>
+                                                <button class="close" type="button" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span class="fa-close" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div class="alert alert-dismissible alert-secondary" role="alert">
+                                                <span class="alert-icon fa-warning"></span>
+                                                <span>子女教育金計畫下單失敗</span>
+                                                <button class="close" type="button" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span class="fa-close" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <div class="alert alert-dismissible alert-success" role="alert">
+                                                <span class="alert-icon fa-thumbs-up"></span>
+                                                <span>您的退休金計畫加碼成功</span>
+                                                <button class="close" type="button" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <span class="fa-close" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <a class="btn btn-dark btn-sm">說明</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rd-navbar-panel-cell">
+                            <button class="btn button-navbar"
+                                data-multi-switch='{"targets":".sidebar","scope":".sidebar","isolate":"[data-multi-switch]"}'>
+                                <span class="fa-sliders"></span>
+                            </button>
+                            <div class="sidebar scroller">
+                                <div class="timeline timeline-simple">
+                                    <div class="item">
+                                        <div class="timeline-date">2019/11/08</div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                                            <div>
+                                                <div>Added a new item to his store</div>
+                                                <small>1:25am</small>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-primary"></div>
+                                            <div>
+                                                <div>Added a new item to her store</div>
+                                                <small>3:05am</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="timeline-date">2019/11/08</div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                                            <div>
+                                                <div>Added a new item to his store</div>
+                                                <small>4:15am</small>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-secondary"></div>
+                                            <div>
+                                                <div>Added a new item to his store</div>
+                                                <small>7:45am</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="timeline-date">2019/11/08</div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-info"></div>
+                                            <div>
+                                                <div>Added a new item to his store</div>
+                                                <small>4:15am</small>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-item">
+                                            <div class="timeline-item-icon timeline-item-icon-info"></div>
+                                            <div>
+                                                <div>Added a new item to his store</div>
+                                                <small>7:45am</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-sidebar border-bottom pb-0"
+                        style="bottom:auto;background:#11ACC5;z-index:3;box-shadow: none;">
+                        <div class="p-3 text-center">
+                            <img class="rounded-circle"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBFNBWAvCwAARjvNCkRf0dqLL_riprczSkP8A5fVUxNCmMTNz"
+                                width="100" height="100" alt="" />
+                            <h5 class="text-light font-weight-bold mt-2">
+                                <span style="letter-spacing:10px">{{name.slice(0,-1)}}</span>
+                                <span>{{name.slice(-1)}}</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-sidebar" style="background-image: url('/images/sidebar-bg.jpg');">
+                        <div class="rd-navbar-sidebar scroller"
+                            style="top:calc(3.875rem + 99px);bottom:calc(7.5rem + 9px);background: none;padding-bottom:1rem">
+                            <ul class="rd-navbar-nav">
+                                <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
+                                    <a class="rd-navbar-link" href="order.html">
+                                        <span class="rd-navbar-icon mdi mdi-view-grid-outline"></span>總覽
+                                    </a>
+                                </li>
+                                <li class="rd-navbar-nav-item" v-for="(item) in sidebar"
+                                    :class="item[2] == active ? 'active' : null">
+                                    <a class="rd-navbar-link" :class="[item[3],item[4]] | statusClass"
+                                        :href="'order.html?PID=' + item[2]">
+                                        <span class="rd-navbar-icon mdi" :class="item[0] | goalIcon"></span>
+                                        <span>{{item[0] | goalText}}</span>
+                                        <div class="flex-grow-1 text-right"><span>{{item[1]}}%</span></div>
+                                        <div class="progress progress-sm w-100 mt-2"
+                                            :class="item[2] == active ? 'progress-primary' : 'progress-light'">
+                                            <div class="progress-bar progress-bar-striped"
+                                                :style="{'width': item[1] + '%'}"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="rd-navbar-nav-item"><a class="rd-navbar-link" href="questions.aspx">
+                                        <i class="rd-navbar-icon mdi mdi-plus-circle"></i>
+                                        </span>新增計畫</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-sidebar pb-0"
+                        style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);">
+                        <!-- 10rem (2.5rem * 4) -->
+                        <ul class="rd-navbar-nav">
+                            <li class="rd-navbar-nav-item">
+                                <a class="rd-navbar-link py-2" href="memberAccount.html">
+                                    <span class="rd-navbar-icon mdi mdi-account-outline" href="#"></span>
+                                    <div class="flex-grow-1 text-center"
+                                        style="padding-right:2.5rem;letter-spacing:5px">
+                                        個人資料
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="rd-navbar-nav-item">
+                                <a class="rd-navbar-link py-2" href="trade.html">
+                                    <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
+                                    <div class="flex-grow-1 text-center"
+                                        style="padding-right:2.5rem;letter-spacing:5px">
+                                        交易情況
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="rd-navbar-nav-item">
+                                <a class="rd-navbar-link py-2" href="#">
+                                    <span class="rd-navbar-icon mdi mdi-24px mdi-logout-variant"></span>
+                                    <div class="flex-grow-1 text-center"
+                                        style="padding-right:2.5rem;letter-spacing:5px">
+                                        登出
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section id="order" class="pb-3">
+            <div class="d-none">
+                <span id="ctl00_Main_ResultLB">[['Retirement', 2.27, 2904.00, 0.00, 65, 2055, 1600, 'P2020052600006', 2,
+                    2, 80, 80, 97, 34, 35, 27],]</span>
+                <span id="ctl00_Main_TotalRateLB">[[2904.00, 10894.62],[275.16, 0.00, 0.00],[0.00, 0.00, 0.00]]</span>
+                <span id="ctl00_Main_PreLB">[[2020, 10895],[2021, 11845],[2022, 12852],[2023, 13814],[2024,
+                    14843],[2025, 15862],[2026, 17025],[2027, 18422],[2028, 19621],[2029, 21284],[2030, 22916],[2031,
+                    24592],[2032, 26206],[2033, 27796],[2034, 30060],[2035, 32311],[2036, 34542],[2037, 36937],[2038,
+                    39297],[2039, 42189],[2040, 45317],[2041, 48375],[2042, 51511],[2043, 54856],[2044, 58659],[2045,
+                    63051],[2046, 67230],[2047, 72422],[2048, 77443],[2049, 82904],[2050, 88136],[2051, 93627],[2052,
+                    100078],[2053, 106884],[2054, 113582],[2055, 120674],[2056, 108264],[2057, 95929],[2058,
+                    83158],[2059, 69034],[2060, 53548],[2061, 37390],[2062, 20301],[2063, 2422],[2064, 0],[2065,
+                    0],[2066, 0],[2067, 0],[2068, 0],[2069, 0],[2070, 0],[2071, 0],[2072, 0],[2073, 0],[2074, 0],[2075,
+                    0],[2076, 0],[2077, 0],[2078, 0],[2079, 0],[2080, 0],]</span>
+                <span id="ctl00_Main_RealLB">[[2020, 10894.62],]</span>
+                <span id="ctl00_Main_PoDataLB">[['VTI', '美國股票型', 'Vanguard', 'Total Stock Market ETF', '股票', '#F97C6B',
+                    31.15, 22.00, 3393.50, 154.25, 601.14, 0.03],['VEA', '全球已開發國家', 'Vanguard', 'FTSE Developed Markets
+                    ETF', '股票', '#FFACA1', 7.84, 22.00, 853.60, 38.80, 76.36, 0.05],['VSS', '全球小型股', 'Vanguard', 'FTSE
+                    All-World ex-US Small-Cap ETF', '股票', '#FDD6CF', 19.45, 22.00, 2118.82, 96.31, 337.77, 0.11],['VNQ',
+                    '美國不動產', 'Vanguard', 'Real Estate ETF', '不動產信託', '#FFBC49', 15.67, 22.00, 1707.42, 77.61, 252.77,
+                    0.12],['VNQI', '全球不動產', 'Vanguard', 'Global ex-U.S. Real Estate ETF', '不動產信託', '#FFD678', 9.45,
+                    22.00, 1029.60, 46.80, 112.73, 0.12],['BNDW', '全世界債券', 'Vanguard', 'Total World Bond ETF', '債券',
+                    '#88EE74', 16.45, 22.00, 1791.68, 81.44, 270.18, 0.06],]</span>
+            </div>
+            <div class="container-fluid">
+                <div class="row row-30">
+                    <!-- 按鈕 -->
+                    <div class="col-12 text-right pt-4 pt-xl-0">
+                        <a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
+                        <template v-if="!overView && tab1Data[0][9] == -1">
+                            <button type="button" @click="addOrder" class="btn btn-outline-secondary ml-3">刪除計畫</button>
+                            <button type="button" @click="delPlan" class="btn btn-secondary ml-3">下單此計畫</button>
+                        </template>
+                        <template v-if="!overView && tab1Data[0][9] == 2">
+                            <button type="button" class="btn btn-secondary ml-3" data-toggle="modal"
+                                data-target="#addMoneyModal">加碼此計畫</button>
+                            <div class="modal fade px-0" id="addMoneyModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+                                            <h2 class="modal-title flex-grow-1  text-center text-light">我要加碼</h2>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mx-auto" style="max-width:250px">
+                                                <div class="text-center h3 mb-3">
+                                                    如需下單請聯繫專人為您服務<br>
+                                                    (02)2502-8622 轉22 投研部
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control bg-light text-dark" type="text"
+                                                        v-model.number="money" placeholder="加碼金額(台幣)">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control bg-light text-dark" type="text"
+                                                        v-model="cfpNumber" placeholder="顧問代碼">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-top-0 justify-content-center">
+                                            <button @click="addMoney" type="button" class="btn btn-secondary">送出</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </template>
+
+                        <template v-if="!overView && tab1Data[0][9] == 1">
+                            <button type="button" class="btn btn-secondary ml-3" data-toggle="modal"
+                                data-target="#unSuccessModal">
+                                下單中
+                                <span class="mdi mdi-bell-outline"></span>
+                            </button>
+                            <div class="modal fade px-0" id="unSuccessModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+                                            <h4 class="modal-title flex-grow-1  text-center text-light">通知</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mx-auto" style="max-width:180px">
+                                                阿爾發證券投顧採集單限價下單，交易完成後將透過簡訊及電子郵件方式即時通知!
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-top-0 justify-content-center">
+                                            <button type="button" class="btn btn-outline-primary">瞭解更多集單限價</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <!-- 總攬-沒資料 -->
+                    <!-- 總攬-有資料 -->
+                    <!-- 個別-已下單 -->
+                    <!-- 個別-未下單 -->
+                    <!-- tabs -->
+                    <template v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
+                        <div class="col-md-12">
+                            <div class="panel admin-panel">
+                                <div class="panel-header">
+                                    <div class="d-flex align-items-center">
+                                        <ul class="nav nav-pills scroller scroller-horizontal flex-grow-1"
+                                            role="tablist">
+                                            <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                                    href="#dashboardGraph1" data-href="#dashboardGraph4" role="tab"
+                                                    aria-controls="dashboardGraph1" aria-selected="true">財務規劃</a></li>
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                    href="#dashboardGraph2" data-href="#dashboardGraph5" role="tab"
+                                                    aria-controls="dashboardGraph2" aria-selected="false">資產成長狀況</a>
+                                            </li>
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                    href="#dashboardGraph3" data-href="#dashboardGraph6" role="tab"
+                                                    aria-controls="dashboardGraph3" aria-selected="false">持有資產</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="dashboardGraph1" role="tabpanel">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
+                                                        <div class="highcharts-container highcharts-container-2"
+                                                            data-highcharts-type="line">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-5 col-xl-4 border-lg-left">
+                                                        <div class="slick-slider"
+                                                            data-slick-md='{"slidesToShow":1,"slidesToScroll":1,"vertical":false,"verticalSwiping":false}'
+                                                            :data-slick="overView | slideData">
+                                                            <div class="list-block-container list-block-lg"
+                                                                v-for="(item) in tab1">
+                                                                <h5
+                                                                    class="list-block-title d-flex justify-content-between align-items-baseline">
+                                                                    <span
+                                                                        class="font-weight-bold">{{ item.title }}</span>
+                                                                    <small
+                                                                        class="text-secondary font-weight-bold text-capitalize">達成率:{{ item.progress | decimalFormat}}%</small>
+                                                                </h5>
+                                                                <div class="list-block pb-2">
+                                                                    <div class="list-block-item d-flex justify-content-between"
+                                                                        v-for="(el,index) in item.element">
+                                                                        <div
+                                                                            :style="{'visibility': el.text ? '' : 'hidden'}">
+                                                                            <small
+                                                                                class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                            <span>{{el.title}}</span>
+                                                                        </div><strong
+                                                                            class="text-dark">{{el.text}}</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="list-block-container list-block-lg">
+                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">子女教育金</span>
+                                  <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                </h5>
+                                <div class="list-block">
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>總投入金額</span>
+                                    </div><strong class="text-dark">USD $ 16,500</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>距離大學期間</span>
+                                    </div><strong class="text-dark">65歲</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>小孩目前歲數</span>
+                                    </div><strong class="text-dark">8歲</strong>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-block-container list-block-lg">
+                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">其他目標</span>
+                                  <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                </h5>
+                                <div class="list-block">
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>總投入金額</span>
+                                    </div><strong class="text-dark">USD $ 16,500</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>預計目標年限</span>
+                                    </div><strong class="text-dark">10年</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>預計目標金額</span>
+                                    </div><strong class="text-dark">NTD $ 1,000萬</strong>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-block-container list-block-lg">
+                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">存錢買房</span>
+                                  <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                </h5>
+                                <div class="list-block">
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>總投入金額</span>
+                                    </div><strong class="text-dark">USD $ 16,500</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>距離買房時間</span>
+                                    </div><strong class="text-dark">10年</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>房屋總價值</span>
+                                    </div><strong class="text-dark">NTD $ 1,000萬</strong>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-block-container list-block-lg">
+                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">財產保值抗通膨</span>
+                                  <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                </h5>
+                                <div class="list-block">
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>總投入金額</span>
+                                    </div><strong class="text-dark">USD $ 16,500</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>預計投資期間</span>
+                                    </div><strong class="text-dark">20年</strong>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="list-block-container list-block-lg">
+                                <h5 class="list-block-title d-flex justify-content-between align-items-baseline">
+                                  <span class="font-weight-bold">穩定累積財富</span>
+                                  <small class="text-secondary font-weight-bold text-capitalize">達成率:25%</small>
+                                </h5>
+                                <div class="list-block">
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>總投入金額</span>
+                                    </div><strong class="text-dark">USD $ 16,500</strong>
+                                  </div>
+                                  <div class="list-block-item d-flex justify-content-between">
+                                    <div>
+                                      <small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                      <span>預計投資期間</span>
+                                    </div><strong class="text-dark">20年</strong>
+                                  </div>
+                                </div>
+                              </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
+                                                        <div v-if="tab1Data[0][9] != 2"
+                                                            class="highcharts-container highcharts-container-2"
+                                                            style="background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center;min-height:250px;">
+                                                            <span
+                                                                style="font-size: 2rem;color:#fff;text-align: center;">您的計畫尚未下單成功</span>
+                                                        </div>
+                                                        <div v-else class="highcharts-container highcharts-container-2"
+                                                            data-highcharts-type="column">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-5 col-xl-4 border-lg-left">
+                                                        <div class="list-block-container list-block-lg">
+                                                            <h5 class="list-block-title align-items-baseline">
+                                                                <span class="font-weight-bold">總資產狀況</span>
+                                                            </h5>
+                                                            <div class="list-block">
+                                                                <div
+                                                                    class="list-block-item d-flex justify-content-between">
+                                                                    <div>
+                                                                        <small
+                                                                            class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                        <a>已投入投資金額</a>
+                                                                    </div>
+                                                                    <strong
+                                                                        :class="tab2[0][0] == 0 ? 'text-secondary' : 'text-dark'">USD
+                                                                        $
+                                                                        {{tab2[0][0] | decimalFormat | commaFormat}}</strong>
+                                                                </div>
+                                                                <div
+                                                                    class="list-block-item d-flex justify-content-between">
+                                                                    <div>
+                                                                        <small
+                                                                            class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                        <a>資產淨值</a>
+                                                                    </div>
+                                                                    <strong
+                                                                        :class="tab2[0][1] == 0 ? 'text-secondary' : 'text-dark'">USD
+                                                                        $
+                                                                        {{tab2[0][1] | decimalFormat | commaFormat}}</strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-block-container list-block-lg">
+                                                            <h5 class="list-block-title">
+                                                                <a class="font-weight-bold" style="cursor: pointer;"
+                                                                    :class="tab22 == true ?
+																					'text-primary' : null" @click="tab22= true">累積(Cumulative)</a>
+                                                                <!-- <span class="font-weight-bold">|</span>
+																	<a class="font-weight-bold" style="cursor: pointer;"
+																		:class="tab22 == false ?
+																					'text-primary' : null" @click="tab22= false">年度(Annualized)</a> -->
+                                                            </h5>
+                                                            <div class="list-block">
+                                                                <div
+                                                                    class="list-block-item d-flex justify-content-between">
+                                                                    <div>
+                                                                        <small
+                                                                            class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                        <a>投資報酬率</a>
+                                                                    </div>
+                                                                    <transition name="tab21-transition" mode="out-in"
+                                                                        enter-active-class="animated"
+                                                                        :enter-active-class="tab22 ? 'slideInLeft' : 'slideInRight'">
+                                                                        <strong v-if="tab22" key="1"
+                                                                            :class="tab2[1][0] == 0 ? 'text-secondary' : 'text-dark'">{{tab2Data[1][0] | decimalFormat}}%</strong>
+                                                                        <strong v-else key="2"
+                                                                            :class="tab2[1][0] == 0 ? 'text-secondary' : 'text-dark'">{{tab2Data[2][0] | decimalFormat}}%</strong>
+                                                                    </transition>
+
+                                                                </div>
+                                                                <div
+                                                                    class="list-block-item d-flex justify-content-between">
+                                                                    <div>
+                                                                        <small
+                                                                            class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                        <a>含息報酬率</a>
+                                                                    </div>
+                                                                    <transition name="tab22-transition" mode="out-in"
+                                                                        enter-active-class="animated"
+                                                                        :enter-active-class="tab22 ? 'slideInLeft' : 'slideInRight'">
+                                                                        <strong key="1" v-if="tab22"
+                                                                            :class="tab2Data[1][1] == 0 ? 'text-secondary' : 'text-dark'">{{tab2Data[1][1] | decimalFormat}}%</strong>
+                                                                        <strong key="2" v-else
+                                                                            :class="tab2Data[2][1] == 0 ? 'text-secondary' : 'text-dark'">{{tab2Data[2][1] | decimalFormat}}%</strong>
+                                                                    </transition>
+                                                                </div>
+                                                                <div
+                                                                    class="list-block-item d-flex justify-content-between">
+                                                                    <div>
+                                                                        <small
+                                                                            class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+                                                                        <a>配息金額</a>
+                                                                    </div>
+                                                                    <transition name="tab23-transition" mode="out-in"
+                                                                        enter-active-class="animated"
+                                                                        :enter-active-class="tab22 ? 'slideInLeft' : 'slideInRight'">
+                                                                        <strong key="1" v-if="tab22"
+                                                                            :class="tab2Data[1][2] == 0 ? 'text-secondary' : 'text-dark'">USD
+                                                                            $
+                                                                            {{tab2Data[1][2] | decimalFormat  | commaFormat}}</strong>
+                                                                        <strong key="2" v-else
+                                                                            :class="tab2Data[1][2] == 0 ? 'text-secondary' : 'text-dark'">USD
+                                                                            $
+                                                                            {{tab2Data[2][2] | decimalFormat  | commaFormat}}</strong>
+                                                                    </transition>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dashboardGraph3" role="tabpanel">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table class="table table-responsive-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col" width="5px" class="p-0"></th>
+                                                                    <th scope="col">代碼</th>
+                                                                    <th scope="col" class="d-none d-md-table-cell">類別
+                                                                    </th>
+                                                                    <th scope="col" class="d-none d-xl-table-cell">資產名稱
+                                                                    </th>
+                                                                    <th scope="col" colspan="2">比例</th>
+                                                                    <th scope="col"
+                                                                        class="d-none d-sm-table-cell text-right"
+                                                                        style="white-space:nowrap;">
+                                                                        持有股數</th>
+                                                                    <th scope="col" class="d-none d-lg-table-cell"></th>
+                                                                    <th scope="col"
+                                                                        class="d-none d-sm-table-cell text-right">參考持有價值
+                                                                    </th>
+                                                                    <th scope="col" class="px-0"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tfoot class="bg-200">
+                                                                <tr>
+                                                                    <th scope="col" width="5px" class="p-0"></th>
+                                                                    <td class="d-none d-md-table-cell"></td>
+                                                                    <td class="d-none d-xl-table-cell"></td>
+                                                                    <td class="d-none d-sm-table-cell" colspan="3"></td>
+                                                                    <td class="d-none d-lg-table-cell"></td>
+                                                                    <td class="d-none d-sm-table-cell text-right">總計
+                                                                    </td>
+                                                                    <td class="d-sm-none small">價值總計</td>
+                                                                    <!-- <td class="d-none d-sm-table-cell">{{tableTotal[1] | commaFormat}}</td> -->
+                                                                    <td colspan="3" class="d-sm-none"
+                                                                        :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                                                        USD $
+                                                                        {{tableTotal[2] | decimalFormat  | commaFormat}}
+                                                                    </td>
+                                                                    <td style="width:1%;white-space:nowrap"
+                                                                        class="d-none d-sm-table-cell"
+                                                                        :class="tableTotal[2] == 0 ? 'text-secondary' : null">
+                                                                        USD $
+                                                                        {{tableTotal[2] | decimalFormat  | commaFormat}}
+                                                                    </td>
+                                                                    <td class="d-none d-sm-table-cell"></td>
+                                                                </tr>
+                                                            </tfoot>
+                                                            <tbody>
+                                                                <template v-for="(item) in tableData">
+                                                                    <tr>
+                                                                        <th scope="row" width="5px" class="p-0"
+                                                                            :style="{'background-color' : item[5]}">
+                                                                        </th>
+                                                                        <td>{{item[0]}}</td>
+                                                                        <td class="d-none d-md-table-cell">
+                                                                            {{item[4] | ETFtype}}</td>
+                                                                        <td class="d-none d-xl-table-cell">{{item[1]}}
+                                                                        </td>
+                                                                        <td style="width:1%;text-align: right;">
+                                                                            {{item[6] | decimalFormat}}%</td>
+                                                                        <td class="pl-0">
+                                                                            <div class="d-inline-block"
+                                                                                style="min-width:90px">
+                                                                                <div class="progress progress-sm justify-content-end"
+                                                                                    style="border-radius: 0;"
+                                                                                    :style="{'background': 'repeating-linear-gradient(to right,' + item[5] + ',' + item[5] + ' 8%, white 8%, white 10%)'}">
+                                                                                    <div class="progress-bar"
+                                                                                        style="background-color:white"
+                                                                                        :style="{'width': 100 - item[6] * 2 + '%'}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <!-- 要小數點五位數 -->
+                                                                        <td style="width: 1%;white-space:nowrap"
+                                                                            class="d-none d-sm-table-cell text-right"
+                                                                            :class="item[7] == 0 ? 'text-secondary' : null">
+                                                                            {{item[7] | decimalFormat | commaFormat}}
+                                                                        </td>
+                                                                        <td class="d-none d-lg-table-cell"></td>
+                                                                        <td style="width: 1%;white-space:nowrap"
+                                                                            class="d-none d-sm-table-cell text-right"
+                                                                            :class="item[8] == 0 ? 'text-secondary' : null">
+                                                                            USD $
+                                                                            {{ item[8] | decimalFormat | commaFormat}}
+                                                                        </td>
+                                                                        <td class="px-0 text-right">
+                                                                            <a class="mdi-18px mdi mdi-chevron-down"
+                                                                                data-toggle="collapse"
+                                                                                :href="'tr.' + item[0]" role="button">
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="collapse" :class="item[0]">
+                                                                        <td colspan="10">
+                                                                            <div class="row">
+                                                                                <div
+                                                                                    class="col-12 col-sm-8 col-md-12 mb-3">
+                                                                                    <div class="d-xl-none">{{item[1]}}
+                                                                                    </div>
+                                                                                    {{item[3]}}
+                                                                                    <small
+                                                                                        class="ml-3">{{item[2]}}</small>
+                                                                                </div>
+                                                                                <div class="col-12 mb-3 d-sm-none">
+                                                                                    <!-- 要小數點五位數 -->
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">持有股數</small>{{item[7] | commaFormat}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-6 col-sm-4 mb-3 d-md-none">
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">ETF類別</small>{{item[4] | ETFtype}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6 mb-3 d-sm-none">
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">參考持有價值</small>USD
+                                                                                        $
+                                                                                        {{ item[8] | decimalFormat | commaFormat}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-6 col-sm-4 col-xl mb-3 mb-sm-0">
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">ETF參考價格</small>USD
+                                                                                        $
+                                                                                        {{ item[9] | decimalFormat | commaFormat}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6 col-sm-4 col-xl">
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">報酬率</small>{{item[10] | decimalFormat}}%
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6 col-sm-4 col-xl">
+                                                                                    <div><small
+                                                                                            class="d-block text-black-50">內含管理費/年</small>{{item[11] | decimalFormat}}%
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </template>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- 總攬沒資料 -->
+                    <template v-else>
+                        <div class="col-lg-6">
+                            <div class="panel admin-panel h-100" style="min-height:250px">
+                                <div
+                                    style="position: absolute;top: 0;right: 0;bottom:0;left: 0;background-color:rgba(22,52,79,0.8);display:flex;justify-content:center;align-items:center">
+                                    <span style="font-size: 2rem;color:#fff;text-align: center;">此統整功能將在下單後為您開放</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- 比較 -->
+                    <!-- v1 -->
+                    <!-- <div class="col-lg-4" v-if="!overView" v-for="(item,index) in progressData">
+                        <div class="panel admin-panel">
+                            <div class="panel-body">
+                                <div class="mb-4">
+                            {{item.title}}
+                          </div>
+                          <div>{{item.self}}</div>
+                          <div>{{item.selfTitle}}</div>
+                          <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                            <div class="progress-bar" role="progressbar" :style="{'width':item.self + '%'}"></div>
+                          </div>
+                          <div>{{item.all}}</div>
+                          <div>
+                            {{item.allTitle}}
+                            <span class="text-primary mdi mdi-help-circle-outline h5" style="cursor: pointer;"
+                              data-toggle="modal" :data-target="'#descriptionModal' + index"></span>
+                            <div class="modal" :id="'descriptionModal' + index" tabindex="-1" role="dialog"
+                              aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header justify-content-center bg-primary">
+                                    <span class="modal-title text-light h3">這是什麼？</span>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="py-3 text-center text-black-50">
+                                      {{item.whatsThis}}
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer justify-content-center border-top-0">
+                                    <button class="btn btn-secondary rounded-pill py-2 px-4 py-md-3 px-md-5" type="button"
+                                      data-dismiss="modal">知道了！</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="progress progress-sm mt-2 mb-3" :class="index | progressClass">
+                            <div class="progress-bar" role="progressbar" :style="{'width':item.all + '%'}"></div>
+                          </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- v2 -->
+                    <!-- <template v-if="!overView" v-for="(item,index) in progressData">
+                        <div :class="item.compare ? 'col-lg-6' : 'col-lg-3'">
+                            <div class="panel admin-panel">
+                                <div class="panel-body">
+                                    <div class="d-flex">
+                                        <div class="w-50 text-center flex-grow-1" :class="item.compare ? 'pr-3' : ''">
+                                            <div class="mb-4">
+                                                {{item.selfTitle}}
+                                            </div>
+                                            <svg :id="item.svgID" width="80%" version="1.1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                style="max-width:300px"></svg>
+                                            <div v-if="item.gauge">{{item.self | riskChinese }}</div>
+                                        </div>
+                                        <div class="w-50 text-center pl-3" v-if="item.compare">
+                                            <div class="mb-4">
+                                                {{item.allTitle}}
+                                            </div>
+                                            <svg :id="item.svgID2" width="80%" version="1.1"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                style="max-width:300px"></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template> -->
+                    <!-- v3 -->
+                    <!-- <div class="col-lg-6" v-if="!overView">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <template v-for="(item,index) in progressData">
+                                    <div v-if="item.compare" class="col-12">
+                                        <div class="panel admin-panel">
+                                            <div class="panel-body">
+                                                <div class="d-flex">
+                                                    <div class="w-50 text-center pr-3">
+                                                        <div class="mb-3">
+                                                            {{item.selfTitle}}
+                                                        </div>
+                                                        <svg :id="item.svgID" width="80%" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            style="max-width:300px"></svg>
+                                                    </div>
+                                                    <div class="w-50 text-center pl-3">
+                                                        <div class="mb-3">
+                                                            {{item.allTitle}}
+                                                        </div>
+                                                        <svg :id="item.svgID2" width="80%" version="1.1"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                            style="max-width:300px"></svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-else class="col-sm-6 offset-sm-3 mb-4">
+                                        <div class="panel admin-panel">
+                                            <div class="panel-body">
+                                                <div class="text-center">
+                                                    <div class="mb-3">
+                                                        {{item.selfTitle}}
+                                                    </div>
+                                                    <svg :id="item.svgID" width="80%" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                        style="max-width:300px"></svg>
+                                                    <div>{{item.self | riskChinese }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- v4 -->
+                    <div class="col-lg-8" v-if="!overView">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-12 col-sm-4" :class="index == progressData.length -1 ? '' : 'mb-4' "
+                                    v-for="(item,index) in progressData">
+                                    <div class="panel admin-panel">
+                                        <div class="panel-header text-center">
+                                            {{item.title}}
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="text-center">
+                                                <!-- <div class="mb-sm-3">
+                                                    {{item.title}}
+                                                    <div v-if="item.subtitle"> {{ item.value | riskChinese }}</div>
+                                                </div> -->
+                                                <svg :id="item.svgID" width="90%" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    style="max-width:200px"></svg>
+                                                <div v-if="item.subtitle"> {{ item.value | riskChinese }}</div>
+                                                <div v-else style="visibility: hidden;">積極型</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 投資組合 -->
+                    <div class="col-lg-4" v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
+                        <div class="panel admin-panel">
+                            <div class="panel-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="panel-title flex-grow-1">投資組合</div>
+                                </div>
+                            </div>
+                            <div class="panel-body pb-5 text-center">
+                                <div class="highcharts-container highcharts-container-2" data-highcharts-type="pie">
+                                </div>
+                                <div class="row row-15 justify-content-center">
+                                    <div class="col-4">
+                                        <div class="progress-circle-wrap" style="max-width: 150px;">
+                                            <div class="progress-circle-inner">
+                                                <div class="progress-counter-wrap">
+                                                    <div class="progress-counter-value"><span
+                                                            class="progress-counter">{{ETFtypeTotal[0]}}</span>
+                                                    </div>
+                                                </div>
+                                                <svg class="progress-circle" x="0" y="0" width="80" height="80"
+                                                    viewbox="0 0 80 80">
+                                                    <circle class="bg" cx="40" cy="40" r="32"
+                                                        style="stroke:#F97C6B;opacity:0.3;"></circle>
+                                                    <circle class="fg clipped" cx="40" cy="40" r="32"
+                                                        style="stroke:#F97C6B;"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="progress-title">股票型ETF</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="progress-circle-wrap" style="max-width: 150px;">
+                                            <div class="progress-circle-inner">
+                                                <div class="progress-counter-wrap">
+                                                    <div class="progress-counter-value"><span
+                                                            class="progress-counter">{{ETFtypeTotal[1]}}</span>
+                                                    </div>
+                                                </div>
+                                                <svg class="progress-circle" x="0" y="0" width="80" height="80"
+                                                    viewbox="0 0 80 80">
+                                                    <circle class="bg" cx="40" cy="40" r="32"
+                                                        style="stroke:#FFBC49;opacity:0.3;"></circle>
+                                                    <circle class="fg clipped" cx="40" cy="40" r="32"
+                                                        style="stroke:#FFBC49;"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="progress-title">不動產ETF</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="progress-circle-wrap" style="max-width: 150px;">
+                                            <div class="progress-circle-inner">
+                                                <div class="progress-counter-wrap">
+                                                    <div class="progress-counter-value"><span
+                                                            class="progress-counter">{{ETFtypeTotal[2]}}</span>
+                                                    </div>
+                                                </div>
+                                                <svg class="progress-circle" x="0" y="0" width="80" height="80"
+                                                    viewbox="0 0 80 80">
+
+                                                    <circle class="bg" cx="40" cy="40" r="32"
+                                                        style="stroke:#88EE74;opacity:0.3;"></circle>
+                                                    <circle class="fg clipped" cx="40" cy="40" r="32"
+                                                        style="stroke:#88EE74;"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="progress-title">債券型ETF</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 做了什麼 -->
+                    <div class="col-lg-6" v-if="overView">
+                        <div class="panel admin-panel">
+                            <div class="panel-header">
+                                <div class="h3 font-weight-bold panel-title flex-grow-1">我們幫您做了什麼？</div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-7 px-0">
+                                            <div>
+                                                <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                                    class="link-black" href="#">資產全球多元化配置</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="lead text-right pr-0">
+                                                <span>增加 1.40% 利潤/年</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-7 px-0 mt-2">
+                                            <div class="pl-4 text-gray-600">
+                                                我們將您的資產進行全球多元化配置，由上述所列出包含股票型、不動產型
+                                                及債券型等三種不同資產類別之ETF指數型基金，所共同組成您的投資組合。
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-12 col-md-5 px-0 mt-md-2 d-flex justify-content-end align-items-end">
+                      <small><a href="#">了解更多</a></small>
+                    </div> -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-7 px-0">
+                                            <div>
+                                                <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                                    class="link-black" href="#">節省投資費用</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="lead text-right pr-0 mt-2">節省 1.25% 費用/年</div>
+                                        </div>
+                                        <div class="col-12 col-md-7 px-0 mt-2">
+                                            <div class="pl-4 text-gray-600">
+                                                阿爾發協助投資人將投資費用大幅降低，平均 0.70 %的 ETF 管理費用可避免投資人
+                                                被收取過高的投資費用，影響長期投資獲利。
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-7 px-0">
+                                            <div>
+                                                <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                                    class="link-black" href="#">投資組合再平衡</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="lead text-right pr-0">增加 0.40% 利潤/年</div>
+                                        </div>
+                                        <div class="col-12 col-md-7 px-0 mt-2">
+                                            <div class="pl-4 text-gray-600">
+                                                根據阿爾發的投資研究顯示為投資人每年進行一次的投資組合再平衡，其對於
+                                                投資人的投資組合績效表現優於每半年、每季甚至每月都進行再平衡。
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-7 px-0">
+                                            <div>
+                                                <small class="align-middle pr-3 text-shadow-500 fa-circle"></small><a
+                                                    class="link-black" href="#">降低進場時機錯誤的可能</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5 px-0">
+                                            <div class="lead text-right pr-0">增加 1.25% 利潤/年</div>
+                                        </div>
+                                        <div class="col-12 col-md-7 px-0 mt-2">
+                                            <div class="pl-4 text-gray-600">
+                                                投資人進行長期投資時，應專注保持在市場當中避免擇時錯誤( Market Mistiming )
+                                                降低可能犯的投資錯誤而損失市場獲利時機。
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <script src="js/gaugeChart.js"></script>
+    <script src="js/circleChart.js"></script>
+    <script src="components/base/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/index.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/order.js"></script>
+</body>
+
+</html>

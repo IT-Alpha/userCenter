@@ -29,7 +29,7 @@
 
 //多加的 animate.css
 
-@import "./animate/_properties";
+@import "../animate/_properties";
 // Import the animations
-@import "./animate/_sliding-entrances/sliding-entrances.scss",
-	"./animate/_sliding-exits/sliding-exits.scss";
+@import "../animate/_sliding-entrances/sliding-entrances.scss",
+  "./animate/_sliding-exits/sliding-exits.scss";

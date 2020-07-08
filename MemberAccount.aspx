@@ -99,7 +99,7 @@
                                   <div class="modal-body">
                                     <div class="mx-auto" style="max-width:180px">
                                       <asp:TextBox ID="PwdTBX" runat="server" MaxLength="20"
-                                        class="form-control p-3 mb-2" TextMode="Password" placeholder="請輸入舊密碼" />
+                                        class="form-control p-3 mb-2" TextMode="Password" placeholder="請輸入重設密碼" />
                                       <asp:TextBox ID="NewPwdTBX1" runat="server" MaxLength="20"
                                         class="form-control p-3 mb-2" TextMode="Password" placeholder="請輸入新密碼" />
                                       <asp:TextBox ID="NewPwdTBX2" runat="server" MaxLength="20"

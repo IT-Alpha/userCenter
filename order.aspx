@@ -220,7 +220,7 @@
 																			:class="tab2[1][0] == 0 ? 'text-secondary' : 'text-dark'">
 																			{{ tab2[1][0] | decimalFormat }}%</strong>
 																	</div>
-																	<div
+																	<!-- <div
 																		class="list-block-item d-flex justify-content-between">
 																		<div>
 																			<small
@@ -242,7 +242,7 @@
 																			:class="tab2[1][2] == 0 ? 'text-secondary' : 'text-dark'">
 																			USD $
 																			{{ tab2[1][2] | decimalFormat | commaFormat }}</strong>
-																	</div>
+																	</div> -->
 																</div>
 															</div>
 														</div>
