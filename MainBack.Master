@@ -21,6 +21,27 @@
 </head>
 
 <body>
+<!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v7.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="541378099319207">
+    </div>
   <form id="form1" runat="server">
     <div class="page">
       <header class="section page-header">
@@ -32,8 +53,8 @@
           <nav class="rd-navbar">
             <div class="rd-navbar-panel">
               <div class="rd-navbar-panel-cell">
-                <button type="button" class="btn button-navbar" data-navigation-switch="data-navigation-switch">
-                  <span class="fa-bars"></span></button>
+                <button type="button" class="btn button-navbar" data-navigation-switch="data-navigation-switch"><span
+                    class="fa-bars"></span></button>
               </div>
               <div class="rd-navbar-panel-cell d-none d-xl-block">
                 <ul class="breadcrumbs">
@@ -59,7 +80,7 @@
                     </div>
                     <div class="panel-body scroller scroller-vertical">
                       <div class="group-5">
-                        <div class="alert alert-dismissible alert-primary" role="alert">
+                        <%-- <div class="alert alert-dismissible alert-primary" role="alert">
                           <span class="alert-icon fa-thumbs-up"></span>
                           <span>退休金準備計畫已下單</span>
                           <button class="close" type="button" data-dismiss="alert" aria-label="Close">
@@ -86,6 +107,10 @@
                           <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                             <span class="fa-close" aria-hidden="true"></span>
                           </button>
+                        </div> --%>
+                        <div class="text-center text-dark">
+                          此通知功能尚在開發中<br>
+                          敬請期待
                         </div>
                       </div>
                     </div>
@@ -101,58 +126,9 @@
                   <span class="fa-sliders"></span>
                 </button>
                 <div class="sidebar scroller">
-                  <div class="timeline timeline-simple">
-                    <div class="item">
-                      <div class="timeline-date">2019/11/08</div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-primary"></div>
-                        <div>
-                          <div>Added a new item to his store</div>
-                          <small>1:25am</small>
-                        </div>
-                      </div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-primary"></div>
-                        <div>
-                          <div>Added a new item to her store</div>
-                          <small>3:05am</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <div class="timeline-date">2019/11/08</div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-secondary"></div>
-                        <div>
-                          <div>Added a new item to his store</div>
-                          <small>4:15am</small>
-                        </div>
-                      </div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-secondary"></div>
-                        <div>
-                          <div>Added a new item to his store</div>
-                          <small>7:45am</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <div class="timeline-date">2019/11/08</div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-info"></div>
-                        <div>
-                          <div>Added a new item to his store</div>
-                          <small>4:15am</small>
-                        </div>
-                      </div>
-                      <div class="timeline-item">
-                        <div class="timeline-item-icon timeline-item-icon-info"></div>
-                        <div>
-                          <div>Added a new item to his store</div>
-                          <small>7:45am</small>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="text-center text-dark pt-5">
+                          此通知功能尚在開發中<br>
+                          敬請期待
                   </div>
                 </div>
               </div>
@@ -171,7 +147,7 @@
             </div>
             <div class="rd-navbar-sidebar" style="background-image: url('/images/sidebar-bg.jpg');">
               <div class="rd-navbar-sidebar scroller"
-                style="top:calc(3.7rem + 99px);bottom:calc(10rem + 9px);background: none;">
+                style="top:calc(3.875rem + 99px);bottom:calc(7.8rem + 9px);background: none;">
                 <ul class="rd-navbar-nav">
                   <li class="rd-navbar-nav-item" :class="active === '' ? 'active' : null">
                     <a class="rd-navbar-link" href="order.aspx">
@@ -198,7 +174,7 @@
               </div>
             </div>
             <div class="rd-navbar-sidebar pb-0"
-              style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);">
+              style="top:auto;bottom:5px;left: 5px;width:calc(15.625rem - 10px);border-radius: .5rem;background: rgba(233, 233, 233, 0.15);box-shadow:0px -3px 6px rgba(0,0,0,.13)">
               <!-- 10rem (2.5rem * 4) -->
               <ul class="rd-navbar-nav">
                 <li class="rd-navbar-nav-item">
@@ -206,6 +182,14 @@
                     <span class="rd-navbar-icon mdi mdi-account-outline" href="#"></span>
                     <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
                       個人資料
+                    </div>
+                  </a>
+                </li>
+                <li class="rd-navbar-nav-item">
+                  <a class="rd-navbar-link py-2" href="#">
+                    <span class="rd-navbar-icon mdi mdi-tag" href="#"></span>
+                    <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                      專屬優惠
                     </div>
                   </a>
                 </li>

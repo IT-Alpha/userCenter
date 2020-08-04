@@ -14,6 +14,23 @@ $panel-bg: $white;
 $panel-cap-bg: $panel-bg;
 $panel-brad: $border-radius;
 $panel-title-color: $black;
+//阿爾發優惠券樣式
+$coupon-b:#E5FAFF;
+$coupon-g:#f2faf0;
+$coupon-o:#fff8ed;
+
+.coupon-bg{
+  &-b{
+    background-color: $coupon-b;
+  }
+  &-g{
+    background-color: $coupon-g;
+  }
+  &-o{
+    background-color: $coupon-o;
+  }
+}
+
 
 // Base styles
 .panel {
