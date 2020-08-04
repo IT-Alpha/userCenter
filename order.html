@@ -36,7 +36,7 @@
             <!-- 訂單狀態 -->
             <!-- 已下單(2),未成交(1),未下單(0) -->
             <div class="d-none">
-                <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, -1],['Retirement', 0.00,
+                <span id="ctl00_ResultLB">[['Preservation', 0.00, 'P2020021200004', 1, 0],['Retirement', 0.00,
                     'P2020021800001',
                     1, -1],]</span>
                 <span id="ctl00_LoginLB">測試仔123</span>
@@ -231,6 +231,14 @@
                                 </a>
                             </li>
                             <li class="rd-navbar-nav-item">
+                                <a class="rd-navbar-link py-2" href="#">
+                                  <span class="rd-navbar-icon mdi mdi-tag" href="#"></span>
+                                  <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
+                                    專屬優惠
+                                  </div>
+                                </a>
+                              </li>
+                            <!-- <li class="rd-navbar-nav-item">
                                 <a class="rd-navbar-link py-2" href="trade.html">
                                     <span class="rd-navbar-icon mdi mdi-currency-usd"></span>
                                     <div class="flex-grow-1 text-center"
@@ -238,7 +246,7 @@
                                         交易情況
                                     </div>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="rd-navbar-nav-item">
                                 <a class="rd-navbar-link py-2" href="#">
                                     <span class="rd-navbar-icon mdi mdi-24px mdi-logout-variant"></span>
@@ -403,12 +411,26 @@
                     <!-- 按鈕 -->
                     <div class="col-12 text-right pt-4 pt-xl-0">
                         <a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
+                        <!-- 狀態為 -1 無 -->
                         <template v-if="!overView && tab1Data[0][9] == -1">
-                            <button type="button" @click="addOrder" class="btn btn-outline-secondary ml-3">刪除計畫</button>
-                            <button type="button" @click="delPlan" class="btn btn-secondary ml-3">下單此計畫</button>
+                            <button type="button" @click="delPlan" class="btn btn-outline-secondary ml-3">
+                                刪除計畫
+                            </button>
+                            <button type="button" @click="addOrder" class="btn btn-secondary ml-3">
+                                下單此計畫
+                            </button>
                         </template>
-                        <button type="button" v-if="!overView && tab1Data[0][9] == 2"
-                            class="btn btn-secondary ml-3">調整此計畫</button>
+                        <!-- 狀態為 2 已成交 -->
+                        <template v-if="!overView && tab1Data[0][9] == 2">
+                            <!-- <button type="button" 
+                                class="btn btn-secondary ml-3">
+                                調整此計畫
+                            </button> -->
+                            <button type="button" @click="addOrder" class="btn btn-secondary ml-3">
+                                加碼此計畫
+                            </button>
+                        </template>
+                        <!-- 狀態為 1 委託成功 -->
                         <template v-if="!overView && tab1Data[0][9] == 1">
                             <button type="button" class="btn btn-secondary ml-3" data-toggle="modal"
                                 data-target="#unSuccessModal">

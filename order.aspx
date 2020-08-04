@@ -28,6 +28,7 @@
 						<!-- 按鈕 -->
 						<div class="col-12 text-right pt-4 pt-xl-0">
 							<a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
+							<!-- 狀態為 -1 無 -->
 							<template v-if="!overView && tab1Data[0][9] == -1">
 								<button type="button" @click="delPlan" class="btn btn-outline-secondary ml-3">
 									刪除計畫
@@ -36,10 +37,17 @@
 									下單此計畫
 								</button>
 							</template>
-							<button type="button" v-if="!overView && tab1Data[0][9] == 2"
-								class="btn btn-secondary ml-3">
-								調整此計畫
-							</button>
+							<!-- 狀態為 2 已成交 -->
+							<template v-if="!overView && tab1Data[0][9] == 2">
+								<!-- <button type="button" 
+									class="btn btn-secondary ml-3">
+									調整此計畫
+								</button> -->
+								<button type="button" @click="addOrder" class="btn btn-secondary ml-3">
+									加碼此計畫
+								</button>
+							</template>
+							<!-- 狀態為 1 委託成功 -->
 							<template v-if="!overView && tab1Data[0][9] == 1">
 								<button type="button" class="btn btn-secondary ml-3" data-toggle="modal"
 									data-target="#unSuccessModal">
