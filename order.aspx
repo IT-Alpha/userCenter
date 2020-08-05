@@ -134,6 +134,7 @@
 																			達成率:{{ item.progress | decimalFormat }}%</small>
 																	</h3>
 																	<div class="list-block pb-2">
+																		<!-- 計畫內容 -->
 																		<div class="list-block-item d-flex justify-content-between"
 																			v-for="(el,index) in item.element">
 																			<div
@@ -144,6 +145,15 @@
 																			</div>
 																			<strong
 																				class="text-dark">{{ el.text }}</strong>
+																		</div>
+																		<!-- 計畫編號 -->
+																		<div class="list-block-item d-flex justify-content-between">
+																			<div>
+																				<small class="align-middle pr-3 text-shadow-500 fa-circle"></small>
+																				<span>計畫編號</span>
+																			</div>
+																			<strong
+																				class="text-dark">{{ tab1Data[0][7] }}</strong>
 																		</div>
 																	</div>
 																</div>
