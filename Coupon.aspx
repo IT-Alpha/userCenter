@@ -14,17 +14,16 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <section class="pt-4 pt-xl-0 pb-3" id="coupon">
+                
                 <div class="d-none">
                     <asp:TextBox ID="NumTBX" runat="server" MaxLength="17"></asp:TextBox>
                     <asp:Button ID="ExchBTN" runat="server" Text="兌換" />
                     <asp:Label ID="CPDataLB" runat="server">[]</asp:Label>
-    
+                    <!-- 資料陣列[0]存取處 -->
                     <asp:TextBox ID="IDTBX1" runat="server" MaxLength="3"></asp:TextBox>
+                    <!-- 資料陣列[1]存取處 -->
                     <asp:TextBox ID="IDTBX2" runat="server" MaxLength="7"></asp:TextBox>
-                    <asp:DropDownList ID="PIDDDL" runat="server">
-                        <asp:ListItem Value="P2020052900006">穩定累積財富</asp:ListItem>
-                        <asp:ListItem Value="P2020061600047">退休金準備</asp:ListItem>
-                    </asp:DropDownList>
+                   
     
                     <asp:Label ID="CkLB" runat="server"></asp:Label>
                     <asp:Button ID="CkBTN" runat="server" Text="檢查" />
@@ -46,19 +45,20 @@
                                     請輸入優惠碼折扣
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="輸入優惠代碼" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" 
+                                    @keyup="promoCodeText" v-model="promoCode"
+                                    placeholder="輸入優惠代碼" aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <div class="input-group-append">
-                                      <button class="btn btn-outline-primary py-1 px-4" type="button">兌換</button>
+                                      <button class="btn btn-outline-primary py-1 px-4" type="button" 
+                                      @click="exChange">兌換</button>
                                     </div>
                                 </div>
                               </div>
                           </div>
                         </div>
                         <!-- 第一次輸入優惠碼後才出現 -->
-                        <div class="panel admin-panel">
+                        <div class="panel admin-panel" v-if="carryCouponList.length !=0">
                           <div class="panel-header pb-0 bg-light">
-                              <!-- <a class="text-dark mdi mdi-24px mdi-tag-outline"></a>
-                              可用優惠 -->
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                   <a class="nav-item nav-link active px-4" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">可使用</a>
                                   <a class="nav-item nav-link px-4" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">已使用</a>
@@ -69,37 +69,93 @@
                               <!-- 可使用 -->
                               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="d-flex flex-wrap row mx-3">
-                                  <coupon-use></coupon-use>
+                                  <!-- 未使用 -->
+                                  <coupon-use 
+                                    v-for="(item, index) in couponNotUse" 
+                                    :key="item[2]" 
+                                    :coupon-data="item">
+                                    <template v-slot:nouse>
+                                        <div class="px-0">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary py-1 px-4" v-if="item[12] == 0" @click="checkCoupon">
+                                                使用
+                                            </button>
+                                            <button type="button" class="btn btn-primary py-1 px-4 d-none" data-toggle="modal" data-target="#exchangeModal" id="couponModalBtn">
+                                            </button>
+                                            <div class="modal fade" id="exchangeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header" style="background-color: #16b6d2;">
+                                                      <h5 class="modal-title flex-grow-1  text-center text-light" id="exampleModalLabel">使用確認</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                      <span v-if="!isRepeat">
+                                                        {{norepeatText}}
+                                                      </span>
+                                                      <span v-if="isRepeat">
+                                                        {{repeatText}}
+                                                        <asp:DropDownList ID="PIDDDL" runat="server" class="btn btn-light dropdown-toggle px-5 mt-4">
+                                                            <asp:ListItem Value="P2020052900006" class="">穩定累積財富</asp:ListItem>
+                                                            <asp:ListItem Value="P2020061600047" class="">退休金準備</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                      </span>
+                                                    </div>
+                                                    <div class="modal-body d-flex justify-content-center">
+                                                      <button type="button" class="btn btn-outline-primary py-1 px-4 mx-2" @click="useCoupon">使用</button>
+                                                      <button type="button" class="btn btn-secondary py-1 px-4 mx-2" data-dismiss="modal">取消</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                          
+                                    </template>
+                                  </coupon-use>
+                                  <!-- 使用中 -->
+                                  <coupon-use 
+                                  v-for="(item, index) in couponUsing" 
+                                  :key="item[2]" 
+                                  :coupon-data="item">
+                                  <template v-slot:nouse>
+                                      <div class="px-0">
+                                          <button type="button" class="btn btn-outline-primary py-1 px-4 using-btn" v-if="item[12] == 1"
+                                          disabled>
+                                              使用中
+                                          </button>
+                                        </div>
+                                  </template>
+                                </coupon-use>
                                 </div>
                               </div>
                               <!-- 已使用 -->
                               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <div class="d-flex flex-wrap row mx-3">
-                                  <coupon-use>
+                                  <coupon-use
+                                  v-for="(item, index) in couponUsed" 
+                                  :key="item[2]" 
+                                  :coupon-data="item">
                                     <template v-slot:tag>
                                       <div class="coupon-tag">
                                         已使用
                                       </div>
                                     </template>
                                     <!-- 移除按鈕 -->
-                                    <template v-slot:nouse>
-                                      <div>
-                                      </div>
-                                    </template>
                                   </coupon-use>
                                 </div>
                               </div>
                               <!-- 已過期 -->
                               <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <div class="d-flex flex-wrap row mx-3">
-                                  <coupon-use>
+                                  <coupon-use
+                                  v-for="(item, index) in couponExpired" 
+                                  :key="item[2]" 
+                                  :coupon-data="item">
                                     <template v-slot:tag>
                                       <div class="coupon-tag">
                                         已過期
-                                      </div>
-                                    </template>
-                                    <template v-slot:nouse>
-                                      <div>
                                       </div>
                                     </template>
                                   </coupon-use>
@@ -155,6 +211,8 @@
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="ExchBTN" />
+            <asp:PostBackTrigger ControlID="CkBTN" />
+            <asp:PostBackTrigger ControlID="UseBTN" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
@@ -166,51 +224,33 @@
     <script src="js/header.js?202006010"></script>
     <script type="text/x-template" id="couponUse">
         <!-- 一張優惠券 -->
-        <div class="col-md-6 col-lg-4 p-2 text-left border-0">
+        <div class="col-md-6 col-lg-4 p-2 text-left border-0" v-if="couponData">
           <!-- <div class="card coupon-bg-b p-4 text-left border border-primary"></div> -->
-          <div class="coupon p-4 coupon-bg-b position-relative">
-            <h3 class="text-primary mb-3">折抵一個月</h3>
+          <div class="coupon p-4 position-relative" :class="background">
+            <h3 class="mb-3" :class="titleColor">{{ couponData[3] }}</h3>
             <slot name="tag">
             </slot>
-            <img class="coupon-using-stamp" src="images/coupon-using.svg" alt="">
+            <img v-if="couponData[12] == 1" class="coupon-using-stamp" src="images/coupon-using.svg" alt="">
             <ul>
-              <li>優惠碼：45KWL-1W875-HY142</li>
-              <li>優惠活動：你下單我買單</li>
-              <li>優惠內容：折抵顧問管理費</li>
-              <li>優惠時間：一個月</li>
+              <li>優惠碼：{{ couponData[2] }}</li>
+              <li>優惠活動：{{ couponData[3] }}</li>
+              <li>優惠內容：{{ couponData[4] }}</li>
+              <li>優惠時間：{{ couponData[7] }} 個月</li>
             </ul>
-            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
-              <div class="mr-3 coupon-date">
-                <p>有效期限至 : 2021 年 6 月 15 日</p>
+            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap"       v-if="couponData">
+                <!-- 優惠券狀態 - 未使用 -->
+              <div class="mr-3 coupon-date" v-if="couponData[12] == 0 || couponData[12] == 3">
+                <p>有效期限至 : {{ couponData[6] }}</p>
                 <span class="text-muted hint">請於有效期限內兌換完畢</span>
               </div>
-              <!-- <div class="mr-3">
+                <!-- 優惠券狀態 - 使用中 -->
+              <div class="mr-3 coupon-period" v-if="couponData[12] == 1 || couponData[12] == 2">
                 <b>優惠期間</b>
-                <span class="text-muted hint">
-                  2020/9/1 <a class="text-dark mdi mdi-triangle coupon-period-icon"></a>2020/9/30
+                <span class="text-primary">
+                    {{ couponData[9] }}<a class="text-dark mdi mdi-triangle coupon-period-icon"></a> {{ couponData[10] }}
                 </span>
-              </div> -->
+              </div>
               <slot name="nouse">
-                <div class="px-0">
-                  <button class="btn btn-primary py-1 px-4"  data-toggle="modal" data-target="#couponModal">使用</button>
-                  <button class="btn btn-outline-primary py-1 bg-white px-4 d-none"  data-toggle="modal" data-target="#couponModal" disabled>使用中</button>
-                </div>
-                <div class="modal fade px-0" id="couponModal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header bg-primary">
-                        <h4 class="modal-title flex-grow-1  text-center text-light">使用確認</h4>
-                      </div>
-                      <div class="modal-body text-center">
-                        提醒您一個月只能使用一張優惠券，您確定要使用此優惠嗎?
-                      </div>
-                      <div class="modal-footer border-top-0 justify-content-center">
-                        <button type="button" class="btn btn-outline-primary px-4">確定</button>
-                        <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">取消</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </slot>
             </div>
           </div>

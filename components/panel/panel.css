@@ -37,6 +37,8 @@
 }
 
 .coupon-using-stamp {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
   position: absolute;
   top: 5%;
   right: 5%;
@@ -47,14 +49,24 @@
     top: auto;
     bottom: 5%;
     right: 5%;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
   }
 }
 
 @media all and (max-width: 480px) {
-  .coupon-date {
+  .coupon-date, .coupon-period {
     margin-bottom: 40px;
+  }
+}
+
+@media all and (max-width: 796px) {
+  .using-btn {
+    margin-top: 15px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .using-btn {
+    margin-top: 0px;
   }
 }
 
@@ -95,6 +107,7 @@
 .panel-body.coupon-scroll {
   height: 40vh;
   overflow-y: scroll;
+  border: 5px solid #ffffff;
 }
 
 @media all and (max-width: 480px) {

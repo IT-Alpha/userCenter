@@ -53,6 +53,7 @@ $coupon-g:#EFEFEF;
   font-size:12px;
 }
 .coupon-using-stamp{
+  transform: scale(.7);
   position:absolute;
   top:5%;
   right:5%;
@@ -61,13 +62,20 @@ $coupon-g:#EFEFEF;
     top:	auto;
     bottom:5%;
     right:5%;
-    transform: scale(.8);
   }
     
 }
-.coupon-date{
+.coupon-date,.coupon-period{
   @media all and (max-width: 480px) {
     margin-bottom:40px;
+  }
+}
+.using-btn{
+  @media all and (max-width: 796px) {
+    margin-top:15px;
+  }
+  @media all and (max-width: 480px) {
+    margin-top:0px;
   }
 }
 // Base styles
@@ -99,6 +107,7 @@ $coupon-g:#EFEFEF;
   &.coupon-scroll{
     height:40vh;
     overflow-y: scroll;
+    border:5px solid $white;
     @media all and (max-width: 480px) {
       height:50vh;
     }
