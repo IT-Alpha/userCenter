@@ -16,22 +16,60 @@ $panel-brad: $border-radius;
 $panel-title-color: $black;
 //阿爾發優惠券樣式
 $coupon-b:#E5FAFF;
-$coupon-g:#f2faf0;
+$coupon-y:#f2faf0;
 $coupon-o:#fff8ed;
+$coupon-g:#EFEFEF;
 
 .coupon-bg{
   &-b{
     background-color: $coupon-b;
   }
-  &-g{
-    background-color: $coupon-g;
+  &-y{
+    background-color: $coupon-y;
   }
   &-o{
     background-color: $coupon-o;
   }
+  &-g{
+    background-color: $coupon-g;
+  }
 }
-
-
+// 阿爾發優惠券客製
+.coupon{
+	border-radius:20px;
+	.coupon-tag{
+		position:absolute;
+		top:12%;
+		right:1%;
+		padding:3px 8px;
+		background-color:$gray-600;
+		color:$white;
+	}
+}
+.coupon-period-icon::before{
+  transform:rotate(90deg) scale(.6);
+}
+.hint{
+  font-size:12px;
+}
+.coupon-using-stamp{
+  position:absolute;
+  top:5%;
+  right:5%;
+  //手機
+  @media all and (max-width: 480px) {
+    top:	auto;
+    bottom:5%;
+    right:5%;
+    transform: scale(.8);
+  }
+    
+}
+.coupon-date{
+  @media all and (max-width: 480px) {
+    margin-bottom:40px;
+  }
+}
 // Base styles
 .panel {
   position: relative;
@@ -56,6 +94,14 @@ $coupon-o:#fff8ed;
   &-bg {
     color: color-yiq(lighten($panel-cap-bg, 10%));
     background-color: lighten($panel-cap-bg, 10%);
+  }
+
+  &.coupon-scroll{
+    height:40vh;
+    overflow-y: scroll;
+    @media all and (max-width: 480px) {
+      height:50vh;
+    }
   }
 }
 

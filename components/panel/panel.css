@@ -2,12 +2,60 @@
   background-color: #E5FAFF;
 }
 
-.coupon-bg-g {
+.coupon-bg-y {
   background-color: #f2faf0;
 }
 
 .coupon-bg-o {
   background-color: #fff8ed;
+}
+
+.coupon-bg-g {
+  background-color: #EFEFEF;
+}
+
+.coupon {
+  border-radius: 20px;
+}
+
+.coupon .coupon-tag {
+  position: absolute;
+  top: 12%;
+  right: 1%;
+  padding: 3px 8px;
+  background-color: #868e96;
+  color: #ffffff;
+}
+
+.coupon-period-icon::before {
+  -webkit-transform: rotate(90deg) scale(0.6);
+          transform: rotate(90deg) scale(0.6);
+}
+
+.hint {
+  font-size: 12px;
+}
+
+.coupon-using-stamp {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+@media all and (max-width: 480px) {
+  .coupon-using-stamp {
+    top: auto;
+    bottom: 5%;
+    right: 5%;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@media all and (max-width: 480px) {
+  .coupon-date {
+    margin-bottom: 40px;
+  }
 }
 
 .panel {
@@ -42,6 +90,17 @@
 .panel-body-bg {
   color: #262f3c;
   background-color: white;
+}
+
+.panel-body.coupon-scroll {
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+@media all and (max-width: 480px) {
+  .panel-body.coupon-scroll {
+    height: 50vh;
+  }
 }
 
 .panel-body + .panel-body {
