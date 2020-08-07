@@ -4,7 +4,14 @@
     <style>
 		.slick-vertical .slick-slide {
 			width: 100% !important;
-		}
+    }
+    select{
+      padding:5px 10px;
+      border-radius: 30px;
+    }
+    option:hover {
+        box-shadow: 0 0 10px 100px #1882A8 inset;
+    }
 	</style>
 </asp:Content>
 
@@ -23,7 +30,10 @@
                     <asp:TextBox ID="IDTBX1" runat="server" MaxLength="3"></asp:TextBox>
                     <!-- 資料陣列[1]存取處 -->
                     <asp:TextBox ID="IDTBX2" runat="server" MaxLength="7"></asp:TextBox>
-                   
+                    <asp:DropDownList ID="PIDDDL" runat="server" class="btn btn-light dropdown-toggle px-5 mt-4">
+                      <asp:ListItem Value="P2020052900006" class="">穩定累積財富</asp:ListItem>
+                      <asp:ListItem Value="P2020061600047" class="">退休金準備</asp:ListItem>
+                    </asp:DropDownList>
     
                     <asp:Label ID="CkLB" runat="server"></asp:Label>
                     <asp:Button ID="CkBTN" runat="server" Text="檢查" />
@@ -56,7 +66,7 @@
                               </div>
                           </div>
                         </div>
-                        <!-- 第一次輸入優惠碼後才出現 -->
+
                         <div class="panel admin-panel" v-if="carryCouponList.length !=0">
                           <div class="panel-header pb-0 bg-light">
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -73,46 +83,8 @@
                                   <coupon-use 
                                     v-for="(item, index) in couponNotUse" 
                                     :key="item[2]" 
-                                    :coupon-data="item">
-                                    <template v-slot:nouse>
-                                        <div class="px-0">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary py-1 px-4" v-if="item[12] == 0" @click="checkCoupon">
-                                                使用
-                                            </button>
-                                            <button type="button" class="btn btn-primary py-1 px-4 d-none" data-toggle="modal" data-target="#exchangeModal" id="couponModalBtn">
-                                            </button>
-                                            <div class="modal fade" id="exchangeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                  <div class="modal-content">
-                                                    <div class="modal-header" style="background-color: #16b6d2;">
-                                                      <h5 class="modal-title flex-grow-1  text-center text-light" id="exampleModalLabel">使用確認</h5>
-                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                      </button>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                      <span v-if="!isRepeat">
-                                                        {{norepeatText}}
-                                                      </span>
-                                                      <span v-if="isRepeat">
-                                                        {{repeatText}}
-                                                        <asp:DropDownList ID="PIDDDL" runat="server" class="btn btn-light dropdown-toggle px-5 mt-4">
-                                                            <asp:ListItem Value="P2020052900006" class="">穩定累積財富</asp:ListItem>
-                                                            <asp:ListItem Value="P2020061600047" class="">退休金準備</asp:ListItem>
-                                                        </asp:DropDownList>
-                                                      </span>
-                                                    </div>
-                                                    <div class="modal-body d-flex justify-content-center">
-                                                      <button type="button" class="btn btn-outline-primary py-1 px-4 mx-2" @click="useCoupon">使用</button>
-                                                      <button type="button" class="btn btn-secondary py-1 px-4 mx-2" data-dismiss="modal">取消</button>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                            </div>
-                                          </div>
-                                          
-                                    </template>
+                                    :coupon-data="item"
+                                    :is-repeat="isRepeat">
                                   </coupon-use>
                                   <!-- 使用中 -->
                                   <coupon-use 
@@ -199,6 +171,12 @@
                                 <span class="text-muted">● </span>
                                 例如 : 8/11 使用 「1 個月免費」 優惠券，優惠於 9 月開始生效，故 10 月將免收取 9 月顧問管理費
                               </p>
+                              <div class="d-flex flex-wrap">
+                                <h3 class="text-primary mb-1">4.有效期限內使用完畢：</h3>
+                                <span class="">
+                                  請務必留意其優惠券之有效期限，並於期限內使用完畢，以確保您的使用權益
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>  
@@ -250,8 +228,65 @@
                     {{ couponData[9] }}<a class="text-dark mdi mdi-triangle coupon-period-icon"></a> {{ couponData[10] }}
                 </span>
               </div>
-              <slot name="nouse">
-              </slot>
+              <div class="px-0">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary py-1 px-4" 
+                  v-if="couponData[12] == 0" @click="checkCoupon">
+                    使用
+                  </button>
+                  <slot name="nouse">
+                  </slot>
+                  
+                  <button type="button" class="btn btn-primary py-1 px-4 d-none" data-toggle="modal" data-target="#exchangeModal" id="couponModalBtn">
+                  </button>
+
+                  <div class="modal fade" id="exchangeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header" :class="modalColor">
+                            <h5 class="modal-title flex-grow-1  text-center text-light" id="exampleModalLabel">確定使用?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <div v-if="!isRepeat" v-html="norepeatText">
+                            </div>
+                            <div v-if="isRepeat" v-html="repeatText">
+                            </div>
+                          </div>
+                          <div class="m-auto" 
+                          v-if="couponData[5] == 'Plan' || couponData[5] == 'FPlan' || couponData[5] == 'ALL'">
+                            <!-- <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              請選擇計畫
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div> -->
+                            <select class="decorated" name="" id="" v-model="selectPlan">
+                              <option class="bg-light" value="">請選擇計畫</option>
+                              <option class="bg-light" value="計畫A">計畫A</option>
+                              <option class="bg-light" value="計畫B">計畫B</option>
+                              <option class="bg-light" value="計畫C">計畫C</option>
+                              <option class="bg-light" value="計畫D">計畫D</option>
+                            </select>
+                          </div>
+                          <span class="text-center text-muted pt-3">
+                            ( 點選確定即視為同意優惠券使用辦法 )
+                          </span>
+                          <div class="modal-body d-flex justify-content-center">
+                            <button type="button" class="btn py-1 px-4 mx-2" :class="sureBtnColor" @click="useCoupon">確定</button>
+                            <button type="button" class="btn py-1 px-4 mx-2" :class="cancelBtnColor" data-dismiss="modal">取消</button>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+                  
+            
             </div>
           </div>
         </div>

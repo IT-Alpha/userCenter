@@ -26,3 +26,10 @@ $dropdown-link-disabled-color: $gray-400;
 .dropdown-toggle:after {
 	height: $caret-width;
 }
+
+.dropdown-menu{
+	background-color: $gray-200;
+	.dropdown-item{
+		color:$gray-600;
+	}
+}

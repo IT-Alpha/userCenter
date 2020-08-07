@@ -105,7 +105,7 @@
 }
 
 .panel-body.coupon-scroll {
-  height: 40vh;
+  height: 320px;
   overflow-y: scroll;
   border: 5px solid #ffffff;
 }
