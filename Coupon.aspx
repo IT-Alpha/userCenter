@@ -55,7 +55,7 @@
                           <div class="panel-body">
                               <div class="col-md-5 col-xl-4">
                                 <div class="panel-title mb-3">
-                                    請輸入優惠碼折扣
+                                    請輸入優惠碼兌換優惠券
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" 
@@ -87,21 +87,24 @@
                                     v-for="(item, index) in couponNotUse" 
                                     :key="item[2]" 
                                     :coupon-data="item"
-                                    :is-repeat="isRepeat">
+                                    :is-repeat="isRepeat"
+                                    :target-coupon-data="targetCouponData">
                                   </coupon-use>
                                   <!-- 使用中 -->
                                   <coupon-use 
-                                  v-for="(item, index) in couponUsing" 
-                                  :key="item[2]" 
-                                  :coupon-data="item">
-                                  <template v-slot:nouse>
+                                    v-for="(item, index) in couponUsing" 
+                                    :key="item[2]" 
+                                    :coupon-data="item"
+                                    :is-repeat="isRepeat"
+                                    :target-coupon-data="targetCouponData">
+                                  <!-- <template v-slot:nouse>
                                       <div class="px-0">
-                                          <button type="button" class="btn btn-outline-primary py-1 px-4 using-btn" v-if="item[12] == 1"
+                                          <button type="button" class="btn btn-outline-primary py-1 px-4 using-btn" v-if="item[13] == 1"
                                           disabled>
                                               使用中
                                           </button>
                                         </div>
-                                  </template>
+                                  </template> -->
                                 </coupon-use>
                                 </div>
                               </div>
@@ -111,7 +114,9 @@
                                   <coupon-use
                                   v-for="(item, index) in couponUsed" 
                                   :key="item[2]" 
-                                  :coupon-data="item">
+                                    :coupon-data="item"
+                                    :is-repeat="isRepeat"
+                                    :target-coupon-data="targetCouponData">
                                     <template v-slot:tag>
                                       <div class="coupon-tag">
                                         已使用
@@ -125,9 +130,11 @@
                               <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <div class="d-flex flex-wrap row mx-3">
                                   <coupon-use
-                                  v-for="(item, index) in couponExpired" 
-                                  :key="item[2]" 
-                                  :coupon-data="item">
+                                    v-for="(item, index) in couponExpired" 
+                                    :key="item[2]" 
+                                    :coupon-data="item"
+                                    :is-repeat="isRepeat"
+                                    :target-coupon-data="targetCouponData">
                                     <template v-slot:tag>
                                       <div class="coupon-tag">
                                         已過期
@@ -211,30 +218,44 @@
             <h3 class="mb-3" :class="titleColor">{{ couponData[3] }}</h3>
             <slot name="tag">
             </slot>
-            <img v-if="couponData[12] == 1" class="coupon-using-stamp" src="images/coupon-using.svg" alt="">
+            <img v-if="couponData[13] == 1" class="coupon-using-stamp" src="images/coupon-using.svg" alt="">
             <ul>
               <li>優惠碼：{{ couponData[2] }}</li>
-              <li>優惠活動：{{ couponData[3] }}</li>
-              <li>優惠內容：{{ couponData[4] }}</li>
-              <li>優惠時間：{{ couponData[7] }} 個月</li>
+              <!-- <li>優惠活動：{{ couponData[3] }}</li> -->
+              <li>內容：{{ couponData[4] }}</li>
+              <li>類別：{{ couponCategory }}</li>
+              <!-- <li>優惠時間：{{ couponData[7] }} 個月</li> -->
             </ul>
-            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap"       v-if="couponData">
-                <!-- 優惠券狀態 - 未使用 -->
-              <div class="mr-3 coupon-date" v-if="couponData[12] == 0 || couponData[12] == 3">
+            <div class="mt-3"
+              v-if="couponData">
+              <!-- 優惠券狀態 - 未使用/已過期 -->
+              <div class="mr-3 coupon-date" 
+                v-if="couponData[13] == 0 || couponData[13] == 3">
                 <p>有效期限至 : {{ couponData[6] }}</p>
-                <span class="text-muted hint">請於有效期限內兌換完畢</span>
+                <span class="text-muted hint">請於有效期限內使用
+                  完畢</span>
               </div>
-                <!-- 優惠券狀態 - 使用中 -->
-              <div class="mr-3 coupon-period" v-if="couponData[12] == 1 || couponData[12] == 2">
+              <!-- 優惠券狀態 - 使用中/單一計畫或是單一計畫首次 才顯示綁定計畫 -->
+              <div class="mr-3 coupon-period" 
+                v-if="couponData[13] != 3 && couponData[5] == 'Plan' || couponData[5] == 'FPlan'">
+                <b v-if="couponData[13] != 0">優惠計畫</b>
+                <span class="text-primary">
+                    {{ couponData[12] }} {{ couponData[11] }}
+                </span>
+              </div>
+              <!-- 優惠券狀態 - 使用中/已使用 -->
+              <div class="mr-3 coupon-period" 
+                v-if="couponData[13] == 1 || couponData[13] == 2">
                 <b>優惠期間</b>
                 <span class="text-primary">
                     {{ couponData[9] }}<a class="text-dark mdi mdi-triangle coupon-period-icon"></a> {{ couponData[10] }}
                 </span>
               </div>
+              
               <div class="px-0">
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary py-1 px-4" 
-                  v-if="couponData[12] == 0" @click="checkCoupon">
+                    v-if="couponData[13] == 0" @click="checkCoupon">
                     使用
                   </button>
                   <slot name="nouse">
@@ -258,21 +279,22 @@
                             <div v-if="isRepeat" v-html="repeatText">
                             </div>
                           </div>
-                          <div class="m-auto" 
-                          v-if="couponData[5] == 'Plan' || couponData[5] == 'FPlan' || couponData[5] == 'ALL'">
-                            <!-- <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              請選擇計畫
-                            </a>
-                          
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div> -->
-                            <select class="decorated" name="" id="" v-model="selectPlan">
+                          <div class="m-auto text-center" 
+                            v-if="targetCouponData && couponData[13] != 3">
+                            <select class="decorated" name="" id="" 
+                              v-model="selectPlan" 
+                              v-if="targetCouponData[5] == 'Plan' || targetCouponData[5] == 'FPlan'">
                               <option class="bg-light" value="">請選擇計畫</option>
-                              <option class="bg-light" value="計畫A">計畫A</option>
+                              <option 
+                                class="bg-light"
+                                v-for="(item, index) in orderedPlans" 
+                                :value="item[0]">
+                                {{ item[1] }} {{ item[0] }}
+                              </option>
                             </select>
+                            <div class="text-secondary text-center">
+                              {{ selectPlanAlert }}
+                            </div>
                           </div>
                           <span class="text-center text-muted pt-3">
                             ( 點選確定即視為同意優惠券使用辦法 )
@@ -291,5 +313,5 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js?20200809"></script>
+    <script src="js/coupon.js?2020081023"></script>
 </asp:Content>

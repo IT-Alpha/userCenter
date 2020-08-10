@@ -186,10 +186,10 @@
                   </a>
                 </li>
                 <li class="rd-navbar-nav-item">
-                  <a class="rd-navbar-link py-2" href="#">
+                  <a class="rd-navbar-link py-2" href="Coupon.aspx">
                     <span class="rd-navbar-icon mdi mdi-tag" href="#"></span>
                     <div class="flex-grow-1 text-center" style="padding-right:2.5rem;letter-spacing:5px">
-                      專屬優惠
+                      我的優惠
                     </div>
                   </a>
                 </li>
