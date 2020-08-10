@@ -25,14 +25,17 @@
                 <div class="d-none">
                     <asp:TextBox ID="NumTBX" runat="server" MaxLength="17"></asp:TextBox>
                     <asp:Button ID="ExchBTN" runat="server" Text="兌換" />
-                    <asp:Label ID="CPDataLB" runat="server">[]</asp:Label>
+                    <!-- 客戶持有優惠券 -->
+                    <asp:Label ID="CPDataLB" runat="server"></asp:Label>
+                    <!-- 客戶下單計畫陣列 -->
+                    <asp:Label ID="PDataLB" runat="server"></asp:Label>
                     <!-- 資料陣列[0]存取處 -->
                     <asp:TextBox ID="IDTBX1" runat="server" MaxLength="3"></asp:TextBox>
                     <!-- 資料陣列[1]存取處 -->
                     <asp:TextBox ID="IDTBX2" runat="server" MaxLength="7"></asp:TextBox>
+                    <!-- 計畫編號存取處 -->
+                    <asp:TextBox ID="PIDTBX" runat="server" MaxLength="14"></asp:TextBox>
                     <asp:DropDownList ID="PIDDDL" runat="server" class="btn btn-light dropdown-toggle px-5 mt-4">
-                      <asp:ListItem Value="P2020052900006" class="">穩定累積財富</asp:ListItem>
-                      <asp:ListItem Value="P2020061600047" class="">退休金準備</asp:ListItem>
                     </asp:DropDownList>
     
                     <asp:Label ID="CkLB" runat="server"></asp:Label>
@@ -269,9 +272,6 @@
                             <select class="decorated" name="" id="" v-model="selectPlan">
                               <option class="bg-light" value="">請選擇計畫</option>
                               <option class="bg-light" value="計畫A">計畫A</option>
-                              <option class="bg-light" value="計畫B">計畫B</option>
-                              <option class="bg-light" value="計畫C">計畫C</option>
-                              <option class="bg-light" value="計畫D">計畫D</option>
                             </select>
                           </div>
                           <span class="text-center text-muted pt-3">
@@ -291,5 +291,5 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js"></script>
+    <script src="js/coupon.js?20200809"></script>
 </asp:Content>

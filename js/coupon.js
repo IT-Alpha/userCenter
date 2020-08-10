@@ -78,7 +78,12 @@ Vue.component('coupon-use',{
                 return 'btn-secondary';
 
             }
-        }
+        },
+        orderedPlans(){
+            let orderedList = document.querySelector('#ctl00_Main_PDataLB');
+            return orderedList.textContent == '[]'?
+                []:eval(orderedList.textContent);
+        }   
     },
     methods:{
         //檢查優惠券
