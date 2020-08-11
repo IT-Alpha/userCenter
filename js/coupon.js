@@ -20,7 +20,7 @@ Vue.component('coupon-use',{
                     case 0:
                         return 'coupon-bg-b';
                     case 1:
-                        return 'coupon-bg-b';
+                        return 'coupon-bg-b border border-primary';
                     case 2:
                         return 'coupon-bg-g';
                     case 3:
@@ -93,22 +93,22 @@ Vue.component('coupon-use',{
                     return '所有計畫';
                 break;
                 case 'Edu':
-                    return '當孩子教育的後盾';
+                    return '子女教育金';
                 break;
                 case 'Long':
-                    return '累積長期財富';
+                    return '穩定累積財富';
                 break;
                 case 'Preservation':
-                    return '守護財富財產保值';
+                    return '財產保值抗通膨';
                 break;
                 case 'Production':
-                    return '實現擁有家的願望';
+                    return '存錢買房';
                 break;
                 case 'Retirement':
-                    return '提早過退休生活';
+                    return '退休金準備';
                 break;
                 case 'SpecificGoal':
-                    return '其他個人化的目標';
+                    return '其他目標';
                 break;
                 case 'Wallet':
                     return '金額優惠';
