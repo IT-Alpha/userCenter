@@ -222,11 +222,17 @@
             <ul>
               <li>優惠碼：{{ couponData[2] }}</li>
               <!-- <li>優惠活動：{{ couponData[3] }}</li> -->
-              <li>內容：{{ couponData[4] }}</li>
+              <!-- <li>內容：{{ couponData[4] }}</li> -->
+              <li>
+                <div class="d-flex flex-wrap">
+                  內容：<div v-html="couponData[4]"></div>
+                </div>
+                
+              </li>
               <li>類別：{{ couponCategory }}</li>
               <!-- <li>優惠時間：{{ couponData[7] }} 個月</li> -->
             </ul>
-            <div class="mt-3"
+            <div class="mt-3 d-flex justify-content-between flex-wrap"
               v-if="couponData">
               <!-- 優惠券狀態 - 未使用/已過期 -->
               <div class="mr-3 coupon-date" 
@@ -313,5 +319,5 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js?2020081023"></script>
+    <script src="js/coupon.js?202008112"></script>
 </asp:Content>

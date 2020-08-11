@@ -55,8 +55,8 @@ $coupon-g:#EFEFEF;
 .coupon-using-stamp{
   transform: scale(.7);
   position:absolute;
-  top:5%;
-  right:5%;
+  top:0;
+  right:3%;
   //手機
   @media all and (max-width: 480px) {
     top:	auto;

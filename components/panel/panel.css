@@ -40,8 +40,8 @@
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
   position: absolute;
-  top: 5%;
-  right: 5%;
+  top: 0;
+  right: 3%;
 }
 
 @media all and (max-width: 480px) {

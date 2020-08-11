@@ -230,8 +230,9 @@ let couponApp = new Vue({
         //客戶持有優惠券(輸入歷史)
         carryCouponList(){
             let backendList = document.querySelector('#ctl00_Main_CPDataLB');
-            return backendList.textContent == '[]'?
-                []:eval(backendList.textContent);
+            return backendList.innerHTML == '[]'?
+                []:eval(backendList.innerHTML);
+            // return [];
         },
         //客戶持有未使用優惠券
         couponNotUse(){
