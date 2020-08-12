@@ -224,7 +224,7 @@ let couponApp = new Vue({
             let vm = this;
             let promoCodeInput = document.querySelector('#ctl00_Main_NumTBX');
             promoCodeInput.value = vm.promoCode;
-        },
+        }
     },
     computed:{
         //客戶持有優惠券(輸入歷史)
@@ -259,5 +259,13 @@ let couponApp = new Vue({
                 []: vm.carryCouponList.filter(coupon => coupon[13] == 3);
         }
     
+    },
+    watch:{
+        promoCode(){
+            let vm = this;
+            let promoCodeInput = document.querySelector('#ctl00_Main_NumTBX');
+            promoCodeInput.value = vm.promoCode;
+            // alert(vm.promoCode, promoCodeInput.value)
+        }
     }
 })

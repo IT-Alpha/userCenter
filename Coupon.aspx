@@ -59,11 +59,12 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" 
-                                    @keyup="promoCodeText" v-model="promoCode"
+                                      @keyup="promoCodeText" v-model="promoCode"
                                     placeholder="輸入優惠代碼" aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <div class="input-group-append">
                                       <button class="btn btn-outline-primary py-1 px-4" type="button" 
-                                      @click="exChange">兌換</button>
+                                        @click="exChange">兌換
+                                      </button>
                                     </div>
                                 </div>
                               </div>
@@ -319,5 +320,5 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js?202008114"></script>
+    <script src="js/coupon.js?2020081210"></script>
 </asp:Content>
