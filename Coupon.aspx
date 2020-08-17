@@ -41,6 +41,11 @@
                     <asp:Label ID="CkLB" runat="server"></asp:Label>
                     <asp:Button ID="CkBTN" runat="server" Text="檢查" />
                     <asp:Button ID="UseBTN" runat="server" Text="使用" />
+
+                    <!-- 推薦人 -->
+                    <asp:Label ID="AccLB" runat="server"></asp:Label>
+                    <asp:TextBox ID="AccTBX" runat="server" MaxLength="50"></asp:TextBox>
+                    <asp:Button ID="EnterBTN" runat="server" Text="輸入" />
                 </div>
                 <div class="container-fluid">
                     <div class="row row-30">
@@ -52,7 +57,7 @@
                               專屬優惠
                             </div>
                           </div>
-                          <div class="panel-body">
+                          <div class="panel-body d-flex flex-wrap">
                               <div class="col-md-5 col-xl-4">
                                 <div class="panel-title mb-3">
                                     請輸入優惠碼兌換優惠券
@@ -67,6 +72,31 @@
                                       </button>
                                     </div>
                                 </div>
+                              </div>
+                              <div class="col-md-5 col-xl-4">
+                                <div class="panel-title mb-3">
+                                    <span v-if="!hasReference">
+                                      請輸入推薦人帳號(非必填)
+                                    </span>
+                                    <span v-if="hasReference">
+                                      您的推薦人
+                                    </span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" 
+                                      placeholder="輸入推薦人帳號mail" 
+                                      v-model="referenceAcc" 
+                                      :disabled="hasReference"
+                                      :style="borderRadius">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-primary py-1 px-4" type="button"
+                                        @click="sendReferenceAcc" 
+                                        v-if="!hasReference">
+                                        送出
+                                      </button>
+                                    </div>
+                                </div>
+                                <span class="text-secondary">{{ referenceAlert }}</span>
                               </div>
                           </div>
                         </div>
@@ -202,6 +232,7 @@
             <asp:PostBackTrigger ControlID="ExchBTN" />
             <asp:PostBackTrigger ControlID="CkBTN" />
             <asp:PostBackTrigger ControlID="UseBTN" />
+            <asp:PostBackTrigger ControlID="EnterBTN" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
@@ -320,5 +351,5 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js?2020081210"></script>
+    <script src="js/coupon.js?20200817"></script>
 </asp:Content>

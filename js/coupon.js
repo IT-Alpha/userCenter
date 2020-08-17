@@ -185,12 +185,28 @@ let couponApp = new Vue({
     el:'#coupon',
     data:{
         promoCode:'',
+        hasReference:false,
+        referenceAcc:'',
+        referenceAlert:'',
         isRepeat:false,
         targetCouponData:[]
     },
     mounted(){
+        if(window.location.search !== "")
+        {
+            let searchURL = window.location.search;
+            searchURL = searchURL.substring(1, searchURL.length);
+            let search = searchURL.split("&")[0].split("=");
+            
+            if(search[0] === 'couponId') {
+                vm.promoCode = search[1];
+            }
+
+        }
         let vm = this;
         let checkedMsg = document.querySelector('#ctl00_Main_CkLB');
+        //推薦人字串
+        let reference = document.querySelector('#ctl00_Main_AccLB');
 
         if(checkedMsg.textContent == 'Repeat'){
             // console.log('重複')
@@ -212,6 +228,12 @@ let couponApp = new Vue({
             
         }
 
+        if(reference.textContent != 'None'){
+            // console.log(reference.textContent)
+            vm.hasReference = true;
+            vm.referenceAcc = reference.textContent;
+        }
+        
     },
     methods:{
         //兌換配對控制項
@@ -224,6 +246,26 @@ let couponApp = new Vue({
             let vm = this;
             let promoCodeInput = document.querySelector('#ctl00_Main_NumTBX');
             promoCodeInput.value = vm.promoCode;
+        },
+        //輸入推薦人
+        sendReferenceAcc(){
+            let vm = this;
+            let mail_Re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+            //送出推薦人帳號Input
+            let sendReferenceAccInput = document.querySelector('#ctl00_Main_AccTBX');
+            //送出推薦人帳號按鈕
+            let sendReferenceAccBtn = document.querySelector('#ctl00_Main_EnterBTN');
+            let isAccPass = mail_Re.test(vm.referenceAcc);
+
+            if(isAccPass){
+                vm.referenceAlert = '';
+                sendReferenceAccInput.value = vm.referenceAcc;
+                // console.log(sendReferenceAccInput.value);
+                sendReferenceAccBtn.click();
+            }else{
+                vm.referenceAlert = '請輸入正確帳號mail格式';
+            }
         }
     },
     computed:{
@@ -257,6 +299,12 @@ let couponApp = new Vue({
             let vm = this;
             return vm.carryCouponList == []?
                 []: vm.carryCouponList.filter(coupon => coupon[13] == 3);
+        },
+        borderRadius(){
+            let vm = this;
+            return vm.hasReference ? 
+                 'border-top-right-radius: 1.375rem; border-bottom-right-radius: 1.375rem;' : '';
+
         }
     
     },
@@ -266,6 +314,11 @@ let couponApp = new Vue({
             let promoCodeInput = document.querySelector('#ctl00_Main_NumTBX');
             promoCodeInput.value = vm.promoCode;
             // alert(vm.promoCode, promoCodeInput.value)
+        },
+        sendReferenceAcc(){
+            let vm = this;
+            let sendReferenceAccInput = document.querySelector('#ctl00_Main_AccTBX');
+            sendReferenceAccInput.value = vm.sendReferenceAcc;
         }
     }
 })
