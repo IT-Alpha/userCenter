@@ -192,17 +192,7 @@ let couponApp = new Vue({
         targetCouponData:[]
     },
     mounted(){
-        if(window.location.search !== "")
-        {
-            let searchURL = window.location.search;
-            searchURL = searchURL.substring(1, searchURL.length);
-            let search = searchURL.split("&")[0].split("=");
-            
-            if(search[0] === 'couponId') {
-                vm.promoCode = search[1];
-            }
-
-        }
+        
         let vm = this;
         let checkedMsg = document.querySelector('#ctl00_Main_CkLB');
         //推薦人字串
@@ -233,7 +223,17 @@ let couponApp = new Vue({
             vm.hasReference = true;
             vm.referenceAcc = reference.textContent;
         }
-        
+        if(window.location.search !== "")
+        {
+            let searchURL = window.location.search;
+            searchURL = searchURL.substring(1, searchURL.length);
+            let search = searchURL.split("&")[0].split("=");
+            
+            if(search[0] === 'couponId') {
+                vm.promoCode = search[1];
+            }
+
+        }
     },
     methods:{
         //兌換配對控制項
