@@ -5,29 +5,28 @@ let email = document.querySelector('#ctl00_Main_ActLB');
 
 genderBTN1.classList.add('custom-control-input')
 genderBTN2.classList.add('custom-control-input')
-document.querySelector('#email').textContent = email.textContent;
+// document.querySelector('#email').textContent = email.textContent;
 
 let mobile_Re = /^09[0-9]{8}$/;
 let number_Re = /^[0-9]*$/;
 let mail_Re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+let paycardNumIsNone = document.querySelector('#ctl00_Main_CardLB').textContent;
 
+if(paycardNumIsNone == 'None'){
+    document.querySelector('#paycardNumShow').textContent = '尚未填寫';
+}
 
 
 
 //欄位自動focus下一個
 $(".paycard").keyup(function () {
-    // console.log('siblings length',$(this).siblings().length)
-    // console.log('index', $('.paycard-set .paycard').index(this))
 
     if (this.value.length == this.maxLength) {
         let $next = $(this).next('.paycard');
-        // console.log($next.length)
-        // let $nextSet = $(this).closest('.paycard-set')
         if ($next.length ){
             $(this).next('.paycard').focus();
         }else if($next.length == 0){
             $(this).closest('.paycard-set').next().find('.paycard').eq(0).focus();
-            // $(this).closest('.paycard-set').find('.paycard').focus();
         }else{
             $(this).blur();
         }
@@ -47,6 +46,8 @@ $('#reAddressData').click(function(){
     }else{
         reAddAlert.text('請填寫戶籍地址')
     }
+
+
 })
 //通訊地址驗證
 $('#maAddressData').click(function(){
@@ -89,6 +90,7 @@ $('#saveEmailData').click(function(){
     }else{
         emailAlert.text('請填寫正確Email')
     }
+    
 })
 
 //選擇卡別
@@ -134,5 +136,31 @@ $('#saveCardData').click(function(){
         sendCardBtn.click()
     }
     
+})
+
+//修正後端點擊enter會跑去檢測信用卡問題
+$('#ctl00_Main_EmailTBX').focus(function(){
+
+    $(this).keypress(function(event){
+        let email = $('#ctl00_Main_EmailTBX').val();
+        let sendEmailBtn = $('#ctl00_Main_EmailBTN');
+        let isPass = mail_Re.test(email);
+        let emailAlert = $('#emailAlert');
+
+        if(event.keyCode == 13){
+            // console.log('123')
+            if(isPass && email!=''){
+                emailAlert.text('')
+                sendEmailBtn.click();
+                event.preventDefault();
+                return false;
+            }else{
+                emailAlert.text('請填寫正確Email')
+                event.preventDefault();
+                return false;
+            }
+            
+        }
+    })
 })
 

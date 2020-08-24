@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false"
+﻿<%@ Page Title="阿爾發-個人資料" Language="vb" AutoEventWireup="false"
     MasterPageFile="~/MainBack.Master" CodeBehind="MemberAccount.aspx.vb"
     Inherits="Financial_Robots.MemberAccount" %>
 
@@ -10,8 +10,7 @@
         <ContentTemplate>
             <section class="pt-4 pt-xl-0 pb-3">
                 <div class="d-none">
-                    <!-- email資料 -->
-                    <asp:Label ID="EmailLB" runat="server"></asp:Label>
+                    
                     <!-- 信用卡別 1.visa 2.masterCard 3.Jcb -->
                     <asp:TextBox ID="CardTypeTBX" runat="server" MaxLength="1"></asp:TextBox>
                     <!-- 信用卡確認按鈕 -->
@@ -189,7 +188,9 @@
                                                         Email
                                                     </div>
                                                     <div class="py-3 pl-sm-4 text-center text-sm-left flex-grow-1">
-                                                        <span id="email"></span>
+                                                        <!-- <span id="email"></span> -->
+                                                        <!-- email資料 -->
+                                                        <asp:Label ID="EmailLB" runat="server"></asp:Label>
                                                     </div>
                                                     <div class="text-center mb-3 mb-sm-0">
                                                         <button type="button" class="btn btn-outline-primary py-1 mr-2" data-toggle="modal" data-target="#emailModal">
@@ -230,8 +231,8 @@
                                                     </div>
                                                     <div class="py-3 pl-sm-4 text-center text-sm-left flex-grow-1">
                                                         <!-- 戶籍地址： -->
-                                                        <asp:Label ID="AddressLB1" runat="server" class="d-none"></asp:Label>
-                                                        <div class="text-center text-sm-left flex-grow-1">******</div>
+                                                        <asp:Label ID="AddressLB1" runat="server" class="text-center text-sm-left flex-grow-1"></asp:Label>
+                                                        <!-- <div class="text-center text-sm-left flex-grow-1">******</div> -->
                                                     </div>
                                                     <div class="text-center mb-3 mb-sm-0">
                                                         <button type="button" class="btn btn-outline-primary py-1 mr-2" data-toggle="modal" data-target="#reAddressModal">
@@ -272,8 +273,8 @@
                                                     </div>
                                                     <div class="py-3 pl-sm-4 text-center text-sm-left flex-grow-1">
                                                         <!-- 通訊地址： -->
-                                                        <asp:Label ID="AddressLB2" runat="server" class="d-none"></asp:Label>
-                                                        <div class="text-center text-sm-left flex-grow-1">******</div>
+                                                        <asp:Label ID="AddressLB2" runat="server" class="text-center text-sm-left flex-grow-1"></asp:Label>
+                                                        <!-- <div class="text-center text-sm-left flex-grow-1">******</div> -->
                                                     </div>
                                                     <div class="text-center mb-3 mb-sm-0">
                                                         <button type="button" class="btn btn-outline-primary py-1 mr-2" data-toggle="modal" data-target="#maAddressModal">
@@ -353,7 +354,7 @@
                                                     <div class="py-2 py-sm-3 text-center bg-200" style="min-width: 8rem;">
                                                         信用卡資訊
                                                     </div>
-                                                    <div class="py-3 pl-sm-4 text-center text-sm-left flex-grow-1">
+                                                    <div class="py-3 pl-sm-4 text-center text-sm-left flex-grow-1" id="paycardNumShow">
                                                         **** **** **** ****
                                                     </div>
                                                     <div class="text-center mb-3 mb-sm-0">
