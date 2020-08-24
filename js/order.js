@@ -56,7 +56,7 @@ let order = new Vue({
           progress: fuckingBug[1],
           element: [
             {
-              title: "預計投入金額",
+              title: vm.tab2Data[0][0] > 0 ? "投入金額": "預計投入金額",  // 已投入金額 切換顯示字
               text:
                 "USD $ " +
                 vm.$options.filters.commaFormat(

@@ -223,17 +223,22 @@ let couponApp = new Vue({
             vm.hasReference = true;
             vm.referenceAcc = reference.textContent;
         }
+        // 從網址帶入優惠眷代碼 先保留程式
+        /*
         if(window.location.search !== "")
         {
             let searchURL = window.location.search;
             searchURL = searchURL.substring(1, searchURL.length);
-            let search = searchURL.split("&")[0].split("=");
+            let search = searchURL.split("&");
             
-            if(search[0] === 'couponId') {
-                vm.promoCode = search[1];
+            for(var i=0;i<search.length;i++)
+            {
+                var query = search[i].split('=');
+                if(query[0] === 'couponId') {
+                    vm.promoCode = query[1];
+                }
             }
-
-        }
+        }*/
     },
     methods:{
         //兌換配對控制項

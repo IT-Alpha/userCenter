@@ -163,7 +163,7 @@
 												</div>
 											</div>
 											<div class="tab-pane fade" id="dashboardGraph2" role="tabpanel">
-												<div v-if="!tab1Data.some(function(e){ return e[9] == 2})" class="h-100" style="position:relative;min-height: 400px;">
+												<div v-if="tab2Data[0][0] === 0" class="h-100" style="position:relative;min-height: 400px;">
 													<div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba( 22, 52, 79, 0.8 ); display: flex; justify-content: center; align-items: center;">
 															<span style="font-size: 2rem; color: #fff; text-align: center;">
 																其餘功能將在下單後為您開放
@@ -173,7 +173,7 @@
 												<div v-else class="container-fluid">
 													<div class="row">
 														<div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
-															<div v-if="tab1Data[0][9] != 2"
+															<div v-if="tab2Data[0][0] === 0"
 																class="highcharts-container highcharts-container-2"
 																style="background-color: rgba( 22, 52, 79, 0.8); display: flex; justify-content: center; align-items: center; min-height: 250px;">
 																<span
@@ -268,7 +268,7 @@
 												</div>
 											</div>
 											<div class="tab-pane fade" id="dashboardGraph3" role="tabpanel">
-												<div v-if="!tab1Data.some(function(e){ return e[9] == 2})" class="h-100" style="position:relative;min-height:400px;">
+												<div v-if="tab2Data[0][0] === 0" class="h-100" style="position:relative;min-height:400px;">
 													<div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba( 22, 52, 79, 0.8 ); display: flex; justify-content: center; align-items: center;">
 															<span style="font-size: 2rem; color: #fff; text-align: center;">
 																其餘功能將在下單後為您開放
