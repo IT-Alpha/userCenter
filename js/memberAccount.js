@@ -12,6 +12,13 @@ let number_Re = /^[0-9]*$/;
 let mail_Re = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 let paycardNumIsNone = document.querySelector('#ctl00_Main_CardLB').textContent;
 
+let maAddAlert = $('#maAddAlert');
+let reAddAlert = $('#reAddAlert');
+let emailAlert = $('#emailAlert');
+let mobileAlert = $('#mobileAlert');
+let cardAlert = $('#cardAlert');
+
+
 if(paycardNumIsNone == 'None'){
     document.querySelector('#paycardNumShow').textContent = '未填寫';
 }
@@ -105,10 +112,28 @@ $('input[type=radio][name=cardType]').change(function() {
 $('#saveCardData').click(function(){
     payCardTest();
 })
+
+// $('button[data-dismiss="modal"]').click(function(){
+//     maAddAlert = reAddAlert = emailAlert = mobileAlert = cardAlert = '';
+//     console.log('click')
+// })
+
+$('input[name="ctl00$Main$gender"]').change(function () {
+    // var checked = $('[name="ctl00$Main$gender"]:checked')
+    // console.log('选中的值:', checked.val())
+    $(this).keypress(function(event){
+        if(event.keyCode == 13){
+            let genderBtn = $('#ctl00_Main_GenderBTN')
+            genderBtn.click()
+            event.preventDefault();
+            return false;
+        }
+    })
+})
+
 function maAddTest(){
     let maAddress = $('#ctl00_Main_AddressTBX2').val();
     let sendMaAddBtn = $('#ctl00_Main_AddressBTN2');
-    let maAddAlert = $('#maAddAlert');
     if(maAddress!=''){
         maAddAlert.text('');
         sendMaAddBtn.click();
@@ -124,7 +149,6 @@ function maAddTest(){
 function reAddTest(){
     let reAddress = $('#ctl00_Main_AddressTBX1').val();
     let sendReAddBtn = $('#ctl00_Main_AddressBTN1');
-    let reAddAlert = $('#reAddAlert');
     if(reAddress!=''){
         reAddAlert.text('');
         sendReAddBtn.click();
@@ -141,7 +165,6 @@ function emailTest(){
     let email = $('#ctl00_Main_EmailTBX').val();
     let sendEmailBtn = $('#ctl00_Main_EmailBTN');
     let isPass = mail_Re.test(email);
-    let emailAlert = $('#emailAlert');
 
     // console.log('123')
     if(isPass && email!=''){
@@ -159,7 +182,6 @@ function emailTest(){
 function mobileTest(){
     let mobile = $('#ctl00_Main_PhoneTBX').val();
     let sendMobileBtn = $('#ctl00_Main_PhoneBTN');
-    let mobileAlert = $('#mobileAlert');
     let isPass = mobile_Re.test(mobile);
     if(isPass && mobile!=''){
         mobileAlert.text('')
@@ -182,7 +204,6 @@ function payCardTest(){
     let exYear = $('#ctl00_Main_YearTBX').val();
     let ccv = $('#ctl00_Main_CardCodeTBX').val();
     let bankName = $('#ctl00_Main_BankNameTBX').val();
-    let cardAlert = $('#cardAlert');
     let sendCardBtn = $('#ctl00_Main_CardBTN');
 
     if(cardTypeVal =='' || cardNum1 =='' || cardNum2 =='' || cardNum3 =='' || cardNum4 =='' || exMon =='' || exYear =='' || ccv =='' || bankName ==''){

@@ -479,7 +479,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/memberAccount.js"></script>
+    <script src="js/memberAccount.js?20200826"></script>
 
 
 </asp:Content>
