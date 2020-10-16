@@ -358,9 +358,9 @@
                                                         **** **** **** ****
                                                     </div>
                                                     <div class="text-center mb-3 mb-sm-0">
-                                                        <button type="button" class="btn btn-outline-primary py-1 mr-2" data-toggle="modal" data-target="#payCardModal">
+                                                        <!-- <button type="button" class="btn btn-outline-primary py-1 mr-2" data-toggle="modal" data-target="#payCardModal">
                                                             修改
-                                                        </button>
+                                                        </button> -->
                                                         <div class="modal fade px-0" id="payCardModal" tabindex="-1" role="dialog">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
@@ -477,7 +477,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainJS" runat="server">
     <script src="components/base/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="js/header.js"></script>
     <script src="js/memberAccount.js?20200826"></script>
 
