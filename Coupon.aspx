@@ -240,7 +240,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainJS" runat="server">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 	<script src="components/base/script.js?202006010"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script src="js/header.js?202006010"></script>
     <script type="text/x-template" id="couponUse">
         <!-- 一張優惠券 -->

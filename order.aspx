@@ -698,7 +698,6 @@
 	<script src="js/gaugeChart.js?202006010"></script>
 	<script src="js/circleChart.js?202006010"></script>
 	<script src="components/base/script.js?202006010"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 	<script src="js/header.js?202006010"></script>
 	<script src="js/order.js?202006010"></script>
 </asp:Content>
