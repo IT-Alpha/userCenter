@@ -91,34 +91,24 @@ Vue.component('coupon-use',{
             switch(vm.couponData[5]){
                 case 'ALL':
                     return '所有計畫';
-                break;
                 case 'Edu':
                     return '子女教育金';
-                break;
                 case 'Long':
                     return '穩定累積財富';
-                break;
                 case 'Preservation':
                     return '財產保值抗通膨';
-                break;
                 case 'Production':
                     return '存錢買房';
-                break;
                 case 'Retirement':
                     return '退休金準備';
-                break;
                 case 'SpecificGoal':
                     return '其他目標';
-                break;
                 case 'Wallet':
                     return '金額優惠';
-                break;
                 case 'Plan':
                     return '單一計畫';
-                break;
                 case 'FPlan':
                     return '單一計畫首次下單';
-                break;
             }
             
             
@@ -146,8 +136,7 @@ Vue.component('coupon-use',{
             localStorage.setItem('couponData',JSON.stringify(this.couponData));
 
             setTimeout(function(){
-                let checkCouponBtn = document.querySelector('#ctl00_Main_CkBTN');
-                checkCouponBtn.click();
+                document.querySelector('#ctl00_Main_CkBTN').click();
             },800)
             
             // let couponModalBtn = document.querySelector('#couponModalBtn');
@@ -156,13 +145,12 @@ Vue.component('coupon-use',{
         //使用優惠券
         useCoupon(){
             let targetPlan = document.querySelector('#ctl00_Main_PIDTBX');
-            let vm = this;
             //判斷該優惠券是否需綁定單一計畫
-            // if(vm.couponData[5] == 'Plan' || vm.couponData[5] == 'FPlan'){
+            // if(this.couponData[5] === 'Plan' || this.couponData[5] === 'FPlan'){
             //     //若未選擇計畫的防呆機制
-            //     if(vm.couponData[5] != 'Retirement'){
+            //     if(this.couponData[5] != 'Retirement'){
             //         if(targetPlan.value == ''){
-            //             vm.selectPlanAlert ='請選擇使用優惠計畫';
+            //             this.selectPlanAlert ='請選擇使用優惠計畫';
             //         }else{
             //             let useCouponBtn = document.querySelector('#ctl00_Main_UseBTN');
             //             useCouponBtn.click();
@@ -175,9 +163,9 @@ Vue.component('coupon-use',{
             //     useCouponBtn.click();
             //     localStorage.setItem('couponData','');
             // }
-            let useCouponBtn = document.querySelector('#ctl00_Main_UseBTN');
-            useCouponBtn.click();
+
             localStorage.setItem('couponData','');
+            document.querySelector('#ctl00_Main_UseBTN').click();
         }
     }
 })
@@ -192,34 +180,36 @@ let couponApp = new Vue({
         targetCouponData:[]
     },
     mounted(){
-        
         let vm = this;
-        let checkedMsg = document.querySelector('#ctl00_Main_CkLB');
+        // let checkedMsg = document.querySelector('#ctl00_Main_CkLB');
         //推薦人字串
         let reference = document.querySelector('#ctl00_Main_AccLB');
-
-        if(checkedMsg.textContent == 'Repeat'){
-            // console.log('重複')
+        
+        if(document.querySelector('#ctl00_Main_CkLB').textContent === 'Repeat'){
             vm.isRepeat = true;
+            let targetCoupon = localStorage.getItem('couponData') || [];
+            vm.targetCouponData = JSON.parse(targetCoupon);
+            // document.querySelector('#couponModalBtn').click();
 
-            setTimeout(function(){
-                let targetCoupon = localStorage.getItem('couponData') || [];
-                vm.targetCouponData = JSON.parse(targetCoupon);
+            window.onload = function(){
                 document.querySelector('#couponModalBtn').click();
-            },1000)
+            }
+
             
-        }else if(checkedMsg.textContent == 'Success'){
+        }else if(document.querySelector('#ctl00_Main_CkLB').textContent === 'Success'){
             vm.isRepeat = false;
-            setTimeout(function(){
-                let targetCoupon = localStorage.getItem('couponData') || [];
-                vm.targetCouponData = JSON.parse(targetCoupon);
+            let targetCoupon = localStorage.getItem('couponData') || [];
+            vm.targetCouponData = JSON.parse(targetCoupon);
+
+            window.onload = function(){
                 document.querySelector('#couponModalBtn').click();
-            },1000)
-            
+            }
+            // $(window).on('load', function () {
+            //     $('#exchangeModal').modal('show')
+            // })
         }
 
         if(reference.textContent != 'None'){
-            // console.log(reference.textContent)
             vm.hasReference = true;
             vm.referenceAcc = reference.textContent;
         }
@@ -318,7 +308,6 @@ let couponApp = new Vue({
             let vm = this;
             let promoCodeInput = document.querySelector('#ctl00_Main_NumTBX');
             promoCodeInput.value = vm.promoCode;
-            // alert(vm.promoCode, promoCodeInput.value)
         },
         sendReferenceAcc(){
             let vm = this;

@@ -252,8 +252,6 @@
             <img v-if="couponData[13] == 1" class="coupon-using-stamp" src="images/coupon-using.svg" alt="">
             <ul>
               <li>優惠碼：{{ couponData[2] }}</li>
-              <!-- <li>優惠活動：{{ couponData[3] }}</li> -->
-              <!-- <li>內容：{{ couponData[4] }}</li> -->
               <li>
                 <div class="d-flex flex-wrap">
                   內容：<div v-html="couponData[4]"></div>
@@ -261,7 +259,6 @@
                 
               </li>
               <li>類別：{{ couponCategory }}</li>
-              <!-- <li>優惠時間：{{ couponData[7] }} 個月</li> -->
             </ul>
             <div class="mt-3 d-flex justify-content-between flex-wrap"
               v-if="couponData">
@@ -350,5 +347,7 @@
           </div>
         </div>
     </script>
-    <script src="js/coupon.js?20200818"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="js/coupon.js?2020102104"></script>
 </asp:Content>
