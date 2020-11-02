@@ -7,12 +7,198 @@
 		.slick-vertical .slick-slide {
 			width: 100% !important;
 		}
+		.text-blue {
+			color: #1868B3;
+			font-weight: 600;
+		}
+		.title {
+			font-size: 20px;
+		}
+		.title.top {
+			font-size: 24px;
+		}
+		content, li.content, p.content{
+			font-size: 18px;
+		}
+		.bg-blue {
+			background-color: #1868B3;
+			color:white;
+		}
+		.modal-popup {
+			border: 20px solid #1868B3;
+			height: 80vh;
+		}
+		.modal .close.btn {
+			color: #1868B3!important;
+			top: 2px;
+			right: 2px;
+		}
+		.modal-logo {
+			width: 150px;
+		}
+		.modal-letter-font {
+			font-size: 16px;
+		}
+		.object-fit {
+			object-fit: contain;
+		}
+		.width-100 {
+			width: 100%;
+			height: 100%;
+		}
+		.position {
+			position: absolute;
+			top: 5%;
+			right: 5%;
+			background-color: white!important;
+			color: #1868B3!important;
+			font-weight: 600;
+		}
+		.position-relative {
+			position:relative;
+		}
+		.slogan {
+			width: 70%;
+			margin: 0 auto;
+		}
+		.slogan img {
+			margin: 0 auto;
+		}
+		@media (min-width: 576px) {
+			.modal-dialog.landscape {
+				max-width: 800px;
+			}
+		}
+		
+		@media screen and (max-width: 570px) {
+			#noticeModal {
+				padding-right: 0 !important;
+			}
+			.modal.fade {
+				width: 100%;
+			}
+			.modal-dialog {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.modal-popup {
+				max-width: 100%;
+				height: 100vh;
+				border: 10px solid #1868B3;
+			}
+			.modal-content {
+				margin: 0;
+				height: auto;
+				min-height: 100%;
+				border-radius: 0;
+			}
+			.modal-open .modal {
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+			.modal {
+				left: auto!important;
+				right: auto!important;
+			}
+			.position {
+				position: fixed;
+				top: 5%;
+				right: 5%;
+				background-color: white!important;
+				color: #1868B3!important;
+				font-weight: 600;
+			}
+			.slogan {
+				width: 100%;
+			}
+			/* .width-100 {
+				width: 100%;
+			} */
+		}
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
 	<asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
 	<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 		<ContentTemplate>
+			<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#noticeModal" id="noticeModalBtn">
+				Launch demo modal
+			</button>
+			<div class="modal fade" id="noticeModal">
+					<div class="modal-dialog landscape">
+							<div class="modal-content" style="border-radius:5px">
+									<div class="modal-body modal-popup p-3 p-sm-5 position-relative">
+											<button type="button" class="btn position text-blue" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+											</button>
+											<div class="pt-4">
+												<div class=" d-flex flex-wrap justify-content-center">
+													<img class="modal-logo" src="images/alpha.svg" alt="">
+												</div>
+												<h1 class="text-center text-blue title top pb-4">致投資人的一封信</h1>
+												<p class="modal-letter-font">
+													<span class="text-blue title">
+														<i class="fas fa-circle mr-3"></i>致親愛的投資人: 
+													</span>
+													<br>
+													感謝您加入阿爾發這個大家庭！今年市場非常特別，年初COVID-19影響美國股市三次熔斷，年底美國總統大選將再一次考驗投資人的信心，不論您是投資新手或經驗老道的投資人，希望您花3分鐘的時間，閱讀以下的內容：
+												</p>
+												<div class="py-4 d-flex justify-content-center slogan">
+													<img src="images/advise-slogan.svg" class="width-100" alt="">
+												</div>
+												<p class="modal-letter-font">
+													根據過往選舉對股市的研究，不論是在哪位總統或政黨的領導下，股市的趨勢隨著經濟發展向上成長，因此，短期的波動在所難免。我們知道，無論您投資經驗多豐富，看到任何市場下跌都是令人恐懼的
+												</p>
+												<p class="text-center modal-letter-font pt-3">
+													阿爾發今天的建議與過往始終沒有改變：
+													<p class="bg-blue p-3 text-center title">
+														當市場下跌時，最好的做法是保持冷靜，並堅持到底。
+													</p>
+												</p>
+												<hr>
+												<div class="pt-4 pb-2 d-flex justify-content-center object-fit">
+													<img src="images/modal-pic1.jpg" class="width-100" alt="">
+												</div>
+												<ul class="text-blue content">
+													<li class="pt-2 content">當情緒高漲或恐慌時進行投資始終是危險的，這次選舉也不例外。明智的做法是保持鎮定並保持前進。</li>
+													<li class="pt-2 content">不論是誰當選總統，全球的金融市場已經反應了新的未來，並且根據歷史結果，不會影響您的長期投資。</li>
+													<li class="pt-2 content">對於新聞媒體而言，美國總統選舉就像美式足球超級盃，極盡可能吸引你的目光。總統選舉是一場比賽，創造內容並吸引眼球，可以為他們帶來更多廣告收入，但不應該影響你當初設定的投資目標。</li>
+												</ul>
+												<div class="py-4 d-flex justify-content-center slogan">
+													<img src="images/advise-slogan2.svg" class="width-100" alt="">
+												</div>
+												<hr>
+												<div class="pt-4 pb-2 d-flex justify-content-center img-outer object-fit">
+													<img src="images/modal-pic2.jpg" class="width-100" alt="">
+												</div>
+												<p class="modal-letter-font">
+													<span class="text-blue title">
+														<i class="fas fa-circle mr-3"></i>
+														投資是一場博大精深的遊戲，在做出決策之前，試問自己一些關鍵的問題：
+													</span>
+													<br>
+													<li class="pt-2 content">您是在冷靜的狀態下做出此決定嗎？如果不是這樣，並且您的心臟跳動更快，則是退後一步的好兆頭。</li>
+													<li class="pt-2 content">您看壞未來市場？如果您認為自己比數百萬交易者更擅長於預測未來，請提防過度自信。</li>
+													<li class="pt-2 content">您對未來的計劃有改變嗎？如果沒有，為什麼要改變現在的投資方式？</li>
+													<li class="pt-2 pb-3 content">如果您現在退出市場，您將如何或何時回到市場？請記住，試圖猜測市場，通常導致報酬表現不佳。</li>
+													<p class="content pb-3">
+														透過阿爾發機器人理財，我們一開始就根據您所能夠承擔的風險，為您設計好一個適當資產配置且分散風險的投資組合，除此之外，我們的系統也會在需要的時候為您的投資組合做重新再平衡調整，透過紀律的投資方法，您完全可以放心的交給阿爾發機器人理財為您的投資把關，這是我們的核心價值與理念。
+													</p>
+												</p>
+												<p class="bg-blue p-3 text-center title">
+													感謝您用心看完這封信，如果最近股票市場的波動仍然讓你感到非常不安，不妨深呼吸，挑一部喜歡的電影，或是到附近公園走一走，舒解恐慌之心靈。
+												</p>
+												<div class="d-flex justify-content-center pt-4">
+													<button type="button" class="btn btn-primary" style="background-color:#1868B3" data-dismiss="modal" aria-label="Close">關閉視窗</button>
+												</div>
+												
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
 			<section id="order" class="pb-3">
 				<div class="d-none">
 					<asp:Label ID="ResultLB" runat="server"></asp:Label>
@@ -689,6 +875,38 @@
 					</div>
 				</div>
 			</section>
+			<script>
+				let placedOrder = false;
+				function getCookie(cookieName) {
+					let name = cookieName + "=";
+					let cookie = document.cookie.split(';');
+					for(let i=0; i<cookie.length; i++) 
+					{
+						let c = cookie[i].trim();
+							if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+					}
+					return "";
+				}
+        function placedOrderModal () {
+          const orders = eval(document.getElementById('ctl00_ResultLB').textContent);
+          placedOrder = _.some(orders, function(order){
+            return order[3] === 2;
+          });
+          if( placedOrder ) {
+						// if( getCookie('modal') === "" ) {
+						// 	document.getElementById('noticeModalBtn').click();
+						// 	document.cookie=`modal=read; expires=Thu, 18 Dec 2043 12:00:00 GMT`;
+						// }
+						document.getElementById('noticeModalBtn').click();
+						document.cookie=`modal=read; expires=Thu, 18 Dec 2043 12:00:00 GMT`;
+          };
+        };
+        window.onload = function() {
+          setTimeout(function(){
+            placedOrderModal ();
+          },800);
+        };
+      </script>
 		</ContentTemplate>
 		<Triggers> </Triggers>
 	</asp:UpdatePanel>
