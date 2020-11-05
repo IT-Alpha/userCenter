@@ -45,7 +45,7 @@ let header = new Vue({
       //    訂單狀態：0委託成功、1已成交、2部分成交、8委託失敗、9交易失敗
       //    -1無、0委託送出成功、1委託成功、2已成交、3部分成交、8委託失敗、9交易失敗
       if (value[0] == '2' && value[1] != '2') {   //  已下單但未已成交
-        return 'un-success';
+        return ''; // return 'un-success'; 部份成交 先移除驚嘆號
       } else if (value[0] == '2' && value[1] == '2') {    //已下單且已成交
         return 'order';
       } else {

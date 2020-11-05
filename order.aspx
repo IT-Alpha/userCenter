@@ -224,7 +224,7 @@
 								</button>
 							</template>
 							<!-- 狀態為 2 已成交 -->
-							<template v-if="!overView && tab1Data[0][9] == 2">
+							<template v-if="!overView && (tab1Data[0][9] == 2 || tab1Data[0][9] == 3)">
 								<!-- <button type="button" 
 									class="btn btn-secondary ml-3">
 									調整此計畫
