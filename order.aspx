@@ -127,7 +127,7 @@
 	<asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
 	<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 		<ContentTemplate>
-			<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#noticeModal" id="noticeModalBtn">
+			<!-- <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#noticeModal" id="noticeModalBtn">
 				Launch demo modal
 			</button>
 			<div class="modal fade" id="noticeModal">
@@ -202,7 +202,7 @@
 									</div>
 							</div>
 					</div>
-			</div>
+			</div> -->
 			<section id="order" class="pb-3">
 				<div class="d-none">
 					<asp:Label ID="ResultLB" runat="server"></asp:Label>
@@ -879,7 +879,7 @@
 					</div>
 				</div>
 			</section>
-			<script>
+			<!-- <script>
 				let placedOrder = false;
 				function getCookie(cookieName) {
 					let name = cookieName + "=";
@@ -910,7 +910,7 @@
             placedOrderModal ();
           },800);
         };
-      </script>
+      </script> -->
 		</ContentTemplate>
 		<Triggers> </Triggers>
 	</asp:UpdatePanel>
