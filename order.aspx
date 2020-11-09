@@ -4,6 +4,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainStyle" runat="server">
 	<style>
+		.slick-list
+		{
+			overflow: visible !important;
+		}
 		.slick-vertical .slick-slide {
 			width: 100% !important;
 		}
@@ -225,7 +229,7 @@
 							</template>
 							<!-- 狀態為 2 已成交 -->
 							<template v-if="!overView && (tab1Data[0][9] == 2 || tab1Data[0][9] == 3)">
-								<!-- <button type="button" 
+								<!-- <button type="b+utton" 
 									class="btn btn-secondary ml-3">
 									調整此計畫
 								</button> -->
@@ -272,7 +276,7 @@
 						<!-- 個別-已下單 -->
 						<!-- 個別-未下單 -->
 						<!-- tabs -->
-						<template v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
+						<template v-if="!overView || tab2Data[0][0] !== 0">
 							<div class="col-md-12">
 								<div class="panel admin-panel">
 									<div class="panel-header">
@@ -683,7 +687,7 @@
 							</div>
 						</div>
 						<!-- 投資組合 -->
-						<div class="col-lg-4" v-if="!overView || tab1Data.some(function(e){ return e[9] == 2})">
+						<div class="col-lg-4" v-if="!overView || tab2Data[0][0] !== 0">
 							<div class="panel admin-panel">
 								<div class="panel-header text-center">
 									<!-- <div class="d-flex align-items-center">

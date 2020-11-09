@@ -40,7 +40,7 @@ let order = new Vue({
       let tab1Array = [];
       if (this.overView) {
         tab1Array = this.tab1Data.filter(function (e) {
-          return e[9] == 2;
+          return e[1] > 0;
         });
       } else {
         tab1Array = this.tab1Data;
