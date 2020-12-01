@@ -29,7 +29,7 @@ let header = new Vue({
         case 'Retirement':
           return 'mdi-airballoon';
         case 'Long':
-          return 'mdi-cash-usd';
+          return 'mdi-account-multiple-plus';
         case 'Preservation':
           return 'mdi-shield';
         case 'Edu':
@@ -37,7 +37,7 @@ let header = new Vue({
         case 'Production':
           return 'mdi-home';
         case 'SpecificGoal':
-          return 'mdi-account-multiple-plus';
+          return 'mdi-cash-usd';
       }
     },
     statusClass: function (value) {
@@ -55,17 +55,17 @@ let header = new Vue({
     goalText: function (value) {
       switch (value) {
         case 'Retirement':
-          return '退休金準備';
+          return '提早過退休的生活';
         case 'Long':
-          return '穩定累積財富';
+          return '累積長期財富';
         case 'Preservation':
-          return '財產保值抗通膨';
+          return '守護財富財產保值';
         case 'Edu':
-          return '子女教育金';
+          return '當孩子教育的後盾';
         case 'Production':
-          return '存錢買房';
+          return '實現擁有家的願望';
         case 'SpecificGoal':
-          return '其他目標';
+          return '快速存下第一桶金';
       }
     }
   },

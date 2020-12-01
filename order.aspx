@@ -661,8 +661,7 @@
 							</div>
 						</template>
 						<div v-if="!overView" class="col-12 col-lg-4"
-							:class="index == progressData.length -1 ? '' : 'mb-4'" v-for="(item,index)
-													in progressData">
+							:class="index == progressData.length -1 ? '' : 'mb-4'" v-for="(item,index) in progressData">
 							<div class="panel admin-panel">
 								<div class="panel-header text-center">
 									{{ item.title }}

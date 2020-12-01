@@ -398,6 +398,14 @@ let order = new Vue({
                 svgID: "riskSVG",
                 type: "Long",
               },
+              {
+                title: "您的成功機率",
+                value: this.tab1Data[0][12],
+                circle: true,
+                gauge: false,
+                svgID: "RateSVG",
+                type: "Long",
+              }
             ];
           // v2,3
           // return [
@@ -434,6 +442,14 @@ let order = new Vue({
                 circle: false,
                 gauge: true,
                 svgID: "riskSVG",
+                type: "Preservation",
+              },
+              {
+                title: "您的成功機率",
+                value: this.tab1Data[0][12],
+                circle: true,
+                gauge: false,
+                svgID: "RateSVG",
                 type: "Preservation",
               },
             ];
@@ -720,17 +736,17 @@ let order = new Vue({
       //目標轉換為中文字
       switch (value) {
         case "Retirement":
-          return "退休金準備";
+          return "提早過退休的生活";
         case "Long":
-          return "穩定累積財富";
+          return "累積長期財富";
         case "Preservation":
-          return "財產保值抗通膨";
+          return "守護財富財產保值";
         case "Edu":
-          return "子女教育金";
+          return "當孩子教育的後盾";
         case "Production":
-          return "存錢買房";
+          return "實現擁有家的願望";
         case "SpecificGoal":
-          return "其他目標";
+          return "快速存下第一桶金";
       }
     },
     commaFormat: function (value) {
@@ -808,16 +824,17 @@ let order = new Vue({
           .duration(2000 + 400 * Math.abs(c.newValue - c.oldValue));
       c.update(0);
 
-      if (type == "Long" || type == "Preservation") {
-        c.format = "年";
-        c.textMax = 40;
-      }
+      // if (type == "Long" || type == "Preservation") {
+      //   c.format = "年";
+      //   c.textMax = 40;
+      // }
       setTimeout(function () {
-        if (type == "Long" || type == "Preservation") {
-          c.update(value / 40);
-        } else {
-          c.update(value / 100);
-        }
+        c.update(value / 100);
+        // if (type == "Long" || type == "Preservation") {
+        //   c.update(value / 40);
+        // } else {
+        //   c.update(value / 100);
+        // }
       }, 500);
     },
     gauge: function (element, value) {

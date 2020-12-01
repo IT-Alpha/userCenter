@@ -2238,7 +2238,7 @@ let components = {
                     valueTranslate = 1;
                     break;
                   case 'Long':
-                    valueTranslate = 2;
+                    valueTranslate = 6;
                     break;
                   case 'Preservation':
                     valueTranslate = 3;
@@ -2250,7 +2250,7 @@ let components = {
                     valueTranslate = 5;
                     break;
                   case 'SpecificGoal':
-                    valueTranslate = 6;
+                    valueTranslate = 2;
                     break;
                 }
                 if (points) {
