@@ -31,6 +31,14 @@ let order = new Vue({
     overView: !Boolean(location.search),
     money: null,
     cfpNumber: null,
+    rebalanceData: [],
+    needRebalance: false,
+    checkedAllPlan: false,
+    rebalanceDate: false,
+    rebalanceOver: false,
+    date: '',
+    noRebalancePID:'',
+    noRebalanceMoniDate:'',
   },
   computed: {
     tab1: function () {
@@ -869,8 +877,63 @@ let order = new Vue({
         this.$message.error("請輸入金額及顧問編號");
       }
     },
+    //已讀
+    rebalanceRead (PlanID, MoniDate) {
+      let rebalanceMoniInput = document.getElementById('ctl00_Main_MoniDateTBX'); // 傳再平衡監測日期input
+      let rebalancePlanIDInput = document.getElementById('ctl00_Main_PIDTBX'); // 傳再平衡計畫編號input
+      let rebalanceOKBtn = document.getElementById('ctl00_Main_RebOKBTN'); // 要再平衡按鈕
+
+      rebalanceMoniInput.value = MoniDate;
+      rebalancePlanIDInput.value = PlanID;
+
+      setTimeout(() => {
+        rebalanceOKBtn.click();
+      },500);
+    },
+    //要再平衡
+    rebalanceOK (PlanID, MoniDate) {
+      let rebalanceMoniInput = document.getElementById('ctl00_Main_MoniDateTBX'); // 傳再平衡監測日期input
+      let rebalancePlanIDInput = document.getElementById('ctl00_Main_PIDTBX'); // 傳再平衡計畫編號input
+      let rebalanceOKBtn = document.getElementById('ctl00_Main_RebOKBTN'); // 要再平衡按鈕
+
+      rebalanceMoniInput.value = MoniDate;
+      rebalancePlanIDInput.value = PlanID;
+
+      setTimeout(() => {
+        rebalanceOKBtn.click();
+        setTimeout(() => {
+          window.location.href = './Rebalance.aspx';
+        },1000);
+      },500);
+    },
+    //不再平衡
+    rebalanceNO () {
+      let rebalanceMoniInput = document.getElementById('ctl00_Main_MoniDateTBX'); // 傳再平衡監測日期input
+      let rebalancePlanIDInput = document.getElementById('ctl00_Main_PIDTBX'); // 傳再平衡計畫編號input
+      let rebalanceNoBtn = document.getElementById('ctl00_Main_RebNoBTN'); // 不要再平衡按鈕
+
+      rebalanceMoniInput.value = this.noRebalanceMoniDate;
+      rebalancePlanIDInput.value = this.noRebalancePID;
+
+      setTimeout(() => {
+        rebalanceNoBtn.click();
+      },500);
+    },
+    saveData(PlanID, MoniDate) {
+      console.log(PlanID, MoniDate)
+      this.noRebalancePID = PlanID;
+      this.noRebalanceMoniDate = MoniDate;
+    }
   },
   mounted: function () {
+
+    new Date().getTime() > 1607011200000 && new Date().getTime() < 1607097600000 // 12/4當天
+    ? this.rebalanceDate = true : this.rebalanceDate = false;
+    new Date().getTime() > 1607097600000 // 12/5 凌晨開始
+    ? this.date = true : this.date = false;
+    new Date().getTime() > 1609430439999 //12/31 凌晨之後
+    ? this.rebalanceOver = true : this.rebalanceOver = false;
+
     let vm = this;
     if (!this.overView) {
       let circleArray = this.progressData.filter(function (element) {
@@ -894,6 +957,36 @@ let order = new Vue({
         //v2,3
         // vm.gauge(element.svgID, element.self)
       });
+
+    } else {
+
+      //再平衡
+      // 取得再平衡資料
+      let rebalanceArr = eval(document.getElementById('ctl00_Main_RebalanceLB').textContent);
+      this.rebalanceData = rebalanceArr;
+
+      // 測試資料
+      // this.rebalanceData = [['Edu','P2020102000003','2020/12/1',0.07,1,0,''],['SpecificGoal','P2020112600003','2020/12/1',0.04,0,0,''],];
+
+      // 是否有任何計畫要再平衡?
+      this.needRebalance = this.rebalanceData.some((plan) => {
+        return plan[4] === 1;
+      })
+      
+      // 客戶每個計劃都已決定/已讀
+      this.checkedAllPlan = this.rebalanceData.every((plan) => {
+        return plan[5] !== 0;
+      })
+
+      if (this.rebalanceDate) {
+        setTimeout(() => {
+          window.onload = function() {
+            setTimeout(() => {
+              document.getElementById('rebalanceBtn').click();
+            },800);
+          };
+        },200)
+      }
     }
   },
 });
