@@ -963,7 +963,12 @@ let order = new Vue({
       //再平衡
       // 取得再平衡資料
       let rebalanceArr = eval(document.getElementById('ctl00_Main_RebalanceLB').textContent);
-      this.rebalanceData = rebalanceArr;
+      if(rebalanceArr === undefined) {
+        this.rebalanceData = [];
+      } else {
+        this.rebalanceData = rebalanceArr;
+      }
+      
 
       // 測試資料
       // this.rebalanceData = [['Edu','P2020102000003','2020/12/1',0.07,1,0,''],['SpecificGoal','P2020112600003','2020/12/1',0.04,0,0,''],];
