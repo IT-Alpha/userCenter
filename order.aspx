@@ -4,71 +4,86 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainStyle" runat="server">
 	<style>
-		.slick-list
-		{
-			overflow: visible !important;
-		}
-		.slick-vertical .slick-slide {
-			width: 100% !important;
-		}
-		.text-blue {
-			color: #1868B3;
-			font-weight: 600;
-		}
-		.title {
-			font-size: 20px;
-		}
-		.title.top {
-			font-size: 24px;
-		}
-		content, li.content, p.content{
-			font-size: 18px;
-		}
-		.bg-blue {
-			background-color: #1868B3;
-			color:white;
-		}
-		.modal-popup {
-			border: 20px solid #1868B3;
-			height: 80vh;
-		}
-		.modal .close.btn {
-			color: #1868B3!important;
-			top: 2px;
-			right: 2px;
-		}
-		.modal-logo {
-			width: 150px;
-		}
-		.modal-letter-font {
-			font-size: 16px;
-		}
-		.object-fit {
-			object-fit: contain;
-		}
-		.width-100 {
-			width: 100%;
-			height: 100%;
-		}
-		.position {
-			position: absolute;
-			top: 5%;
-			right: 5%;
-			background-color: white!important;
-			color: #1868B3!important;
-			font-weight: 600;
-		}
-		.position-relative {
-			position:relative;
-		}
-		.slogan {
-			width: 70%;
-			margin: 0 auto;
-		}
-		.slogan img {
-			margin: 0 auto;
-		}
-		@media (min-width: 576px) {
+	    .slick-list {
+	        overflow: visible !important;
+	    }
+
+	    .slick-vertical .slick-slide {
+	        width: 100% !important;
+	    }
+
+	    .text-blue {
+	        color: #1868B3;
+	        font-weight: 600;
+	    }
+
+	    .title {
+	        font-size: 20px;
+	    }
+
+	        .title.top {
+	            font-size: 24px;
+	        }
+
+	    content, li.content, p.content {
+	        font-size: 18px;
+	    }
+
+	    .bg-blue {
+	        background-color: #1868B3;
+	        color: white;
+	    }
+
+	    .modal-popup {
+	        border: 20px solid #1868B3;
+	        height: 80vh;
+	    }
+
+	    .modal .close.btn {
+	        color: #1868B3 !important;
+	        top: 2px;
+	        right: 2px;
+	    }
+
+	    .modal-logo {
+	        width: 150px;
+	    }
+
+	    .modal-letter-font {
+	        font-size: 16px;
+	    }
+
+	    .object-fit {
+	        object-fit: contain;
+	    }
+
+	    .width-100 {
+	        width: 100%;
+	        height: 100%;
+	    }
+
+	    .position {
+	        position: absolute;
+	        top: 5%;
+	        right: 5%;
+	        background-color: white !important;
+	        color: #1868B3 !important;
+	        font-weight: 600;
+	    }
+
+	    .position-relative {
+	        position: relative;
+	    }
+
+	    .slogan {
+	        width: 70%;
+	        margin: 0 auto;
+	    }
+
+	        .slogan img {
+	            margin: 0 auto;
+	        }
+	    /* @media (min-width: 576px) {
 			.modal-dialog.landscape {
 				max-width: 800px;
 			}
@@ -116,10 +131,14 @@
 			}
 			.slogan {
 				width: 100%;
-			}
-			/* .width-100 {
-				width: 100%;
 			} */
+	    /* .width-100 {
+				width: 100%;
+			}
+		} */
+		.modal-body.mb-3 {
+			max-width: 100%;
+			overflow-x: auto !important;
 		}
 	</style>
 </asp:Content>
@@ -127,6 +146,7 @@
 	<asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
 	<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 		<ContentTemplate>
+
 			<!-- <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#noticeModal" id="noticeModalBtn">
 				Launch demo modal
 			</button>
@@ -212,11 +232,128 @@
 					<asp:Label ID="PoDataLB" runat="server"></asp:Label>
 					<asp:Button ID="AddOrderBTN" runat="server" />
 					<asp:Button ID="DelPlanBTN" runat="server" />
+					<asp:Label ID="RebalanceLB" runat="server"></asp:Label>
+                    <asp:TextBox ID="MoniDateTBX" runat="server" MaxLength="10"></asp:TextBox>
+                    <asp:TextBox ID="PIDTBX" runat="server" MaxLength="14"></asp:TextBox>
+                    <asp:Button ID="RebOKBTN" runat="server" />
+                    <asp:Button ID="RebNoBTN" runat="server" />
+				</div>
+				<!-- 再平衡 -->
+				<div class="modal" id="rebalanceModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header d-flex justify-content-center bg-primary">
+								<h4 class="modal-title text-white" id="staticBackdropLabel" style="font-size: 18px;">
+									定期再平衡通知</h4>
+							</div>
+							<div class="modal-body mb-3 d-flex justify-content-center flex-wrap">
+								<div class="mb-3" style="font-size: 18px; line-height: 35px;">
+									<p class="text-center mb-0" v-if="rebalanceDate">
+										依據 12/1 再平衡監測日顯示<br>
+										<div v-if="needRebalance && rebalanceDate" class="text-center">
+											<span class="text-primary text-center mt-0 font-weight-bold">
+												您的投資計畫有發生偏離率超過 5 %
+											</span><br>
+											建議您執行定期再平衡調整
+										</div>
+										<div v-if="!needRebalance && rebalanceDate" class="text-center">
+											<span class="text-primary text-center mt-0 font-weight-bold">
+												您目前的投資計畫未超過偏離率標準
+											</span><br>
+											建議您本年度無需執行再平衡
+										</div>
+										<span class="text-center" v-if="!needRebalance && rebalanceDate">以下是您的投資計畫及監測狀況：</span>
+										
+									</p>
+									<p class="text-center mb-0" v-if="date">
+										<span>
+											本年度定期再平衡調整期間(12/1-12/4)已結束<br>以下是您的投資計畫及監測狀況：
+										</span>
+									</p>
+								</div>
+								<!-- 客戶有下單計畫 -->
+								<div class="col-12 px-0" v-if="rebalanceData.length !== 0">
+									<table class="table table-bordered" >
+										<thead>
+										<tr class="text-white bg-primary">
+											<th scope="col">計畫目標</th>
+											<th scope="col">計劃編號</th>
+											<th scope="col">偏離率</th>
+											<th scope="col" v-if="!date">
+												<span v-if="needRebalance">是否執行</span>
+												<span v-if="!needRebalance">是否偏離</span>
+											</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr v-for="(item, index) in rebalanceData">
+											<th scope="row">{{ item[0] | goalText }}</th>
+											<td>{{ item[1] }}</td>
+											<td>
+												<span :class="[item[3] > 0.05 ? 'text-primary font-weight-bold': '']">
+													{{ (Number(item[3])*100).toFixed(0) + '%' }}
+												</span>
+											</td>
+											<!-- 12/4當天 客戶要再平衡 但還沒決定 -->
+											<td v-if="item[4] === 1 && rebalanceDate">
+												<button type="button" class="btn btn-primary mx-1"
+												@click="rebalanceOK(item[1], item[2])" :disabled="item[5] !== 0">
+													<span v-if="item[5] === 0">是</span>
+													<span v-if="item[5] === 1">再平衡調整中</span>
+													<span v-if="item[5] === 2">沒關係不調整</span>
+												</button>
+												<button type="button" class="btn btn-outline-secondary mx-1" data-dismiss="modal"
+												v-if="item[5] === 0" @click="saveData(item[1], item[2])" data-toggle="modal" data-target="#noRebalanceModal">
+													否
+												</button>
+											</td>
+											<!-- 12/4當天 客戶不用再平衡 但還沒了解 -->
+											<td v-if="item[4] === 0 && rebalanceDate">
+												<button type="button" class="btn btn-primary mx-1" data-dismiss="modal" @click="rebalanceRead(item[1], item[2])" :disabled="item[5] !== 0">
+													<span v-if="item[5] === 0">我知道了</span>
+													<span v-if="item[5] !== 0">已瞭解</span>
+												</button>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<!-- 12/5凌晨開始 或者 客戶都決定好了 -->
+								<div class="d-flex justify-content-center mt-3" v-if="date || checkedAllPlan">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">我了解了</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="noRebalanceModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header d-flex justify-content-center bg-primary">
+								<h4 class="modal-title text-white" style="font-size: 18px;">
+									不做再平衡確認
+								</h4>
+							</div>
+							<div class="modal-body d-flex justify-content-center">
+								確認不執行再平衡嗎 ?
+							</div>
+							<div class="d-flex justify-content-center mb-3">
+								<button type="button" class="btn btn-outline-secondary mx-1"
+								@click="rebalanceNO()">
+									確認
+								</button>
+								<button type="button" class="btn btn-primary mx-1" data-dismiss="modal" data-toggle="modal" data-target="#rebalanceModal">取消</button>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="container-fluid">
 					<div class="row row-30">
 						<!-- 按鈕 -->
 						<div class="col-12 text-right pt-4 pt-xl-0">
+							<button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#rebalanceModal" id="rebalanceBtn" v-if="overView && rebalanceData.length !== 0 && (date || rebalanceDate) && !rebalanceOver">
+								查看再平衡情況
+							</button>
 							<a class="btn btn-outline-secondary" href="questions.aspx">新增計畫</a>
 							<!-- 狀態為 -1 無 -->
 							<template v-if="!overView && tab1Data[0][9] == -1">
@@ -878,18 +1015,18 @@
 					</div>
 				</div>
 			</section>
-			<!-- <script>
-				let placedOrder = false;
-				function getCookie(cookieName) {
-					let name = cookieName + "=";
-					let cookie = document.cookie.split(';');
-					for(let i=0; i<cookie.length; i++) 
-					{
-						let c = cookie[i].trim();
-							if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-					}
-					return "";
-				}
+	<!-- <script>
+		let placedOrder = false;
+		function getCookie(cookieName) {
+			let name = cookieName + "=";
+			let cookie = document.cookie.split(';');
+			for(let i=0; i<cookie.length; i++) 
+			{
+				let c = cookie[i].trim();
+					if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+			}
+			return "";
+		}
         function placedOrderModal () {
           const orders = eval(document.getElementById('ctl00_ResultLB').textContent);
           placedOrder = _.some(orders, function(order){
@@ -909,9 +1046,14 @@
             placedOrderModal ();
           },800);
         };
-      </script> -->
+	  </script> -->
 		</ContentTemplate>
-		<Triggers> </Triggers>
+		<Triggers>
+			<asp:PostBackTrigger ControlID="AddOrderBTN" />
+			<asp:PostBackTrigger ControlID="DelPlanBTN" />
+			<asp:PostBackTrigger ControlID="RebOKBTN" />
+			<asp:PostBackTrigger ControlID="RebNoBTN" />
+		</Triggers>
 	</asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainJS" runat="server">
